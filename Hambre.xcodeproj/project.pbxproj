@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1F6918A45D0CDC6A497D44 /* Pods_Hambre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */; };
 		6450958E1EDB842400427A83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450958D1EDB842400427A83 /* AppDelegate.swift */; };
 		645095901EDB842400427A83 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450958F1EDB842400427A83 /* FirstViewController.swift */; };
 		645095921EDB842400427A83 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645095911EDB842400427A83 /* SecondViewController.swift */; };
@@ -15,6 +16,10 @@
 		6450959A1EDB842400427A83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645095981EDB842400427A83 /* LaunchScreen.storyboard */; };
 		645095A51EDB842400427A83 /* HambreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645095A41EDB842400427A83 /* HambreTests.swift */; };
 		645095B01EDB842400427A83 /* HambreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645095AF1EDB842400427A83 /* HambreUITests.swift */; };
+		6451BB611EDB98B6002E33DA /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6451BB601EDB98B6002E33DA /* YelpClient.swift */; };
+		6451BB631EDB98DC002E33DA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6451BB621EDB98DC002E33DA /* Business.swift */; };
+		64E1E8C81EDBAA020052EABA /* YLPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E1E8C71EDBAA020052EABA /* YLPClient.swift */; };
+		C3E4BF8EE1BA58E8D4832FD1 /* Pods_HambreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67A7D8E6850E96DF9707C41 /* Pods_HambreTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hambre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.debug.xcconfig"; sourceTree = "<group>"; };
+		5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6450958A1EDB842400427A83 /* Hambre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hambre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6450958D1EDB842400427A83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6450958F1EDB842400427A83 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +57,12 @@
 		645095AB1EDB842400427A83 /* HambreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HambreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		645095AF1EDB842400427A83 /* HambreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HambreUITests.swift; sourceTree = "<group>"; };
 		645095B11EDB842400427A83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6451BB601EDB98B6002E33DA /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YelpClient.swift; path = ../YelpClient.swift; sourceTree = "<group>"; };
+		6451BB621EDB98DC002E33DA /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		64E1E8C71EDBAA020052EABA /* YLPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLPClient.swift; sourceTree = "<group>"; };
+		9B30F1AE1197A9EE0086F1FB /* Pods-Hambre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.release.xcconfig"; sourceTree = "<group>"; };
+		D06A183918C18A19BCB71376 /* Pods-HambreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.release.xcconfig"; sourceTree = "<group>"; };
+		E67A7D8E6850E96DF9707C41 /* Pods_HambreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HambreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C1F6918A45D0CDC6A497D44 /* Pods_Hambre.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E4BF8EE1BA58E8D4832FD1 /* Pods_HambreTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15E9DE7D5966D083F6E3E039 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */,
+				E67A7D8E6850E96DF9707C41 /* Pods_HambreTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		645095811EDB842400427A83 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 				645095A31EDB842400427A83 /* HambreTests */,
 				645095AE1EDB842400427A83 /* HambreUITests */,
 				6450958B1EDB842400427A83 /* Products */,
+				CB529C51D6DCDA9B9E0E6A6D /* Pods */,
+				15E9DE7D5966D083F6E3E039 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,8 +126,11 @@
 		6450958C1EDB842400427A83 /* Hambre */ = {
 			isa = PBXGroup;
 			children = (
+				6451BB601EDB98B6002E33DA /* YelpClient.swift */,
+				6451BB621EDB98DC002E33DA /* Business.swift */,
 				6450958D1EDB842400427A83 /* AppDelegate.swift */,
 				6450958F1EDB842400427A83 /* FirstViewController.swift */,
+				64E1E8C71EDBAA020052EABA /* YLPClient.swift */,
 				645095911EDB842400427A83 /* SecondViewController.swift */,
 				645095931EDB842400427A83 /* Main.storyboard */,
 				645095961EDB842400427A83 /* Assets.xcassets */,
@@ -128,6 +158,17 @@
 			path = HambreUITests;
 			sourceTree = "<group>";
 		};
+		CB529C51D6DCDA9B9E0E6A6D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */,
+				9B30F1AE1197A9EE0086F1FB /* Pods-Hambre.release.xcconfig */,
+				5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */,
+				D06A183918C18A19BCB71376 /* Pods-HambreTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 645095B41EDB842400427A83 /* Build configuration list for PBXNativeTarget "Hambre" */;
 			buildPhases = (
+				D876608B060BCED3F2C41EB4 /* [CP] Check Pods Manifest.lock */,
 				645095861EDB842400427A83 /* Sources */,
 				645095871EDB842400427A83 /* Frameworks */,
 				645095881EDB842400427A83 /* Resources */,
+				D80CF54D50C86CB2697DEC23 /* [CP] Embed Pods Frameworks */,
+				592E10DD3143472B0DED4AA1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 645095B71EDB842400427A83 /* Build configuration list for PBXNativeTarget "HambreTests" */;
 			buildPhases = (
+				81C79E1024AB4C37FE948393 /* [CP] Check Pods Manifest.lock */,
 				6450959C1EDB842400427A83 /* Sources */,
 				6450959D1EDB842400427A83 /* Frameworks */,
 				6450959E1EDB842400427A83 /* Resources */,
+				CD5CDD6D5FD1BD8B3B59F6A1 /* [CP] Embed Pods Frameworks */,
+				76E83A47C347965000F02286 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,13 +307,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		592E10DD3143472B0DED4AA1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hambre/Pods-Hambre-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76E83A47C347965000F02286 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81C79E1024AB4C37FE948393 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD5CDD6D5FD1BD8B3B59F6A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D80CF54D50C86CB2697DEC23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hambre/Pods-Hambre-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D876608B060BCED3F2C41EB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		645095861EDB842400427A83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6451BB611EDB98B6002E33DA /* YelpClient.swift in Sources */,
 				645095921EDB842400427A83 /* SecondViewController.swift in Sources */,
 				6450958E1EDB842400427A83 /* AppDelegate.swift in Sources */,
+				6451BB631EDB98DC002E33DA /* Business.swift in Sources */,
+				64E1E8C81EDBAA020052EABA /* YLPClient.swift in Sources */,
 				645095901EDB842400427A83 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,10 +562,12 @@
 		};
 		645095B51EDB842400427A83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BEPL73VPNG;
 				INFOPLIST_FILE = Hambre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = goodlife.Hambre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,10 +577,12 @@
 		};
 		645095B61EDB842400427A83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B30F1AE1197A9EE0086F1FB /* Pods-Hambre.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BEPL73VPNG;
 				INFOPLIST_FILE = Hambre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = goodlife.Hambre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,6 +592,7 @@
 		};
 		645095B81EDB842400427A83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -460,6 +608,7 @@
 		};
 		645095B91EDB842400427A83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D06A183918C18A19BCB71376 /* Pods-HambreTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -520,6 +669,7 @@
 				645095B61EDB842400427A83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		645095B71EDB842400427A83 /* Build configuration list for PBXNativeTarget "HambreTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +678,7 @@
 				645095B91EDB842400427A83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		645095BA1EDB842400427A83 /* Build configuration list for PBXNativeTarget "HambreUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +687,7 @@
 				645095BC1EDB842400427A83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
