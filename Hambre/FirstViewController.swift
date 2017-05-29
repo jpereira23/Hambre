@@ -36,7 +36,6 @@ class FirstViewController: UIViewController {
                 
                 if let topBusiness = search.businesses.last {
                     self.businesses = search.businesses
-                    self.tableView.reloadData()
                     
                     for aBusiness in search.businesses
                     {
@@ -53,7 +52,7 @@ class FirstViewController: UIViewController {
                 //exit(EXIT_FAILURE)
         }
         
-        tableView.reloadData()
+    
         //dispatchMain()
  
         

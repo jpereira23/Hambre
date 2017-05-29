@@ -1,15 +1,17 @@
 //
-//  HambreTests.swift
-//  HambreTests
+//  AppDelegateTest.swift
+//  Hambre
 //
-//  Created by Jeffery Pereira on 5/28/17.
+//  Created by Jeffery Pereira on 5/29/17.
 //  Copyright © 2017 GOODLIFE. All rights reserved.
 //
 
 import XCTest
 @testable import Hambre
 
-class HambreTests: XCTestCase {
+class AppDelegateTest: XCTestCase {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate!
     
     override func setUp() {
         super.setUp()
@@ -21,9 +23,23 @@ class HambreTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testBusinesses()
+    {
+        let array = appDelegate?.getBusinesses()
+        XCTAssertTrue((array?.count)! > 0)
+    }
+    
+    func testCity()
+    {
+        let city = appDelegate?.getCity()
+        XCTAssertTrue(city == "San Francisco")
+    }
+    
+    func testState()
+    {
+        let state = appDelegate?.getState()
+        XCTAssertTrue(state == "CA")
+        
     }
     
     func testPerformanceExample() {
