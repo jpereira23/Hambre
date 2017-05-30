@@ -17,38 +17,10 @@ class Negocio: NSObject {
         self.businessName = businessName
         self.businessImageUrl = businessImageUrl
     }
-    
-    public func getBusinessImage() -> UIImage
+
+    public func getBusinessImage() -> URL
     {
-        return self.downloadContents() 
-    }
-    
-    private func downloadContents() -> UIImage
-    {
-        let session = URLSession(configuration: .default)
-        var anImage = UIImage()
-        _ = session.dataTask(with: self.businessImageUrl) { (data, response, error) in
-            if let e = error {
-                print("Error downloading picture: \(e)")
-            } else {
-                if let res = response as? HTTPURLResponse {
-                    print("Downloaded picture with response code \(res.statusCode)")
-                    if let imageData = data {
-                        let image = UIImage(data: imageData)
-                        anImage = image!
-                    }
-                    else
-                    {
-                        print("Couldnt get image: Image is nil")
-                    }
-                } else {
-                    print("Couldn't get response code for some reason")
-                }
-    
-            }
-        }
-        return anImage
-    
+        return self.businessImageUrl
     }
     
     public func getBusinessName() -> String

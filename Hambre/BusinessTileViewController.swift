@@ -37,10 +37,12 @@ class BusinessTileViewController: UIViewController {
     */
     
     @IBAction func swipeLeft(_ sender: Any) {
+        self.aBusinessTileOperator.swipeLeft()
         self.refreshTileAttributes()
     }
     
     @IBAction func swipeRight(_ sender: Any) {
+        self.aBusinessTileOperator.swipeRight() 
         self.refreshTileAttributes()
     }
     
@@ -50,7 +52,9 @@ class BusinessTileViewController: UIViewController {
         if aBusiness != nil
         {
             self.businessNameLabel.text = aBusiness.getBusinessName()
-            self.businessImage.image = aBusiness.getBusinessImage()
+            self.businessImage.setImageWith(aBusiness.getBusinessImage())
+            self.businessImage.contentMode = UIViewContentMode.scaleAspectFill
+            
         }
     }
 
