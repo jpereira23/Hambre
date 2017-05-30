@@ -48,13 +48,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cyk-9m-hT7">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tiles" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="cyk-9m-hT7" id="JeD-Y8-Kkf"/>
                         <outlet property="businessImage" destination="Epa-tW-eaK" id="xek-8v-xvo"/>
                         <outlet property="businessNameLabel" destination="rmt-3u-yqY" id="iT5-yy-n14"/>
+                        <outlet property="leftButton" destination="Nal-M1-5Sy" id="cWu-fM-f2E"/>
+                        <outlet property="rightButton" destination="7Vz-zb-1Kf" id="ceK-aA-GiI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

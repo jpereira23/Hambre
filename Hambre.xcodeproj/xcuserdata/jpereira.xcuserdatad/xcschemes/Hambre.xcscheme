@@ -37,6 +37,11 @@
                BlueprintName = "HambreTests"
                ReferencedContainer = "container:Hambre.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "AppDelegateTest">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

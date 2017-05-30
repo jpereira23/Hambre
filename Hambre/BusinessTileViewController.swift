@@ -12,11 +12,24 @@ class BusinessTileViewController: UIViewController {
 
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var businessImage: UIImageView!
-    let aBusinessTileOperator = BusinessTileOperator()
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+    
+    var aBusinessTileOperator : BusinessTileOperator! = nil
+    let yelpContainer = YelpContainer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshTileAttributes()
+        
+ 
+        self.businessImage.isHidden = true
+        self.businessNameLabel.isHidden = true
+        self.leftButton.isEnabled = false
+        self.rightButton.isEnabled = false
+        self.activityIndicator.startAnimating()
+        
+        yelpContainer.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -46,16 +59,29 @@ class BusinessTileViewController: UIViewController {
         self.refreshTileAttributes()
     }
     
-    private func refreshTileAttributes()
+    public func refreshTileAttributes()
     {
         let aBusiness = self.aBusinessTileOperator.presentCurrentBusiness()
-        if aBusiness != nil
-        {
-            self.businessNameLabel.text = aBusiness.getBusinessName()
-            self.businessImage.setImageWith(aBusiness.getBusinessImage())
-            self.businessImage.contentMode = UIViewContentMode.scaleAspectFill
-            
-        }
+        
+        self.businessNameLabel.text = aBusiness.getBusinessName()
+        self.businessImage.setImageWith(aBusiness.getBusinessImage())
+        self.businessImage.contentMode = UIViewContentMode.scaleAspectFill
     }
 
+}
+
+extension BusinessTileViewController : YelpContainerDelegate
+{
+    func yelpAPICallback(_ yelpContainer: YelpContainer) {
+        print("This works so far")
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.businessImage.isHidden = false
+        self.businessNameLabel.isHidden = false
+        self.leftButton.isEnabled = true
+        self.rightButton.isEnabled = true
+        self.aBusinessTileOperator = BusinessTileOperator(anArrayOfBusinesses: yelpContainer.getBusinesses(), city: yelpContainer.getCity(), state: yelpContainer.getState())
+        self.refreshTileAttributes()
+        
+    }
 }

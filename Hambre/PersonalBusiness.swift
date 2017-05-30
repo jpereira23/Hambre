@@ -16,7 +16,9 @@ class PersonalBusiness: Negocio {
     
     public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int)
     {
-        super.init(businessName: businessName, businessImageUrl: businessImageUrl)
+        super.init(businessName: businessName, businessImageUrl:
+            businessImageUrl)
+        
         self.city = city
         self.state = state
         self.liked = liked
