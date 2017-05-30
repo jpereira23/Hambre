@@ -51,6 +51,7 @@ class BusinessTileOperator: NSObject, CLLocationManagerDelegate {
             }
         }
     }
+    
     public func getBusinesses() -> [YLPBusiness]
     {
         return self.arrayOfNegocios
