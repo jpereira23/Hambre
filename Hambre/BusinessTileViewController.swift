@@ -21,8 +21,6 @@ class BusinessTileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
- 
         self.businessImage.isHidden = true
         self.businessNameLabel.isHidden = true
         self.leftButton.isEnabled = false
@@ -30,6 +28,7 @@ class BusinessTileViewController: UIViewController {
         self.activityIndicator.startAnimating()
         
         yelpContainer.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
@@ -73,7 +72,6 @@ class BusinessTileViewController: UIViewController {
 extension BusinessTileViewController : YelpContainerDelegate
 {
     func yelpAPICallback(_ yelpContainer: YelpContainer) {
-        print("This works so far")
         self.activityIndicator.stopAnimating()
         self.activityIndicator.isHidden = true
         self.businessImage.isHidden = false
