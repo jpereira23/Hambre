@@ -8,11 +8,6 @@
 
 import UIKit
 
-@objc protocol BusinessTileViewControllerDelegate
-{
-    func rightSwipeTriggered(_ businessTileViewController: BusinessTileViewController)
-}
-
 class BusinessTileViewController: UIViewController {
 
     @IBOutlet weak var businessNameLabel: UILabel!
@@ -21,7 +16,6 @@ class BusinessTileViewController: UIViewController {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
-    var delegate : BusinessTileViewControllerDelegate!
     var aBusinessTileOperator : BusinessTileOperator! = nil
     let yelpContainer = YelpContainer()
     
@@ -61,7 +55,6 @@ class BusinessTileViewController: UIViewController {
     
     @IBAction func swipeRight(_ sender: Any) {
         self.aBusinessTileOperator.swipeRight()
-        //self.delegate.rightSwipeTriggered(self)
         self.refreshTileAttributes()
     }
     

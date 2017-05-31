@@ -12,7 +12,6 @@ import UIKit
 class LikedBusinessesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
     var arrayOfLikedBusinesses = [PersonalBusiness]()
     private var personalBusinessCoreData = PersonalBusinessCoreData()
     
@@ -25,6 +24,13 @@ class LikedBusinessesViewController: UIViewController {
         //businessTileViewController.delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //print("The LikedBusinessController is going to appear")
+        self.arrayOfLikedBusinesses.removeAll()
+        self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,15 +38,24 @@ class LikedBusinessesViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let navigationViewController = segue.destination as! UINavigationController
+        navigationViewController.navigationBar.topItem?.title = self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessName()
+        let businessViewController = segue.destination.childViewControllers[0] as! BusinessViewController
+        businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
+        //businessViewController.imageView.setImageWith(self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
+        
     }
-    */
+    
+    @IBAction func unwindFromBusinessView(_ sender: UIStoryboardSegue)
+    {
+        
+    }
 
 }
 
@@ -60,13 +75,5 @@ extension LikedBusinessesViewController : UITableViewDataSource
         cell.textLabel!.textAlignment = .center
 
         return cell
-    }
-}
-
-extension LikedBusinessesViewController : BusinessTileViewControllerDelegate
-{
-    func rightSwipeTriggered(_ businessTileViewController: BusinessTileViewController) {
-        print("Working hopefully")
-        self.tableView.reloadData()
     }
 }
