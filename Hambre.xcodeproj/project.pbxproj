@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3C1F6918A45D0CDC6A497D44 /* Pods_Hambre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */; };
-		642A7CC61EDCCB5E0085062A /* AppDelegateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CC51EDCCB5E0085062A /* AppDelegateTest.swift */; };
 		642A7CCA1EDCD9430085062A /* Negocio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CC91EDCD9430085062A /* Negocio.swift */; };
 		642A7CCC1EDCDA520085062A /* PersonalBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */; };
 		642A7CCF1EDCDCB40085062A /* Negocios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CCD1EDCDCB40085062A /* Negocios.xcdatamodeld */; };
 		642A7CD11EDCDD950085062A /* BusinessTileOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CD01EDCDD950085062A /* BusinessTileOperator.swift */; };
 		642A7CD31EDCE0A00085062A /* BusinessTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CD21EDCE0A00085062A /* BusinessTileViewController.swift */; };
 		6450958E1EDB842400427A83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450958D1EDB842400427A83 /* AppDelegate.swift */; };
-		645095921EDB842400427A83 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645095911EDB842400427A83 /* SecondViewController.swift */; };
 		645095951EDB842400427A83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645095931EDB842400427A83 /* Main.storyboard */; };
 		645095971EDB842400427A83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 645095961EDB842400427A83 /* Assets.xcassets */; };
 		6450959A1EDB842400427A83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645095981EDB842400427A83 /* LaunchScreen.storyboard */; };
@@ -23,6 +21,9 @@
 		6451BB631EDB98DC002E33DA /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6451BB621EDB98DC002E33DA /* Business.swift */; };
 		648B74C51EDE25F400B5D2CE /* YelpContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74C41EDE25F400B5D2CE /* YelpContainer.swift */; };
 		648B74C71EDE278300B5D2CE /* YelpContainerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74C61EDE278300B5D2CE /* YelpContainerTest.swift */; };
+		648B74C91EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74C81EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift */; };
+		648B74CB1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74CA1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift */; };
+		648B74CE1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */; };
 		64E1E8C81EDBAA020052EABA /* YLPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E1E8C71EDBAA020052EABA /* YLPClient.swift */; };
 		C3E4BF8EE1BA58E8D4832FD1 /* Pods_HambreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67A7D8E6850E96DF9707C41 /* Pods_HambreTests.framework */; };
 /* End PBXBuildFile section */
@@ -48,7 +49,6 @@
 		13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hambre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.debug.xcconfig"; sourceTree = "<group>"; };
 		5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.debug.xcconfig"; sourceTree = "<group>"; };
-		642A7CC51EDCCB5E0085062A /* AppDelegateTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateTest.swift; sourceTree = "<group>"; };
 		642A7CC91EDCD9430085062A /* Negocio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Negocio.swift; sourceTree = "<group>"; };
 		642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusiness.swift; sourceTree = "<group>"; };
 		642A7CCE1EDCDCB40085062A /* Negocios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios.xcdatamodel; sourceTree = "<group>"; };
@@ -56,7 +56,6 @@
 		642A7CD21EDCE0A00085062A /* BusinessTileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTileViewController.swift; sourceTree = "<group>"; };
 		6450958A1EDB842400427A83 /* Hambre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hambre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6450958D1EDB842400427A83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		645095911EDB842400427A83 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		645095941EDB842400427A83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		645095961EDB842400427A83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		645095991EDB842400427A83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +68,9 @@
 		6451BB621EDB98DC002E33DA /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		648B74C41EDE25F400B5D2CE /* YelpContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpContainer.swift; sourceTree = "<group>"; };
 		648B74C61EDE278300B5D2CE /* YelpContainerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpContainerTest.swift; sourceTree = "<group>"; };
+		648B74C81EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusinessCoreData.swift; sourceTree = "<group>"; };
+		648B74CA1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusinessCoreDataTest.swift; sourceTree = "<group>"; };
+		648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedBusinessesViewController.swift; sourceTree = "<group>"; };
 		64E1E8C71EDBAA020052EABA /* YLPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLPClient.swift; sourceTree = "<group>"; };
 		9B30F1AE1197A9EE0086F1FB /* Pods-Hambre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.release.xcconfig"; sourceTree = "<group>"; };
 		D06A183918C18A19BCB71376 /* Pods-HambreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				642A7CC91EDCD9430085062A /* Negocio.swift */,
 				642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */,
+				648B74C81EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift */,
 				642A7CD01EDCDD950085062A /* BusinessTileOperator.swift */,
 				642A7CD21EDCE0A00085062A /* BusinessTileViewController.swift */,
 				648B74C41EDE25F400B5D2CE /* YelpContainer.swift */,
@@ -159,9 +162,9 @@
 			isa = PBXGroup;
 			children = (
 				6450958D1EDB842400427A83 /* AppDelegate.swift */,
+				648B74CC1EDE58E900B5D2CE /* LikedBusinesses */,
 				642A7CC81EDCD90C0085062A /* TileWork */,
 				642A7CC71EDCD8680085062A /* YelpAPI */,
-				645095911EDB842400427A83 /* SecondViewController.swift */,
 				645095931EDB842400427A83 /* Main.storyboard */,
 				645095961EDB842400427A83 /* Assets.xcassets */,
 				645095981EDB842400427A83 /* LaunchScreen.storyboard */,
@@ -174,9 +177,9 @@
 		645095A31EDB842400427A83 /* HambreTests */ = {
 			isa = PBXGroup;
 			children = (
-				642A7CC51EDCCB5E0085062A /* AppDelegateTest.swift */,
 				648B74C61EDE278300B5D2CE /* YelpContainerTest.swift */,
 				645095A61EDB842400427A83 /* Info.plist */,
+				648B74CA1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift */,
 			);
 			path = HambreTests;
 			sourceTree = "<group>";
@@ -187,6 +190,14 @@
 				645095B11EDB842400427A83 /* Info.plist */,
 			);
 			path = HambreUITests;
+			sourceTree = "<group>";
+		};
+		648B74CC1EDE58E900B5D2CE /* LikedBusinesses */ = {
+			isa = PBXGroup;
+			children = (
+				648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */,
+			);
+			name = LikedBusinesses;
 			sourceTree = "<group>";
 		};
 		CB529C51D6DCDA9B9E0E6A6D /* Pods */ = {
@@ -439,8 +450,9 @@
 				642A7CCA1EDCD9430085062A /* Negocio.swift in Sources */,
 				642A7CCC1EDCDA520085062A /* PersonalBusiness.swift in Sources */,
 				6451BB611EDB98B6002E33DA /* YelpClient.swift in Sources */,
+				648B74CE1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift in Sources */,
 				642A7CCF1EDCDCB40085062A /* Negocios.xcdatamodeld in Sources */,
-				645095921EDB842400427A83 /* SecondViewController.swift in Sources */,
+				648B74C91EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift in Sources */,
 				642A7CD31EDCE0A00085062A /* BusinessTileViewController.swift in Sources */,
 				6450958E1EDB842400427A83 /* AppDelegate.swift in Sources */,
 				6451BB631EDB98DC002E33DA /* Business.swift in Sources */,
@@ -454,7 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642A7CC61EDCCB5E0085062A /* AppDelegateTest.swift in Sources */,
+				648B74CB1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift in Sources */,
 				648B74C71EDE278300B5D2CE /* YelpContainerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

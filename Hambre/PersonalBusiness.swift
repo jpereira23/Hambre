@@ -53,4 +53,9 @@ class PersonalBusiness: Negocio {
     {
         return self.likes
     }
+    
+    public func setLiked(liked: Bool)
+    {
+        self.liked = liked
+    }
 }
