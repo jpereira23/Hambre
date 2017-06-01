@@ -15,19 +15,23 @@ class BusinessViewController: UIViewController {
     @IBOutlet weak var noDataWarning: UILabel!
     
     private var imageUrl : URL!
-    public var realmDatabaseHandler = RealmDatabaseHandler()
+    public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
+    //public var realmDatabaseHandler = RealmDatabaseHandler()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imageView.setImageWith(self.imageUrl)
         self.noDataWarning.isHidden = true
-        if self.realmDatabaseHandler.loadRealmDatabase().count == 0
-        {
-            self.tableView.isHidden = true
-            self.noDataWarning.isHidden = false
-        }
-        self.tableView.reloadData()
+        self.cloudKitDatabaseHandler.delegate = self
+        //let anArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
+        
+        //if self.realmDatabaseHandler.loadRealmDatabase().count == 0
+        //{
+//            self.tableView.isHidden = true
+//            self.noDataWarning.isHidden = false
+//        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +59,8 @@ class BusinessViewController: UIViewController {
 extension BusinessViewController : UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.realmDatabaseHandler.loadRealmDatabase().count
+        return self.cloudKitDatabaseHandler.accessArrayOfReviews().count
+        return 0
     }
 }
 
@@ -63,8 +68,20 @@ extension BusinessViewController : UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel!.text = self.realmDatabaseHandler.loadRealmDatabase()[indexPath.row].reviewer
+        cell.textLabel!.text = self.cloudKitDatabaseHandler.accessArrayOfReviews()[indexPath.row].getReviewer()
         
         return cell
+    }
+}
+
+extension BusinessViewController : CloudKitDatabaseHandlerDelegate
+{
+    func errorUpdating(_ error: NSError) {
+        print("Fuck off error")
+    }
+
+    func modelUpdated() {
+        print("The count of the global database is \(self.cloudKitDatabaseHandler.accessArrayOfReviews().count)")
+        self.tableView.reloadData()
     }
 }
