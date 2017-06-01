@@ -11,14 +11,23 @@ import UIKit
 class BusinessViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataWarning: UILabel!
+    
     private var imageUrl : URL!
+    public var realmDatabaseHandler = RealmDatabaseHandler()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imageView.setImageWith(self.imageUrl)
-        //self.imageView.contentMode = UIViewContentMode.scaleAspectFill
-        
-        // Do any additional setup after loading the view.
+        self.noDataWarning.isHidden = true
+        if self.realmDatabaseHandler.loadRealmDatabase().count == 0
+        {
+            self.tableView.isHidden = true
+            self.noDataWarning.isHidden = false
+        }
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,4 +50,21 @@ class BusinessViewController: UIViewController {
     }
     */
 
+}
+
+extension BusinessViewController : UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.realmDatabaseHandler.loadRealmDatabase().count
+    }
+}
+
+extension BusinessViewController : UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        cell.textLabel!.text = self.realmDatabaseHandler.loadRealmDatabase()[indexPath.row].reviewer
+        
+        return cell
+    }
 }

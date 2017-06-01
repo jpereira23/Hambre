@@ -42,6 +42,9 @@
                   Identifier = "AppDelegateTest">
                </Test>
                <Test
+                  Identifier = "PersonalBusinessCoreDataTest">
+               </Test>
+               <Test
                   Identifier = "YelpContainerTest">
                </Test>
             </SkippedTests>
