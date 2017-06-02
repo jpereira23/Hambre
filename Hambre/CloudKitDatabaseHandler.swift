@@ -29,14 +29,33 @@ class Review: NSObject {
         self.record = record
         self.database = database
         
-        self.id = record["id"] as? String
-        self.review = record["review"] as? Int
-        self.reviewer = record["reviewer"] as? String
+        self.id = record["id"] as! String
+        self.review = record["review"] as! Int
+        self.reviewer = record["reviewer"] as! String
+    }
+    
+    init(id: String, review: Int, reviewer: String)
+    {
+        self.record = nil
+        self.database = nil
+        self.id = id
+        self.review = review
+        self.reviewer = reviewer
     }
     
     public func getReviewer() -> String
     {
         return self.reviewer
+    }
+    
+    public func getReview() -> Int
+    {
+        return self.review
+    }
+    
+    public func getId() -> String
+    {
+        return self.id
     }
 }
 
@@ -52,7 +71,7 @@ class CloudKitDatabaseHandler: NSObject {
         self.loadDataFromCloudKit()
     }
     
-    private func loadDataFromCloudKit()
+    public func loadDataFromCloudKit()
     {
         let aPredicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Review", predicate: aPredicate)
@@ -77,5 +96,24 @@ class CloudKitDatabaseHandler: NSObject {
     public func accessArrayOfReviews() -> [Review]
     {
         return self.arrayOfReviews
+    }
+    
+    public func addToDatabase(review: Review)
+    {
+        let myRecord = CKRecord(recordType: "Review")
+        myRecord.setObject(review.getId() as CKRecordValue?, forKey: "id")
+        myRecord.setObject(review.getReviewer() as CKRecordValue?, forKey: "reviewer")
+        myRecord.setObject(review.getReview() as CKRecordValue?, forKey: "review")
+        
+        publicDB.save(myRecord, completionHandler: ({returnRecord, error in
+            if let err = error
+            {
+                print("Error occurred saving database: \(err)")
+            }
+            else
+            {
+                print("It worked!")
+            }
+        }))
     }
 }

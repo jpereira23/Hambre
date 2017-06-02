@@ -33,6 +33,11 @@ class BusinessViewController: UIViewController {
 //        }
         
     }
+    
+    public func getURL() -> String
+    {
+        return self.imageUrl.absoluteString
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,7 +48,27 @@ class BusinessViewController: UIViewController {
     {
         self.imageUrl = aUrl
     }
-
+    
+    public func filterArray(anId: String) -> [Review]
+    {
+        var reviews = [Review]()
+        for review in self.cloudKitDatabaseHandler.accessArrayOfReviews()
+        {
+            let theId = review.getId()
+            if theId == anId
+            {
+                reviews.append(review)
+            }
+        }
+        return reviews
+    }
+    
+    
+    @IBAction func unwindToBusinessView(_ sender: UIStoryboardSegue)
+    {
+        self.cloudKitDatabaseHandler.loadDataFromCloudKit()
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -59,8 +84,8 @@ class BusinessViewController: UIViewController {
 extension BusinessViewController : UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cloudKitDatabaseHandler.accessArrayOfReviews().count
-        return 0
+        let array = self.filterArray(anId: self.getURL())
+        return array.count
     }
 }
 
@@ -68,8 +93,8 @@ extension BusinessViewController : UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.textLabel!.text = self.cloudKitDatabaseHandler.accessArrayOfReviews()[indexPath.row].getReviewer()
-        
+        let array = self.filterArray(anId: self.getURL())
+        cell.textLabel!.text = String(array[indexPath.row].getReview()) + "   - By, " + array[indexPath.row].getReviewer()
         return cell
     }
 }
@@ -81,7 +106,7 @@ extension BusinessViewController : CloudKitDatabaseHandlerDelegate
     }
 
     func modelUpdated() {
-        print("The count of the global database is \(self.cloudKitDatabaseHandler.accessArrayOfReviews().count)")
+        print("Working just not right format")
         self.tableView.reloadData()
     }
 }
