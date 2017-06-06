@@ -15,7 +15,7 @@ class AddReviewViewController: UIViewController {
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var reviewSlider: UISlider!
     @IBOutlet weak var greetingField: UILabel!
-    
+    @IBOutlet weak var commentView: UITextView!
     
     override func viewWillAppear(_ animated: Bool) {
         reviewSlider.maximumValue = 5
@@ -51,7 +51,7 @@ class AddReviewViewController: UIViewController {
         {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let businessViewController = segue.destination as! BusinessViewController
-            let review = Review(id: businessViewController.getURL(), review: Int(self.reviewSlider.value), reviewer: appDelegate.accessICloudName())
+            let review = Review(id: businessViewController.getURL(), review: Int(self.reviewSlider.value), reviewer: appDelegate.accessICloudName(), summaryReview: self.commentView.text)
     
             
             businessViewController.cloudKitDatabaseHandler.addToDatabase(review: review)

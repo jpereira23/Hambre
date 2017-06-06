@@ -23,6 +23,7 @@ class Review: NSObject {
     private var id : String!
     private var reviewer : String!
     private var review : Int!
+    private var summaryReview : String!
     
     init(record: CKRecord, database: CKDatabase)
     {
@@ -32,15 +33,17 @@ class Review: NSObject {
         self.id = record["id"] as! String
         self.review = record["review"] as! Int
         self.reviewer = record["reviewer"] as! String
+        self.summaryReview = record["summaryReview"] as! String
     }
     
-    init(id: String, review: Int, reviewer: String)
+    init(id: String, review: Int, reviewer: String, summaryReview: String)
     {
         self.record = nil
         self.database = nil
         self.id = id
         self.review = review
         self.reviewer = reviewer
+        self.summaryReview = summaryReview
     }
     
     public func getReviewer() -> String
@@ -56,6 +59,11 @@ class Review: NSObject {
     public func getId() -> String
     {
         return self.id
+    }
+    
+    public func getSummaryReview() -> String
+    {
+        return self.summaryReview
     }
 }
 
@@ -105,6 +113,8 @@ class CloudKitDatabaseHandler: NSObject {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         myRecord.setObject(appDelegate.accessICloudName() as CKRecordValue?, forKey: "reviewer")
         myRecord.setObject(review.getReview() as CKRecordValue?, forKey: "review")
+        
+        myRecord.setObject(review.getSummaryReview() as CKRecordValue?, forKey: "summaryReview")
         
         publicDB.save(myRecord, completionHandler: ({returnRecord, error in
             if let err = error

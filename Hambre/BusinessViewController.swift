@@ -93,14 +93,22 @@ extension BusinessViewController : UITableViewDelegate
         let array = self.filterArray(anId: self.getURL())
         return array.count
     }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 95
+    }
 }
 
 extension BusinessViewController : UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ReviewTableViewCell
         let array = self.filterArray(anId: self.getURL())
-        cell.textLabel!.text = String(array[indexPath.row].getReview()) + "   - By, " + array[indexPath.row].getReviewer()
+        
+        cell.nameField.text = array[indexPath.row].getReviewer()
+        cell.commentField.text = array[indexPath.row].getSummaryReview()
+        cell.reviewField.text = String(array[indexPath.row].getReview())
+
         return cell
     }
 }
