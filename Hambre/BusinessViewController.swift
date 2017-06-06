@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+
 
 class BusinessViewController: UIViewController {
 
@@ -14,6 +16,10 @@ class BusinessViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noDataWarning: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet var reviewLabel: UILabel!
+    @IBOutlet var addReviewButton: UIButton!
+    @IBOutlet var segmentControl: UISegmentedControl!
     
     private var imageUrl : URL!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
@@ -27,6 +33,7 @@ class BusinessViewController: UIViewController {
         self.tableView.isHidden = true
         self.cloudKitDatabaseHandler.delegate = self
         self.activityIndicator.startAnimating()
+        self.mapView.isHidden = true
         //let anArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
         
         
@@ -72,8 +79,37 @@ class BusinessViewController: UIViewController {
     {
         sleep(3)
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
-        self.tableView.reloadData()
     }
+    
+    @IBAction func indexChanged(_ sender: Any)
+    {
+        switch self.segmentControl.selectedSegmentIndex
+        {
+        case 0:
+            self.cloudKitDatabaseHandler.loadDataFromCloudKit()
+            self.mapView.isHidden = true
+            self.reviewLabel.isHidden = false
+            self.tableView.isHidden = false
+            self.addReviewButton.isHidden = false
+            break
+        case 1:
+            self.mapView.isHidden = false
+            self.reviewLabel.isHidden = true
+            self.tableView.isHidden = true
+            self.addReviewButton.isHidden = true
+            break
+        default:
+            
+            self.mapView.isHidden = true
+            self.reviewLabel.isHidden = true
+            self.tableView.isHidden = true
+            self.addReviewButton.isHidden = true 
+            break
+        }
+    }
+    
+    
+    
     
     /*
     // MARK: - Navigation
@@ -134,5 +170,30 @@ extension BusinessViewController : CloudKitDatabaseHandlerDelegate
             self.tableView.isHidden = false
             self.tableView.reloadData()
         }
+    }
+}
+
+extension BusinessViewController : UITabBarDelegate
+{
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        print(item.badgeValue ?? "Didnt work")
+        
+        if item.badgeValue == "Map"
+        {
+            self.mapView.isHidden = false
+            self.reviewLabel.isHidden = true
+            self.tableView.isHidden = true
+            self.addReviewButton.isHidden = true
+        }
+        else if item.badgeValue == "Reviews"
+        {
+            self.cloudKitDatabaseHandler.loadDataFromCloudKit()
+            self.mapView.isHidden = true
+            self.reviewLabel.isHidden = false
+            self.tableView.isHidden = false
+            self.addReviewButton.isHidden = false
+        }
+        
     }
 }
