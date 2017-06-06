@@ -9,12 +9,24 @@
 import UIKit
 
 import CoreData 
+import CloudKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    private var iCloudName : String! = "AnonymousUser"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
+            CKContainer.default().fetchUserRecordID { (record, error) in
+                CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
+                    
+                        self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
+                })
+            }
+        }
         return true
     }
     
@@ -41,8 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    public func accessICloudName() -> String
+    {
+        return self.iCloudName
+    }
 
-    // ## Functions for CoreData 
+    // ## Functions for CoreData
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation

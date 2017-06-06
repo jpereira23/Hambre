@@ -102,7 +102,8 @@ class CloudKitDatabaseHandler: NSObject {
     {
         let myRecord = CKRecord(recordType: "Review")
         myRecord.setObject(review.getId() as CKRecordValue?, forKey: "id")
-        myRecord.setObject(review.getReviewer() as CKRecordValue?, forKey: "reviewer")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        myRecord.setObject(appDelegate.accessICloudName() as CKRecordValue?, forKey: "reviewer")
         myRecord.setObject(review.getReview() as CKRecordValue?, forKey: "review")
         
         publicDB.save(myRecord, completionHandler: ({returnRecord, error in

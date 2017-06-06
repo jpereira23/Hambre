@@ -14,6 +14,7 @@ class AddReviewViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var reviewSlider: UISlider!
+    @IBOutlet weak var greetingField: UILabel!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,6 +25,8 @@ class AddReviewViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.greetingField.text = "Please submit your review, " + appDelegate.accessICloudName()
         
         // Do any additional setup after loading the view.
     }
