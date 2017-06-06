@@ -22,6 +22,8 @@ class BusinessViewController: UIViewController {
     @IBOutlet var segmentControl: UISegmentedControl!
     
     private var imageUrl : URL!
+    public var longitude : Float!
+    public var latitude : Float!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     //public var realmDatabaseHandler = RealmDatabaseHandler()
     
@@ -34,6 +36,10 @@ class BusinessViewController: UIViewController {
         self.cloudKitDatabaseHandler.delegate = self
         self.activityIndicator.startAnimating()
         self.mapView.isHidden = true
+        
+        let initialLocation = CLLocation(latitude: Double(self.latitude), longitude: Double(self.longitude))
+        self.centerMapOnLocation(location: initialLocation)
+        
         //let anArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
         
         
@@ -43,6 +49,13 @@ class BusinessViewController: UIViewController {
 //            self.noDataWarning.isHidden = false
 //        }
         
+    }
+    
+    let regionRadius: CLLocationDistance = 1000
+    private func centerMapOnLocation(location: CLLocation)
+    {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        self.mapView.setRegion(coordinateRegion, animated: true)
     }
     
     public func getURL() -> String
@@ -58,6 +71,16 @@ class BusinessViewController: UIViewController {
     public func setUrl(aUrl: URL)
     {
         self.imageUrl = aUrl
+    }
+    
+    public func setLongitude(longitude: Float)
+    {
+        self.longitude = longitude
+    }
+    
+    public func setLatitude(latitude: Float)
+    {
+        self.latitude = latitude
     }
     
     public func filterArray(anId: String) -> [Review]
@@ -173,27 +196,22 @@ extension BusinessViewController : CloudKitDatabaseHandlerDelegate
     }
 }
 
-extension BusinessViewController : UITabBarDelegate
+extension BusinessViewController : MKMapViewDelegate
 {
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        /*
+        let annotation : MKAnnotation!
+        annotation.title = "Jeff"
+        annotation.subtitle = "Pereira"
+        annotation.coordinate.longitude = self.longitude
+        annotation.coordinate.latitude = self.latitude
         
-        print(item.badgeValue ?? "Didnt work")
-        
-        if item.badgeValue == "Map"
+        var view: MKPinAnnotationView
+        let identifier = "pin"
+        if let dequeueView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
         {
-            self.mapView.isHidden = false
-            self.reviewLabel.isHidden = true
-            self.tableView.isHidden = true
-            self.addReviewButton.isHidden = true
+            dequeueView.annotation = MKAnnotation
         }
-        else if item.badgeValue == "Reviews"
-        {
-            self.cloudKitDatabaseHandler.loadDataFromCloudKit()
-            self.mapView.isHidden = true
-            self.reviewLabel.isHidden = false
-            self.tableView.isHidden = false
-            self.addReviewButton.isHidden = false
-        }
-        
+        */
     }
 }

@@ -48,6 +48,8 @@ class LikedBusinessesViewController: UIViewController {
         navigationViewController.navigationBar.topItem?.title = self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessName()
         let businessViewController = segue.destination.childViewControllers[0] as! BusinessViewController
         businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
+        businessViewController.setLongitude(longitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLongitude())
+        businessViewController.setLatitude(latitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLatitude())
         //businessViewController.imageView.setImageWith(self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
         
     }
