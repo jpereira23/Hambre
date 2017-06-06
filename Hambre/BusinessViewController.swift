@@ -13,6 +13,7 @@ class BusinessViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noDataWarning: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var imageUrl : URL!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
@@ -23,8 +24,11 @@ class BusinessViewController: UIViewController {
         super.viewDidLoad()
         self.imageView.setImageWith(self.imageUrl)
         self.noDataWarning.isHidden = true
+        self.tableView.isHidden = true
         self.cloudKitDatabaseHandler.delegate = self
+        self.activityIndicator.startAnimating()
         //let anArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
+        
         
         //if self.realmDatabaseHandler.loadRealmDatabase().count == 0
         //{
@@ -66,6 +70,7 @@ class BusinessViewController: UIViewController {
     
     @IBAction func unwindToBusinessView(_ sender: UIStoryboardSegue)
     {
+        sleep(3)
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
         self.tableView.reloadData()
     }
@@ -108,6 +113,18 @@ extension BusinessViewController : CloudKitDatabaseHandlerDelegate
 
     func modelUpdated() {
         print("Working just not right format")
-        self.tableView.reloadData()
+        
+        let array = self.filterArray(anId: self.getURL())
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        if array.count == 0
+        {
+            self.noDataWarning.isHidden = false
+        }
+        else
+        {
+            self.tableView.isHidden = false
+            self.tableView.reloadData()
+        }
     }
 }
