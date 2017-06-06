@@ -17,7 +17,7 @@ class LikedBusinessesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        personalBusinessCoreData.resetCoreData()
+        //personalBusinessCoreData.resetCoreData()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
         tableView.reloadData()
         //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController

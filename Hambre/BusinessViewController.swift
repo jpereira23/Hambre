@@ -67,6 +67,7 @@ class BusinessViewController: UIViewController {
     @IBAction func unwindToBusinessView(_ sender: UIStoryboardSegue)
     {
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
+        self.tableView.reloadData()
     }
     
     /*

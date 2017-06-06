@@ -49,8 +49,10 @@ class AddReviewViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromAddReview"
         {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let businessViewController = segue.destination as! BusinessViewController
-            let review = Review(id: businessViewController.getURL(), review: Int(self.reviewSlider.value), reviewer: self.nameField.text!)
+            let review = Review(id: businessViewController.getURL(), review: Int(self.reviewSlider.value), reviewer: appDelegate.accessICloudName())
+    
             
             businessViewController.cloudKitDatabaseHandler.addToDatabase(review: review)
             
