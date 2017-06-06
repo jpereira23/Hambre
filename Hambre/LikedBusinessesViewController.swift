@@ -17,7 +17,7 @@ class LikedBusinessesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //personalBusinessCoreData.resetCoreData()
+        personalBusinessCoreData.resetCoreData()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
         tableView.reloadData()
         //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController
@@ -64,16 +64,21 @@ extension LikedBusinessesViewController : UITableViewDelegate
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrayOfLikedBusinesses.count
     }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 80
+    }
 }
 
 extension LikedBusinessesViewController : UITableViewDataSource
 {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! LikedTableViewCell
+    
+        cell.distanceField!.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
+        cell.titleField!.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
+        cell.setURL(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage())
         
-        cell.textLabel!.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
-        cell.textLabel!.textAlignment = .center
-
         return cell
     }
 }

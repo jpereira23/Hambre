@@ -31,15 +31,12 @@ class BusinessTileOperator: NSObject {
             let personalBusiness : PersonalBusiness!
             if business.imageURL != nil
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0)
-            
-               
-                
-        
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0, longitude: Float(business.location.coordinate!.longitude), latitude: Float(business.location.coordinate!.latitude))
             }
             else
             {
-              personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: city, state: state, liked: false, likes: 0)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: city, state: state, liked: false, likes: 0, longitude: Float(business.location.coordinate!.longitude), latitude: Float(business.location.coordinate!.latitude))
+                
             }
             
             self.arrayOfBusinesses.append(personalBusiness)
@@ -62,7 +59,7 @@ class BusinessTileOperator: NSObject {
         {
             if business.name != "" && business.imageURL != nil
             {
-                let personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: "Tracy", state: "CA", liked: false, likes: 0)
+                let personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: "Tracy", state: "CA", liked: false, likes: 0, longitude: Float(business.location.coordinate!.longitude), latitude: Float(business.location.coordinate!.latitude))
             
                 self.arrayOfBusinesses.append(personalBusiness)
                 self.arrayOfLeftBusinesses.append(personalBusiness)

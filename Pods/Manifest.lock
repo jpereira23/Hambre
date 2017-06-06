@@ -25,11 +25,6 @@ PODS:
     - AFNetworking/NSURLSession (~> 2.6.0)
   - BrightFutures (5.2.0):
     - Result (~> 3.2)
-  - Realm (2.7.0):
-    - Realm/Headers (= 2.7.0)
-  - Realm/Headers (2.7.0)
-  - RealmSwift (2.7.0):
-    - Realm (= 2.7.0)
   - Result (3.2.2)
   - YelpAPI (2.0.0)
 
@@ -37,18 +32,15 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - BDBOAuth1Manager
   - BrightFutures
-  - RealmSwift
   - YelpAPI
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   BrightFutures: 8681dbb9fa831b69b6e7dc4a498b9e081d5daeb5
-  Realm: 07e5d3a9e0e41d65fd5f9f05150ed6295d0f093b
-  RealmSwift: 6d06425d3900c86473c4f323bf6949b43fca22bc
   Result: 4edd39003fdccf281d418ee1b006571f70123250
   YelpAPI: a0475cf4a7b6f9fe81f1bb7b8a8492770f21e3c7
 
-PODFILE CHECKSUM: 588d99419ac6aebaef5abe0cbbdeaa01359214ab
+PODFILE CHECKSUM: 6eac5e40f419ac6faa5a35785500de608ab457a9
 
 COCOAPODS: 1.2.1

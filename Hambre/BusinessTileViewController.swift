@@ -15,6 +15,7 @@ class BusinessTileViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
+    @IBOutlet weak var distanceField: UILabel!
     
     var aBusinessTileOperator : BusinessTileOperator! = nil
     let yelpContainer = YelpContainer()
@@ -64,7 +65,8 @@ class BusinessTileViewController: UIViewController {
         
         self.businessNameLabel.text = aBusiness.getBusinessName()
         self.businessImage.setImageWith(aBusiness.getBusinessImage())
-        self.businessImage.contentMode = UIViewContentMode.scaleAspectFill
+        self.businessImage.contentMode = UIViewContentMode.scaleAspectFit
+        self.distanceField.text = String(aBusiness.getDistance()) + " mile(s)"
     }
 
 }

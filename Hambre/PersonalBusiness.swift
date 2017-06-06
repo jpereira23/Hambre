@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import CoreLocation
 
-class PersonalBusiness: Negocio {
+class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     private var city : String!
     private var state : String!
     private var liked : Bool!
     private var likes : Int!
+    private var distance : Int = 0
+    private var longitude : Float!
+    private var latitude : Float!
     
-    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int)
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Float, latitude: Float)
     {
         super.init(businessName: businessName, businessImageUrl:
             businessImageUrl)
-        
+        self.longitude = longitude
+        self.latitude = latitude
+        self.getDistance(longitude: longitude, latitude: latitude)
         self.city = city
         self.state = state
         self.liked = liked
@@ -34,6 +40,33 @@ class PersonalBusiness: Negocio {
         self.liked = false
         self.likes = 0
     }
+    
+    
+    private func configureCoordinates() -> CLLocationCoordinate2D
+    {
+        let locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled()
+        {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        return locationManager.location!.coordinate
+    }
+    
+    private func getDistance(longitude: Float, latitude: Float)
+    {
+        let coordinate0 = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+        let aPotentialCoordinate = self.configureCoordinates()
+        let coordinate1 = CLLocation(latitude: aPotentialCoordinate.latitude, longitude: aPotentialCoordinate.longitude)
+        
+        self.distance = Int(Float(coordinate0.distance(from: coordinate1)) * 0.000621371)
+    }
+    
     public func getCity() -> String
     {
         return self.city
@@ -57,5 +90,20 @@ class PersonalBusiness: Negocio {
     public func setLiked(liked: Bool)
     {
         self.liked = liked
+    }
+    
+    public func getLongitude() -> Float
+    {
+        return self.longitude
+    }
+    
+    public func getLatitude() -> Float
+    {
+        return self.latitude
+    }
+    
+    public func getDistance() -> Int
+    {
+        return self.distance
     }
 }

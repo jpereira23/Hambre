@@ -32,7 +32,8 @@ class PersonalBusinessCoreData: NSObject {
         aBusiness.setValue(aString, forKeyPath: "businessUrl")
         aBusiness.setValue(personalBusiness.getLiked(), forKeyPath: "liked")
         aBusiness.setValue(personalBusiness.getLikes(), forKeyPath: "likes")
-        
+        aBusiness.setValue(personalBusiness.getLongitude(), forKeyPath: "longitude")
+        aBusiness.setValue(personalBusiness.getLatitude(), forKeyPath: "latitude")
         do
         {
             try self.managedContext.save()
@@ -61,10 +62,11 @@ class PersonalBusinessCoreData: NSObject {
             let state = businesses.value(forKeyPath: "state") as! String
             let liked = businesses.value(forKeyPath: "liked") as! Bool
             let likes = businesses.value(forKeyPath: "likes") as! Int
-            
+            let latitude = businesses.value(forKeyPath: "latitude") as! Float
+            let longitude = businesses.value(forKeyPath: "longitude") as! Float
             let aUrl = URL(string: businessUrl)
             
-            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes)
+            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: longitude, latitude: latitude)
             
             temporaryBusiness.append(personalBusiness)
         }
