@@ -12,14 +12,23 @@ import UIKit
 class LikedBusinessesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     var arrayOfLikedBusinesses = [PersonalBusiness]()
     private var personalBusinessCoreData = PersonalBusinessCoreData()
+    public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //personalBusinessCoreData.resetCoreData()
+        self.cloudKitDatabaseHandler.delegate = self
+        self.cloudKitDatabaseHandler.loadDataFromCloudKit()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
-        tableView.reloadData()
+        self.tableView.isHidden = true
+        self.activityIndicator.startAnimating()
+        
+        //tableView.reloadData()
         //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController
         //businessTileViewController.delegate = self
         // Do any additional setup after loading the view.
@@ -73,6 +82,22 @@ class LikedBusinessesViewController: UIViewController {
         
     }
     
+    public func filterArrayOfReviews(url: URL, array: [Review]) -> Int
+    {
+        let stringUrl = url.absoluteString
+        var tmpArray = [Review]()
+        
+        for review in array
+        {
+            if review.getId() == stringUrl
+            {
+                tmpArray.append(review)
+            }
+        }
+        
+        return tmpArray.count
+    }
+    
     @IBAction func unwindFromBusinessView(_ sender: UIStoryboardSegue)
     {
         
@@ -99,7 +124,32 @@ extension LikedBusinessesViewController : UITableViewDataSource
         cell.distanceField!.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
         cell.titleField!.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
         cell.setURL(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage())
+        let reviewsArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
+        let numOfReviews = self.filterArrayOfReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage(), array: reviewsArray)
         
+        if numOfReviews == 0
+        {
+            cell.amountOfReviewsField.text = "Be the first to review!"
+        }
+        else
+        {
+            cell.amountOfReviewsField.text = String(numOfReviews) + " Reviews"
+        }
         return cell
+    }
+}
+
+extension LikedBusinessesViewController : CloudKitDatabaseHandlerDelegate
+{
+    func errorUpdating(_ error: NSError) {
+        print(error)
+    }
+    
+    func modelUpdated() {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+        
     }
 }

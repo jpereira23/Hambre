@@ -13,6 +13,7 @@ class LikedTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceField: UILabel!
     @IBOutlet weak var theImageView: UIImageView!
     @IBOutlet weak var titleField: UILabel!
+    @IBOutlet var amountOfReviewsField: UILabel!
     
     
     private var theURL : URL!
