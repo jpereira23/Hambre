@@ -10,6 +10,8 @@ import UIKit
 
 import CoreData 
 import CloudKit
+import GooglePlaces
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private var iCloudName : String! = "AnonymousUser"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        GMSPlacesClient.provideAPIKey("")
+        //GMSServices.provideAPIKey("YOUR_API_KEY")
         
         CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
             CKContainer.default().fetchUserRecordID { (record, error) in

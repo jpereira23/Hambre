@@ -25,6 +25,16 @@ PODS:
     - AFNetworking/NSURLSession (~> 2.6.0)
   - BrightFutures (5.2.0):
     - Result (~> 3.2)
+  - GoogleMaps (2.3.0):
+    - GoogleMaps/Maps (= 2.3.0)
+  - GoogleMaps/Base (2.3.0)
+  - GoogleMaps/Maps (2.3.0):
+    - GoogleMaps/Base
+  - GooglePlacePicker (2.3.0):
+    - GoogleMaps (= 2.3.0)
+    - GooglePlaces (= 2.3.0)
+  - GooglePlaces (2.3.0):
+    - GoogleMaps/Base (= 2.3.0)
   - Result (3.2.2)
   - YelpAPI (2.0.0)
 
@@ -32,15 +42,21 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - BDBOAuth1Manager
   - BrightFutures
+  - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
   - YelpAPI
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BDBOAuth1Manager: cd5a5872f355ca38180d52ca2dd844f0b0c84797
   BrightFutures: 8681dbb9fa831b69b6e7dc4a498b9e081d5daeb5
+  GoogleMaps: 340a6a0bebd17c2db8abcd3921976c7c53c86cb8
+  GooglePlacePicker: 80a6719aa4d06c63524a231d0ecd8f87e87d98c2
+  GooglePlaces: 74d322c74184ea4576184089b496d291cf0dcd38
   Result: 4edd39003fdccf281d418ee1b006571f70123250
   YelpAPI: a0475cf4a7b6f9fe81f1bb7b8a8492770f21e3c7
 
-PODFILE CHECKSUM: 6eac5e40f419ac6faa5a35785500de608ab457a9
+PODFILE CHECKSUM: 1b75ef1e1bfcad40adec91ff27ba8deb667fc2ac
 
 COCOAPODS: 1.2.1
