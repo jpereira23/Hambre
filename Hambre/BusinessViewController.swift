@@ -100,7 +100,7 @@ class BusinessViewController: UIViewController {
     
     @IBAction func unwindToBusinessView(_ sender: UIStoryboardSegue)
     {
-        sleep(3)
+        sleep(2)
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
     }
     
