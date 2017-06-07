@@ -11,6 +11,93 @@ import CoreLocation
 import MapKit
 import YelpAPI
 import BrightFutures
+import CloudKit
+
+
+protocol CloudKitYelpApiDelegate
+{
+    func errorUpdating(_ error: NSError)
+    func modelUpdated(cloudKitYelpApi: CloudKitYelpApi)
+}
+
+class YelpKeys: NSObject
+{
+    private var record: CKRecord!
+    private weak var database: CKDatabase!
+    private var appId: String!
+    private var appSecret: String!
+    
+    init(record: CKRecord, database: CKDatabase)
+    {
+        self.record = record
+        self.database = database
+        
+        self.appId = record["appId"] as! String
+        self.appSecret = record["appSecret"] as! String
+        
+    }
+    
+    public func getAppId() -> String
+    {
+        return self.appId
+    }
+    
+    public func getAppSecret() -> String
+    {
+        return self.appSecret
+    }
+}
+
+class CloudKitYelpApi: NSObject
+{
+    let container : CKContainer!
+    let publicDB : CKDatabase!
+    
+    private weak var database: CKDatabase!
+    private var yelpKey : YelpKeys!
+    var delegate: CloudKitYelpApiDelegate?
+    
+    public override init()
+    {
+        self.container = CKContainer.default()
+        self.publicDB = container.publicCloudDatabase
+        self.yelpKey = nil
+        super.init()
+        self.loadKeysFromCloudKit()
+    }
+    
+    public func loadKeysFromCloudKit()
+    {
+        let aPredicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "YelpKeys", predicate: aPredicate)
+        
+        self.publicDB.perform(query, inZoneWith: nil) { results, error in
+            if let error = error
+            {
+                DispatchQueue.main.async {
+                    self.delegate?.errorUpdating(error as NSError)
+                    print("Cloud Query Error - Fetch YelpKeys: \(error)")
+                }
+                return
+            }
+            results?.forEach({ (record: CKRecord) in self.yelpKey = YelpKeys(record: record, database: self.publicDB)
+            })
+            DispatchQueue.main.async {
+                self.delegate?.modelUpdated(cloudKitYelpApi: self)
+            }
+        }
+    }
+    
+    public func getAppId() -> String
+    {
+        return self.yelpKey.getAppId()
+    }
+    
+    public func getAppSecret() -> String
+    {
+        return self.yelpKey.getAppSecret()
+    }
+}
 
 @objc protocol YelpContainerDelegate
 {
@@ -24,15 +111,30 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
     private var location : String!
     private var appId = "M8_cEGzomTyCzwz3BDYY4Q"
     private var appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
+    private var cloudKitYelpApi = CloudKitYelpApi()
     var delegate : YelpContainerDelegate!
     
     public override init()
     {
         super.init()
         self.configureCityAndStateWithCoordinate()
-        
         self.location = self.createLocation()
-        
+        self.cloudKitYelpApi.delegate = self
+        self.cloudKitYelpApi.loadKeysFromCloudKit()
+    }
+    
+    public func setAppId(appId: String)
+    {
+        self.appId = appId
+    }
+    
+    public func setAppSecret(appSecret: String)
+    {
+        self.appSecret = appSecret
+    }
+    
+    public func yelpAPICallForBusinesses()
+    {
         // API Call below
         var query : YLPQuery
         
@@ -47,12 +149,12 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
                     self.arrayOfBusinesses = search.businesses
                     self.delegate.yelpAPICallback(self)
                     /*
-                    for aBusiness in search.businesses
-                    {
-                        print("Name: \(aBusiness.name) \n Image: \(String(describing: aBusiness.imageURL))")
-                        
-                    }
-                    */ 
+                     for aBusiness in search.businesses
+                     {
+                     print("Name: \(aBusiness.name) \n Image: \(String(describing: aBusiness.imageURL))")
+                     
+                     }
+                     */
                 } else {
                     print("No businesses found")
                 }
@@ -131,4 +233,19 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
     }
     
     
+}
+
+extension YelpContainer : CloudKitYelpApiDelegate
+{
+    func errorUpdating(_ error: NSError)
+    {
+        print("Shit dont work")
+    }
+    
+    func modelUpdated(cloudKitYelpApi: CloudKitYelpApi) {
+        print("So far so good")
+        self.setAppId(appId: cloudKitYelpApi.getAppId())
+        self.setAppSecret(appSecret: cloudKitYelpApi.getAppSecret())
+        self.yelpAPICallForBusinesses()
+    }
 }
