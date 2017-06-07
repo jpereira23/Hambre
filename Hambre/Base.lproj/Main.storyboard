@@ -59,6 +59,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXd-SI-ZjL">
+                                <rect key="frame" x="177" y="560" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="mQZ-IH-SUd" kind="show" identifier="fromTileView" id="hgZ-uN-Jqs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -68,6 +75,7 @@
                         <outlet property="businessImage" destination="Epa-tW-eaK" id="xek-8v-xvo"/>
                         <outlet property="businessNameLabel" destination="rmt-3u-yqY" id="iT5-yy-n14"/>
                         <outlet property="distanceField" destination="Mb9-SU-Yai" id="30O-oL-f7e"/>
+                        <outlet property="infoButton" destination="NXd-SI-ZjL" id="KHT-Xz-Qew"/>
                         <outlet property="leftButton" destination="Nal-M1-5Sy" id="cWu-fM-f2E"/>
                         <outlet property="rightButton" destination="7Vz-zb-1Kf" id="ceK-aA-GiI"/>
                     </connections>
@@ -471,4 +479,7 @@
         <image name="second" width="30" height="30"/>
         <image name="third" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hgZ-uN-Jqs"/>
+    </inferredMetricsTieBreakers>
 </document>

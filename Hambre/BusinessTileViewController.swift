@@ -16,6 +16,7 @@ class BusinessTileViewController: UIViewController {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var distanceField: UILabel!
+    @IBOutlet var infoButton: UIButton!
     
     var aBusinessTileOperator : BusinessTileOperator! = nil
     let yelpContainer = YelpContainer()
@@ -26,6 +27,7 @@ class BusinessTileViewController: UIViewController {
         self.businessNameLabel.isHidden = true
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
+        self.infoButton.isEnabled = false
         self.activityIndicator.startAnimating()
         
         yelpContainer.delegate = self
@@ -39,15 +41,41 @@ class BusinessTileViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "fromTileView"
+        {
+            let navigationViewController = segue.destination as! UINavigationController
+            
+            let navBar = navigationViewController.navigationBar
+            
+            /*
+             let backItem = UIBarButtonItem()
+             backItem.title = "Back"
+             navigationViewController.navigationItem.backBarButtonItem = backItem
+             */
+            
+            navBar.topItem?.title = self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName()
+            navBar.tintColor = UIColor.white
+            navBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20.0), NSForegroundColorAttributeName: UIColor.white]
+            
+            //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            navBar.barTintColor = UIColor(red: 252/255, green: 193/255, blue: 61/255, alpha: 1)
+            let businessViewController = segue.destination.childViewControllers[0] as! BusinessViewController
+            businessViewController.setIdentifier(id: "fromTileView")
+            
+            businessViewController.setUrl(aUrl: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessImage())
+            businessViewController.setLongitude(longitude: self.aBusinessTileOperator.presentCurrentBusiness().getLongitude())
+            businessViewController.setLatitude(latitude: self.aBusinessTileOperator.presentCurrentBusiness().getLatitude())
+        }
     }
-    */
+    
     
     @IBAction func swipeLeft(_ sender: Any) {
         self.aBusinessTileOperator.swipeLeft()
@@ -80,6 +108,7 @@ extension BusinessTileViewController : YelpContainerDelegate
         self.businessNameLabel.isHidden = false
         self.leftButton.isEnabled = true
         self.rightButton.isEnabled = true
+        self.infoButton.isEnabled = true
         self.aBusinessTileOperator = BusinessTileOperator(anArrayOfBusinesses: yelpContainer.getBusinesses(), city: yelpContainer.getCity(), state: yelpContainer.getState())
         self.refreshTileAttributes()
         

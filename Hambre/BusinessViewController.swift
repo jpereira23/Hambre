@@ -22,6 +22,7 @@ class BusinessViewController: UIViewController {
     @IBOutlet var segmentControl: UISegmentedControl!
     
     private var imageUrl : URL!
+    private var identifyingProperty : String! = ""
     public var longitude : Float!
     public var latitude : Float!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
@@ -40,15 +41,10 @@ class BusinessViewController: UIViewController {
         let initialLocation = CLLocation(latitude: Double(self.latitude), longitude: Double(self.longitude))
         self.centerMapOnLocation(location: initialLocation)
         
-        //let anArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
-        
-        
-        //if self.realmDatabaseHandler.loadRealmDatabase().count == 0
-        //{
-//            self.tableView.isHidden = true
-//            self.noDataWarning.isHidden = false
-//        }
-        
+        if self.identifyingProperty == "fromTileView"
+        {
+            self.addReviewButton.isHidden = true
+        }
     }
     
     let regionRadius: CLLocationDistance = 1000
@@ -83,6 +79,11 @@ class BusinessViewController: UIViewController {
         self.latitude = latitude
     }
     
+    public func setIdentifier(id: String)
+    {
+        self.identifyingProperty = id
+    }
+    
     public func filterArray(anId: String) -> [Review]
     {
         var reviews = [Review]()
@@ -113,7 +114,14 @@ class BusinessViewController: UIViewController {
             self.mapView.isHidden = true
             self.reviewLabel.isHidden = false
             self.tableView.isHidden = false
-            self.addReviewButton.isHidden = false
+            if self.identifyingProperty == "fromTileView"
+            {
+                self.addReviewButton.isHidden = true
+            }
+            else
+            {
+                self.addReviewButton.isHidden = false
+            }
             break
         case 1:
             self.mapView.isHidden = false
