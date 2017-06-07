@@ -7,28 +7,31 @@
 //
 
 import UIKit
-import CoreLocation
-import MapKit
-import YelpAPI
-import BrightFutures
+
 import CoreData 
+import CloudKit
+import GooglePlaces
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private var city: String!
-    private var state: String!
-    private var arrayOfBusinesses = [YLPBusiness]()
-    let appId = "M8_cEGzomTyCzwz3BDYY4Q"
-    let appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
-
+    
+    private var iCloudName : String! = "AnonymousUser"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        /*
-        self.configureCityAndStateWithCoordinates()
-        self.configureYelpBusinesses()
-        */ 
+        
+        GMSPlacesClient.provideAPIKey("")
+        //GMSServices.provideAPIKey("YOUR_API_KEY")
+        
+        CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
+            CKContainer.default().fetchUserRecordID { (record, error) in
+                CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
+                    
+                        self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
+                })
+            }
+        }
         return true
     }
     
@@ -45,8 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        self.configureCityAndStateWithCoordinates()
-        self.configureYelpBusinesses()
+       
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -56,8 +58,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    public func accessICloudName() -> String
+    {
+        return self.iCloudName
+    }
 
-    // ## Functions for CoreData 
+    // ## Functions for CoreData
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -108,98 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
-        }
-    }
-
-    // ##Public functions to retrieve information
-    public func getBusinesses() -> [YLPBusiness]
-    {
-        return self.arrayOfBusinesses
-    }
-    
-    public func getCity() -> String
-    {
-        return self.city
-    }
-    
-    public func getState() -> String
-    {
-        return self.state
-    }
-    
-    
-    // ##Private functions to configure city and coordinates
-    private func configureCoordinates() -> CLLocationCoordinate2D
-    {
-        let locationManager = CLLocationManager()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled()
-        {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-        
-        return locationManager.location!.coordinate
-    }
-    
-    private func configureCityAndStateWithCoordinates()
-    {
-        let locValue = self.configureCoordinates() 
-        
-        let geoCoder = CLGeocoder()
-        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-            var placeMark : CLPlacemark!
-            placeMark = placemarks?[0]
-            
-            if let state = placeMark.addressDictionary?["State"] as? String {
-                self.state = state
-            }
-            
-            if let city = placeMark.addressDictionary?["City"] as? String {
-                self.city = city
-            }
-            
-        })
-    }
-    
-    // ##Private function to configure all the businesses for Yelp
-    
-    private func configureYelpBusinesses()
-    {
-        
-        var query : YLPQuery
-        if self.state == nil && self.city == nil
-        {
-            query = YLPQuery(location: "Tracy, CA")
-        }
-        else
-        {
-            let cityState = self.city + ", " + self.state
-            query = YLPQuery(location: cityState)
-        }
-        query.term = "mexican"
-        query.limit = 50
-        YLPClient.authorize(withAppId: appId, secret: appSecret).flatMap { client in
-            client.search(withQuery: query)
-            }.onSuccess { search in
-                //Fix this, bad practice
-                if let topBusiness = search.businesses.last {
-                    self.arrayOfBusinesses = search.businesses
-                    for aBusiness in search.businesses
-                    {
-                        print("Name: \(aBusiness.name) \n Image: \(String(describing: aBusiness.imageURL))")
-                        
-                    }
-                } else {
-                    print("No businesses found")
-                }
-               
-            }.onFailure { error in
-                print("Search errored: \(error)")
         }
     }
 }

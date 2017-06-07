@@ -16,6 +16,7 @@ class Negocio: NSObject {
     {
         self.businessName = businessName
         self.businessImageUrl = businessImageUrl
+        
     }
 
     public func getBusinessImage() -> URL
