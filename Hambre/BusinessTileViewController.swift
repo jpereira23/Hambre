@@ -18,8 +18,11 @@ class BusinessTileViewController: UIViewController {
     @IBOutlet weak var distanceField: UILabel!
     @IBOutlet var infoButton: UIButton!
     
+    @IBOutlet var genreLabel: UILabel!
     var aBusinessTileOperator : BusinessTileOperator! = nil
     let yelpContainer = YelpContainer()
+    private var genre = "all restuarants"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,7 @@ class BusinessTileViewController: UIViewController {
         self.rightButton.isEnabled = false
         self.infoButton.isEnabled = false
         self.activityIndicator.startAnimating()
-        
+        self.genreLabel.text = "Genre: " + self.genre
         yelpContainer.delegate = self
         
         // Do any additional setup after loading the view.
@@ -38,6 +41,29 @@ class BusinessTileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    public func changeGenre(genre: String)
+    {
+        self.genre = genre
+        
+    }
+    
+    @IBAction func unwindToTileView(_ sender: UIStoryboardSegue)
+    {
+        if sender.identifier == "fromGenre"
+        {
+            self.genreLabel.text = "Genre: " + self.genre
+            self.businessImage.isHidden = true
+            self.businessNameLabel.isHidden = true
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            self.yelpContainer.changeGenre(genre: self.genre)
+            
+        }
     }
     
 

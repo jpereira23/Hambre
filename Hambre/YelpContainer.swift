@@ -112,6 +112,7 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
     private var appId = "M8_cEGzomTyCzwz3BDYY4Q"
     private var appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
     private var cloudKitYelpApi = CloudKitYelpApi()
+    private var genre = "restaurants"
     var delegate : YelpContainerDelegate!
     
     public override init()
@@ -133,13 +134,19 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
         self.appSecret = appSecret
     }
     
+    public func changeGenre(genre: String)
+    {
+        self.genre = genre
+        self.yelpAPICallForBusinesses()
+    }
+    
     public func yelpAPICallForBusinesses()
     {
         // API Call below
         var query : YLPQuery
         
         query = YLPQuery(location: self.location)
-        query.term = "mexican"
+        query.term = self.genre
         query.limit = 50
         YLPClient.authorize(withAppId: appId, secret: appSecret).flatMap { client in
             client.search(withQuery: query)

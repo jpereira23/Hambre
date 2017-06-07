@@ -66,6 +66,21 @@
                                     <segue destination="mQZ-IH-SUd" kind="show" identifier="fromTileView" id="hgZ-uN-Jqs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OtF-u5-fEu">
+                                <rect key="frame" x="262" y="38" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pick Genre"/>
+                                <connections>
+                                    <segue destination="grl-yJ-mUV" kind="show" id="Pom-Ac-okY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre: All Restaurants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5p9-mu-Efh">
+                                <rect key="frame" x="16" y="43" width="199" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -75,6 +90,7 @@
                         <outlet property="businessImage" destination="Epa-tW-eaK" id="xek-8v-xvo"/>
                         <outlet property="businessNameLabel" destination="rmt-3u-yqY" id="iT5-yy-n14"/>
                         <outlet property="distanceField" destination="Mb9-SU-Yai" id="30O-oL-f7e"/>
+                        <outlet property="genreLabel" destination="5p9-mu-Efh" id="h9j-pd-s6q"/>
                         <outlet property="infoButton" destination="NXd-SI-ZjL" id="KHT-Xz-Qew"/>
                         <outlet property="leftButton" destination="Nal-M1-5Sy" id="cWu-fM-f2E"/>
                         <outlet property="rightButton" destination="7Vz-zb-1Kf" id="ceK-aA-GiI"/>
@@ -83,6 +99,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+        </scene>
+        <!--Genre Picker View Controller-->
+        <scene sceneID="27C-Jn-Yfb">
+            <objects>
+                <viewController id="grl-yJ-mUV" customClass="GenrePickerViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WVo-gM-obV"/>
+                        <viewControllerLayoutGuide type="bottom" id="gWS-sx-df0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9MQ-rP-94k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-qU-et7">
+                                <rect key="frame" x="0.0" y="192" width="375" height="259"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="grl-yJ-mUV" id="Dj2-ke-j7e"/>
+                                    <outlet property="delegate" destination="grl-yJ-mUV" id="Gka-Gu-ZoN"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXL-Hb-Tw9">
+                                <rect key="frame" x="50" y="104" width="275" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRQ-cB-KIa">
+                                <rect key="frame" x="164" y="529" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Enter"/>
+                                <connections>
+                                    <segue destination="5Uk-Lq-sEI" kind="unwind" identifier="fromGenre" unwindAction="unwindToTileView:" id="PAx-sz-hfw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pickerView" destination="wkI-qU-et7" id="rtx-UL-rFD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D6I-xN-FBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5Uk-Lq-sEI" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="749.60000000000002" y="-1002.5487256371815"/>
         </scene>
         <!--Settings-->
         <scene sceneID="1Fg-ul-O7m">
