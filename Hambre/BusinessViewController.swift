@@ -198,8 +198,9 @@ extension BusinessViewController : CloudKitDatabaseHandlerDelegate
 
 extension BusinessViewController : MKMapViewDelegate
 {
+    /*
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        /*
+        
         let annotation : MKAnnotation!
         annotation.title = "Jeff"
         annotation.subtitle = "Pereira"
@@ -212,6 +213,7 @@ extension BusinessViewController : MKMapViewDelegate
         {
             dequeueView.annotation = MKAnnotation
         }
-        */
+ 
     }
+     */
 }
