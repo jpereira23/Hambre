@@ -23,8 +23,8 @@ class BusinessViewController: UIViewController {
     
     private var imageUrl : URL!
     private var identifyingProperty : String! = ""
-    public var longitude : Float!
-    public var latitude : Float!
+    public var longitude : Double!
+    public var latitude : Double!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     //public var realmDatabaseHandler = RealmDatabaseHandler()
     
@@ -69,12 +69,12 @@ class BusinessViewController: UIViewController {
         self.imageUrl = aUrl
     }
     
-    public func setLongitude(longitude: Float)
+    public func setLongitude(longitude: Double)
     {
         self.longitude = longitude
     }
     
-    public func setLatitude(latitude: Float)
+    public func setLatitude(latitude: Double)
     {
         self.latitude = latitude
     }

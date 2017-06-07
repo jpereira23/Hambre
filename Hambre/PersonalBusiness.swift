@@ -15,10 +15,10 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     private var liked : Bool!
     private var likes : Int!
     private var distance : Int = 0
-    private var longitude : Float!
-    private var latitude : Float!
+    private var longitude : Double!
+    private var latitude : Double!
     
-    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Float, latitude: Float)
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double)
     {
         super.init(businessName: businessName, businessImageUrl:
             businessImageUrl)
@@ -58,13 +58,13 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         return locationManager.location!.coordinate
     }
     
-    private func getDistance(longitude: Float, latitude: Float)
+    private func getDistance(longitude: Double, latitude: Double)
     {
         let coordinate0 = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
         let aPotentialCoordinate = self.configureCoordinates()
         let coordinate1 = CLLocation(latitude: aPotentialCoordinate.latitude, longitude: aPotentialCoordinate.longitude)
         
-        self.distance = Int(Float(coordinate0.distance(from: coordinate1)) * 0.000621371)
+        self.distance = Int(Double(coordinate0.distance(from: coordinate1)) * 0.000621371)
     }
     
     public func getCity() -> String
@@ -92,12 +92,12 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.liked = liked
     }
     
-    public func getLongitude() -> Float
+    public func getLongitude() -> Double
     {
         return self.longitude
     }
     
-    public func getLatitude() -> Float
+    public func getLatitude() -> Double
     {
         return self.latitude
     }

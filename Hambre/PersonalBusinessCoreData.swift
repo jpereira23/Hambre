@@ -66,7 +66,7 @@ class PersonalBusinessCoreData: NSObject {
             let longitude = businesses.value(forKeyPath: "longitude") as! Float
             let aUrl = URL(string: businessUrl)
             
-            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: longitude, latitude: latitude)
+            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude))
             
             temporaryBusiness.append(personalBusiness)
         }
