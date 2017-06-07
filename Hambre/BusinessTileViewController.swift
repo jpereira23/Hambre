@@ -23,7 +23,6 @@ class BusinessTileViewController: UIViewController {
     let yelpContainer = YelpContainer()
     private var genre = "all restuarants"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.businessImage.isHidden = true

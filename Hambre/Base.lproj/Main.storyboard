@@ -147,7 +147,7 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-1002.5487256371815"/>
         </scene>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="1Fg-ul-O7m">
             <objects>
                 <viewController id="6Pi-zA-fUf" customClass="SettingsViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
@@ -159,36 +159,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycq-bO-Ft5">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="daV-qe-d73">
+                                <rect key="frame" x="184" y="173" width="175" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="6Pi-zA-fUf" id="5Jk-YI-t0e"/>
+                                    <action selector="enterCityField:" destination="6Pi-zA-fUf" eventType="touchDown" id="hin-sJ-RLA"/>
                                 </connections>
-                            </searchBar>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Location: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ua4-PS-aIq">
+                                <rect key="frame" x="30" y="178" width="130" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-7C-fFI">
+                                <rect key="frame" x="164" y="504" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save "/>
+                                <connections>
+                                    <action selector="savingLocation:" destination="6Pi-zA-fUf" eventType="touchUpInside" id="0JT-iM-DGZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="third" id="Aq9-nL-244"/>
+                    <navigationItem key="navigationItem" id="Uw8-cV-1g4"/>
                     <connections>
-                        <outlet property="aSearchDisplayController" destination="6Ta-RD-EFy" id="DAh-e7-2zP"/>
-                        <outlet property="searchBar" destination="ycq-bO-Ft5" id="6bt-SL-vAF"/>
-                        <outlet property="searchDisplayController" destination="6Ta-RD-EFy" id="FKG-TH-IJg"/>
+                        <outlet property="enterCityTextField" destination="daV-qe-d73" id="KrU-4k-mV1"/>
+                        <outlet property="saveButton" destination="Rfg-7C-fFI" id="ZHj-wp-Y0c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52D-lm-Pmt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="6Ta-RD-EFy">
-                    <connections>
-                        <outlet property="delegate" destination="6Pi-zA-fUf" id="qsn-0C-80T"/>
-                        <outlet property="searchBar" destination="ycq-bO-Ft5" id="3q0-BW-1Rt"/>
-                        <outlet property="searchContentsController" destination="6Pi-zA-fUf" id="6tw-2c-llg"/>
-                        <outlet property="searchResultsDataSource" destination="6Pi-zA-fUf" id="EH1-rr-n8i"/>
-                        <outlet property="searchResultsDelegate" destination="6Pi-zA-fUf" id="nnX-2H-hE6"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1948" y="-739"/>
+            <point key="canvasLocation" x="2887.1999999999998" y="-739.88005997001505"/>
         </scene>
         <!--Business View Controller-->
         <scene sceneID="HLn-xM-say">
@@ -517,7 +524,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="6Pi-zA-fUf" kind="relationship" relationship="viewControllers" id="ZeP-9w-RNF"/>
+                        <segue destination="aug-lN-20D" kind="relationship" relationship="viewControllers" id="ZeP-9w-RNF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -559,6 +566,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH4-SE-Izg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1669.5999999999999" y="1174.3628185907048"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="sON-4i-tZy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aug-lN-20D" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="third" id="Aq9-nL-244"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mgV-Es-P8I">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Pi-zA-fUf" kind="relationship" relationship="rootViewController" id="GMf-q1-d5y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qr-qM-tGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="-739.88005997001505"/>
         </scene>
     </scenes>
     <resources>

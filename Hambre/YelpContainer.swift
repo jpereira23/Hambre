@@ -236,6 +236,12 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
     
     private func createLocation() -> String
     {
+        let coreDataLocation = CoreDataLocation()
+        
+        if !coreDataLocation.checkIfCoreDataIsEmpty()
+        {
+            return coreDataLocation.loadLocation() 
+        }
         return self.city + ", " + self.state
     }
     

@@ -9,38 +9,33 @@
 import UIKit
 import GooglePlaces
 
-class SettingsViewController: UIViewController, UISearchDisplayDelegate {
-
-    @IBOutlet var searchBar: UISearchBar!
-    var tableDataSource: GMSAutocompleteTableDataSource?
-    @IBOutlet var aSearchDisplayController: UISearchDisplayController!
+class SettingsViewController: UIViewController {
     
+    @IBOutlet var enterCityTextField: UITextField!
+    @IBOutlet var saveButton: UIButton!
+    
+    private var coreDataLocation = CoreDataLocation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableDataSource = GMSAutocompleteTableDataSource()
-        self.tableDataSource?.delegate = self
-        self.aSearchDisplayController.searchResultsDelegate = self.tableDataSource
-        self.aSearchDisplayController.searchResultsDataSource = self.tableDataSource
-        // Do any additional setup after loading the view.
+        self.saveButton.isEnabled = false
     }
-    
-    func didUpdateAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        self.aSearchDisplayController.searchResultsTableView.reloadData()
-    }
-    
-    func didRequestAutocompletePredictions(for tableDataSource: GMSAutocompleteTableDataSource) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        self.aSearchDisplayController.searchResultsTableView.reloadData()
-    }
-    
 
+    @IBAction func enterCityField(_ sender: Any)
+    {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
+    }
+
+    @IBAction func savingLocation(_ sender: Any) {
+        self.coreDataLocation.saveLocation(location: self.enterCityTextField.text!)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*
@@ -55,28 +50,39 @@ class SettingsViewController: UIViewController, UISearchDisplayDelegate {
 
 }
 
-extension SettingsViewController : GMSAutocompleteTableDataSourceDelegate
+extension SettingsViewController : GMSAutocompleteViewControllerDelegate
 {
-    func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didAutocompleteWith place: GMSPlace) {
-        self.aSearchDisplayController.isActive = false
-        // Do something with the selected place.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        self.enterCityTextField.text = place.formattedAddress
+        self.saveButton.isEnabled = true
+        /*
         print("Place name: \(place.name)")
         print("Place address: \(String(describing: place.formattedAddress))")
         print("Place attributions: \(String(describing: place.attributions))")
+        */
+        dismiss(animated: true, completion: nil)
     }
     
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool
-    {
-        return true
-    }
-    
-    func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: Error) {
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error: \(error)")
     }
     
-    func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didSelect prediction: GMSAutocompletePrediction) -> Bool {
+    func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
         return true
     }
     
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
     
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }
