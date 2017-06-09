@@ -32,6 +32,10 @@ class LikedBusinessesViewController: UIViewController {
         //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController
         //businessTileViewController.delegate = self
         // Do any additional setup after loading the view.
+        
+        //navbar color and text color - settings
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.98, green:0.70, blue:0.21, alpha:1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,9 +75,11 @@ class LikedBusinessesViewController: UIViewController {
         navBar.topItem?.title = self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessName()
         navBar.tintColor = UIColor.white
         navBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20.0), NSForegroundColorAttributeName: UIColor.white]
+
         
         //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        navBar.barTintColor = UIColor(red: 252/255, green: 193/255, blue: 61/255, alpha: 1)
+        navBar.barTintColor = UIColor(red: 0.98, green: 0.70, blue: 0.21, alpha: 1.0)
+        
         let businessViewController = segue.destination.childViewControllers[0] as! BusinessViewController
         businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
         businessViewController.setLongitude(longitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLongitude())
