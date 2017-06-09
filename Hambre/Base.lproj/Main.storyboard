@@ -511,10 +511,10 @@
             </objects>
             <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MainTabViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -571,7 +571,7 @@
         <scene sceneID="sON-4i-tZy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aug-lN-20D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="third" id="Aq9-nL-244"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="second" id="Aq9-nL-244"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -590,7 +590,6 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
-        <image name="third" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hgZ-uN-Jqs"/>

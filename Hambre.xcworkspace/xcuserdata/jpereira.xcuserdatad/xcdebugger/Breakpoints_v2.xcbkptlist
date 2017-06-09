@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/YelpContainer.swift"
@@ -22,7 +22,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/YelpContainer.swift"
@@ -35,14 +35,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Hambre.CloudKitYelpApi.loadKeysFromCloudKit () -&gt; ()"
                   moduleName = "Hambre"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/YelpContainer.swift"
-                  timestampString = "518564119.931319"
+                  timestampString = "518665634.484001"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -50,14 +50,14 @@
                   offsetFromSymbolStart = "124">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Hambre.CloudKitYelpApi.(loadKeysFromCloudKit () -&gt; ()).(closure #1)"
                   moduleName = "Hambre"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/YelpContainer.swift"
-                  timestampString = "518564119.933894"
+                  timestampString = "518665634.486186"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
@@ -70,7 +70,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/YelpContainer.swift"
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/YelpContainer.swift"
-            timestampString = "518558707.773283"
+            timestampString = "518665769.007691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "modelUpdated(cloudKitYelpApi:)"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "errorUpdating(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

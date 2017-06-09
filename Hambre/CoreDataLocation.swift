@@ -24,6 +24,7 @@ class CoreDataLocation: NSObject {
     public func saveLocation(location: String)
     {
         self.removeEverythingFromCoreData()
+        self.managedObjects.removeAll()
         
         let theLocation = NSManagedObject(entity: self.entity!, insertInto: self.managedContext)
         

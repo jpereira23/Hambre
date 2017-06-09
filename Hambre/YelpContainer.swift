@@ -118,7 +118,7 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
     public override init()
     {
         super.init()
-        self.configureCityAndStateWithCoordinate()
+        //self.configureCityAndStateWithCoordinate()
         self.location = self.createLocation()
         self.cloudKitYelpApi.delegate = self
         self.cloudKitYelpApi.loadKeysFromCloudKit()
@@ -144,7 +144,7 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
     {
         // API Call below
         var query : YLPQuery
-        
+        self.location = self.createLocation()
         query = YLPQuery(location: self.location)
         query.term = self.genre
         query.limit = 50
@@ -211,8 +211,8 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
     
     private func configureCityAndStateWithCoordinate()
     {
-        let locValue = self.configureCoordinates()
-        
+        //let locValue = self.configureCoordinates()
+        /*
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
@@ -231,6 +231,7 @@ class YelpContainer: NSObject, CLLocationManagerDelegate {
             }
             
         })
+        */
 
     }
     
