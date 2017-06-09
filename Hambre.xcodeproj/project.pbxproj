@@ -10,6 +10,9 @@
 		3C1F6918A45D0CDC6A497D44 /* Pods_Hambre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */; };
 		5B52041E1EEA26780069AD33 /* Righteous-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B52041D1EEA26780069AD33 /* Righteous-Regular.ttf */; };
 		5B5204201EEA2E630069AD33 /* Loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B52041F1EEA2E630069AD33 /* Loading.png */; };
+		5B5204241EEA42020069AD33 /* heart.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5B5204211EEA42020069AD33 /* heart.svg */; };
+		5B5204251EEA42020069AD33 /* info.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5B5204221EEA42020069AD33 /* info.svg */; };
+		5B5204261EEA42020069AD33 /* Not.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5B5204231EEA42020069AD33 /* Not.svg */; };
 		642A7CCA1EDCD9430085062A /* Negocio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CC91EDCD9430085062A /* Negocio.swift */; };
 		642A7CCC1EDCDA520085062A /* PersonalBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */; };
 		642A7CCF1EDCDCB40085062A /* Negocios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CCD1EDCDCB40085062A /* Negocios.xcdatamodeld */; };
@@ -63,6 +66,9 @@
 		2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.debug.xcconfig"; sourceTree = "<group>"; };
 		5B52041D1EEA26780069AD33 /* Righteous-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Righteous-Regular.ttf"; path = "../../Library/Fonts/Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		5B52041F1EEA2E630069AD33 /* Loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Loading.png; path = "../../Google Drive/Desk/Loading.png"; sourceTree = "<group>"; };
+		5B5204211EEA42020069AD33 /* heart.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = heart.svg; path = "../../Google Drive/Desk/heart.svg"; sourceTree = "<group>"; };
+		5B5204221EEA42020069AD33 /* info.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = info.svg; path = "../../Google Drive/Desk/info.svg"; sourceTree = "<group>"; };
+		5B5204231EEA42020069AD33 /* Not.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Not.svg; path = "../../Google Drive/Desk/Not.svg"; sourceTree = "<group>"; };
 		5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		642A7CC91EDCD9430085062A /* Negocio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Negocio.swift; sourceTree = "<group>"; };
 		642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusiness.swift; sourceTree = "<group>"; };
@@ -205,6 +211,9 @@
 				64D8E8331EE9F5C900D5DB31 /* MainTabViewController.swift */,
 				645095961EDB842400427A83 /* Assets.xcassets */,
 				645095981EDB842400427A83 /* LaunchScreen.storyboard */,
+				5B5204211EEA42020069AD33 /* heart.svg */,
+				5B5204221EEA42020069AD33 /* info.svg */,
+				5B5204231EEA42020069AD33 /* Not.svg */,
 				5B52041F1EEA2E630069AD33 /* Loading.png */,
 				5B52041D1EEA26780069AD33 /* Righteous-Regular.ttf */,
 				6450959B1EDB842400427A83 /* Info.plist */,
@@ -404,9 +413,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B5204201EEA2E630069AD33 /* Loading.png in Resources */,
+				5B5204241EEA42020069AD33 /* heart.svg in Resources */,
+				5B5204251EEA42020069AD33 /* info.svg in Resources */,
 				6450959A1EDB842400427A83 /* LaunchScreen.storyboard in Resources */,
 				5B52041E1EEA26780069AD33 /* Righteous-Regular.ttf in Resources */,
 				645095971EDB842400427A83 /* Assets.xcassets in Resources */,
+				5B5204261EEA42020069AD33 /* Not.svg in Resources */,
 				645095951EDB842400427A83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
