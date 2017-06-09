@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.saveButton.isEnabled = false
+        self.tabBarController?.delegate = self
     }
 
     @IBAction func enterCityField(_ sender: Any)
@@ -84,5 +85,16 @@ extension SettingsViewController : GMSAutocompleteViewControllerDelegate
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+
+extension SettingsViewController : UITabBarControllerDelegate
+{
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if String(describing: viewController.classForCoder) == "BusinessTileViewController"
+        {
+            let businessTileViewController = viewController as! BusinessTileViewController
+            businessTileViewController.cityRequiresRefresh()
+        }
     }
 }

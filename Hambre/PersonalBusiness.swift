@@ -60,11 +60,14 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     
     private func getDistance(longitude: Double, latitude: Double)
     {
-        let coordinate0 = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+        
+        //let coordinate0 = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+        /*
         let aPotentialCoordinate = self.configureCoordinates()
         let coordinate1 = CLLocation(latitude: aPotentialCoordinate.latitude, longitude: aPotentialCoordinate.longitude)
         
         self.distance = Int(Double(coordinate0.distance(from: coordinate1)) * 0.000621371)
+        */
     }
     
     public func getCity() -> String
