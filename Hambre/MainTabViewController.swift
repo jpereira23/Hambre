@@ -19,11 +19,20 @@ class MainTabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //
+        //
+        //
+        //
+        //
+        //
+        
         //let tileVC = BusinessTileViewController()
+        //self.tabBar.items
         
         
-        for viewController in self.viewControllers!
-        {
+        
+        for viewController in self.viewControllers!        {
             print(viewController.classForCoder )
         
         }
