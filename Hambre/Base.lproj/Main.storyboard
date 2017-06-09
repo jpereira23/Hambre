@@ -299,7 +299,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTV-tk-YMc">
                                 <rect key="frame" x="275" y="566" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Review"/>
+                                <state key="normal" title="Add Review">
+                                    <color key="titleColor" red="0.98039215686274506" green="0.69803921568627447" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="c2Y-IF-A0X" kind="show" id="mJI-sJ-7hz"/>
                                 </connections>
