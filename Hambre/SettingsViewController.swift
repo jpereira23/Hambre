@@ -13,7 +13,6 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var enterCityTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
-    
     private var coreDataLocation = CoreDataLocation()
     
     override func viewDidLoad() {
