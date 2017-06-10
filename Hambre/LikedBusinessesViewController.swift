@@ -33,9 +33,8 @@ class LikedBusinessesViewController: UIViewController {
         //businessTileViewController.delegate = self
         // Do any additional setup after loading the view.
         
-        //navbar color and text color - liked business
+        //navbar color and text color for - settings
         UINavigationBar.appearance().barTintColor = UIColor(red:0.98, green:0.70, blue:0.21, alpha:1.0)
-        UINavigationBar.appearance().tintColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {

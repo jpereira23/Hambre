@@ -27,10 +27,13 @@ class MainTabViewController: UITabBarController {
         //
         //
         
-        //let tileVC = BusinessTileViewController()
-        //self.tabBar.items
+        //tab bar icons
+        self.tabBar.unselectedItemTintColor = UIColor(red: 188/255, green: 187/255, blue: 186/255, alpha: 1.0)
         
-        self.tabBar.unselectedItemTintColor = UIColor.init(red: 188/255, green: 187/255, blue: 186/255, alpha: 1.0)
+        //tab bar top border
+        self.tabBar.layer.borderWidth = 0.50
+        self.tabBar.layer.borderColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1.0).cgColor
+        self.tabBar.clipsToBounds = true
         
         
         for viewController in self.viewControllers!        {
