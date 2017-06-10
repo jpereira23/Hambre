@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         self.saveButton.isEnabled = false
         self.tabBarController?.delegate = self
+        
     }
 
     @IBAction func enterCityField(_ sender: Any)

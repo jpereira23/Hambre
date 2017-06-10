@@ -30,6 +30,7 @@ class MainTabViewController: UITabBarController {
         //let tileVC = BusinessTileViewController()
         //self.tabBar.items
         
+        self.tabBar.unselectedItemTintColor = UIColor.init(red: 188/255, green: 187/255, blue: 186/255, alpha: 1.0)
         
         
         for viewController in self.viewControllers!        {
