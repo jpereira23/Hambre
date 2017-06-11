@@ -578,7 +578,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mQZ-IH-SUd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FVQ-1E-89B">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FVQ-1E-89B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -615,7 +615,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aug-lN-20D" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settingx3" id="Aq9-nL-244"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
