@@ -36,6 +36,7 @@ class BusinessTileViewController: UIViewController {
         yelpContainer.delegate = self
         
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

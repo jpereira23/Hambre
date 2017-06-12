@@ -19,6 +19,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         self.saveButton.isEnabled = false
         self.tabBarController?.delegate = self
+        
     }
 
     @IBAction func enterCityField(_ sender: Any)
@@ -94,6 +95,7 @@ extension SettingsViewController : UITabBarControllerDelegate
         {
             let businessTileViewController = viewController as! BusinessTileViewController
             businessTileViewController.cityRequiresRefresh()
+            
         }
     }
 }
