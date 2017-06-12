@@ -23,9 +23,9 @@ class BusinessTileViewController: UIViewController {
     let yelpContainer = YelpContainer()
     private var genre = "all restuarants"
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("BusinessTileViewController appeared")
         self.businessImage.isHidden = true
         self.businessNameLabel.isHidden = true
         self.leftButton.isEnabled = false
@@ -47,6 +47,16 @@ class BusinessTileViewController: UIViewController {
     {
         self.genre = genre
         
+    }
+    
+    public func className() -> String
+    {
+        return String(describing: self.classForCoder)
+    }
+    
+    public func cityRequiresRefresh()
+    {
+        self.yelpContainer.yelpAPICallForBusinesses()
     }
     
     @IBAction func unwindToTileView(_ sender: UIStoryboardSegue)
