@@ -21,12 +21,8 @@ class LikedTableViewCell: UITableViewCell {
         super.awakeFromNib()
         if self.theURL != nil
         {
-            //self.theImageView.setImageWith(self.theURL)
-            //self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
-            self.theImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-            self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
             self.theImageView.setImageWith(self.theURL)
-            self.theImageView.clipsToBounds = true
+            self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
         }
         
         // Initialization code
