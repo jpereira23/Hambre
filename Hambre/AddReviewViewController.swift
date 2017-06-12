@@ -29,6 +29,10 @@ class AddReviewViewController: UIViewController {
         self.greetingField.text = "Please submit your review, " + appDelegate.accessICloudName()
         
         // Do any additional setup after loading the view.
+        
+        //navbar color and text color - enter review
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.98, green:0.70, blue:0.21, alpha:1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
     }
 
     @IBAction func valueChanged(_ sender: Any)
