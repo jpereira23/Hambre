@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -318,16 +318,6 @@
                                     <outlet property="delegate" destination="R2h-Pv-c51" id="Q0A-xI-iG7"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTV-tk-YMc">
-                                <rect key="frame" x="275" y="566" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Review">
-                                    <color key="titleColor" red="0.98039215686274506" green="0.69803921568627447" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="c2Y-IF-A0X" kind="show" id="mJI-sJ-7hz"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hWa-ga-NBy">
                                 <rect key="frame" x="25" y="293" width="325" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -359,7 +349,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="Yvz-8v-83b" id="m7n-0t-c94"/>
-                        <outlet property="addReviewButton" destination="uTV-tk-YMc" id="hdw-Su-SZz"/>
                         <outlet property="imageView" destination="ZzB-tW-Udq" id="CXS-jG-Dvm"/>
                         <outlet property="mapView" destination="z2m-IJ-zYP" id="7yC-nx-ERa"/>
                         <outlet property="noDataWarning" destination="5mN-YF-wUj" id="MPT-GL-3rm"/>
@@ -578,7 +567,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mQZ-IH-SUd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FVQ-1E-89B">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FVQ-1E-89B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -596,7 +585,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tkQ-uH-K3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -615,7 +604,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aug-lN-20D" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settingx3" id="Aq9-nL-244"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
