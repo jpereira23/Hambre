@@ -308,7 +308,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addReviewButton" destination="uTV-tk-YMc" id="hdw-Su-SZz"/>
-                        <outlet property="activityIndicator" destination="Yvz-8v-83b" id="m7n-0t-c94"/>
                         <outlet property="imageView" destination="ZzB-tW-Udq" id="CXS-jG-Dvm"/>
                         <outlet property="segmentControl" destination="hWa-ga-NBy" id="Ap5-ok-KKU"/>
                         <outlet property="segmentView" destination="uiv-fc-41g" id="HPX-bD-4mB"/>
@@ -495,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2628" y="359.37031484257875"/>
+            <point key="canvasLocation" x="2738" y="-237"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -524,7 +523,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mQZ-IH-SUd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FVQ-1E-89B">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="FVQ-1E-89B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -542,7 +541,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tkQ-uH-K3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -553,7 +552,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RH4-SE-Izg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2660" y="560"/>
+            <point key="canvasLocation" x="3782" y="-426"/>
         </scene>
         <!--Settings-->
         <scene sceneID="sON-4i-tZy">
@@ -561,7 +560,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aug-lN-20D" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settingx3" id="Aq9-nL-244"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -591,7 +590,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9L-eT-ocq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.8" y="359.37031484257875"/>
+            <point key="canvasLocation" x="1764" y="-237"/>
         </scene>
     </scenes>
     <resources>
@@ -600,7 +599,7 @@
         <image name="heartx1" width="29" height="27"/>
         <image name="infox3" width="16" height="16"/>
         <image name="locationx3" width="16" height="16"/>
-        <image name="tabheartx3" width="16" height="16"/>
+        <image name="second" width="30" height="30"/>
         <image name="tilesx3" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
