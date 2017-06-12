@@ -15,19 +15,11 @@ protocol MainTabViewControllerDelegate
 
 
 class MainTabViewController: UITabBarController {
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //
-        //
-        //
-        //
-        //
-        //
-        
-        //tab bar icons
+        //unselected tab bar icons = light gray
         self.tabBar.unselectedItemTintColor = UIColor(red: 188/255, green: 187/255, blue: 186/255, alpha: 1.0)
         
         //tab bar top border

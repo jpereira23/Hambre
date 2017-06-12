@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var iCloudName : String! = "AnonymousUser"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        //make status bar white
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         GMSPlacesClient.provideAPIKey("AIzaSyA40b1AvPghSxbgtY_9hOHA7oLE7Hir4AU")
         GMSServices.provideAPIKey("AIzaSyA40b1AvPghSxbgtY_9hOHA7oLE7Hir4AU")
         
