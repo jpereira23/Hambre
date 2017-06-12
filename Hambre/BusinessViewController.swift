@@ -13,13 +13,10 @@ import MapKit
 class BusinessViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noDataWarning: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet var reviewLabel: UILabel!
     @IBOutlet var addReviewButton: UIButton!
     @IBOutlet var segmentControl: UISegmentedControl!
+    @IBOutlet var segmentView: UIView!
+    
     
     private var imageUrl : URL!
     private var identifyingProperty : String! = ""
@@ -31,15 +28,18 @@ class BusinessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         self.imageView.setImageWith(self.imageUrl)
-        self.noDataWarning.isHidden = true
-        self.tableView.isHidden = true
-        self.cloudKitDatabaseHandler.delegate = self
-        self.activityIndicator.startAnimating()
-        self.mapView.isHidden = true
         
+        //self.cloudKitDatabaseHandler.delegate = self
+        
+        let detailView = DetailView(frame: CGRect.zero)
+        detailView.setAddressField(address: "Jeff")
+        detailView.xibSetUp()
+        
+        self.segmentView.addSubview(detailView.getView())
         let initialLocation = CLLocation(latitude: Double(self.latitude), longitude: Double(self.longitude))
-        self.centerMapOnLocation(location: initialLocation)
+        //self.centerMapOnLocation(location: initialLocation)
         
         if self.identifyingProperty == "fromTileView"
         {
@@ -48,12 +48,13 @@ class BusinessViewController: UIViewController {
     }
     
     let regionRadius: CLLocationDistance = 1000
+   /*
     private func centerMapOnLocation(location: CLLocation)
     {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         self.mapView.setRegion(coordinateRegion, animated: true)
     }
-    
+    */
     public func getURL() -> String
     {
         return self.imageUrl.absoluteString
@@ -104,7 +105,7 @@ class BusinessViewController: UIViewController {
         sleep(2)
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
     }
-    
+    /*
     @IBAction func indexChanged(_ sender: Any)
     {
         switch self.segmentControl.selectedSegmentIndex
@@ -138,7 +139,7 @@ class BusinessViewController: UIViewController {
             break
         }
     }
-    
+    */
     
     
     
@@ -154,6 +155,7 @@ class BusinessViewController: UIViewController {
 
 }
 
+/*
 extension BusinessViewController : UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -225,3 +227,4 @@ extension BusinessViewController : MKMapViewDelegate
     }
      */
 }
+ */

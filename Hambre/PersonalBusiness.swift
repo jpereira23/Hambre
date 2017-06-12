@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import YelpAPI
 
 class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     private var city : String!
@@ -17,6 +18,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     private var distance : Int = 0
     private var longitude : Double!
     private var latitude : Double!
+    private var ylpBusiness : YLPBusiness! = nil
     
     public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double)
     {
@@ -29,6 +31,20 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.state = state
         self.liked = liked
         self.likes = likes
+    }
+    
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, ylpBusiness: YLPBusiness)
+    {
+        super.init(businessName: businessName, businessImageUrl:
+            businessImageUrl)
+        self.longitude = longitude
+        self.latitude = latitude
+        self.getDistance(longitude: longitude, latitude: latitude)
+        self.city = city
+        self.state = state
+        self.liked = liked
+        self.likes = likes
+        self.ylpBusiness = ylpBusiness
     }
     
     public init()
