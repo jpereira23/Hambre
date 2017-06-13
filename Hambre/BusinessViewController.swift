@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import YelpAPI
 
 class BusinessViewController: UIViewController {
 
@@ -23,28 +23,28 @@ class BusinessViewController: UIViewController {
     public var longitude : Double!
     public var latitude : Double!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
-    //public var realmDatabaseHandler = RealmDatabaseHandler()
+    private var phoneNumber : String!
+    private var isClosed : Bool!
+    private var address : String!
+    private var websiteUrl : String!
     
+    private var currentView : UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.imageView.setImageWith(self.imageUrl)
         
         //self.cloudKitDatabaseHandler.delegate = self
         
-        let detailView = DetailView(frame: CGRect.zero)
-        detailView.setAddressField(address: "Jeff")
-        detailView.xibSetUp()
+        let reviewView = ReviewView(frame: CGRect.zero)
+        reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
+        reviewView.setUrl(url: self.imageUrl.absoluteString)
+        reviewView.xibSetUp()
+        self.currentView = reviewView.getView()
+        self.segmentView.addSubview(currentView)
         
-        self.segmentView.addSubview(detailView.getView())
         let initialLocation = CLLocation(latitude: Double(self.latitude), longitude: Double(self.longitude))
-        //self.centerMapOnLocation(location: initialLocation)
-        
-        if self.identifyingProperty == "fromTileView"
-        {
-            self.addReviewButton.isHidden = true
-        }
     }
     
     let regionRadius: CLLocationDistance = 1000
@@ -85,61 +85,64 @@ class BusinessViewController: UIViewController {
         self.identifyingProperty = id
     }
     
-    public func filterArray(anId: String) -> [Review]
+    public func setPhoneNumber(phone: String)
     {
-        var reviews = [Review]()
-        for review in self.cloudKitDatabaseHandler.accessArrayOfReviews()
-        {
-            let theId = review.getId()
-            if theId == anId
-            {
-                reviews.append(review)
-            }
-        }
-        return reviews
+        self.phoneNumber = phone 
     }
     
+    public func setWebsiteUrl(url: String)
+    {
+        self.websiteUrl = url
+    }
+    
+    public func setIsClosed(isClosed: Bool)
+    {
+        self.isClosed = isClosed
+    }
+    
+    public func setAddress(address: String)
+    {
+        self.address = address 
+    }
     
     @IBAction func unwindToBusinessView(_ sender: UIStoryboardSegue)
     {
         sleep(2)
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
     }
-    /*
+    
     @IBAction func indexChanged(_ sender: Any)
     {
+        self.currentView.removeFromSuperview()
         switch self.segmentControl.selectedSegmentIndex
         {
         case 0:
-            self.cloudKitDatabaseHandler.loadDataFromCloudKit()
-            self.mapView.isHidden = true
-            self.reviewLabel.isHidden = false
-            self.tableView.isHidden = false
-            if self.identifyingProperty == "fromTileView"
-            {
-                self.addReviewButton.isHidden = true
-            }
-            else
-            {
-                self.addReviewButton.isHidden = false
-            }
+            let reviewView = ReviewView(frame: CGRect.zero)
+            reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
+            reviewView.setUrl(url: self.imageUrl.absoluteString)
+            reviewView.xibSetUp()
+            self.currentView = reviewView.getView()
+            self.segmentView.addSubview(currentView)
             break
         case 1:
-            self.mapView.isHidden = false
-            self.reviewLabel.isHidden = true
-            self.tableView.isHidden = true
-            self.addReviewButton.isHidden = true
+            break
+            
+        case 2:
+            let detailView = DetailView(frame: CGRect.zero)
+            detailView.setAddressField(address: self.address)
+            detailView.setPhoneField(phone: self.phoneNumber)
+            detailView.setIsClosed(isClosed: self.isClosed)
+            detailView.setWebsiteUrl(url: self.websiteUrl)
+            detailView.xibSetUp()
+            self.currentView = detailView.getView()
+            self.segmentView.addSubview(self.currentView)
             break
         default:
             
-            self.mapView.isHidden = true
-            self.reviewLabel.isHidden = true
-            self.tableView.isHidden = true
-            self.addReviewButton.isHidden = true 
             break
         }
     }
-    */
+    
     
     
     

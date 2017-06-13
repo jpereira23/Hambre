@@ -11,6 +11,9 @@ import UIKit
 class DetailView: UIView {
 
     @IBOutlet var addressField: UILabel!
+    @IBOutlet var phoneField: UILabel!
+    @IBOutlet var isClosedField: UILabel!
+    @IBOutlet var websiteUrlField: UILabel!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -23,6 +26,9 @@ class DetailView: UIView {
     
     
     private var address : String! = "Not an address"
+    private var phoneNumber : String! = "Phone Number: (000) 000-0000"
+    private var isClosed : String! = "Closed"
+    private var websiteUrl : String! = "http://google.com"
     private let nibName = "View"
     private var view: UIView!
     
@@ -44,7 +50,10 @@ class DetailView: UIView {
         self.view = loadViewFromNib()
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        self.addressField.text = self.address
+        self.addressField.text = "Address: " + self.address
+        self.phoneField.text = "Phone Number: " + self.phoneNumber
+        self.isClosedField.text = self.isClosed
+        self.websiteUrlField.text = "Url: " + self.websiteUrl
         addSubview(view)
     }
     
@@ -58,6 +67,28 @@ class DetailView: UIView {
     public func setAddressField(address: String)
     {
         self.address = address
+    }
+    
+    public func setPhoneField(phone: String)
+    {
+        self.phoneNumber = phone
+    }
+    
+    public func setWebsiteUrl(url: String)
+    {
+        self.websiteUrl = url
+    }
+    
+    public func setIsClosed(isClosed: Bool)
+    {
+        if isClosed
+        {
+            self.isClosed = "Currently closed."
+        }
+        else
+        {
+            self.isClosed = "Currently open."
+        }
     }
 
 }

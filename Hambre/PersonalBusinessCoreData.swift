@@ -34,6 +34,13 @@ class PersonalBusinessCoreData: NSObject {
         aBusiness.setValue(personalBusiness.getLikes(), forKeyPath: "likes")
         aBusiness.setValue(personalBusiness.getLongitude(), forKeyPath: "longitude")
         aBusiness.setValue(personalBusiness.getLatitude(), forKeyPath: "latitude")
+        aBusiness.setValue(personalBusiness.getNumber(), forKeyPath: "phoneNumber")
+        
+        aBusiness.setValue(personalBusiness.getAddress(), forKeyPath: "address")
+        
+        aBusiness.setValue(personalBusiness.getIsClosed(), forKeyPath: "isClosed")
+        aBusiness.setValue(personalBusiness.getWebsiteUrl(), forKeyPath: "websiteUrl")
+        
         do
         {
             try self.managedContext.save()
@@ -65,8 +72,16 @@ class PersonalBusinessCoreData: NSObject {
             let latitude = businesses.value(forKeyPath: "latitude") as! Float
             let longitude = businesses.value(forKeyPath: "longitude") as! Float
             let aUrl = URL(string: businessUrl)
+            let aPhone = businesses.value(forKeyPath: "phoneNumber") as! String
             
-            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude))
+            let address = businesses.value(forKeyPath: "address") as! String
+            
+            let isClosed = businesses.value(forKeyPath: "isClosed") as! Bool
+            
+            let websiteUrl = businesses.value(forKeyPath: "websiteUrl") as! String
+            
+            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl)
+            
             
             temporaryBusiness.append(personalBusiness)
         }
