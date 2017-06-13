@@ -21,7 +21,7 @@ class LikedBusinessesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //personalBusinessCoreData.resetCoreData()
+        personalBusinessCoreData.resetCoreData()
         self.cloudKitDatabaseHandler.delegate = self
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
