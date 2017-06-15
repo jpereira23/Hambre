@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/YelpContainer.swift"
-            timestampString = "518557172.753926"
+            filePath = "Hambre/ReviewView.swift"
+            timestampString = "519192082.546331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "init()"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,61 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/YelpContainer.swift"
-            timestampString = "518553379.644542"
+            filePath = "Hambre/ReviewView.swift"
+            timestampString = "519192082.546331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "loadKeysFromCloudKit()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hambre.CloudKitYelpApi.loadKeysFromCloudKit () -&gt; ()"
-                  moduleName = "Hambre"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/YelpContainer.swift"
-                  timestampString = "519016769.694283"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "124">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hambre.CloudKitYelpApi.(loadKeysFromCloudKit () -&gt; ()).(closure #1)"
-                  moduleName = "Hambre"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/YelpContainer.swift"
-                  timestampString = "519016769.69715"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hambre/YelpContainer.swift"
-            timestampString = "518553384.228944"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "loadKeysFromCloudKit()"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/YelpContainer.swift"
-            timestampString = "518558707.773283"
+            filePath = "Hambre/ReviewView.swift"
+            timestampString = "519192082.546331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "errorUpdating(_:)"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "filterArray(anId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

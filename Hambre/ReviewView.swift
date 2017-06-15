@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ReviewView: UIView {
-    @IBOutlet var tableView: UITableView!
+class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet var howManyReviews: UILabel!
+    @IBOutlet var addReviewButton: UIButton!
+    @IBOutlet var tableView: UITableView!
     private var arrayOfReviews = [Review]()
     private var nibName = "ReviewView"
-    private var view: UIView!
+    private var view: ReviewView!
     private var url : String!
+   
     
     required init(coder aDecoder: NSCoder)
     {
@@ -43,14 +46,34 @@ class ReviewView: UIView {
     
     public func getView() -> UIView
     {
+        //self.tableView.frame = CGRect(x: 16, y: 25, width: 320, height: 159)
+        //self.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tableView.delegate = self
+        //self.tableView.dataSource = self
+        //self.tableView.reloadData()
         return self.view
+    }
+    
+    override func didMoveToSuperview() {
+        print("MOVED TO SUPERVIEW")
+    }
+    override func didMoveToWindow() {
+        self.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
+    
+        let numOfReviews = self.filterArray(anId: self.url)
+        self.howManyReviews.text! = String(numOfReviews.count) + " Reviews"
     }
     
     func xibSetUp()
     {
-        self.view = loadViewFromNib()
+        self.view = loadViewFromNib() as! ReviewView
         self.view.frame = self.bounds
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        self.view.setUrl(url: self.url)
+        self.view.setArrayOfReviews(reviews: self.arrayOfReviews)
         addSubview(self.view)
     }
     
@@ -59,6 +82,7 @@ class ReviewView: UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: self.nibName, bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        
         return view
     }
     
@@ -81,25 +105,36 @@ class ReviewView: UIView {
         return reviews
     }
     
-}
-
-extension ReviewView : UITableViewDelegate
-{
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ReviewTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        var cell: ReviewTableViewCell?
+        
+         let bundle = Bundle(for: type(of: self))
+        if let _ = cell{
+            cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ReviewTableViewCell
+        }
+        else
+        {
+            tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: bundle), forCellReuseIdentifier: "cell")
+            
+            cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ReviewTableViewCell
+            
+            //cell = ReviewTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        }
+        
+        
         let array = self.filterArray(anId: self.getUrl())
+        cell?.nameField.text = array[indexPath.row].getReviewer()
+        cell?.commentField.text = array[indexPath.row].getSummaryReview()
+        cell?.reviewField.text = "Review: " + String(array[indexPath.row].getReview())
         
-        cell.nameField.text = array[indexPath.row].getReviewer()
-        cell.commentField.text = array[indexPath.row].getSummaryReview()
-        cell.reviewField.text = String(array[indexPath.row].getReview())
-        
-        return cell
+        return cell!
     }
-}
-
-extension ReviewView : UITableViewDataSource
-{
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 95
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getCountOfArray()
+        return self.filterArray(anId: self.getUrl()).count
     }
 }

@@ -14,8 +14,18 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var commentField: UITextView!
     @IBOutlet weak var reviewField: UILabel!
     
+    private var name : String = "Generic name"
+    private var comment : String = "A generic comment."
+    private var review : Int = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.addSubview(nameField)
+        self.nameField.text! = name
+        //self.commentField.text! = comment
+        //self.reviewField.text! = String(review)
+        //self.textLabel?.text = name
         // Initialization code
         
     }
@@ -25,5 +35,24 @@ class ReviewTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    public func setName(name: String)
+    {
+        self.name = name
+    }
+    
+    public func setComment(comment: String)
+    {
+        self.comment = comment
+    }
+    
+    public func setReview(review: Int)
+    {
+        self.review = review
+    }
+    
+    
+    
+    
 
 }

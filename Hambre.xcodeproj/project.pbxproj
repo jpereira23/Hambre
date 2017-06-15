@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3C1F6918A45D0CDC6A497D44 /* Pods_Hambre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */; };
 		5B52042C1EEA5C600069AD33 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52042B1EEA5C600069AD33 /* CALayerExtension.swift */; };
+		642079C11EF0D77D00F78230 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642079C01EF0D77D00F78230 /* MapView.xib */; };
+		642079C31EF0D78900F78230 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642079C21EF0D78900F78230 /* MapView.swift */; };
 		642A7CCA1EDCD9430085062A /* Negocio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CC91EDCD9430085062A /* Negocio.swift */; };
 		642A7CCC1EDCDA520085062A /* PersonalBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */; };
 		642A7CCF1EDCDCB40085062A /* Negocios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 642A7CCD1EDCDCB40085062A /* Negocios.xcdatamodeld */; };
@@ -33,6 +35,9 @@
 		648B74CE1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */; };
 		64932DD71EEF75A1001727AE /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64932DD61EEF75A1001727AE /* ReviewView.xib */; };
 		64932DD91EEF75B9001727AE /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64932DD81EEF75B9001727AE /* ReviewView.swift */; };
+		64AB6EDC1EF2379200D654FB /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AB6EDB1EF2379200D654FB /* ReviewTableViewCell.xib */; };
+		64AB6EDE1EF242BB00D654FB /* WebsiteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AB6EDD1EF242BB00D654FB /* WebsiteView.xib */; };
+		64AB6EE01EF2434C00D654FB /* WebsiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB6EDF1EF2434C00D654FB /* WebsiteView.swift */; };
 		64CEE48F1EE0A50A0065082F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CEE48E1EE0A50A0065082F /* CloudKit.framework */; };
 		64CEE4911EE0A7660065082F /* CloudKitDatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */; };
 		64CEE4931EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4921EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift */; };
@@ -66,6 +71,8 @@
 		2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.debug.xcconfig"; sourceTree = "<group>"; };
 		5B52042B1EEA5C600069AD33 /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		642079C01EF0D77D00F78230 /* MapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		642079C21EF0D78900F78230 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		642A7CC91EDCD9430085062A /* Negocio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Negocio.swift; sourceTree = "<group>"; };
 		642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusiness.swift; sourceTree = "<group>"; };
 		642A7CCE1EDCDCB40085062A /* Negocios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios.xcdatamodel; sourceTree = "<group>"; };
@@ -99,6 +106,9 @@
 		64932DD61EEF75A1001727AE /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
 		64932DD81EEF75B9001727AE /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		64932DDA1EEF8A35001727AE /* Negocios3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios3.xcdatamodel; sourceTree = "<group>"; };
+		64AB6EDB1EF2379200D654FB /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReviewTableViewCell.xib; path = ../ReviewTableViewCell.xib; sourceTree = "<group>"; };
+		64AB6EDD1EF242BB00D654FB /* WebsiteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteView.xib; sourceTree = "<group>"; };
+		64AB6EDF1EF2434C00D654FB /* WebsiteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteView.swift; sourceTree = "<group>"; };
 		64CEE48D1EE0A4F40065082F /* Hambre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hambre.entitlements; sourceTree = "<group>"; };
 		64CEE48E1EE0A50A0065082F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseHandler.swift; sourceTree = "<group>"; };
@@ -261,7 +271,11 @@
 			children = (
 				64D8E8361EEA38F400D5DB31 /* DetailView.swift */,
 				64932DD81EEF75B9001727AE /* ReviewView.swift */,
+				642079C21EF0D78900F78230 /* MapView.swift */,
+				64AB6EDD1EF242BB00D654FB /* WebsiteView.xib */,
+				64AB6EDF1EF2434C00D654FB /* WebsiteView.swift */,
 				64D8E8381EEA39F000D5DB31 /* View.xib */,
+				642079C01EF0D77D00F78230 /* MapView.xib */,
 				64932DD61EEF75A1001727AE /* ReviewView.xib */,
 			);
 			name = DetailViews;
@@ -281,6 +295,7 @@
 				64D8E8351EEA38CB00D5DB31 /* DetailViews */,
 				64F8566B1EDF61D3004E352F /* BusinessViewController.swift */,
 				644BCA071EE75A94004324E2 /* ReviewTableViewCell.swift */,
+				64AB6EDB1EF2379200D654FB /* ReviewTableViewCell.xib */,
 				645A31EE1EE2114D001A958A /* AddReviewViewController.swift */,
 			);
 			name = BusinessView;
@@ -425,7 +440,10 @@
 				64D8E8391EEA39F000D5DB31 /* View.xib in Resources */,
 				64932DD71EEF75A1001727AE /* ReviewView.xib in Resources */,
 				6450959A1EDB842400427A83 /* LaunchScreen.storyboard in Resources */,
+				64AB6EDC1EF2379200D654FB /* ReviewTableViewCell.xib in Resources */,
+				642079C11EF0D77D00F78230 /* MapView.xib in Resources */,
 				645095971EDB842400427A83 /* Assets.xcassets in Resources */,
+				64AB6EDE1EF242BB00D654FB /* WebsiteView.xib in Resources */,
 				645095951EDB842400427A83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +574,7 @@
 				64CEE4911EE0A7660065082F /* CloudKitDatabaseHandler.swift in Sources */,
 				64716E891EE88E2B00970C07 /* GenrePickerViewController.swift in Sources */,
 				64F8566C1EDF61D3004E352F /* BusinessViewController.swift in Sources */,
+				642079C31EF0D78900F78230 /* MapView.swift in Sources */,
 				646B59DC1EE8C15700CCB194 /* CoreDataLocation.swift in Sources */,
 				648B74C91EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift in Sources */,
 				642A7CD31EDCE0A00085062A /* BusinessTileViewController.swift in Sources */,
@@ -567,6 +586,7 @@
 				644BCA081EE75A95004324E2 /* ReviewTableViewCell.swift in Sources */,
 				648B74C51EDE25F400B5D2CE /* YelpContainer.swift in Sources */,
 				645911661EE65363006517CB /* LikedTableViewCell.swift in Sources */,
+				64AB6EE01EF2434C00D654FB /* WebsiteView.swift in Sources */,
 				64716E871EE8850300970C07 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
