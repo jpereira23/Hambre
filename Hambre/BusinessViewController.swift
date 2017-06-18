@@ -37,12 +37,15 @@ class BusinessViewController: UIViewController {
         
         //self.cloudKitDatabaseHandler.delegate = self
         
-        let reviewView = ReviewView(frame: CGRect.zero)
-        reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
-        reviewView.setUrl(url: self.imageUrl.absoluteString)
-        reviewView.xibSetUp()
-        self.currentView = reviewView.getView()
-        self.segmentView.addSubview(currentView)
+        let detailView = DetailView(frame: CGRect(x: 0, y: 0, width: 352, height: 248))
+        detailView.setAddressField(address: self.address)
+        detailView.setPhoneField(phone: self.phoneNumber)
+        detailView.setIsClosed(isClosed: self.isClosed)
+        detailView.setWebsiteUrl(url: self.websiteUrl)
+        detailView.xibSetUp()
+        self.currentView = detailView.getView()
+        self.segmentView.addSubview(self.currentView)
+        
         
         let initialLocation = CLLocation(latitude: Double(self.latitude), longitude: Double(self.longitude))
     }
@@ -117,18 +120,7 @@ class BusinessViewController: UIViewController {
         switch self.segmentControl.selectedSegmentIndex
         {
         case 0:
-            let reviewView = ReviewView(frame: CGRect.zero)
-            reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
-            reviewView.setUrl(url: self.imageUrl.absoluteString)
-            reviewView.xibSetUp()
-            self.currentView = reviewView.getView()
-            self.segmentView.addSubview(currentView)
-            break
-        case 1:
-            break
-            
-        case 2:
-            let detailView = DetailView(frame: CGRect.zero)
+            let detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
             detailView.setAddressField(address: self.address)
             detailView.setPhoneField(phone: self.phoneNumber)
             detailView.setIsClosed(isClosed: self.isClosed)
@@ -136,6 +128,38 @@ class BusinessViewController: UIViewController {
             detailView.xibSetUp()
             self.currentView = detailView.getView()
             self.segmentView.addSubview(self.currentView)
+            
+            break
+        case 1:
+            let reviewView = ReviewView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+            reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
+            reviewView.setUrl(url: self.imageUrl.absoluteString)
+            reviewView.xibSetUp()
+            reviewView.addReviewButton.addTarget(self, action: #selector(addReviewButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+            self.currentView = reviewView.getView()
+            self.segmentView.addSubview(currentView)
+            
+            
+            break
+            
+        case 2:
+            let mapView = MapView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+            mapView.setLatitude(latitude: self.latitude)
+            mapView.setLongitude(longitude: self.longitude)
+            mapView.xibSetUp()
+            
+            
+            self.currentView = mapView.getView()
+            self.segmentView.addSubview(currentView)
+            break
+            
+        case 3:
+            let websiteView =  WebsiteView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+            websiteView.setWebsiteUrl(website: self.websiteUrl)
+            websiteView.xibSetUp()
+            
+            self.currentView = websiteView.getView()
+            self.segmentView.addSubview(currentView)
             break
         default:
             
@@ -143,6 +167,12 @@ class BusinessViewController: UIViewController {
         }
     }
     
+    func addReviewButtonTriggered(sender: UIButton)
+    {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     

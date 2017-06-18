@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //make status bar white
         UIApplication.shared.statusBarStyle = .lightContent
         
-        GMSPlacesClient.provideAPIKey("AIzaSyA40b1AvPghSxbgtY_9hOHA7oLE7Hir4AU")
-        GMSServices.provideAPIKey("AIzaSyA40b1AvPghSxbgtY_9hOHA7oLE7Hir4AU")
+        GMSPlacesClient.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
+        GMSServices.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         
         CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
             CKContainer.default().fetchUserRecordID { (record, error) in
