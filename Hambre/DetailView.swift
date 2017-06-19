@@ -9,11 +9,20 @@
 import UIKit
 
 class DetailView: UIView {
-
+    
+    /*
     @IBOutlet var addressField: UILabel!
     @IBOutlet var phoneField: UILabel!
     @IBOutlet var isClosedField: UILabel!
     @IBOutlet var websiteUrlField: UILabel!
+    */
+    @IBOutlet weak var websiteUrlField: UIButton!
+    
+    @IBOutlet weak var addressField: UIButton!
+    
+    @IBOutlet weak var phoneFIeld: UIButton!
+ 
+    @IBOutlet weak var isClosedField: UIButton!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -50,10 +59,10 @@ class DetailView: UIView {
         self.view = loadViewFromNib()
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        self.addressField.text = "Address: " + self.address
-        self.phoneField.text = "Phone Number: " + self.phoneNumber
-        self.isClosedField.text = self.isClosed
-        self.websiteUrlField.text = "Url: " + self.websiteUrl
+        self.addressField.setTitle("Address: " + self.address, for: .normal)
+        self.phoneFIeld.setTitle("Phone Number: " + self.phoneNumber, for: .normal)
+        self.isClosedField.setTitle(self.isClosed, for: .normal)
+        self.websiteUrlField.setTitle("Website", for: .normal)
         addSubview(view)
     }
     
