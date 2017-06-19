@@ -22,7 +22,7 @@ class LikedTableViewCell: UITableViewCell {
         if self.theURL != nil
         {
             self.theImageView.setImageWith(self.theURL)
-            self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
+            //self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
         }
         
         // Initialization code

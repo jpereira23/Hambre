@@ -37,6 +37,19 @@ class BusinessTileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
+        //right button states
+        self.rightButton.setImage(UIImage(named: "heartx1.png"), for: .normal)
+        self.rightButton.setImage(UIImage(named: "heartx1.png"), for: .selected)
+        self.rightButton.setImage(UIImage(named: "heartx1.png"), for: .highlighted)
+        //left button states
+        self.leftButton.setImage(UIImage(named: "Notx1.png"), for: .normal)
+        self.leftButton.setImage(UIImage(named: "Notx1.png"), for: .selected)
+        self.leftButton.setImage(UIImage(named: "Notx1.png"), for: .highlighted)
+        //info button states
+        self.infoButton.setImage(UIImage(named: "infox1.png"), for: .normal)
+        self.infoButton.setImage(UIImage(named: "infox1.png"), for: .selected)
+        self.infoButton.setImage(UIImage(named: "infox1.png"), for: .highlighted)
+        
     }
 
     override func didReceiveMemoryWarning() {
