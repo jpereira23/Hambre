@@ -117,8 +117,6 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
             tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: bundle), forCellReuseIdentifier: "cell")
             
             cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ReviewTableViewCell
-            
-            //cell = ReviewTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
         }
         
         
