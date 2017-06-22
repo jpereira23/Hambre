@@ -65,6 +65,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     
         let numOfReviews = self.filterArray(anId: self.url)
         self.howManyReviews.text! = String(numOfReviews.count) + " Reviews"
+        
     }
     
     func xibSetUp()
