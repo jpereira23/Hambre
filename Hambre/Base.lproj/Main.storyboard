@@ -221,6 +221,7 @@
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Uw8-cV-1g4"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="enterCityTextField" destination="daV-qe-d73" id="KrU-4k-mV1"/>
                         <outlet property="saveButton" destination="Rfg-7C-fFI" id="ZHj-wp-Y0c"/>
@@ -293,6 +294,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="imageView" destination="ZzB-tW-Udq" id="CXS-jG-Dvm"/>
                         <outlet property="segmentControl" destination="hWa-ga-NBy" id="Ap5-ok-KKU"/>
@@ -386,6 +388,7 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="commentView" destination="DC9-zd-lT3" id="kHW-iD-hYD"/>
                         <outlet property="greetingField" destination="Mt3-yZ-3b6" id="XUd-Tt-o0h"/>
@@ -444,6 +447,7 @@
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="4ZG-H4-O8a"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="activityIndicator" destination="1X0-Xc-fdX" id="HsF-hc-OPB"/>
                         <outlet property="tableView" destination="KVX-6H-s36" id="xBZ-j3-ooo"/>
@@ -457,6 +461,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" customClass="MainTabViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -480,9 +485,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mQZ-IH-SUd" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FVQ-1E-89B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -498,9 +505,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -517,9 +526,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aug-lN-20D" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Setting" id="Aq9-nL-244"/>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -536,9 +547,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JNf-il-h0A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="TabHeart" id="cPa-gy-q4n"/>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xxh-aD-K9r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

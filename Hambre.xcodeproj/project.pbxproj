@@ -743,6 +743,7 @@
 			baseConfigurationReference = 2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Hambre/Hambre.entitlements;
 				DEVELOPMENT_TEAM = BEPL73VPNG;
@@ -761,6 +762,7 @@
 			baseConfigurationReference = 9B30F1AE1197A9EE0086F1FB /* Pods-Hambre.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Hambre/Hambre.entitlements;
 				DEVELOPMENT_TEAM = BEPL73VPNG;
