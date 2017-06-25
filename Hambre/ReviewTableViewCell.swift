@@ -20,7 +20,7 @@ class ReviewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        //commentField.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.addSubview(nameField)
         self.nameField.text! = name
         //self.commentField.text! = comment
