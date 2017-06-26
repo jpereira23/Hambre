@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameField: UILabel!
@@ -27,6 +28,7 @@ class ReviewTableViewCell: UITableViewCell {
         //self.reviewField.text! = String(review)
         //self.textLabel?.text = name
         // Initialization code
+        
         
     }
 
