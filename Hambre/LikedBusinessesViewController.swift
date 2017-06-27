@@ -28,6 +28,7 @@ class LikedBusinessesViewController: UIViewController {
         self.tableView.isHidden = true
         self.activityIndicator.startAnimating()
         
+        
         //tableView.reloadData()
         //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController
         //businessTileViewController.delegate = self
@@ -126,10 +127,11 @@ extension LikedBusinessesViewController : UITableViewDelegate
 extension LikedBusinessesViewController : UITableViewDataSource
 {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! LikedTableViewCell
-    
-        cell.distanceField!.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
-        cell.titleField!.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell") as! LikedTableViewCell
+        
+        cell.distanceField.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
+        
+        cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
         cell.setURL(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage())
         let reviewsArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
         let numOfReviews = self.filterArrayOfReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage(), array: reviewsArray)

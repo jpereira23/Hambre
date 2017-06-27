@@ -16,12 +16,22 @@ class LikedTableViewCell: UITableViewCell {
     @IBOutlet var amountOfReviewsField: UILabel!
     
     
+    private var theTitle = "A REVIEW."
+    private var theDistance = "Infinite miles"
+    private var theAmountOfReviews = "0 reviews"
+    
     private var theURL : URL!
     override func awakeFromNib() {
         super.awakeFromNib()
+        //self.theImageView.setImageWith(self.theURL)
+        //self.distanceField.text = self.theDistance
+        //self.titleField.text = self.theTitle
+        //self.amountOfReviewsField.text = self.theAmountOfReviews
+        
+        
         if self.theURL != nil
         {
-            self.theImageView.setImageWith(self.theURL)
+         
             //self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
         }
         
@@ -39,6 +49,21 @@ class LikedTableViewCell: UITableViewCell {
         self.theURL = url
         //self.theImageView.setImageWith(url)
         //self.theImageView.contentMode = UIViewContentMode.scaleAspectFit
+    }
+    
+    public func setTitle(title: String)
+    {
+        self.theTitle = title
+    }
+    
+    public func setDistance(distance: String)
+    {
+        self.theDistance = distance
+    }
+    
+    public func setAmountOfReviews(reviewsAmount: String)
+    {
+        self.theAmountOfReviews = reviewsAmount 
     }
 
 }
