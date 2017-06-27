@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class BusinessTileViewController: UIViewController {
 
@@ -22,6 +23,8 @@ class BusinessTileViewController: UIViewController {
     var aBusinessTileOperator : BusinessTileOperator! = nil
     let yelpContainer = YelpContainer()
     private var genre = "all restuarants"
+    public var checkIfReady = 0
+    public var theCoordinate : CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,27 +147,36 @@ class BusinessTileViewController: UIViewController {
     public func refreshTileAttributes()
     {
         let aBusiness = self.aBusinessTileOperator.presentCurrentBusiness()
+        self.distanceField.text = String(self.aBusinessTileOperator.presentCurrentBusiness().getDistance()) + " mile(s)"
         
         self.businessNameLabel.text = aBusiness.getBusinessName()
         self.businessImage.setImageWith(aBusiness.getBusinessImage())
         self.businessImage.contentMode = UIViewContentMode.scaleAspectFit
-        self.distanceField.text = String(aBusiness.getDistance()) + " mile(s)"
     }
 
 }
 
 extension BusinessTileViewController : YelpContainerDelegate
 {
+    func yelpLocationCallback(_ yelpContainer: YelpContainer) {
+        self.checkIfReady = self.checkIfReady + 1
+        
+    }
+
     func yelpAPICallback(_ yelpContainer: YelpContainer) {
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
-        self.businessImage.isHidden = false
-        self.businessNameLabel.isHidden = false
-        self.leftButton.isEnabled = true
-        self.rightButton.isEnabled = true
-        self.infoButton.isEnabled = true
-        self.aBusinessTileOperator = BusinessTileOperator(anArrayOfBusinesses: yelpContainer.getBusinesses(), city: yelpContainer.getCity(), state: yelpContainer.getState())
-        self.refreshTileAttributes()
+        
+      
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.businessImage.isHidden = false
+            self.businessNameLabel.isHidden = false
+            self.leftButton.isEnabled = true
+            self.rightButton.isEnabled = true
+            self.infoButton.isEnabled = true
+            self.aBusinessTileOperator = BusinessTileOperator(anArrayOfBusinesses: yelpContainer.getBusinesses(), city: yelpContainer.getCity(), state: yelpContainer.getState())
+            self.refreshTileAttributes()
+ 
+        
         
     }
 }

@@ -31,7 +31,6 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
             businessImageUrl)
         self.longitude = longitude
         self.latitude = latitude
-        self.getDistance(longitude: longitude, latitude: latitude)
         self.city = city
         self.state = state
         self.liked = liked
@@ -49,11 +48,12 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
             businessImageUrl)
         self.longitude = longitude
         self.latitude = latitude
-        self.getDistance(longitude: longitude, latitude: latitude)
+        
         self.city = city
         self.state = state
         self.liked = liked
         self.likes = likes
+        self.distance = self.getADistance()
         self.phoneNumber = phoneNumber
         self.address = self.setAddress(address: address)
         self.isClosed = isClosed
@@ -66,10 +66,10 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
             businessImageUrl)
         self.longitude = longitude
         self.latitude = latitude
-        self.getDistance(longitude: longitude, latitude: latitude)
         self.city = city
         self.state = state
         self.liked = liked
+        self.distance = self.getADistance()
         self.likes = likes
         self.phoneNumber = phoneNumber
         self.address = theAddress
@@ -102,9 +102,10 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     
     private func configureCoordinates() -> CLLocationCoordinate2D
     {
+        
         let locationManager = CLLocationManager()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestAlwaysAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled()
         {
@@ -114,18 +115,21 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         }
         
         return locationManager.location!.coordinate
+ 
     }
+ 
     
-    private func getDistance(longitude: Double, latitude: Double)
+    private func getADistance() -> Int
     {
         
-        //let coordinate0 = CLLocation(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
-        /*
-        let aPotentialCoordinate = self.configureCoordinates()
-        let coordinate1 = CLLocation(latitude: aPotentialCoordinate.latitude, longitude: aPotentialCoordinate.longitude)
+        let coordinate0 = CLLocation(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude))
+        let coordinate = self.configureCoordinates()
+        
+        let coordinate1 = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
         self.distance = Int(Double(coordinate0.distance(from: coordinate1)) * 0.000621371)
-        */
+        
+        return self.distance
     }
     
     public func getCity() -> String
