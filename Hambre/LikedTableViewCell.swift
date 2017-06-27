@@ -23,10 +23,6 @@ class LikedTableViewCell: UITableViewCell {
     private var theURL : URL!
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.theImageView.setImageWith(self.theURL)
-        //self.distanceField.text = self.theDistance
-        //self.titleField.text = self.theTitle
-        //self.amountOfReviewsField.text = self.theAmountOfReviews
         
         
         if self.theURL != nil

@@ -58,7 +58,7 @@ class LikedBusinessesViewController: UIViewController {
         // Pass the selected object to the new view controller.
         //businessViewController.imageView.setImageWith(self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
         
-
+        /*
         let navigationViewController = segue.destination as! UINavigationController
         navigationViewController.navigationBar.topItem?.title = self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessName()
         let navBar = navigationViewController.navigationBar
@@ -77,7 +77,8 @@ class LikedBusinessesViewController: UIViewController {
         //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navBar.barTintColor = UIColor(red: 0.98, green: 0.70, blue: 0.21, alpha: 1.0)
         
-        let businessViewController = segue.destination.childViewControllers[0] as! BusinessViewController
+        */
+        let businessViewController = segue.destination as! BusinessViewController
         businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
         businessViewController.setLongitude(longitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLongitude())
         businessViewController.setLatitude(latitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLatitude())

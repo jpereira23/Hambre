@@ -32,7 +32,7 @@ class BusinessTileViewController: UIViewController {
         self.rightButton.isEnabled = false
         self.infoButton.isEnabled = false
         self.activityIndicator.startAnimating()
-        self.genreLabel.text = "Genre: " + self.genre
+        //self.genreLabel.text = "Genre: " + self.genre
         yelpContainer.delegate = self
         
         // Do any additional setup after loading the view.
@@ -101,6 +101,7 @@ class BusinessTileViewController: UIViewController {
         
         if segue.identifier == "fromTileView"
         {
+            /*
             let navigationViewController = segue.destination as! UINavigationController
             
             let navBar = navigationViewController.navigationBar
@@ -109,7 +110,7 @@ class BusinessTileViewController: UIViewController {
              let backItem = UIBarButtonItem()
              backItem.title = "Back"
              navigationViewController.navigationItem.backBarButtonItem = backItem
-             */
+ 
             
             navBar.topItem?.title = self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName()
             navBar.tintColor = UIColor.white
@@ -117,7 +118,10 @@ class BusinessTileViewController: UIViewController {
             
             //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
             navBar.barTintColor = UIColor(red: 252/255, green: 193/255, blue: 61/255, alpha: 1)
-            let businessViewController = segue.destination.childViewControllers[0] as! BusinessViewController
+    */
+ */
+            
+            let businessViewController = segue.destination as! BusinessViewController
             businessViewController.setIdentifier(id: "fromTileView")
             
             businessViewController.setUrl(aUrl: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessImage())
