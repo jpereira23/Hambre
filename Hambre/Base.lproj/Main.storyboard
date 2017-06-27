@@ -148,7 +148,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Enter"/>
                                 <connections>
-                                    <segue destination="5Uk-Lq-sEI" kind="unwind" identifier="fromGenre" unwindAction="unwindToTileView:" id="PAx-sz-hfw"/>
+                                    <segue destination="5Uk-Lq-sEI" kind="unwind" unwindAction="unwindToSettings:" id="uQF-eJ-gd9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -200,6 +200,14 @@
                                     <action selector="savingLocation:" destination="6Pi-zA-fUf" eventType="touchUpInside" id="0JT-iM-DGZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Tc-rI-bI3">
+                                <rect key="frame" x="104" y="362" width="166" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Set Genre"/>
+                                <connections>
+                                    <segue destination="grl-yJ-mUV" kind="show" id="Cla-xX-DGJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -213,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52D-lm-Pmt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884" y="-1025"/>
+            <point key="canvasLocation" x="884" y="-1025.0374812593705"/>
         </scene>
         <!--Business View Controller-->
         <scene sceneID="HLn-xM-say">

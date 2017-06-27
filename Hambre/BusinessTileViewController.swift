@@ -57,11 +57,7 @@ class BusinessTileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    public func changeGenre(genre: String)
-    {
-        self.genre = genre
-        
-    }
+   
     
     public func className() -> String
     {
@@ -77,7 +73,6 @@ class BusinessTileViewController: UIViewController {
     {
         if sender.identifier == "fromGenre"
         {
-            self.genreLabel.text = "Genre: " + self.genre
             self.businessImage.isHidden = true
             self.businessNameLabel.isHidden = true
             self.leftButton.isEnabled = false

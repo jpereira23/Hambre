@@ -11,7 +11,8 @@ import UIKit
 class GenrePickerViewController: UIViewController {
 
     @IBOutlet var pickerView: UIPickerView!
-    var arrayOfGenres = ["all restaurants", "fast food", "mexican", "food", "sandwiches", "burgers", "american", "pizza", "bars", "chinese", "nightlife", "barbeque", "japanese", "breakfast & brunch", "chicken wings", "italian", "afghan" , "asian fusion", "delis", "food trucks", "grocery" , "indian", "filipino", "hot dogs", "text-mex", "thai", "ice cream & frozen yogurt", "salad", "seafood", "sushi bars", "vietnamese", "bubble tea", "diners", "fish & chips", "halal", "hawaiian", "juice bars & smoothies", "korean", "noodles", "soul food", "sports bars", "steakhouses", "bakeries", "buffets", "cafes", "coffee & tea", "event planning & services", "latin american", "pakistani", "specialty food", "wine bars"]
+    var arrayOfGenres = ["Afghan", "African", "American", "Arabian", "Argentine", "Armenian", "Asian Fusion", "Australian", "Austrian", "Bangladeshi", "Barbeque", "Basque", "Belgian", "Brasseries", "Brazillian", "Breakfast & Brunch", "British", "Buffets", "Burgers", "Burmese", "Cafes", "Cafeteria", "Cajun/Creole", "Cambodian", "Caribbean", "Catalan", "Cheesesteaks", "Chicken Shop", "Chicken Wings", "Chinese", "Comfort Food", "Creperies", "Cuban", "Czech", "Delis", "Diners", "Dinner Theater", "Ethiopian", "Fast Food", "Filipino", "Fish & Chips", "Fondue", "Food Court", "Food Stands", "French", "Game Meat", "Gastropubs", "German", "Gluten-Free", "Greek", "Guamanian", "Halai", "Hawaiian", "Himalayan/Neplaese", "Honduran", "Hong Kong Style Cafe", "Hot Dogs", "Hot Pot", "Hungarian", "Iberian", "Indian", "Indonesian", "Irish", "Italian", "Japanese", "Kebab", "Korean", "Kosher", "Laotian", "Latin American", "Live/Raw Food", "Malaysian", "Mediterranean", "Mexican", "Middle Eastern", "Modern European", "Mongolian", "Moroccan",  "New Mexican Cafe", "Nicaraguan", "Noodles", "Pakistani", "Pan Asian", "Persian/Iranian", "Peruvian", "Pizza", "Polish", "Pop-Up Restaurants", "Portuguese", "Poutineries", "Russian", "Salad", "Sandwiches", "Scandinavian", "Scottish", "Seafood", "Singaporean", "Slovakian", "Soul Food", "Soup", "Southern", "Spanish", "Sri Lankan", "Steakhouses", "Supper Clubs", "Sushi Bars", "Syrian", "Taiwanese", "Tapas Bars", "Tapas/Small Plates", "Tex-Mex", "Thai", "Turkish", "Ukranian", "Uzbek", "Vegan", "Vegetarian", "Vietnamese", "Waffles", "Wraps"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,8 @@ class GenrePickerViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let businessTileViewController = segue.destination as! BusinessTileViewController
-        businessTileViewController.changeGenre(genre: self.arrayOfGenres[pickerView.selectedRow(inComponent: 0)])
+        let settingsViewController = segue.destination as! SettingsViewController
+        settingsViewController.changeGenre(genre: self.arrayOfGenres[pickerView.selectedRow(inComponent: 0)])
     }
 
 }

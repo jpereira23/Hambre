@@ -180,7 +180,6 @@
 				642A7CD01EDCDD950085062A /* BusinessTileOperator.swift */,
 				642A7CD21EDCE0A00085062A /* BusinessTileViewController.swift */,
 				648B74C41EDE25F400B5D2CE /* YelpContainer.swift */,
-				64716E881EE88E2B00970C07 /* GenrePickerViewController.swift */,
 			);
 			name = TileWork;
 			sourceTree = "<group>";
@@ -252,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				64716E861EE8850300970C07 /* SettingsViewController.swift */,
+				64716E881EE88E2B00970C07 /* GenrePickerViewController.swift */,
 				646B59DB1EE8C15700CCB194 /* CoreDataLocation.swift */,
 			);
 			name = Settings;

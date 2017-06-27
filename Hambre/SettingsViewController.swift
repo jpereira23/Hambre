@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var enterCityTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
     private var coreDataLocation = CoreDataLocation()
+    private var genre = "all restuarants"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,17 @@ class SettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwindToSettings(_ sender: UIStoryboardSegue)
+    {
+        
+    }
+    
+    public func changeGenre(genre: String)
+    {
+        self.genre = genre
+        
     }
     
     
