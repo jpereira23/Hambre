@@ -15,14 +15,31 @@ import GoogleMaps
 import SystemConfiguration
 
 
+protocol AppDelegateDelegate
+{
+    func locationServicesUpdated(appDelegate: AppDelegate)
+}
+
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
     
+    private var locationManager = CLLocationManager()
     private var iCloudName : String! = "AnonymousUser"
+    private var theCoordinate : CLLocationCoordinate2D!
+    private var city = "San Francisco"
+    private var state = "California"
+    private var latitude: Double = 0000
+    private var longitude: Double = 00000
+    
+    var delegate: AppDelegateDelegate?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        self.locationManager.delegate = self
+        self.configueCoordinates()
         //make status bar white
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -50,6 +67,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    private func configueCoordinates()
+    {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled()
+        {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.startMonitoringSignificantLocationChanges()
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
+    public func getLongitude() -> Double
+    {
+        return self.longitude
+    }
+    
+    public func getLatitude() -> Double
+    {
+        return self.latitude
+    }
+    
     public func isInternetAvailable() -> Bool
     {
         var zeroAddress = sockaddr_in()
@@ -73,6 +113,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let needsConnection = flags.contains(.connectionRequired)
         
         return (isReachable && !needsConnection)
+    }
+    
+    public func getCityAndState() -> String
+    {
+        return self.city +  ", " + self.state
+    }
+    
+    public func getCity() -> String
+    {
+        return self.city
+    }
+    
+    public func getState() -> String
+    {
+        return self.state 
+    }
+    
+    
+    private func configureCityAndStateWithCoordinate()
+    {
+        let geoCoder = CLGeocoder()
+        
+        let location = CLLocation(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude)
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            var placeMark : CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            if let state = placeMark.addressDictionary?["State"] as? String {
+                self.state = state
+                print("State: \(state)")
+            }
+            
+            if let city = placeMark.addressDictionary?["City"] as? String {
+                self.city = city
+                print("City: \(city)")
+                
+            }
+            
+        })
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        self.theCoordinate = manager.location?.coordinate
+        self.configureCityAndStateWithCoordinate()
+        self.delegate?.locationServicesUpdated(appDelegate: self)
+        self.longitude = Double((manager.location?.coordinate.longitude)!)
+        self.latitude = Double((manager.location?.coordinate.latitude)!)
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
     
 

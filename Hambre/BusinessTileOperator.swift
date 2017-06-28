@@ -17,6 +17,8 @@ class BusinessTileOperator: NSObject {
     private var globalIndexForCurrentCompany = 0
     private var arrayOfNegocios = [YLPBusiness]()
     private var personalBusinessCoreData = PersonalBusinessCoreData()
+    private var city = "San Francisco"
+    private var state = "California"
     
     let appId = "M8_cEGzomTyCzwz3BDYY4Q"
     let appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
@@ -24,6 +26,9 @@ class BusinessTileOperator: NSObject {
     public init(anArrayOfBusinesses: [YLPBusiness], city: String, state: String)
     {
         super.init()
+        self.city = city
+        self.state = state
+        
         
         for business in anArrayOfBusinesses
         {
@@ -68,7 +73,7 @@ class BusinessTileOperator: NSObject {
         {
             if business.name != "" && business.imageURL != nil
             {
-                let personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: "Tracy", state: "CA", liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                let personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: self.city, state: self.state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
             
                 self.arrayOfBusinesses.append(personalBusiness)
                 self.arrayOfLeftBusinesses.append(personalBusiness)

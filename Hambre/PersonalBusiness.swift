@@ -98,39 +98,20 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         return theAddress
 
     }
-    
-    
-    private func configureCoordinates()
-    {
-        
-        let locationManager = CLLocationManager()
-        //locationManager.requestAlwaysAuthorization()
-        //locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled()
-        {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-        
-        //return locationManager.location!.coordinate
- 
-    }
  
     
     private func getADistance() -> Int
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        let coordinate0 = CLLocation(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude))
-        let _ = self.configureCoordinates()
-        /*
-        let coordinate1 = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let coordinate0 = CLLocation(latitude: CLLocationDegrees(appDelegate.getLatitude()), longitude: CLLocationDegrees(appDelegate.getLongitude()))
+        
+        let coordinate1 = CLLocation(latitude: self.latitude, longitude: self.longitude)
         
         self.distance = Int(Double(coordinate0.distance(from: coordinate1)) * 0.000621371)
         
         return self.distance
-        */
+        
         return 0 
     }
     

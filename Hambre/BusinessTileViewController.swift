@@ -32,7 +32,7 @@ class BusinessTileViewController: UIViewController {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-       
+        appDelegate.delegate = self
         print("BusinessTileViewController appeared")
         self.businessImage.isHidden = true
         self.businessNameLabel.isHidden = true
@@ -220,11 +220,23 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
             self.infoButton.isEnabled = true
-            self.aBusinessTileOperator = nil 
+            self.aBusinessTileOperator = nil
             self.aBusinessTileOperator = BusinessTileOperator(anArrayOfBusinesses: yelpContainer.getBusinesses(), city: yelpContainer.getCity(), state: yelpContainer.getState())
             self.refreshTileAttributes()
  
         
         
+    }
+}
+
+extension BusinessTileViewController : AppDelegateDelegate
+{
+    func locationServicesUpdated(appDelegate: AppDelegate) {
+         
+        self.yelpContainer = nil
+        
+        self.yelpContainer = YelpContainer()
+        self.yelpContainer?.delegate = self
+        self.yelpContainer?.yelpAPICallForBusinesses()
     }
 }
