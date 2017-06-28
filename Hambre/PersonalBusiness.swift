@@ -53,7 +53,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.state = state
         self.liked = liked
         self.likes = likes
-        self.distance = self.getADistance()
+        //self.distance = self.getADistance()
         self.phoneNumber = phoneNumber
         self.address = self.setAddress(address: address)
         self.isClosed = isClosed
@@ -69,7 +69,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.city = city
         self.state = state
         self.liked = liked
-        self.distance = self.getADistance()
+//self.distance = self.getADistance()
         self.likes = likes
         self.phoneNumber = phoneNumber
         self.address = theAddress

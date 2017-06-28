@@ -57,8 +57,15 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     override func didMoveToSuperview() {
         print("MOVED TO SUPERVIEW")
     }
+    
+    override func willMove(toWindow newWindow: UIWindow?) {
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     override func didMoveToWindow() {
         self.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: "cell")
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.reloadData()
@@ -71,6 +78,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     func xibSetUp()
     {
         self.view = loadViewFromNib() as! ReviewView
+        
         self.view.frame = self.bounds
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.view.setUrl(url: self.url)
@@ -130,6 +138,13 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        
+        let array = self.filterArray(anId: self.getUrl())
+        let comment = array[indexPath.row].getSummaryReview()
+        let countOfComment = comment.characters.count
+        print("count of this comment \(countOfComment)")
+    
+        
         return 95
     }
     

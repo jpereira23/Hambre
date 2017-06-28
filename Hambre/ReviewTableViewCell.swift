@@ -12,7 +12,7 @@ import UIKit
 class ReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameField: UILabel!
-    @IBOutlet weak var commentField: UITextView!
+    @IBOutlet weak var commentField: UILabel!
     @IBOutlet weak var reviewField: UILabel!
     
     private var name : String = "Generic name"
