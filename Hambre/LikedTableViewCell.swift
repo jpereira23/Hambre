@@ -28,7 +28,7 @@ class LikedTableViewCell: UITableViewCell {
         if self.theURL != nil
         {
          
-            //self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
+            self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
         }
         
         // Initialization code
@@ -43,8 +43,8 @@ class LikedTableViewCell: UITableViewCell {
     public func setURL(url: URL)
     {
         self.theURL = url
-        //self.theImageView.setImageWith(url)
-        //self.theImageView.contentMode = UIViewContentMode.scaleAspectFit
+        self.theImageView.setImageWith(url)
+        self.theImageView.contentMode = UIViewContentMode.scaleAspectFit
     }
     
     public func setTitle(title: String)

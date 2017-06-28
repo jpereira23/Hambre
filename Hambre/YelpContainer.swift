@@ -120,7 +120,7 @@ class YelpContainer: NSObject {
     public override init()
     {
         super.init()
-        //self.configureCityAndStateWithCoordinate()
+        self.configureCityAndStateWithCoordinate()
         self.location = self.createLocation()
         self.cloudKitYelpApi.delegate = self
         self.cloudKitYelpApi.loadKeysFromCloudKit()
