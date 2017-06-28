@@ -100,7 +100,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     }
     
     
-    private func configureCoordinates() -> CLLocationCoordinate2D
+    private func configureCoordinates()
     {
         
         let locationManager = CLLocationManager()
@@ -114,7 +114,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
-        return locationManager.location!.coordinate
+        //return locationManager.location!.coordinate
  
     }
  
@@ -123,13 +123,15 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     {
         
         let coordinate0 = CLLocation(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude))
-        let coordinate = self.configureCoordinates()
-        
+        let _ = self.configureCoordinates()
+        /*
         let coordinate1 = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
         self.distance = Int(Double(coordinate0.distance(from: coordinate1)) * 0.000621371)
         
         return self.distance
+        */
+        return 0 
     }
     
     public func getCity() -> String

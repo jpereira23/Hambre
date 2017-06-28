@@ -25,6 +25,7 @@ class LikedTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         
+        
         if self.theURL != nil
         {
          
@@ -43,7 +44,7 @@ class LikedTableViewCell: UITableViewCell {
     public func setURL(url: URL)
     {
         self.theURL = url
-        self.theImageView.setImageWith(url)
+        self.theImageView.setImageWith(self.theURL)
         self.theImageView.contentMode = UIViewContentMode.scaleAspectFit
     }
     

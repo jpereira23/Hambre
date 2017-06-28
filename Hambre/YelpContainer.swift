@@ -115,12 +115,14 @@ class YelpContainer: NSObject {
     private var cloudKitYelpApi = CloudKitYelpApi()
     private var genre = "restaurants"
     private var theCoordinate : CLLocationCoordinate2D!
+    private var locationManager = CLLocationManager()
     var delegate : YelpContainerDelegate!
     
     public override init()
     {
         super.init()
-        self.configureCityAndStateWithCoordinate()
+        self.configureCoordinates()
+        //self.configureCityAndStateWithCoordinate()
         self.location = self.createLocation()
         self.cloudKitYelpApi.delegate = self
         self.cloudKitYelpApi.loadKeysFromCloudKit()
@@ -205,30 +207,26 @@ class YelpContainer: NSObject {
     
     //Everything below needs to remain private 
     
-    private func configureCoordinates() -> CLLocationCoordinate2D
+    public func configureCoordinates()
     {
-        
-        let locationManager = CLLocationManager()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled()
         {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startMonitoringSignificantLocationChanges()
-            locationManager.startUpdatingLocation()
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.startMonitoringSignificantLocationChanges()
+            self.locationManager.startUpdatingLocation()
         }
-        
-        return locationManager.location!.coordinate
     }
     
-    private func configureCityAndStateWithCoordinate()
+    public func configureCityAndStateWithCoordinate()
     {
-        let locValue = self.configureCoordinates()
         
         let geoCoder = CLGeocoder()
-        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+    
+        let location = CLLocation(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude)
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             var placeMark : CLPlacemark!
             placeMark = placemarks?[0]
@@ -273,7 +271,7 @@ extension YelpContainer : CloudKitYelpApiDelegate
         print("So far so good")
         self.setAppId(appId: cloudKitYelpApi.getAppId())
         self.setAppSecret(appSecret: cloudKitYelpApi.getAppSecret())
-        self.yelpAPICallForBusinesses()
+        
     }
 }
 
@@ -281,9 +279,8 @@ extension YelpContainer :  CLLocationManagerDelegate
 {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         self.setCoordinate(coordinate:manager.location!.coordinate)
-        self.delegate.yelpLocationCallback(self)
-        
-        
+        self.configureCityAndStateWithCoordinate()
+        self.yelpAPICallForBusinesses()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
