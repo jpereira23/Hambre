@@ -128,6 +128,12 @@ class YelpContainer: NSObject {
         self.cloudKitYelpApi.loadKeysFromCloudKit()
     }
     
+    deinit{
+        self.delegate = nil
+        self.arrayOfBusinesses.removeAll()
+        
+    }
+    
     public func setAppId(appId: String)
     {
         self.appId = appId
@@ -146,32 +152,41 @@ class YelpContainer: NSObject {
     
     public func yelpAPICallForBusinesses()
     {
+        
         // API Call below
-        var query : YLPQuery
-        self.location = self.createLocation()
-        query = YLPQuery(location: self.location)
-        query.term = self.genre
-        query.limit = 50
-        YLPClient.authorize(withAppId: appId, secret: appSecret).flatMap { client in
-            client.search(withQuery: query)
-            }.onSuccess { search in
-                //Fix this, bad practice
-                if let _ = search.businesses.last {
-                    self.arrayOfBusinesses = search.businesses
-                    self.delegate.yelpAPICallback(self)
-                    /*
-                     for aBusiness in search.businesses
-                     {
-                     print("Name: \(aBusiness.name) \n Image: \(String(describing: aBusiness.imageURL))")
-                     
-                     }
-                     */
-                } else {
-                    print("No businesses found")
-                }
-                
-            }.onFailure { error in
-                print("Search errored: \(error)")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if appDelegate.isInternetAvailable()
+        {
+            var query : YLPQuery
+            self.location = self.createLocation()
+            query = YLPQuery(location: self.location)
+            query.term = self.genre
+            query.limit = 50
+            YLPClient.authorize(withAppId: appId, secret: appSecret).flatMap { client in
+                client.search(withQuery: query)
+                }.onSuccess { search in
+                    //Fix this, bad practice
+                    if let _ = search.businesses.last {
+                        self.arrayOfBusinesses = search.businesses
+                        self.delegate.yelpAPICallback(self)
+                        /*
+                         
+                         This is how you can get business names and other attributes about YLPBusiness
+                         
+                         for aBusiness in search.businesses
+                         {
+                         print("Name: \(aBusiness.name) \n Image: \(String(describing: aBusiness.imageURL))")
+                         
+                         }
+                         */
+                    } else {
+                        print("No businesses found")
+                    }
+                    
+                }.onFailure { error in
+                    print("Search errored: \(error)")
+            }
         }
     }
     
@@ -209,41 +224,49 @@ class YelpContainer: NSObject {
     
     public func configureCoordinates()
     {
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        if CLLocationManager.locationServicesEnabled()
+        if appDelegate.isInternetAvailable()
         {
-            self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            self.locationManager.startMonitoringSignificantLocationChanges()
-            self.locationManager.startUpdatingLocation()
+            self.locationManager.requestAlwaysAuthorization()
+            self.locationManager.requestWhenInUseAuthorization()
+        
+            if CLLocationManager.locationServicesEnabled()
+            {
+                self.locationManager.delegate = self
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                self.locationManager.startMonitoringSignificantLocationChanges()
+                self.locationManager.startUpdatingLocation()
+            }
         }
     }
     
     public func configureCityAndStateWithCoordinate()
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        let geoCoder = CLGeocoder()
-    
-        let location = CLLocation(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude)
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-            var placeMark : CLPlacemark!
-            placeMark = placemarks?[0]
-            
-            if let state = placeMark.addressDictionary?["State"] as? String {
-                self.state = state
-                print("State: \(state)")
-            }
-            
-            if let city = placeMark.addressDictionary?["City"] as? String {
-                self.city = city
-                print("City: \(city)")
+        if appDelegate.isInternetAvailable()
+        {
+            let geoCoder = CLGeocoder()
+        
+            let location = CLLocation(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude)
+            geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+                var placeMark : CLPlacemark!
+                placeMark = placemarks?[0]
                 
-            }
-            
-        })
-
+                if let state = placeMark.addressDictionary?["State"] as? String {
+                    self.state = state
+                    print("State: \(state)")
+                }
+                
+                if let city = placeMark.addressDictionary?["City"] as? String {
+                    self.city = city
+                    print("City: \(city)")
+                    
+                }
+                
+            })
+        }
     }
     
     private func createLocation() -> String

@@ -18,25 +18,31 @@ class BusinessTileViewController: UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var distanceField: UILabel!
     @IBOutlet var infoButton: UIButton!
+    @IBOutlet var refreshButton: UIButton!
     
+    @IBOutlet var locationImage: UIImageView!
     @IBOutlet var genreLabel: UILabel!
     var aBusinessTileOperator : BusinessTileOperator! = nil
-    let yelpContainer = YelpContainer()
+    var yelpContainer: YelpContainer? = YelpContainer()
     private var genre = "all restuarants"
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+       
         print("BusinessTileViewController appeared")
         self.businessImage.isHidden = true
         self.businessNameLabel.isHidden = true
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
         self.infoButton.isEnabled = false
+        self.refreshButton.isHidden = true
         self.activityIndicator.startAnimating()
         //self.genreLabel.text = "Genre: " + self.genre
-        yelpContainer.delegate = self
+        yelpContainer?.delegate = self
         
         // Do any additional setup after loading the view.
         
@@ -52,6 +58,22 @@ class BusinessTileViewController: UIViewController {
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .normal)
         self.infoButton.setImage(UIImage(named: "Infox.png"), for: .selected)
         self.infoButton.setImage(UIImage(named: "Infox.png"), for: .highlighted)
+        if !appDelegate.isInternetAvailable()
+        {
+            self.infoButton.isHidden = true
+            self.distanceField.isHidden = true
+            self.activityIndicator.isHidden = true
+            self.leftButton.isHidden = true
+            self.rightButton.isHidden = true
+            self.distanceField.isHidden = true
+            self.infoButton.isHidden = true
+            self.businessNameLabel.isHidden = true
+            self.businessImage.isHidden = true
+            self.locationImage.isHidden = true
+            self.tabBarController?.tabBar.isHidden = true
+            self.refreshButton.isHidden = false
+        }
+        
         
     }
 
@@ -60,6 +82,31 @@ class BusinessTileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func refreshButton(_ sender: Any)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if appDelegate.isInternetAvailable()
+        {
+            self.yelpContainer = nil
+            
+            self.yelpContainer = YelpContainer()
+            self.yelpContainer?.delegate = self
+            
+            self.infoButton.isHidden = false
+            self.distanceField.isHidden = false
+            self.activityIndicator.isHidden = false
+            self.leftButton.isHidden = false
+            self.rightButton.isHidden = false
+            self.distanceField.isHidden = false
+            self.infoButton.isHidden = false
+            self.businessNameLabel.isHidden = false
+            self.businessImage.isHidden = false
+            self.locationImage.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+            self.refreshButton.isHidden = true
+        }
+    }
    
     
     public func className() -> String
@@ -69,7 +116,7 @@ class BusinessTileViewController: UIViewController {
     
     public func cityRequiresRefresh()
     {
-        self.yelpContainer.yelpAPICallForBusinesses()
+        self.yelpContainer?.yelpAPICallForBusinesses()
     }
     
     @IBAction func unwindToTileView(_ sender: UIStoryboardSegue)
@@ -83,7 +130,7 @@ class BusinessTileViewController: UIViewController {
             self.infoButton.isEnabled = false
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
-            self.yelpContainer.changeGenre(genre: self.genre)
+            self.yelpContainer?.changeGenre(genre: self.genre)
             
         }
     }
@@ -173,6 +220,7 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
             self.infoButton.isEnabled = true
+            self.aBusinessTileOperator = nil 
             self.aBusinessTileOperator = BusinessTileOperator(anArrayOfBusinesses: yelpContainer.getBusinesses(), city: yelpContainer.getCity(), state: yelpContainer.getState())
             self.refreshTileAttributes()
  

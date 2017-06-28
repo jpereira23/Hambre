@@ -12,6 +12,7 @@ import CoreData
 import CloudKit
 import GooglePlaces
 import GoogleMaps
+import SystemConfiguration
 
 
 @UIApplicationMain
@@ -28,15 +29,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         GMSServices.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         
+        
         CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
             CKContainer.default().fetchUserRecordID { (record, error) in
                 CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
-                    
+                    if error != nil  {
+                        self.iCloudName = "User not available"
+                        
+                    } else {
                         self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
+                    }
+                    
                 })
+                
             }
+            
         }
+        
+        print(self.iCloudName)
         return true
+    }
+    
+    public func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return false
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return false
+        }
+        
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        
+        return (isReachable && !needsConnection)
     }
     
 

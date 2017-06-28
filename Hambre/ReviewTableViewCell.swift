@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SystemConfiguration
 
 class ReviewTableViewCell: UITableViewCell {
 
