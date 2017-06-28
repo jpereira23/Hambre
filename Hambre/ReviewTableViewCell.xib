@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,37 +18,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="376" height="130"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oea-US-x3e">
-                        <rect key="frame" x="0.0" y="16" width="101" height="15"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-Tb-1VS">
+                        <rect key="frame" x="10" y="42" width="356" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oea-US-x3e">
+                        <rect key="frame" x="10" y="16" width="101" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                         <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="0.0"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-Tb-1VS">
-                        <rect key="frame" x="0.0" y="41" width="376" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="376" id="NVQ-4q-Nsj"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EP-uB-O3G">
-                        <rect key="frame" x="186" y="16" width="120" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EP-uB-O3G">
+                        <rect key="frame" x="196" y="16" width="120" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="zAo-Tb-1VS" firstAttribute="leading" secondItem="KtO-Xm-woF" secondAttribute="leading" id="AbS-jH-P3g"/>
-                    <constraint firstItem="zAo-Tb-1VS" firstAttribute="top" secondItem="0EP-uB-O3G" secondAttribute="bottom" constant="10" id="MZg-uK-4BC"/>
-                    <constraint firstItem="zAo-Tb-1VS" firstAttribute="top" secondItem="Oea-US-x3e" secondAttribute="bottom" constant="10" id="QXm-dB-8my"/>
-                    <constraint firstItem="zAo-Tb-1VS" firstAttribute="leading" secondItem="Oea-US-x3e" secondAttribute="leading" id="dDj-HH-xFL"/>
-                    <constraint firstItem="0EP-uB-O3G" firstAttribute="leading" secondItem="Oea-US-x3e" secondAttribute="trailing" constant="85" id="edf-JY-H4o"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="zAo-Tb-1VS" secondAttribute="bottom" constant="63" id="fgG-ut-2px"/>
-                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentField" destination="zAo-Tb-1VS" id="n0j-Pq-8gb"/>
