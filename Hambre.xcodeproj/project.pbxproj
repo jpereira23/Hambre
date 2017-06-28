@@ -36,8 +36,7 @@
 		648B74CE1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */; };
 		64932DD71EEF75A1001727AE /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64932DD61EEF75A1001727AE /* ReviewView.xib */; };
 		64932DD91EEF75B9001727AE /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64932DD81EEF75B9001727AE /* ReviewView.swift */; };
-		64AB6EDE1EF242BB00D654FB /* WebsiteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AB6EDD1EF242BB00D654FB /* WebsiteView.xib */; };
-		64AB6EE01EF2434C00D654FB /* WebsiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB6EDF1EF2434C00D654FB /* WebsiteView.swift */; };
+		64AA366B1F032D19002DB2AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AA366A1F032D19002DB2AC /* WebViewController.swift */; };
 		64CEE48F1EE0A50A0065082F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CEE48E1EE0A50A0065082F /* CloudKit.framework */; };
 		64CEE4911EE0A7660065082F /* CloudKitDatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */; };
 		64CEE4931EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4921EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift */; };
@@ -107,8 +106,7 @@
 		64932DD61EEF75A1001727AE /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
 		64932DD81EEF75B9001727AE /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		64932DDA1EEF8A35001727AE /* Negocios3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios3.xcdatamodel; sourceTree = "<group>"; };
-		64AB6EDD1EF242BB00D654FB /* WebsiteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteView.xib; sourceTree = "<group>"; };
-		64AB6EDF1EF2434C00D654FB /* WebsiteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteView.swift; sourceTree = "<group>"; };
+		64AA366A1F032D19002DB2AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		64CEE48D1EE0A4F40065082F /* Hambre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hambre.entitlements; sourceTree = "<group>"; };
 		64CEE48E1EE0A50A0065082F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseHandler.swift; sourceTree = "<group>"; };
@@ -272,8 +270,6 @@
 				64D8E8361EEA38F400D5DB31 /* DetailView.swift */,
 				64932DD81EEF75B9001727AE /* ReviewView.swift */,
 				642079C21EF0D78900F78230 /* MapView.swift */,
-				64AB6EDF1EF2434C00D654FB /* WebsiteView.swift */,
-				64AB6EDD1EF242BB00D654FB /* WebsiteView.xib */,
 				64D8E8381EEA39F000D5DB31 /* View.xib */,
 				642079C01EF0D77D00F78230 /* MapView.xib */,
 				64932DD61EEF75A1001727AE /* ReviewView.xib */,
@@ -294,6 +290,7 @@
 			children = (
 				64D8E8351EEA38CB00D5DB31 /* DetailViews */,
 				64F8566B1EDF61D3004E352F /* BusinessViewController.swift */,
+				64AA366A1F032D19002DB2AC /* WebViewController.swift */,
 				644BCA071EE75A94004324E2 /* ReviewTableViewCell.swift */,
 				6408B5841EF862F900600538 /* ReviewTableViewCell.xib */,
 				645A31EE1EE2114D001A958A /* AddReviewViewController.swift */,
@@ -443,7 +440,6 @@
 				6450959A1EDB842400427A83 /* LaunchScreen.storyboard in Resources */,
 				642079C11EF0D77D00F78230 /* MapView.xib in Resources */,
 				645095971EDB842400427A83 /* Assets.xcassets in Resources */,
-				64AB6EDE1EF242BB00D654FB /* WebsiteView.xib in Resources */,
 				645095951EDB842400427A83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				642A7CCA1EDCD9430085062A /* Negocio.swift in Sources */,
+				64AA366B1F032D19002DB2AC /* WebViewController.swift in Sources */,
 				642A7CCC1EDCDA520085062A /* PersonalBusiness.swift in Sources */,
 				6451BB611EDB98B6002E33DA /* YelpClient.swift in Sources */,
 				645A31EF1EE2114D001A958A /* AddReviewViewController.swift in Sources */,
@@ -586,7 +583,6 @@
 				644BCA081EE75A95004324E2 /* ReviewTableViewCell.swift in Sources */,
 				648B74C51EDE25F400B5D2CE /* YelpContainer.swift in Sources */,
 				645911661EE65363006517CB /* LikedTableViewCell.swift in Sources */,
-				64AB6EE01EF2434C00D654FB /* WebsiteView.swift in Sources */,
 				64716E871EE8850300970C07 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

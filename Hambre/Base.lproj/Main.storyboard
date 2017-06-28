@@ -250,7 +250,6 @@
                                     <segment title="Details"/>
                                     <segment title="Reviews"/>
                                     <segment title="Map"/>
-                                    <segment title="Website"/>
                                 </segments>
                                 <color key="tintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -286,6 +285,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDK-1I-Vgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2722" y="607"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="OC2-AF-mMl">
+            <objects>
+                <viewController storyboardIdentifier="addWebsiteViewController" id="lgS-wh-4Eh" customClass="WebViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yLJ-wJ-A8u"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xjr-V7-JOW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lIK-d9-meF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3PV-Cz-DxJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="3PV-Cz-DxJ" id="ecg-Yh-tRj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0dz-Qt-CQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3543.1999999999998" y="1303.8980509745129"/>
         </scene>
         <!--Add Review View Controller-->
         <scene sceneID="vV2-Et-4rF">

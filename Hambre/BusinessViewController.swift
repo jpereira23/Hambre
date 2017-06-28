@@ -43,6 +43,7 @@ class BusinessViewController: UIViewController {
         detailView.setIsClosed(isClosed: self.isClosed)
         detailView.setWebsiteUrl(url: self.websiteUrl)
         detailView.xibSetUp()
+        detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
         self.currentView = detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
@@ -126,6 +127,7 @@ class BusinessViewController: UIViewController {
             detailView.setIsClosed(isClosed: self.isClosed)
             detailView.setWebsiteUrl(url: self.websiteUrl)
             detailView.xibSetUp()
+            detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
             self.currentView = detailView.getView()
             self.segmentView.addSubview(self.currentView)
             
@@ -152,15 +154,7 @@ class BusinessViewController: UIViewController {
             self.currentView = mapView.getView()
             self.segmentView.addSubview(currentView)
             break
-            
-        case 3:
-            let websiteView =  WebsiteView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
-            websiteView.setWebsiteUrl(website: self.websiteUrl)
-            websiteView.xibSetUp()
-            
-            self.currentView = websiteView.getView()
-            self.segmentView.addSubview(currentView)
-            break
+
         default:
             
             break
@@ -170,6 +164,15 @@ class BusinessViewController: UIViewController {
     func addReviewButtonTriggered(sender: UIButton)
     {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func getWebsiteButtonTriggered(sender: UIButton)
+    {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addWebsiteViewController") as! WebViewController
+        
+        vc.setWebUrl(url: self.websiteUrl)
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
