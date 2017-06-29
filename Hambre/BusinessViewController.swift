@@ -51,11 +51,10 @@ class BusinessViewController: UIViewController {
         self.detailView.setWebsiteUrl(url: self.websiteUrl)
         self.detailView.xibSetUp()
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+         self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
-        
-        let initialLocation = CLLocation(latitude: Double(self.latitude), longitude: Double(self.longitude))
     }
     
     
@@ -153,6 +152,7 @@ class BusinessViewController: UIViewController {
             self.detailView.setWebsiteUrl(url: self.websiteUrl)
             self.detailView.xibSetUp()
             self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+            self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
             self.currentView = self.detailView.getView()
             self.segmentView.addSubview(self.currentView)
             
@@ -215,6 +215,15 @@ class BusinessViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    
+    func phoneButtonHasBeenTriggered(sender: UIButton)
+    {
+        self.phoneNumber = self.phoneNumber.replacingOccurrences(of: "+", with: "")
+        print(self.phoneNumber)
+        guard let number = URL(string: "tel://" + self.phoneNumber) else { return }
+        UIApplication.shared.open(number)
     }
     
     func getWebsiteButtonTriggered(sender: UIButton)
