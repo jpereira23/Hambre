@@ -31,7 +31,13 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     public func setArrayOfReviews(reviews: [Review])
     {
+        
+        self.arrayOfReviews.removeAll()
         self.arrayOfReviews = reviews
+        if self.tableView != nil
+        {
+            self.tableView.reloadData()
+        }
     }
     
     public func setUrl(url: String)
@@ -72,6 +78,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     
         let numOfReviews = self.filterArray(anId: self.url)
         self.howManyReviews.text! = String(numOfReviews.count) + " Reviews"
+        
         
     }
     

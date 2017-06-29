@@ -28,6 +28,10 @@ class BusinessViewController: UIViewController {
     private var address : String!
     private var websiteUrl : String!
     internal var aTitle : String!
+    private var reviewView : ReviewView!
+    private var detailView : DetailView!
+    private var mapView : MapView!
+    
     
     private var currentView : UIView!
     
@@ -38,14 +42,14 @@ class BusinessViewController: UIViewController {
         
         //self.cloudKitDatabaseHandler.delegate = self
         
-        let detailView = DetailView(frame: CGRect(x: 0, y: 0, width: 352, height: 248))
-        detailView.setAddressField(address: self.address)
-        detailView.setPhoneField(phone: self.phoneNumber)
-        detailView.setIsClosed(isClosed: self.isClosed)
-        detailView.setWebsiteUrl(url: self.websiteUrl)
-        detailView.xibSetUp()
-        detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-        self.currentView = detailView.getView()
+        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: 352, height: 248))
+        self.detailView.setAddressField(address: self.address)
+        self.detailView.setPhoneField(phone: self.phoneNumber)
+        self.detailView.setIsClosed(isClosed: self.isClosed)
+        self.detailView.setWebsiteUrl(url: self.websiteUrl)
+        self.detailView.xibSetUp()
+        self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
         
@@ -118,7 +122,18 @@ class BusinessViewController: UIViewController {
     @IBAction func unwindToBusinessView(_ sender: UIStoryboardSegue)
     {
         sleep(2)
+        self.segmentControl.selectedSegmentIndex = 0
+        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+        self.detailView.setAddressField(address: self.address)
+        self.detailView.setPhoneField(phone: self.phoneNumber)
+        self.detailView.setIsClosed(isClosed: self.isClosed)
+        self.detailView.setWebsiteUrl(url: self.websiteUrl)
+        self.detailView.xibSetUp()
+        self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.currentView = self.detailView.getView()
+        self.segmentView.addSubview(self.currentView)
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
+        self.reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
     }
     
     @IBAction func indexChanged(_ sender: Any)
@@ -127,37 +142,37 @@ class BusinessViewController: UIViewController {
         switch self.segmentControl.selectedSegmentIndex
         {
         case 0:
-            let detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
-            detailView.setAddressField(address: self.address)
-            detailView.setPhoneField(phone: self.phoneNumber)
-            detailView.setIsClosed(isClosed: self.isClosed)
-            detailView.setWebsiteUrl(url: self.websiteUrl)
-            detailView.xibSetUp()
-            detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-            self.currentView = detailView.getView()
+            self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+            self.detailView.setAddressField(address: self.address)
+            self.detailView.setPhoneField(phone: self.phoneNumber)
+            self.detailView.setIsClosed(isClosed: self.isClosed)
+            self.detailView.setWebsiteUrl(url: self.websiteUrl)
+            self.detailView.xibSetUp()
+            self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+            self.currentView = self.detailView.getView()
             self.segmentView.addSubview(self.currentView)
             
             break
         case 1:
-            let reviewView = ReviewView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
-            reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
-            reviewView.setUrl(url: self.imageUrl.absoluteString)
-            reviewView.xibSetUp()
-            reviewView.addReviewButton.addTarget(self, action: #selector(addReviewButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-            self.currentView = reviewView.getView()
+            self.reviewView = ReviewView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+            self.reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
+            self.reviewView.setUrl(url: self.imageUrl.absoluteString)
+            self.reviewView.xibSetUp()
+            self.reviewView.addReviewButton.addTarget(self, action: #selector(addReviewButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+            self.currentView = self.reviewView.getView()
             self.segmentView.addSubview(currentView)
             
             
             break
             
         case 2:
-            let mapView = MapView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
-            mapView.setLatitude(latitude: self.latitude)
-            mapView.setLongitude(longitude: self.longitude)
-            mapView.setRestaurantTitle(restaurant: self.aTitle)
-            mapView.xibSetUp()
-            mapView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-            self.currentView = mapView.getView()
+            self.mapView = MapView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+            self.mapView.setLatitude(latitude: self.latitude)
+            self.mapView.setLongitude(longitude: self.longitude)
+            self.mapView.setRestaurantTitle(restaurant: self.aTitle)
+            self.mapView.xibSetUp()
+            self.mapView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+            self.currentView = self.mapView.getView()
             self.segmentView.addSubview(currentView)
             break
 
@@ -208,77 +223,3 @@ class BusinessViewController: UIViewController {
     */
 
 }
-
-/*
-extension BusinessViewController : UITableViewDelegate
-{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let array = self.filterArray(anId: self.getURL())
-        return array.count
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 95
-    }
-}
-
-extension BusinessViewController : UITableViewDataSource
-{
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ReviewTableViewCell
-        let array = self.filterArray(anId: self.getURL())
-        
-        cell.nameField.text = array[indexPath.row].getReviewer()
-        cell.commentField.text = array[indexPath.row].getSummaryReview()
-        cell.reviewField.text = String(array[indexPath.row].getReview())
-
-        return cell
-    }
-}
-
-extension BusinessViewController : CloudKitDatabaseHandlerDelegate
-{
-    func errorUpdating(_ error: NSError) {
-        print("Fuck off error")
-    }
-
-    func modelUpdated() {
-        print("Working just not right format")
-        
-        let array = self.filterArray(anId: self.getURL())
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
-        if array.count == 0
-        {
-            self.noDataWarning.isHidden = false
-        }
-        else
-        {
-            self.tableView.isHidden = false
-            self.tableView.reloadData()
-        }
-    }
-}
-
-extension BusinessViewController : MKMapViewDelegate
-{
-    /*
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let annotation : MKAnnotation!
-        annotation.title = "Jeff"
-        annotation.subtitle = "Pereira"
-        annotation.coordinate.longitude = self.longitude
-        annotation.coordinate.latitude = self.latitude
-        
-        var view: MKPinAnnotationView
-        let identifier = "pin"
-        if let dequeueView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
-        {
-            dequeueView.annotation = MKAnnotation
-        }
- 
-    }
-     */
-}
- */

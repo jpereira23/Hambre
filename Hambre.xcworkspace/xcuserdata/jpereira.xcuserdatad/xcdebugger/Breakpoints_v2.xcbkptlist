@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "520392833.815735"
+            filePath = "Hambre/ReviewView.swift"
+            timestampString = "520395903.638804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "yelpAPICallback(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "520392833.815735"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "yelpAPICallback(_:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "setArrayOfReviews(reviews:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
