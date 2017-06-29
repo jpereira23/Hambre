@@ -29,6 +29,7 @@ class LikedBusinessesViewController: UIViewController {
         self.activityIndicator.startAnimating()
         
         
+        
         //tableView.reloadData()
         //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController
         //businessTileViewController.delegate = self

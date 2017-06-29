@@ -21,19 +21,20 @@ class LikedTableViewCell: UITableViewCell {
     private var theAmountOfReviews = "0 reviews"
     
     private var theURL : URL!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
         
         if self.theURL != nil
         {
          
-            self.theImageView.contentMode = UIViewContentMode.scaleAspectFill
+            self.theImageView.contentMode = UIViewContentMode.scaleToFill
         }
         
         // Initialization code
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -45,7 +46,7 @@ class LikedTableViewCell: UITableViewCell {
     {
         self.theURL = url
         self.theImageView.setImageWith(self.theURL)
-        self.theImageView.contentMode = UIViewContentMode.scaleAspectFit
+        self.theImageView.contentMode = UIViewContentMode.scaleToFill
     }
     
     public func setTitle(title: String)

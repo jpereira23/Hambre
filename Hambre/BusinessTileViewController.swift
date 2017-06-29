@@ -58,6 +58,7 @@ class BusinessTileViewController: UIViewController {
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .normal)
         self.infoButton.setImage(UIImage(named: "Infox.png"), for: .selected)
         self.infoButton.setImage(UIImage(named: "Infox.png"), for: .highlighted)
+        
         if !appDelegate.isInternetAvailable()
         {
             self.infoButton.isHidden = true
@@ -199,7 +200,7 @@ class BusinessTileViewController: UIViewController {
         
         self.businessNameLabel.text = aBusiness.getBusinessName()
         self.businessImage.setImageWith(aBusiness.getBusinessImage())
-        self.businessImage.contentMode = UIViewContentMode.scaleAspectFit
+        self.businessImage.contentMode = UIViewContentMode.scaleToFill
     }
 
 }
