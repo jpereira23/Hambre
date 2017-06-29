@@ -86,6 +86,7 @@ class LikedBusinessesViewController: UIViewController {
         businessViewController.setAddress(address: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getAddress())
         businessViewController.setIsClosed(isClosed: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getIsClosed())
         businessViewController.setWebsiteUrl(url: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getWebsiteUrl())
+        businessViewController.setTitle(title: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessName())
         
         //businessViewController.imageView.setImageWith(self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
         

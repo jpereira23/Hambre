@@ -27,6 +27,7 @@ class BusinessViewController: UIViewController {
     private var isClosed : Bool!
     private var address : String!
     private var websiteUrl : String!
+    internal var aTitle : String!
     
     private var currentView : UIView!
     
@@ -99,6 +100,11 @@ class BusinessViewController: UIViewController {
         self.websiteUrl = url
     }
     
+    public func setTitle(title: String)
+    {
+        self.aTitle = title
+    }
+    
     public func setIsClosed(isClosed: Bool)
     {
         self.isClosed = isClosed
@@ -148,9 +154,9 @@ class BusinessViewController: UIViewController {
             let mapView = MapView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
             mapView.setLatitude(latitude: self.latitude)
             mapView.setLongitude(longitude: self.longitude)
+            mapView.setRestaurantTitle(restaurant: self.aTitle)
             mapView.xibSetUp()
-            
-            
+            mapView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
             self.currentView = mapView.getView()
             self.segmentView.addSubview(currentView)
             break
@@ -175,6 +181,18 @@ class BusinessViewController: UIViewController {
         vc.setWebUrl(url: self.websiteUrl)
         
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func directionsButtonTriggered(sender: UIButton)
+    {
+        let regionDistance: CLLocationDistance = 1000
+        let coordinates = CLLocationCoordinate2DMake(self.latitude, self.longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan:regionSpan.span)]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = self.aTitle
+        mapItem.openInMaps(launchOptions: options)
     }
     
     

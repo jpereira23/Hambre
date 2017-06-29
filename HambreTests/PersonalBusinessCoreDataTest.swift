@@ -26,8 +26,8 @@ class PersonalBusinessCoreDataTest: XCTestCase {
     func testSaveBusiness()
     {
         personalBusinessCoreData.resetCoreData()
-        let personalBusiness = PersonalBusiness(businessName: "Jeffs", businessImageUrl: URL(string:"https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: "Tracy", state: "CA", liked: true, likes: 1)
-        self.personalBusinessCoreData.saveBusiness(personalBusiness: personalBusiness)
+        //let personalBusiness = PersonalBusiness(businessName: "Jeffs", businessImageUrl: URL(string:"https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: "Tracy", state: "CA", liked: true, likes: 1)
+        //self.personalBusinessCoreData.saveBusiness(personalBusiness: personalBusiness)
     }
     
     func testIfLoadingBusinesses()
