@@ -188,41 +188,30 @@ class BusinessViewController: UIViewController {
     
     func addReviewButtonTriggered(sender: UIButton)
     {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.getICloudAccess()
+        let alert = UIAlertController(title: "iCloud Disabled", message: "To Enable iCloud go to Settings > iCloud > Hambre and set the switch to on", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            // perhaps use action.title here
+        })
         CKContainer.default().accountStatus {
             (status: CKAccountStatus, error: Error?) in
             DispatchQueue.main.async(execute: {
-                var title: String!
-                var message: String!
                 if error != nil{
-                    title = "Error"
-                    message = "An error occurred = \(error)"
+                    print(error)
                 } else {
-                    //title = "No errors occurred getting info"
                     switch status{
                     case .available:
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
                         
                         self.navigationController?.pushViewController(vc, animated: true)
-                        message = "The user is logged in to iCloud"
-                        title = "GOOD"
-                        print("determined status was available")
-                        //self.shouldPullFromICloud()
-                    //self.displayAlertWithTitle(title, message: message)
                     case .couldNotDetermine:
-                        self.reviewView.addReviewButton.isEnabled = false
-                        //self.noUserIsSignedIn()
+                        self.present(alert, animated: true)
                     case .noAccount:
-                        self.reviewView.addReviewButton.isEnabled = false
-                        message = "User is not logged into iCloud"
-                        title = "BAD"
-                        //self.noUserIsSignedIn()
+                        self.present(alert, animated: true)
                     case .restricted:
-                        self.reviewView.addReviewButton.isEnabled = false
-                        message = "Could not access user's iCloud account information"
-                        title = "BAD"
-                        //self.noUserIsSignedIn()
+                        self.present(alert, animated: true)
                     }
-                    print(title, message)
                 }
             })
         }
