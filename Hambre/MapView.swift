@@ -49,8 +49,8 @@ class MapView: UIView {
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         print("latitude: \(self.latitude), longitude: \(self.longitude)")
         
-        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.0)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 325, height: 230), camera: camera)
+        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 17)
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 325, height: 195), camera: camera)
         self.view.addSubview(mapView)
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude:self.longitude)
