@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import YelpAPI
+import CloudKit
+
 
 class BusinessViewController: UIViewController {
 
@@ -55,6 +57,8 @@ class BusinessViewController: UIViewController {
         
         let initialLocation = CLLocation(latitude: Double(self.latitude), longitude: Double(self.longitude))
     }
+    
+    
     
     let regionRadius: CLLocationDistance = 1000
    /*
@@ -184,9 +188,44 @@ class BusinessViewController: UIViewController {
     
     func addReviewButtonTriggered(sender: UIButton)
     {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+        CKContainer.default().accountStatus {
+            (status: CKAccountStatus, error: Error?) in
+            DispatchQueue.main.async(execute: {
+                var title: String!
+                var message: String!
+                if error != nil{
+                    title = "Error"
+                    message = "An error occurred = \(error)"
+                } else {
+                    //title = "No errors occurred getting info"
+                    switch status{
+                    case .available:
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        message = "The user is logged in to iCloud"
+                        title = "GOOD"
+                        print("determined status was available")
+                        //self.shouldPullFromICloud()
+                    //self.displayAlertWithTitle(title, message: message)
+                    case .couldNotDetermine:
+                        self.reviewView.addReviewButton.isEnabled = false
+                        //self.noUserIsSignedIn()
+                    case .noAccount:
+                        self.reviewView.addReviewButton.isEnabled = false
+                        message = "User is not logged into iCloud"
+                        title = "BAD"
+                        //self.noUserIsSignedIn()
+                    case .restricted:
+                        self.reviewView.addReviewButton.isEnabled = false
+                        message = "Could not access user's iCloud account information"
+                        title = "BAD"
+                        //self.noUserIsSignedIn()
+                    }
+                    print(title, message)
+                }
+            })
+        }
     }
     
     func getWebsiteButtonTriggered(sender: UIButton)
