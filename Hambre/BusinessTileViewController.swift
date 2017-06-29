@@ -177,6 +177,7 @@ class BusinessTileViewController: UIViewController {
             businessViewController.setWebsiteUrl(url: self.aBusinessTileOperator.presentCurrentBusiness().getWebsiteUrl())
             businessViewController.setIsClosed(isClosed: self.aBusinessTileOperator.presentCurrentBusiness().getIsClosed())
             businessViewController.setAddress(address: self.aBusinessTileOperator.presentCurrentBusiness().getAddress())
+            businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
             
         }
     }

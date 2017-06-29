@@ -12,11 +12,13 @@ import GoogleMaps
 class MapView: UIView {
 
     
+    @IBOutlet var directionsButton: UIButton!
     private let nibName = "MapView"
     private var view: UIView!
     
     private var latitude : Double! = 56.36
     private var longitude : Double! = -32.48
+    private var restaurant = "Restaurant"
     
     
     required init(coder aDecoder: NSCoder) {
@@ -27,6 +29,11 @@ class MapView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+    }
+    
+    public func setRestaurantTitle(restaurant: String)
+    {
+        self.restaurant = restaurant
     }
     
     public func getView() -> UIView
@@ -40,14 +47,15 @@ class MapView: UIView {
         self.view = loadViewFromNib()
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        let camera = GMSCameraPosition.camera(withLatitude: round((100*self.latitude)/100), longitude: ((100*self.longitude)/100), zoom: 15.0)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 352, height: 248), camera: camera)
-        self.view = mapView
+        print("latitude: \(self.latitude), longitude: \(self.longitude)")
         
+        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 18.0)
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 332, height: 150), camera: camera)
+        self.view.addSubview(mapView)
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: round((100*self.latitude)/100), longitude:((100*self.longitude)/100))
-        marker.title = "Africa"
-        marker.snippet = "Somewhere in africa"
+        marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude:self.longitude)
+        marker.title = self.restaurant
+        marker.snippet = "Selected Restaurant"
         marker.map = mapView
         
         addSubview(view)

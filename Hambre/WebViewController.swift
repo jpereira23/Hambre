@@ -17,6 +17,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.webView.loadRequest(URLRequest(url: URL(string: self.website)! as URL) as URLRequest)
+        self.tabBarController?.tabBar.isHidden = true 
         // Do any additional setup after loading the view.
     }
 

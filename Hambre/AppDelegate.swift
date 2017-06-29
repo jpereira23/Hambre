@@ -46,25 +46,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         GMSPlacesClient.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         GMSServices.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         
+        self.getICloudAccess()
         
-        CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
-            CKContainer.default().fetchUserRecordID { (record, error) in
-                CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
-                    if error != nil  {
-                        self.iCloudName = "User not available"
-                        
-                    } else {
-                        self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
+        return true
+    }
+    
+    public func getICloudAccess()
+    {
+        CKContainer.default().accountStatus {
+            (status: CKAccountStatus, error: Error?) in
+            DispatchQueue.main.async(execute: {
+                if error != nil{
+                    print(error)
+                } else {
+                    //title = "No errors occurred getting info"
+                    switch status{
+                    case .available:
+                        CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
+                            CKContainer.default().fetchUserRecordID { (record, error) in
+                                CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
+                                    if error != nil  {
+                                        self.iCloudName = "User not available"
+                                        
+                                    } else {
+                                        self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
+                                    }
+                                    
+                                })
+                                
+                            }
+                            
+                        }
+                    default:
+                        print("not working")
                     }
                     
-                })
-                
-            }
-            
+                }
+            })
         }
-        
         print(self.iCloudName)
-        return true
     }
     
     private func configueCoordinates()
