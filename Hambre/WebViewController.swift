@@ -31,6 +31,10 @@ class WebViewController: UIViewController {
         self.website = url
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
 
     /*
     // MARK: - Navigation
