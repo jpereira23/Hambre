@@ -21,10 +21,10 @@ class LikedTableViewCell: UITableViewCell {
     private var theAmountOfReviews = "0 reviews"
     
     private var theURL : URL!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
         
         if self.theURL != nil
         {
@@ -34,6 +34,7 @@ class LikedTableViewCell: UITableViewCell {
         
         // Initialization code
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
