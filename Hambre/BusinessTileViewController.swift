@@ -25,6 +25,7 @@ class BusinessTileViewController: UIViewController {
     var aBusinessTileOperator : BusinessTileOperator! = nil
     var yelpContainer: YelpContainer? = YelpContainer()
     private var genre = "all restuarants"
+    private var cityState = "San Francisco, California"
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     
@@ -75,6 +76,16 @@ class BusinessTileViewController: UIViewController {
         }
         
         
+    }
+    
+    public func setGenre(genre: String)
+    {
+        self.genre = genre 
+    }
+    
+    public func setCityState(cityState: String)
+    {
+        self.cityState = cityState
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,10 +144,29 @@ class BusinessTileViewController: UIViewController {
             self.yelpContainer?.changeGenre(genre: self.genre)
             
         }
+        else if sender.identifier == "genreToTile"
+        {
+            self.businessImage.isHidden = true
+            self.businessNameLabel.isHidden = true
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            self.yelpContainer?.changeGenre(genre: self.genre)
+        }
+        else if sender.identifier == "settingsToTile"
+        {
+            self.businessImage.isHidden = true
+            self.businessNameLabel.isHidden = true
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            self.yelpContainer?.setCityState(cityState: self.cityState)
+        }
     }
-    
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -146,26 +176,6 @@ class BusinessTileViewController: UIViewController {
         
         if segue.identifier == "fromTileView"
         {
-            /*
-            let navigationViewController = segue.destination as! UINavigationController
-            
-            let navBar = navigationViewController.navigationBar
-            
-            /*
-             let backItem = UIBarButtonItem()
-             backItem.title = "Back"
-             navigationViewController.navigationItem.backBarButtonItem = backItem
- 
-            
-            navBar.topItem?.title = self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName()
-            navBar.tintColor = UIColor.white
-            navBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20.0), NSForegroundColorAttributeName: UIColor.white]
-            
-            //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-            navBar.barTintColor = UIColor(red: 252/255, green: 193/255, blue: 61/255, alpha: 1)
-    */
- */
-            
             let businessViewController = segue.destination as! BusinessViewController
             businessViewController.setIdentifier(id: "fromTileView")
             

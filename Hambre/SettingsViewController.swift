@@ -13,8 +13,8 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var enterCityTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
+    private var cityState : String!
     private var coreDataLocation = CoreDataLocation()
-    private var genre = "all restuarants"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,6 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func savingLocation(_ sender: Any) {
-        self.coreDataLocation.saveLocation(location: self.enterCityTextField.text!)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,23 +42,23 @@ class SettingsViewController: UIViewController {
         
     }
     
-    public func changeGenre(genre: String)
+    public func setCityState(cityState: String)
     {
-        self.genre = genre
-        
+        self.cityState = cityState
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "settingsToTile"
+        {
+            let tileViewController = segue.destination as! BusinessTileViewController
+            tileViewController.setCityState(cityState: self.cityState)
+        }
     }
-    */
+    
 
 }
 
@@ -67,7 +66,7 @@ extension SettingsViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        self.enterCityTextField.text = place.formattedAddress
+        self.setCityState(cityState: place.formattedAddress!)
         self.saveButton.isEnabled = true
         /*
         print("Place name: \(place.name)")
