@@ -89,11 +89,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     
     private func setAddress(address: [String]) -> String
     {
-        var theAddress = ""
-        for addy in address
-        {
-            theAddress = theAddress + ", "  + addy
-        }
+        let theAddress = address[0] + ", " + self.city + ", " + self.state
         
         return theAddress
 
