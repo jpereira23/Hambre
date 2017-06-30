@@ -74,6 +74,7 @@ extension SettingsViewController : GMSAutocompleteViewControllerDelegate
         print("Place attributions: \(String(describing: place.attributions))")
         */
         dismiss(animated: true, completion: nil)
+        
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
