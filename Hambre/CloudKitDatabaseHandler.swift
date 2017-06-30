@@ -46,7 +46,7 @@ class Review: NSObject {
         self.review = review
         self.reviewer = reviewer
         self.summaryReview = summaryReview
-        self.creationDate = record.creationDate
+        self.creationDate = Date()
         
     }
     
@@ -88,6 +88,11 @@ class CloudKitDatabaseHandler: NSObject {
         publicDB = container.publicCloudDatabase
         super.init()
         self.loadDataFromCloudKit()
+    }
+    
+    public func appendToArrayOfReviews(review: Review)
+    {
+        self.arrayOfReviews.append(review)
     }
     
     public func loadDataFromCloudKit()

@@ -124,7 +124,6 @@ class BusinessViewController: UIViewController {
     
     @IBAction func unwindToBusinessView(_ sender: UIStoryboardSegue)
     {
-        sleep(2)
         self.segmentControl.selectedSegmentIndex = 0
         self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
         self.detailView.setAddressField(address: self.address)
@@ -135,7 +134,6 @@ class BusinessViewController: UIViewController {
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
-        self.cloudKitDatabaseHandler.loadDataFromCloudKit()
         self.reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
     }
     

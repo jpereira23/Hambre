@@ -107,8 +107,6 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.distance = Int(Double(coordinate0.distance(from: coordinate1)) * 0.000621371)
         
         return self.distance
-        
-        return 0 
     }
     
     public func getCity() -> String
