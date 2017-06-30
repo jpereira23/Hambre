@@ -11,23 +11,41 @@ import GooglePlaces
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet var sliderLabel: UILabel!
     @IBOutlet var enterCityTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
     private var cityState : String!
     private var coreDataLocation = CoreDataLocation()
+    private var sliderValue = 0
+    @IBOutlet var slider: UISlider!
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.slider.maximumValue = 500
+        self.slider.minimumValue = 1
+        self.sliderLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.saveButton.isEnabled = false
         self.tabBarController?.delegate = self
-        
+        self.slider.maximumValue = 500
+        self.slider.minimumValue = 1
     }
 
     @IBAction func enterCityField(_ sender: Any)
     {
         let autocompleteController = GMSAutocompleteViewController()
+        
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
+    }
+    
+    public func setSliderValue(value: Int)
+    {
+        self.sliderValue = value
     }
 
     @IBAction func savingLocation(_ sender: Any) {
@@ -40,6 +58,12 @@ class SettingsViewController: UIViewController {
     @IBAction func unwindToSettings(_ sender: UIStoryboardSegue)
     {
         
+    }
+    
+    @IBAction func sliderValueChanged(_ sender: Any) {
+        self.sliderLabel.text = String(Int(roundf(slider.value))) + ((Int(roundf(slider.value))) <= 0 ? " mile" : " miles")
+        self.sliderValue = Int(roundf(slider.value))
+        self.saveButton.isEnabled = true 
     }
     
     public func setCityState(cityState: String)
@@ -55,7 +79,11 @@ class SettingsViewController: UIViewController {
         if segue.identifier == "settingsToTile"
         {
             let tileViewController = segue.destination as! BusinessTileViewController
-            tileViewController.setCityState(cityState: self.cityState)
+            if self.cityState != nil
+            {
+                tileViewController.setCityState(cityState: self.cityState)
+            }
+            tileViewController.setDistance(distance:self.sliderValue)
         }
     }
     

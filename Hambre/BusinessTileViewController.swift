@@ -25,6 +25,7 @@ class BusinessTileViewController: UIViewController {
     var yelpContainer: YelpContainer?
     private var genre = "all restuarants"
     private var cityState = "San Francisco, California"
+    private var distance = 0
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     
@@ -89,6 +90,11 @@ class BusinessTileViewController: UIViewController {
         self.yelpContainer = YelpContainer()
         self.yelpContainer?.delegate = self
         self.yelpContainer?.yelpAPICallForBusinesses()
+    }
+    
+    public func setDistance(distance: Int)
+    {
+        self.distance = distance
     }
     
     public func setGenre(genre: String)
@@ -166,6 +172,7 @@ class BusinessTileViewController: UIViewController {
             self.infoButton.isEnabled = false
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+            
             self.yelpContainer?.changeGenre(genre: self.genre)
         }
         else if sender.identifier == "settingsToTile"
@@ -177,6 +184,10 @@ class BusinessTileViewController: UIViewController {
             self.infoButton.isEnabled = false
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+            print("And the distance is \(self.distance)")
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let radiiDistances = RadiiDistances(latitude: appDelegate.getLatitude(), longitude: appDelegate.getLongitude(), distance: Double(self.distance))
+            radiiDistances.printFinalResults()
             self.yelpContainer?.setCityState(cityState: self.cityState)
         }
         else if sender.identifier == "noInternetToTile"
@@ -206,6 +217,11 @@ class BusinessTileViewController: UIViewController {
             businessViewController.setAddress(address: self.aBusinessTileOperator.presentCurrentBusiness().getAddress())
             businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
             
+        }
+        else if segue.identifier == "tileToSetting"
+        {
+            let settingsViewController = segue.destination as! SettingsViewController
+            settingsViewController.setSliderValue(value: self.distance)
         }
     }
     
