@@ -39,7 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.locationManager.delegate = self
-        self.configueCoordinates()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if appDelegate.isInternetAvailable()
+        {
+            self.configueCoordinates()
+        }
         //make status bar white
         UIApplication.shared.statusBarStyle = .lightContent
         

@@ -18,12 +18,11 @@ class BusinessTileViewController: UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var distanceField: UILabel!
     @IBOutlet var infoButton: UIButton!
-    @IBOutlet var refreshButton: UIButton!
     
     @IBOutlet var locationImage: UIImageView!
     @IBOutlet var genreLabel: UILabel!
     var aBusinessTileOperator : BusinessTileOperator! = nil
-    var yelpContainer: YelpContainer? = YelpContainer()
+    var yelpContainer: YelpContainer?
     private var genre = "all restuarants"
     private var cityState = "San Francisco, California"
     public var checkIfReady = 0
@@ -40,7 +39,7 @@ class BusinessTileViewController: UIViewController {
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
         self.infoButton.isEnabled = false
-        self.refreshButton.isHidden = true
+        //self.refreshButton.isHidden = true
         self.activityIndicator.startAnimating()
         //self.genreLabel.text = "Genre: " + self.genre
         yelpContainer?.delegate = self
@@ -61,6 +60,11 @@ class BusinessTileViewController: UIViewController {
         self.infoButton.setImage(UIImage(named: "Infox.png"), for: .highlighted)
         if !appDelegate.isInternetAvailable()
         {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "noInternetConnectionViewController")
+            self.present(controller, animated: true, completion: nil)
+            
+            /*
             self.infoButton.isHidden = true
             self.distanceField.isHidden = true
             self.activityIndicator.isHidden = true
@@ -72,10 +76,19 @@ class BusinessTileViewController: UIViewController {
             self.businessImage.isHidden = true
             self.locationImage.isHidden = true
             self.tabBarController?.tabBar.isHidden = true
-            self.refreshButton.isHidden = false
+            */
         }
+        //self.yelpContainer = YelpContainer()
         
         
+        
+    }
+    public func recallYelpContainer()
+    {
+        self.yelpContainer = nil
+        self.yelpContainer = YelpContainer()
+        self.yelpContainer?.delegate = self
+        self.yelpContainer?.yelpAPICallForBusinesses()
     }
     
     public func setGenre(genre: String)
@@ -115,7 +128,7 @@ class BusinessTileViewController: UIViewController {
             self.businessImage.isHidden = false
             self.locationImage.isHidden = false
             self.tabBarController?.tabBar.isHidden = false
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
         }
     }
    
@@ -165,6 +178,11 @@ class BusinessTileViewController: UIViewController {
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             self.yelpContainer?.setCityState(cityState: self.cityState)
+        }
+        else if sender.identifier == "noInternetToTile"
+        {
+            self.recallYelpContainer()
+
         }
     }
     // MARK: - Navigation

@@ -12,7 +12,7 @@
         <!--Business Tile View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="BusinessTileViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="businessTileViewController" id="9pv-A4-QxB" customClass="BusinessTileViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -98,14 +98,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="riq-H0-QJn">
-                                <rect key="frame" x="149" y="426" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Refresh"/>
-                                <connections>
-                                    <action selector="refreshButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="NWh-43-Zad"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -140,7 +132,6 @@
                         <outlet property="infoButton" destination="NXd-SI-ZjL" id="KHT-Xz-Qew"/>
                         <outlet property="leftButton" destination="Nal-M1-5Sy" id="cWu-fM-f2E"/>
                         <outlet property="locationImage" destination="TK0-ry-vMg" id="Zt6-Po-ASz"/>
-                        <outlet property="refreshButton" destination="riq-H0-QJn" id="m8A-7A-8id"/>
                         <outlet property="rightButton" destination="7Vz-zb-1Kf" id="ceK-aA-GiI"/>
                     </connections>
                 </viewController>
@@ -537,6 +528,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3676" y="-237.03148425787109"/>
+        </scene>
+        <!--No Internet Connection View Controller-->
+        <scene sceneID="Wkh-3Y-W9d">
+            <objects>
+                <viewController storyboardIdentifier="noInternetConnectionViewController" id="qIC-ks-eML" customClass="NoInternetConnectionViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="25G-oP-AeQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="kHt-KQ-XIM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cAR-dR-5Gu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEC-aa-e6i">
+                                <rect key="frame" x="164" y="456" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <segue destination="glM-aJ-mSm" kind="unwind" identifier="noInternetToTile" unwindAction="unwindToTileView:" id="UWn-uJ-14g"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Internet Connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqs-SH-ts0">
+                                <rect key="frame" x="70" y="319" width="234" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please check your network settings and try again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxR-Yy-n6e">
+                                <rect key="frame" x="90" y="362" width="189" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bN-5X-QcW">
+                                <rect key="frame" x="70" y="169" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="retryButton" destination="FEC-aa-e6i" id="rHo-pX-hRL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYd-S4-aS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="glM-aJ-mSm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-1252" y="-131.78410794602701"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="yl2-sM-qoP">

@@ -36,6 +36,7 @@
 		648B74CE1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */; };
 		64932DD71EEF75A1001727AE /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64932DD61EEF75A1001727AE /* ReviewView.xib */; };
 		64932DD91EEF75B9001727AE /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64932DD81EEF75B9001727AE /* ReviewView.swift */; };
+		64A69A821F05D52700EC3F8C /* NoInternetConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A69A811F05D52700EC3F8C /* NoInternetConnectionViewController.swift */; };
 		64AA366B1F032D19002DB2AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AA366A1F032D19002DB2AC /* WebViewController.swift */; };
 		64CEE48F1EE0A50A0065082F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CEE48E1EE0A50A0065082F /* CloudKit.framework */; };
 		64CEE4911EE0A7660065082F /* CloudKitDatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */; };
@@ -106,6 +107,7 @@
 		64932DD61EEF75A1001727AE /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
 		64932DD81EEF75B9001727AE /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		64932DDA1EEF8A35001727AE /* Negocios3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios3.xcdatamodel; sourceTree = "<group>"; };
+		64A69A811F05D52700EC3F8C /* NoInternetConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoInternetConnectionViewController.swift; sourceTree = "<group>"; };
 		64AA366A1F032D19002DB2AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		64CEE48D1EE0A4F40065082F /* Hambre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hambre.entitlements; sourceTree = "<group>"; };
 		64CEE48E1EE0A50A0065082F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -178,6 +180,7 @@
 				642A7CD01EDCDD950085062A /* BusinessTileOperator.swift */,
 				642A7CD21EDCE0A00085062A /* BusinessTileViewController.swift */,
 				648B74C41EDE25F400B5D2CE /* YelpContainer.swift */,
+				64A69A811F05D52700EC3F8C /* NoInternetConnectionViewController.swift */,
 			);
 			name = TileWork;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				64716E891EE88E2B00970C07 /* GenrePickerViewController.swift in Sources */,
 				64F8566C1EDF61D3004E352F /* BusinessViewController.swift in Sources */,
 				642079C31EF0D78900F78230 /* MapView.swift in Sources */,
+				64A69A821F05D52700EC3F8C /* NoInternetConnectionViewController.swift in Sources */,
 				646B59DC1EE8C15700CCB194 /* CoreDataLocation.swift in Sources */,
 				648B74C91EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift in Sources */,
 				642A7CD31EDCE0A00085062A /* BusinessTileViewController.swift in Sources */,
