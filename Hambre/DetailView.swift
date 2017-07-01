@@ -16,6 +16,7 @@ class DetailView: UIView {
     @IBOutlet var isClosedField: UILabel!
     @IBOutlet var websiteUrlField: UILabel!
     */
+    
     @IBOutlet weak var websiteUrlField: UIButton!
     
     @IBOutlet weak var addressField: UIButton!
@@ -62,7 +63,7 @@ class DetailView: UIView {
         self.addressField.setTitle("Address: " + self.address, for: .normal)
         self.phoneFIeld.setTitle("Phone Number: " + self.phoneNumber, for: .normal)
         self.isClosedField.setTitle(self.isClosed, for: .normal)
-        self.websiteUrlField.setTitle("Website", for: .normal)
+        self.websiteUrlField.setTitle("Website ", for: .normal)
         addSubview(view)
     }
     
