@@ -26,6 +26,7 @@ class BusinessTileViewController: UIViewController {
     private var genre = "all restuarants"
     private var cityState = "San Francisco, California"
     private var distance = 0
+    private var radiiDistances : RadiiDistances! = nil
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     
@@ -64,30 +65,13 @@ class BusinessTileViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "noInternetConnectionViewController")
             self.present(controller, animated: true, completion: nil)
-            
-            /*
-            self.infoButton.isHidden = true
-            self.distanceField.isHidden = true
-            self.activityIndicator.isHidden = true
-            self.leftButton.isHidden = true
-            self.rightButton.isHidden = true
-            self.distanceField.isHidden = true
-            self.infoButton.isHidden = true
-            self.businessNameLabel.isHidden = true
-            self.businessImage.isHidden = true
-            self.locationImage.isHidden = true
-            self.tabBarController?.tabBar.isHidden = true
-            */
         }
-        //self.yelpContainer = YelpContainer()
-        
-        
         
     }
     public func recallYelpContainer()
     {
         self.yelpContainer = nil
-        self.yelpContainer = YelpContainer()
+        self.yelpContainer = YelpContainer(cityAndState: self.cityState)
         self.yelpContainer?.delegate = self
         self.yelpContainer?.yelpAPICallForBusinesses()
     }
@@ -106,38 +90,16 @@ class BusinessTileViewController: UIViewController {
     {
         self.cityState = cityState
     }
+    
+    public func getCityState() -> String
+    {
+        return self.cityState
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func refreshButton(_ sender: Any)
-    {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        if appDelegate.isInternetAvailable()
-        {
-            self.yelpContainer = nil
-            
-            self.yelpContainer = YelpContainer()
-            self.yelpContainer?.delegate = self
-            
-            self.infoButton.isHidden = false
-            self.distanceField.isHidden = false
-            self.activityIndicator.isHidden = false
-            self.leftButton.isHidden = false
-            self.rightButton.isHidden = false
-            self.distanceField.isHidden = false
-            self.infoButton.isHidden = false
-            self.businessNameLabel.isHidden = false
-            self.businessImage.isHidden = false
-            self.locationImage.isHidden = false
-            self.tabBarController?.tabBar.isHidden = false
-            //self.refreshButton.isHidden = true
-        }
-    }
-   
     
     public func className() -> String
     {
@@ -186,9 +148,9 @@ class BusinessTileViewController: UIViewController {
             self.activityIndicator.startAnimating()
             print("And the distance is \(self.distance)")
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let radiiDistances = RadiiDistances(latitude: appDelegate.getLatitude(), longitude: appDelegate.getLongitude(), distance: Double(self.distance))
-            radiiDistances.printFinalResults()
-            self.yelpContainer?.setCityState(cityState: self.cityState)
+            self.radiiDistances = RadiiDistances(latitude: appDelegate.getLatitude(), longitude: appDelegate.getLongitude(), distance: Double(self.distance))
+            self.radiiDistances.delegate = self
+            
         }
         else if sender.identifier == "noInternetToTile"
         {
@@ -238,12 +200,23 @@ class BusinessTileViewController: UIViewController {
     
     public func refreshTileAttributes()
     {
-        let aBusiness = self.aBusinessTileOperator.presentCurrentBusiness()
-        self.distanceField.text = String(self.aBusinessTileOperator.presentCurrentBusiness().getDistance()) + " mile(s)"
-        
-        self.businessNameLabel.text = aBusiness.getBusinessName()
-        self.businessImage.setImageWith(aBusiness.getBusinessImage())
-        self.businessImage.contentMode = UIViewContentMode.scaleAspectFit
+            let aBusiness = self.aBusinessTileOperator.presentCurrentBusiness()
+            self.distanceField.text = String(self.aBusinessTileOperator.presentCurrentBusiness().getDistance()) + " mile(s)"
+            
+            self.businessNameLabel.text = aBusiness.getBusinessName()
+            self.businessImage.setImageWith(aBusiness.getBusinessImage())
+            self.businessImage.contentMode = UIViewContentMode.scaleAspectFit
+            /*
+            self.activityIndicator.isHidden = false
+            self.businessImage.isHidden = true
+            self.businessNameLabel.isHidden = true
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
+            //self.refreshButton.isHidden = true
+            //self.activityIndicator.startAnimating()
+            */ 
+            
     }
 
 }
@@ -257,7 +230,7 @@ extension BusinessTileViewController : YelpContainerDelegate
 
     func yelpAPICallback(_ yelpContainer: YelpContainer) {
         
-      
+        
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.businessImage.isHidden = false
@@ -265,12 +238,17 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
             self.infoButton.isEnabled = true
-            self.aBusinessTileOperator = nil
-            self.aBusinessTileOperator = BusinessTileOperator(anArrayOfBusinesses: yelpContainer.getBusinesses(), city: yelpContainer.getCity(), state: yelpContainer.getState())
+        if self.aBusinessTileOperator == nil
+        {
+            self.aBusinessTileOperator = BusinessTileOperator(city: yelpContainer.getCity(), state: yelpContainer.getState())
+            self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
             self.refreshTileAttributes()
- 
-        
-        
+        }
+        else
+        {
+            self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
+            self.refreshTileAttributes()
+        }
     }
 }
 
@@ -280,8 +258,15 @@ extension BusinessTileViewController : AppDelegateDelegate
          
         self.yelpContainer = nil
         
-        self.yelpContainer = YelpContainer()
+        self.yelpContainer = YelpContainer(cityAndState: self.getCityState())
         self.yelpContainer?.delegate = self
         self.yelpContainer?.yelpAPICallForBusinesses()
+    }
+}
+
+extension BusinessTileViewController : RadiiDistancesDelegate
+{
+    func placeFound(place: String, radiiDistances: RadiiDistances) {
+        self.yelpContainer?.setCityState(cityState: place)
     }
 }

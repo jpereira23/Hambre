@@ -107,8 +107,6 @@ class CloudKitYelpApi: NSObject
 
 class YelpContainer: NSObject {
     private var arrayOfBusinesses = [YLPBusiness]()
-    private var city: String = "San Francisco"
-    private var state: String = "CA"
     private var location : String!
     private var appId = "M8_cEGzomTyCzwz3BDYY4Q"
     private var appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
@@ -118,15 +116,26 @@ class YelpContainer: NSObject {
     private var locationManager = CLLocationManager()
     var delegate : YelpContainerDelegate!
     
-    public override init()
+    public init(cityAndState: String)
     {
         super.init()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.city = appDelegate.getCity()
-        self.state = appDelegate.getState()
-        self.location = self.createLocation()
+        self.location = cityAndState
         self.cloudKitYelpApi.delegate = self
         self.cloudKitYelpApi.loadKeysFromCloudKit()
+    }
+    
+    public init(arrayOfPlaces: [String])
+    {
+        super.init()
+        
+        self.cloudKitYelpApi.delegate = self
+        self.cloudKitYelpApi.loadKeysFromCloudKit()
+        
+        for place in arrayOfPlaces
+        {
+            self.location = place
+            self.yelpAPICallForBusinesses()
+        }
     }
     
     deinit{
@@ -174,7 +183,7 @@ class YelpContainer: NSObject {
                 }.onSuccess { search in
                     //Fix this, bad practice
                     if let _ = search.businesses.last {
-                        self.arrayOfBusinesses = search.businesses
+                        self.arrayOfBusinesses += search.businesses
                         self.delegate.yelpAPICallback(self)
                         /*
                          
@@ -196,6 +205,21 @@ class YelpContainer: NSObject {
         }
     }
     
+    public func getCity() -> String
+    {
+        let delimiter = ","
+        var token = self.location.components(separatedBy: delimiter)
+        
+        return token[0]
+    }
+    
+    public func getState() -> String
+    {
+        let delimiter = " "
+        var token = self.location.components(separatedBy: delimiter)
+        return token[1]
+    }
+    
     public func getLocation() -> String
     {
         return self.location
@@ -204,16 +228,6 @@ class YelpContainer: NSObject {
     public func getBusinesses() -> [YLPBusiness]
     {
         return self.arrayOfBusinesses
-    }
-    
-    public func getCity() -> String
-    {
-        return self.city
-    }
-    
-    public func getState() -> String
-    {
-        return self.state
     }
     
     public func setCoordinate(coordinate: CLLocationCoordinate2D)
@@ -225,16 +239,6 @@ class YelpContainer: NSObject {
     {
         return self.theCoordinate
     }
-    
-    //Everything below needs to remain private 
-   
-    
-    private func createLocation() -> String
-    {
-        return self.city + ", " + self.state
-    }
-    
-    
 }
 
 extension YelpContainer : CloudKitYelpApiDelegate

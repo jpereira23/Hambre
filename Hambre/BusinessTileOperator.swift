@@ -23,14 +23,16 @@ class BusinessTileOperator: NSObject {
     let appId = "M8_cEGzomTyCzwz3BDYY4Q"
     let appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
     
-    public init(anArrayOfBusinesses: [YLPBusiness], city: String, state: String)
+    public init(city: String, state: String)
     {
         super.init()
         self.city = city
         self.state = state
-        
-        
-        for business in anArrayOfBusinesses
+    }
+    
+    public func addBusinesses(arrayOfBusinesses: [YLPBusiness])
+    {
+        for business in arrayOfBusinesses
         {
             
             let personalBusiness : PersonalBusiness!
@@ -45,7 +47,7 @@ class BusinessTileOperator: NSObject {
             }
             else if business.phone == nil
             {
-                 personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
             }
             else
             {
@@ -65,6 +67,7 @@ class BusinessTileOperator: NSObject {
                 self.arrayOfRightBusinesses.append(personalBusiness)
             }
         }
+
     }
     
     private func populateArraysOfBusinesses()
@@ -90,6 +93,15 @@ class BusinessTileOperator: NSObject {
     {
         
     }
+    public func startedOver() -> Bool
+    {
+        if self.globalIndexForCurrentCompany == 0
+        {
+            return true
+        }
+        
+        return false
+    }
     
     public func swipeLeft()
     {
@@ -111,6 +123,7 @@ class BusinessTileOperator: NSObject {
             self.checkAndUpdateGlobalIndex()
         }
     }
+    
     
     public func presentCurrentBusiness() -> PersonalBusiness
     {
