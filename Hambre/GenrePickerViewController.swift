@@ -29,8 +29,11 @@ class GenrePickerViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let settingsViewController = segue.destination as! SettingsViewController
-        settingsViewController.changeGenre(genre: self.arrayOfGenres[pickerView.selectedRow(inComponent: 0)])
+        if segue.identifier == "genreToTile"
+        {
+            let tileViewController = segue.destination as! BusinessTileViewController
+            tileViewController.setGenre(genre: self.arrayOfGenres[pickerView.selectedRow(inComponent: 0)])
+        }
     }
 
 }

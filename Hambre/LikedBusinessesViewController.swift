@@ -15,7 +15,7 @@ class LikedBusinessesViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var arrayOfLikedBusinesses = [PersonalBusiness]()
-    private var personalBusinessCoreData = PersonalBusinessCoreData()
+    public var personalBusinessCoreData = PersonalBusinessCoreData()
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     
     
@@ -124,6 +124,14 @@ extension LikedBusinessesViewController : UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.personalBusinessCoreData.removeElementFromCoreData(businessName: self.arrayOfLikedBusinesses[indexPath.row].getBusinessName())
+            self.arrayOfLikedBusinesses.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
     }
 }
 

@@ -56,6 +56,8 @@ class AddReviewViewController: UIViewController {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let businessViewController = segue.destination as! BusinessViewController
             let review = Review(id: businessViewController.getURL(), review: Int(self.reviewSlider.value), reviewer: appDelegate.accessICloudName(), summaryReview: self.commentView.text)
+            
+            businessViewController.cloudKitDatabaseHandler.appendToArrayOfReviews(review: review)
     
             
             businessViewController.cloudKitDatabaseHandler.addToDatabase(review: review)

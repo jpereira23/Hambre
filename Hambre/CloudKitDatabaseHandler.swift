@@ -24,6 +24,7 @@ class Review: NSObject {
     private var reviewer : String!
     private var review : Int!
     private var summaryReview : String!
+    private var creationDate : Date!
     
     init(record: CKRecord, database: CKDatabase)
     {
@@ -34,6 +35,7 @@ class Review: NSObject {
         self.review = record["review"] as! Int
         self.reviewer = record["reviewer"] as! String
         self.summaryReview = record["summaryReview"] as! String
+        self.creationDate = record.creationDate
     }
     
     init(id: String, review: Int, reviewer: String, summaryReview: String)
@@ -44,6 +46,8 @@ class Review: NSObject {
         self.review = review
         self.reviewer = reviewer
         self.summaryReview = summaryReview
+        self.creationDate = Date()
+        
     }
     
     public func getReviewer() -> String
@@ -65,6 +69,13 @@ class Review: NSObject {
     {
         return self.summaryReview
     }
+    
+    public func getCreationDate() -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        return dateFormatter.string(from: self.creationDate)
+    }
 }
 
 class CloudKitDatabaseHandler: NSObject {
@@ -77,6 +88,11 @@ class CloudKitDatabaseHandler: NSObject {
         publicDB = container.publicCloudDatabase
         super.init()
         self.loadDataFromCloudKit()
+    }
+    
+    public func appendToArrayOfReviews(review: Review)
+    {
+        self.arrayOfReviews.append(review)
     }
     
     public func loadDataFromCloudKit()

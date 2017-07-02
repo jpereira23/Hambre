@@ -122,7 +122,6 @@ class YelpContainer: NSObject {
     {
         super.init()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         self.city = appDelegate.getCity()
         self.state = appDelegate.getState()
         self.location = self.createLocation()
@@ -152,6 +151,12 @@ class YelpContainer: NSObject {
         self.yelpAPICallForBusinesses()
     }
     
+    public func setCityState(cityState: String)
+    {
+        self.location = cityState
+        self.yelpAPICallForBusinesses()
+    }
+    
     public func yelpAPICallForBusinesses()
     {
         
@@ -161,7 +166,6 @@ class YelpContainer: NSObject {
         if appDelegate.isInternetAvailable()
         {
             var query : YLPQuery
-            self.location = self.createLocation()
             query = YLPQuery(location: self.location)
             query.term = self.genre
             query.limit = 50
@@ -227,12 +231,6 @@ class YelpContainer: NSObject {
     
     private func createLocation() -> String
     {
-        let coreDataLocation = CoreDataLocation()
-        
-        if !coreDataLocation.checkIfCoreDataIsEmpty()
-        {
-            return coreDataLocation.loadLocation() 
-        }
         return self.city + ", " + self.state
     }
     

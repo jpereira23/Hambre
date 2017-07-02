@@ -11,27 +11,44 @@ import GooglePlaces
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet var sliderLabel: UILabel!
     @IBOutlet var enterCityTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
+    private var cityState : String!
     private var coreDataLocation = CoreDataLocation()
-    private var genre = "all restuarants"
+    private var sliderValue = 0
+    @IBOutlet var slider: UISlider!
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.slider.maximumValue = 500
+        self.slider.minimumValue = 1
+        self.sliderLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.saveButton.isEnabled = false
         self.tabBarController?.delegate = self
-        
+        self.slider.maximumValue = 500
+        self.slider.minimumValue = 1
     }
 
     @IBAction func enterCityField(_ sender: Any)
     {
         let autocompleteController = GMSAutocompleteViewController()
+        
         autocompleteController.delegate = self
         present(autocompleteController, animated: true, completion: nil)
     }
+    
+    public func setSliderValue(value: Int)
+    {
+        self.sliderValue = value
+    }
 
     @IBAction func savingLocation(_ sender: Any) {
-        self.coreDataLocation.saveLocation(location: self.enterCityTextField.text!)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,23 +60,33 @@ class SettingsViewController: UIViewController {
         
     }
     
-    public func changeGenre(genre: String)
+    @IBAction func sliderValueChanged(_ sender: Any) {
+        self.sliderLabel.text = String(Int(roundf(slider.value))) + ((Int(roundf(slider.value))) <= 0 ? " mile" : " miles")
+        self.sliderValue = Int(roundf(slider.value))
+        self.saveButton.isEnabled = true 
+    }
+    
+    public func setCityState(cityState: String)
     {
-        self.genre = genre
-        
+        self.cityState = cityState
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "settingsToTile"
+        {
+            let tileViewController = segue.destination as! BusinessTileViewController
+            if self.cityState != nil
+            {
+                tileViewController.setCityState(cityState: self.cityState)
+            }
+            tileViewController.setDistance(distance:self.sliderValue)
+        }
     }
-    */
+    
 
 }
 
@@ -67,7 +94,7 @@ extension SettingsViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        self.enterCityTextField.text = place.formattedAddress
+        self.setCityState(cityState: place.formattedAddress!)
         self.saveButton.isEnabled = true
         /*
         print("Place name: \(place.name)")
@@ -75,6 +102,7 @@ extension SettingsViewController : GMSAutocompleteViewControllerDelegate
         print("Place attributions: \(String(describing: place.attributions))")
         */
         dismiss(animated: true, completion: nil)
+        
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

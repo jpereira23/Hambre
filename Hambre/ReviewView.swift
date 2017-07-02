@@ -140,6 +140,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell?.nameField.text = array[indexPath.row].getReviewer()
         cell?.commentField.text = array[indexPath.row].getSummaryReview()
         cell?.reviewField.text = "Review: " + String(array[indexPath.row].getReview())
+        cell?.dateCreatedField.text = array[indexPath.row].getCreationDate()
         
         return cell!
     }

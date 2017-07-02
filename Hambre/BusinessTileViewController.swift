@@ -18,13 +18,14 @@ class BusinessTileViewController: UIViewController {
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var distanceField: UILabel!
     @IBOutlet var infoButton: UIButton!
-    @IBOutlet var refreshButton: UIButton!
     
     @IBOutlet var locationImage: UIImageView!
     @IBOutlet var genreLabel: UILabel!
     var aBusinessTileOperator : BusinessTileOperator! = nil
-    var yelpContainer: YelpContainer? = YelpContainer()
+    var yelpContainer: YelpContainer?
     private var genre = "all restuarants"
+    private var cityState = "San Francisco, California"
+    private var distance = 0
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     
@@ -39,12 +40,19 @@ class BusinessTileViewController: UIViewController {
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
         self.infoButton.isEnabled = false
-        self.refreshButton.isHidden = true
+        //self.refreshButton.isHidden = true
         self.activityIndicator.startAnimating()
         //self.genreLabel.text = "Genre: " + self.genre
         yelpContainer?.delegate = self
         
         // Do any additional setup after loading the view.
+        
+        //tile view title
+        let zendishTitle = UIImage(named: "ZendishTitle.png")
+        let imageView = UIImageView(image: zendishTitle)
+        self.navigationItem.titleView = imageView
+        self.navigationItem.titleView?.frame = CGRect(x: 0, y: 0, width: 91, height: 31)
+        
         
         //right button states
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .normal)
@@ -61,6 +69,11 @@ class BusinessTileViewController: UIViewController {
         
         if !appDelegate.isInternetAvailable()
         {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "noInternetConnectionViewController")
+            self.present(controller, animated: true, completion: nil)
+            
+            /*
             self.infoButton.isHidden = true
             self.distanceField.isHidden = true
             self.activityIndicator.isHidden = true
@@ -72,10 +85,34 @@ class BusinessTileViewController: UIViewController {
             self.businessImage.isHidden = true
             self.locationImage.isHidden = true
             self.tabBarController?.tabBar.isHidden = true
-            self.refreshButton.isHidden = false
+            */
         }
+        //self.yelpContainer = YelpContainer()
         
         
+        
+    }
+    public func recallYelpContainer()
+    {
+        self.yelpContainer = nil
+        self.yelpContainer = YelpContainer()
+        self.yelpContainer?.delegate = self
+        self.yelpContainer?.yelpAPICallForBusinesses()
+    }
+    
+    public func setDistance(distance: Int)
+    {
+        self.distance = distance
+    }
+    
+    public func setGenre(genre: String)
+    {
+        self.genre = genre 
+    }
+    
+    public func setCityState(cityState: String)
+    {
+        self.cityState = cityState
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +142,7 @@ class BusinessTileViewController: UIViewController {
             self.businessImage.isHidden = false
             self.locationImage.isHidden = false
             self.tabBarController?.tabBar.isHidden = false
-            self.refreshButton.isHidden = true
+            //self.refreshButton.isHidden = true
         }
     }
    
@@ -134,10 +171,39 @@ class BusinessTileViewController: UIViewController {
             self.yelpContainer?.changeGenre(genre: self.genre)
             
         }
-    }
-    
+        else if sender.identifier == "genreToTile"
+        {
+            self.businessImage.isHidden = true
+            self.businessNameLabel.isHidden = true
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            
+            self.yelpContainer?.changeGenre(genre: self.genre)
+        }
+        else if sender.identifier == "settingsToTile"
+        {
+            self.businessImage.isHidden = true
+            self.businessNameLabel.isHidden = true
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            print("And the distance is \(self.distance)")
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let radiiDistances = RadiiDistances(latitude: appDelegate.getLatitude(), longitude: appDelegate.getLongitude(), distance: Double(self.distance))
+            radiiDistances.printFinalResults()
+            self.yelpContainer?.setCityState(cityState: self.cityState)
+        }
+        else if sender.identifier == "noInternetToTile"
+        {
+            self.recallYelpContainer()
 
-    
+        }
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -147,26 +213,6 @@ class BusinessTileViewController: UIViewController {
         
         if segue.identifier == "fromTileView"
         {
-            /*
-            let navigationViewController = segue.destination as! UINavigationController
-            
-            let navBar = navigationViewController.navigationBar
-            
-            /*
-             let backItem = UIBarButtonItem()
-             backItem.title = "Back"
-             navigationViewController.navigationItem.backBarButtonItem = backItem
- 
-            
-            navBar.topItem?.title = self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName()
-            navBar.tintColor = UIColor.white
-            navBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20.0), NSForegroundColorAttributeName: UIColor.white]
-            
-            //navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-            navBar.barTintColor = UIColor(red: 252/255, green: 193/255, blue: 61/255, alpha: 1)
-    */
- */
-            
             let businessViewController = segue.destination as! BusinessViewController
             businessViewController.setIdentifier(id: "fromTileView")
             
@@ -179,6 +225,11 @@ class BusinessTileViewController: UIViewController {
             businessViewController.setAddress(address: self.aBusinessTileOperator.presentCurrentBusiness().getAddress())
             businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
             
+        }
+        else if segue.identifier == "tileToSetting"
+        {
+            let settingsViewController = segue.destination as! SettingsViewController
+            settingsViewController.setSliderValue(value: self.distance)
         }
     }
     

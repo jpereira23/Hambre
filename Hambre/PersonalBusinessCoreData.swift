@@ -89,6 +89,42 @@ class PersonalBusinessCoreData: NSObject {
         return temporaryBusiness
     }
     
+    public func removeElementFromCoreData(businessName: String)
+    {
+        var aManagedObject : NSManagedObject!
+        
+        for object in self.managedObjects
+        {
+            let aString = object.value(forKey: "businessName") as! String
+            if aString == businessName
+            {
+                aManagedObject = object
+                break
+            }
+        }
+        
+        let context = self.appDelegate.persistentContainer.viewContext
+        context.delete(aManagedObject)
+        self.deleteObjectFromManagedObjects(objectId: aManagedObject.objectID)
+        
+        do {
+            try context.save()
+        } catch let error as NSError {
+            NSLog("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    private func deleteObjectFromManagedObjects(objectId: NSManagedObjectID)
+    {
+        for num in 0..<managedObjects.count
+        {
+            if managedObjects[num].objectID == objectId
+            {
+                managedObjects.remove(at: num)
+                break
+            }
+        }
+    }
     // Returns true if it is a duplicate
     public func checkForDuplicates(personalBusiness: PersonalBusiness) -> Bool
     {

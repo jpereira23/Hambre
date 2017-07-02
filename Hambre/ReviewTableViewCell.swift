@@ -14,10 +14,12 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var nameField: UILabel!
     @IBOutlet weak var commentField: UILabel!
     @IBOutlet weak var reviewField: UILabel!
+    @IBOutlet var dateCreatedField: UILabel!
     
     private var name : String = "Generic name"
     private var comment : String = "A generic comment."
     private var review : Int = 0
+    private var dateCreated : String = "01/01/1990"
     
     override func awakeFromNib() {
         super.awakeFromNib()
