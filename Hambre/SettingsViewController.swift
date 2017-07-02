@@ -11,6 +11,8 @@ import GooglePlaces
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet var share: UILabel!
+    
     @IBOutlet var enterCityTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
     private var cityState : String!

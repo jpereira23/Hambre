@@ -46,6 +46,13 @@ class BusinessTileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
+        //tile view title
+        let zendishTitle = UIImage(named: "ZendishTitle.png")
+        let imageView = UIImageView(image: zendishTitle)
+        self.navigationItem.titleView = imageView
+        self.navigationItem.titleView?.frame = CGRect(x: 0, y: 0, width: 91, height: 31)
+        
+        
         //right button states
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .normal)
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .selected)
