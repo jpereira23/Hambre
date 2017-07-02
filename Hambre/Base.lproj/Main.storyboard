@@ -190,7 +190,7 @@
             </objects>
             <point key="canvasLocation" x="17" y="-1025"/>
         </scene>
-        <!--Item-->
+        <!--More-->
         <scene sceneID="7sY-qH-YAb">
             <objects>
                 <viewController id="g2r-Zh-vY1" sceneMemberID="viewController">
@@ -203,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="sJF-NA-R2e"/>
+                    <tabBarItem key="tabBarItem" title="More" image="MoreIcon" id="sJF-NA-R2e"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfP-8d-IMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -689,6 +689,7 @@
         <image name="Exclamation" width="83" height="73"/>
         <image name="Heart" width="29" height="27"/>
         <image name="Info" width="24" height="24"/>
+        <image name="MoreIcon" width="23" height="5"/>
         <image name="Not" width="28" height="28"/>
         <image name="TabHeart" width="24" height="22"/>
         <image name="location" width="12" height="17"/>
