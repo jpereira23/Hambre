@@ -39,7 +39,7 @@ class BusinessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tabBarController?.tabBar.isHidden = false 
         self.imageView.setImageWith(self.imageUrl)
         
         //self.cloudKitDatabaseHandler.delegate = self
