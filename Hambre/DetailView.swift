@@ -60,10 +60,10 @@ class DetailView: UIView {
         self.view = loadViewFromNib()
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        self.addressField.setTitle("Address: " + self.address, for: .normal)
-        self.phoneFIeld.setTitle("Phone Number: " + self.phoneNumber, for: .normal)
+        self.addressField.setTitle(self.address, for: .normal)
+        self.phoneFIeld.setTitle(self.phoneNumber, for: .normal)
         self.isClosedField.setTitle(self.isClosed, for: .normal)
-        self.websiteUrlField.setTitle("Website ", for: .normal)
+        self.websiteUrlField.setTitle("GET BIZ NAME Website", for: .normal)
         addSubview(view)
     }
     
