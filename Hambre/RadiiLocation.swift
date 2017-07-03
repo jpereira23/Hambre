@@ -87,19 +87,10 @@ class RadiiDistances: NSObject {
                 if let state = placeMark.addressDictionary?["State"] as? String {
                     compactString = compactString + state
                 }
-                
-                if compactString != nil
-                {
-                
-                    self.arrayOfPlaces.append(compactString)
-                }
-            })
-    }
-    public func printFinalResults()
-    {
-        for i in 0..<self.arrayOfPlaces.count
-        {
-            print("\(i). \(self.arrayOfPlaces[i])")
-        }
+            
+                self.delegate?.placeFound(place: compactString, radiiDistances: self)
+            
+            }
+        })
     }
 }
