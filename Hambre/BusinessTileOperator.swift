@@ -74,6 +74,13 @@ class BusinessTileOperator: NSObject {
 
     }
     
+    public func removeAllBusinesses()
+    {
+        self.arrayOfLeftBusinesses.removeAll()
+        self.arrayOfRightBusinesses.removeAll()
+        self.arrayOfBusinesses.removeAll()
+    }
+    
     private func populateArraysOfBusinesses()
     {
         for business in self.arrayOfNegocios

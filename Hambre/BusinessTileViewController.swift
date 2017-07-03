@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import GooglePlaces
 
 class BusinessTileViewController: UIViewController {
 
@@ -136,6 +137,14 @@ class BusinessTileViewController: UIViewController {
         self.yelpContainer?.yelpAPICallForBusinesses()
     }
     
+    @IBAction func promptGoogleAPI(_ sender: Any)
+    {
+        let autocompleteController = GMSAutocompleteViewController()
+        
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
+    }
+    
     @IBAction func unwindToTileView(_ sender: UIStoryboardSegue)
     {
         if sender.identifier == "fromGenre"
@@ -173,6 +182,9 @@ class BusinessTileViewController: UIViewController {
             self.activityIndicator.startAnimating()
             print("And the distance is \(self.distance)")
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            // Change this below to be relative to the latitude and longitude of set city too not necessarily the one you are on 
+
             self.radiiDistances = RadiiDistances(latitude: appDelegate.getLatitude(), longitude: appDelegate.getLongitude(), distance: Double(self.distance))
             self.radiiDistances.delegate = self
             
@@ -185,6 +197,7 @@ class BusinessTileViewController: UIViewController {
     }
     // MARK: - Navigation
 
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -305,5 +318,49 @@ extension BusinessTileViewController : RadiiDistancesDelegate
             self.yelpContainer?.yelpAPICallForBusinesses()
         }
         
+    }
+}
+
+extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
+{
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        self.setCityState(cityState: place.formattedAddress!)
+        self.yelpContainer = nil
+        self.yelpContainer = YelpContainer(cityAndState: place.formattedAddress!)
+        self.yelpContainer?.delegate = self
+        self.yelpContainer?.yelpAPICallForBusinesses()
+        self.aBusinessTileOperator.removeAllBusinesses()
+        self.activityIndicator.isHidden = false
+        self.businessImage.isHidden = true
+        self.businessNameLabel.isHidden = true
+        self.leftButton.isEnabled = false
+        self.rightButton.isEnabled = false
+        self.infoButton.isEnabled = false
+        self.activityIndicator.startAnimating()
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: \(error)")
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didSelect prediction: GMSAutocompletePrediction) -> Bool {
+        return true
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 }
