@@ -28,6 +28,10 @@ class LikedBusinessesViewController: UIViewController {
         self.tableView.isHidden = true
         self.activityIndicator.startAnimating()
         
+        //favorites title
+        self.title = "Favorites"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0), NSForegroundColorAttributeName: UIColor.white]
+        
         
         
         //tableView.reloadData()
@@ -79,6 +83,8 @@ class LikedBusinessesViewController: UIViewController {
         navBar.barTintColor = UIColor(red: 0.98, green: 0.70, blue: 0.21, alpha: 1.0)
         
         */
+        
+        
         let businessViewController = segue.destination as! BusinessViewController
         businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
         businessViewController.setLongitude(longitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLongitude())

@@ -48,11 +48,9 @@ class BusinessTileViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         //tile view title
-        let zendishTitle = UIImage(named: "ZendishTitle.png")
-        let imageView = UIImageView(image: zendishTitle)
-        self.navigationItem.titleView = imageView
-        self.navigationItem.titleView?.frame = CGRect(x: 0, y: 0, width: 91, height: 31)
-        
+        self.title = "Zendish"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Righteous-Regular", size: 20)!]
+
         
         //right button states
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .normal)
@@ -64,8 +62,8 @@ class BusinessTileViewController: UIViewController {
         self.leftButton.setImage(UIImage(named: "Not.png"), for: .highlighted)
         //info button states
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .normal)
-        self.infoButton.setImage(UIImage(named: "Infox.png"), for: .selected)
-        self.infoButton.setImage(UIImage(named: "Infox.png"), for: .highlighted)
+        self.infoButton.setImage(UIImage(named: "Info.png"), for: .selected)
+        self.infoButton.setImage(UIImage(named: "Info.png"), for: .highlighted)
         
         if !appDelegate.isInternetAvailable()
         {
