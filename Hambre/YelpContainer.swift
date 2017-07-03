@@ -124,19 +124,6 @@ class YelpContainer: NSObject {
         self.cloudKitYelpApi.loadKeysFromCloudKit()
     }
     
-    public init(arrayOfPlaces: [String])
-    {
-        super.init()
-        
-        self.cloudKitYelpApi.delegate = self
-        self.cloudKitYelpApi.loadKeysFromCloudKit()
-        
-        for place in arrayOfPlaces
-        {
-            self.location = place
-            self.yelpAPICallForBusinesses()
-        }
-    }
     
     deinit{
         self.delegate = nil
@@ -163,7 +150,6 @@ class YelpContainer: NSObject {
     public func setCityState(cityState: String)
     {
         self.location = cityState
-        self.yelpAPICallForBusinesses()
     }
     
     public func yelpAPICallForBusinesses()

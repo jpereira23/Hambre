@@ -25,10 +25,12 @@ class BusinessTileViewController: UIViewController {
     var yelpContainer: YelpContainer?
     private var genre = "all restuarants"
     private var cityState = "San Francisco, California"
+    private var arrayOfPlaces = [String]()
     private var distance = 0
     private var radiiDistances : RadiiDistances! = nil
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
+    private var initialCall = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +69,21 @@ class BusinessTileViewController: UIViewController {
             self.present(controller, animated: true, completion: nil)
         }
         
+    }
+    
+    public func isInitailCall() -> Bool
+    {
+        return self.initialCall
+    }
+    
+    public func initialCallWasCalled()
+    {
+        self.initialCall = true
+    }
+    
+    public func addToArrayOfPlaces(place: String)
+    {
+        self.arrayOfPlaces.append(place)
     }
     public func recallYelpContainer()
     {
@@ -187,6 +204,16 @@ class BusinessTileViewController: UIViewController {
         }
     }
     
+    public func isPlaceAlreadyInArray(place: String) -> Bool
+    {
+        if self.arrayOfPlaces.contains(place)
+        {
+            return true
+        }
+        
+        return false
+    }
+    
     
     @IBAction func swipeLeft(_ sender: Any) {
         self.aBusinessTileOperator.swipeLeft()
@@ -245,7 +272,7 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.refreshTileAttributes()
         }
         else
-        {
+        {   
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
             self.refreshTileAttributes()
         }
@@ -255,18 +282,31 @@ extension BusinessTileViewController : YelpContainerDelegate
 extension BusinessTileViewController : AppDelegateDelegate
 {
     func locationServicesUpdated(appDelegate: AppDelegate) {
-         
-        self.yelpContainer = nil
         
-        self.yelpContainer = YelpContainer(cityAndState: self.getCityState())
-        self.yelpContainer?.delegate = self
-        self.yelpContainer?.yelpAPICallForBusinesses()
+        if !self.isInitailCall()
+        {
+            self.initialCallWasCalled()
+            self.yelpContainer = nil
+        
+            self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
+            self.yelpContainer?.delegate = self
+            self.yelpContainer?.yelpAPICallForBusinesses()
+        }
     }
 }
 
 extension BusinessTileViewController : RadiiDistancesDelegate
 {
     func placeFound(place: String, radiiDistances: RadiiDistances) {
-        self.yelpContainer?.setCityState(cityState: place)
+        
+        if !self.isPlaceAlreadyInArray(place: place)
+        {
+            self.addToArrayOfPlaces(place: place)
+            self.yelpContainer = nil
+            self.yelpContainer = YelpContainer(cityAndState: place)
+            self.yelpContainer?.delegate = self
+            self.yelpContainer?.yelpAPICallForBusinesses()
+        }
+        
     }
 }

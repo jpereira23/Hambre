@@ -32,6 +32,9 @@ class BusinessTileOperator: NSObject {
     
     public func addBusinesses(arrayOfBusinesses: [YLPBusiness])
     {
+        self.personalBusinessCoreData.reloadCoreData()
+        self.personalBusinessCoreData = PersonalBusinessCoreData()
+        
         for business in arrayOfBusinesses
         {
             

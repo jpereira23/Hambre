@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.slider.maximumValue = 500
+        self.slider.maximumValue = 50
         self.slider.minimumValue = 1
         self.sliderLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
         
@@ -30,7 +30,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.saveButton.isEnabled = false
-        self.tabBarController?.delegate = self
         self.slider.maximumValue = 500
         self.slider.minimumValue = 1
     }
@@ -124,17 +123,5 @@ extension SettingsViewController : GMSAutocompleteViewControllerDelegate
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-}
-
-extension SettingsViewController : UITabBarControllerDelegate
-{
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if String(describing: viewController.classForCoder) == "BusinessTileViewController"
-        {
-            let businessTileViewController = viewController as! BusinessTileViewController
-            businessTileViewController.cityRequiresRefresh()
-            
-        }
     }
 }
