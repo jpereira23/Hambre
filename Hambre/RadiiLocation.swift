@@ -10,11 +10,18 @@ struct Coordinate
 }
 
 
+protocol RadiiDistancesDelegate{
+    func placeFound(place: String, radiiDistances: RadiiDistances)
+}
+
 class RadiiDistances: NSObject {
     private var earthsRadius = 6378.1
     private var bearingUnitCircleRadians = [0, 30, 45, 60, 90, 120, 135, 150, 180, -30, -45, -60, -90, -120, -135, -150]
     private var arrayOfCoordinates = [Coordinate]()
-    private var arrayOfPlaces = [String]()
+    private var currentPlace : String! = "San Francisco, California"
+    private var currentIndex : Int! = 0
+    public var delegate : RadiiDistancesDelegate?
+    
     private var distance : Double!
     private var latitude : Double!
     private var longitude : Double!
@@ -27,7 +34,12 @@ class RadiiDistances: NSObject {
         self.latitude = latitude
         self.longitude = longitude
         self.distance = distance
-        self.calculate()
+        
+        while self.distance != 0
+        {
+            self.calculate()
+            self.distance = self.distance - 10 
+        }
     }
     
     private func calculate()
@@ -49,21 +61,26 @@ class RadiiDistances: NSObject {
             self.arrayOfCoordinates.append(aCoordinate)
         }
         
-        self.convertCoordinatesToUserFriendly()
+        for coordinate in self.arrayOfCoordinates
+        {
+            self.convertCoordinatesToUserFriendly(coordinate: coordinate)
+        }
+        
         
     }
     
-    private func convertCoordinatesToUserFriendly()
+    private func convertCoordinatesToUserFriendly(coordinate: Coordinate)
     {
-      
-            let location = CLLocation(latitude: self.arrayOfCoordinates[0].latitude, longitude: self.arrayOfCoordinates[0].longitude)
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-                var placeMark : CLPlacemark!
-                placeMark = placemarks?[0]
-                
-                var compactString : String!
-                
+        let location = CLLocation(latitude: self.arrayOfCoordinates[0].latitude, longitude: self.arrayOfCoordinates[0].longitude)
+        let geocoder = CLGeocoder()
+        var compactString : String! = "N/A"
+        geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            var placeMark : CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            
+            if placeMark != nil
+            {
                 if let city = placeMark.addressDictionary?["City"] as? String {
                     compactString = city + ", "
                 }
@@ -86,7 +103,3 @@ class RadiiDistances: NSObject {
         }
     }
 }
-
-
-//let radiiDistances = RadiiDistances(latitude: 37.722879899999995, longitude: -121.4414198, distance: 100)
-//radiiDistances.printFinalResults()

@@ -23,14 +23,19 @@ class BusinessTileOperator: NSObject {
     let appId = "M8_cEGzomTyCzwz3BDYY4Q"
     let appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
     
-    public init(anArrayOfBusinesses: [YLPBusiness], city: String, state: String)
+    public init(city: String, state: String)
     {
         super.init()
         self.city = city
         self.state = state
+    }
+    
+    public func addBusinesses(arrayOfBusinesses: [YLPBusiness])
+    {
+        self.personalBusinessCoreData.reloadCoreData()
+        self.personalBusinessCoreData = PersonalBusinessCoreData()
         
-        
-        for business in anArrayOfBusinesses
+        for business in arrayOfBusinesses
         {
             
             let personalBusiness : PersonalBusiness!
@@ -45,7 +50,7 @@ class BusinessTileOperator: NSObject {
             }
             else if business.phone == nil
             {
-                 personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
             }
             else
             {
@@ -65,6 +70,8 @@ class BusinessTileOperator: NSObject {
                 self.arrayOfRightBusinesses.append(personalBusiness)
             }
         }
+        self.arrayOfLeftBusinesses.shuffle()
+
     }
     
     private func populateArraysOfBusinesses()
@@ -90,6 +97,15 @@ class BusinessTileOperator: NSObject {
     {
         
     }
+    public func startedOver() -> Bool
+    {
+        if self.globalIndexForCurrentCompany == 0
+        {
+            return true
+        }
+        
+        return false
+    }
     
     public func swipeLeft()
     {
@@ -112,6 +128,7 @@ class BusinessTileOperator: NSObject {
         }
     }
     
+    
     public func presentCurrentBusiness() -> PersonalBusiness
     {
         if self.arrayOfLeftBusinesses.count > 0
@@ -132,6 +149,21 @@ class BusinessTileOperator: NSObject {
         else
         {
             self.globalIndexForCurrentCompany = self.globalIndexForCurrentCompany + 1
+        }
+    }
+}
+
+extension MutableCollection where Index == Int {
+    /// Shuffle the elements of `self` in-place.
+    mutating func shuffle() {
+        // empty and single-element collections don't shuffle
+        if count < 2 { return }
+        
+        for i in startIndex ..< endIndex - 1 {
+            let j = Int(arc4random_uniform(UInt32(endIndex - i))) + i
+            if i != j {
+                swap(&self[i], &self[j])
+            }
         }
     }
 }
