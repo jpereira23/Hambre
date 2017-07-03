@@ -48,8 +48,9 @@ class BusinessTileViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         //tile view title
-        self.title = "Zendish"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont(name: "Righteous-Regular", size: 20)!]
+        self.title = "Discover"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0), NSForegroundColorAttributeName: UIColor.white]
+        
 
         
         //right button states
