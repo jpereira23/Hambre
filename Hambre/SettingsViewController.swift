@@ -32,6 +32,10 @@ class SettingsViewController: UIViewController {
         self.saveButton.isEnabled = false
         self.slider.maximumValue = 500
         self.slider.minimumValue = 1
+        
+        //more view vc  THIS IS NOT WORKING FOR SOME REASON
+        self.title = "More"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0), NSForegroundColorAttributeName: UIColor.white]
     }
 
     @IBAction func enterCityField(_ sender: Any)
