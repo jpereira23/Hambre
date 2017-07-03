@@ -71,8 +71,11 @@ class RadiiDistances: NSObject {
                     compactString = compactString + state
                 }
                 
-                self.arrayOfPlaces.append(compactString)
+                if compactString != nil
+                {
                 
+                    self.arrayOfPlaces.append(compactString)
+                }
             })
     }
     public func printFinalResults()
