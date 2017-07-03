@@ -34,7 +34,12 @@ class RadiiDistances: NSObject {
         self.latitude = latitude
         self.longitude = longitude
         self.distance = distance
-        self.calculate()
+        
+        while self.distance != 0
+        {
+            self.calculate()
+            self.distance = self.distance - 10 
+        }
     }
     
     private func calculate()
@@ -74,21 +79,18 @@ class RadiiDistances: NSObject {
             placeMark = placemarks?[0]
             
             
+            if placeMark != nil
+            {
+                if let city = placeMark.addressDictionary?["City"] as? String {
+                    compactString = city + ", "
+                }
+                if let state = placeMark.addressDictionary?["State"] as? String {
+                    compactString = compactString + state
+                }
             
-            if let city = placeMark.addressDictionary?["City"] as? String {
-                compactString = city + ", "
+                self.delegate?.placeFound(place: compactString, radiiDistances: self)
+            
             }
-            if let state = placeMark.addressDictionary?["State"] as? String {
-                compactString = compactString + state
-            }
-            
-            self.delegate?.placeFound(place: compactString, radiiDistances: self)
-            
-            
         })
     }
 }
-
-
-//let radiiDistances = RadiiDistances(latitude: 37.722879899999995, longitude: -121.4414198, distance: 100)
-//radiiDistances.printFinalResults()

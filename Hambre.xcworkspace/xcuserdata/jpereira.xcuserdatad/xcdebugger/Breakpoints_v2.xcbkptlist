@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/RadiiLocation.swift"
-            timestampString = "520809774.759955"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "init(latitude:longitude:distance:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Hambre/YelpContainer.swift"
             timestampString = "520809866.969413"
             startingColumnNumber = "9223372036854775807"
@@ -41,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/YelpContainer.swift"
-            timestampString = "520810906.446298"
+            filePath = "Hambre/RadiiLocation.swift"
+            timestampString = "520812316.281107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "yelpAPICallForBusinesses()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "convertCoordinatesToUserFriendly(coordinate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,14 +41,94 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/YelpContainer.swift"
-            timestampString = "520810906.446298"
+            filePath = "Hambre/RadiiLocation.swift"
+            timestampString = "520812316.281107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "yelpAPICallForBusinesses()"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "convertCoordinatesToUserFriendly(coordinate:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hambre.RadiiDistances.((convertCoordinatesToUserFriendly in _22ECB4DC15D23CD70309924D8F3E8A64) (coordinate : Hambre.Coordinate) -&gt; ()).(closure #1)"
+                  moduleName = "Hambre"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/RadiiLocation.swift"
+                  timestampString = "520812473.898511"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "1376">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hambre.RadiiDistances.((convertCoordinatesToUserFriendly in _22ECB4DC15D23CD70309924D8F3E8A64) (coordinate : Hambre.Coordinate) -&gt; ()).(closure #1)"
+                  moduleName = "Hambre"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/RadiiLocation.swift"
+                  timestampString = "520812473.900829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "2123">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hambre/RadiiLocation.swift"
+            timestampString = "520812316.281107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "convertCoordinatesToUserFriendly(coordinate:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hambre.RadiiDistances.((convertCoordinatesToUserFriendly in _22ECB4DC15D23CD70309924D8F3E8A64) (coordinate : Hambre.Coordinate) -&gt; ()).(closure #1)"
+                  moduleName = "Hambre"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/RadiiLocation.swift"
+                  timestampString = "520812473.908864"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "321">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hambre.RadiiDistances.((convertCoordinatesToUserFriendly in _22ECB4DC15D23CD70309924D8F3E8A64) (coordinate : Hambre.Coordinate) -&gt; ()).(closure #1)"
+                  moduleName = "Hambre"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/RadiiLocation.swift"
+                  timestampString = "520812473.911711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "1062">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -59,9 +59,15 @@ class SettingsViewController: UIViewController {
         
     }
     
+    let step: Float = 10
+    
     @IBAction func sliderValueChanged(_ sender: Any) {
-        self.sliderLabel.text = String(Int(roundf(slider.value))) + ((Int(roundf(slider.value))) <= 0 ? " mile" : " miles")
-        self.sliderValue = Int(roundf(slider.value))
+       
+        
+        let roundedValue = round((sender as! UISlider).value / step) * step
+        (sender as! UISlider).value = roundedValue
+        self.sliderValue = Int(roundedValue)
+        self.sliderLabel.text = String(Int(roundf(roundedValue))) + ((Int(roundf(roundedValue))) <= 0 ? " mile" : " miles")
         self.saveButton.isEnabled = true 
     }
     
