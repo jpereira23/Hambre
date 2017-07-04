@@ -163,6 +163,11 @@ extension LikedBusinessesViewController : UITableViewDataSource
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell") as! LikedTableViewCell
         
+        //custom orange forward chevron for favorites
+        let chevron = UIImage(named: "ForwardChevron")
+        cell.accessoryType = .disclosureIndicator
+        cell.accessoryView = UIImageView(image: chevron)
+        
         cell.distanceField.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
         
         cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
