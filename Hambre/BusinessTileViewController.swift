@@ -41,7 +41,8 @@ class BusinessTileViewController: UIViewController{
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.delegate = self
-       
+        
+        
         
         self.tabBarController?.delegate = self
         
@@ -107,6 +108,11 @@ class BusinessTileViewController: UIViewController{
     public func initialCallWasCalled()
     {
         self.initialCall = true
+    }
+    
+    public func setTheCoordinate(coordinate: CLLocationCoordinate2D)
+    {
+        self.theCoordinate = coordinate
     }
     
     public func addToArrayOfPlaces(place: String)
