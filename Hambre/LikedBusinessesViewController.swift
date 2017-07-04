@@ -13,6 +13,10 @@ class LikedBusinessesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var editButton: UIButton!
+    
+    
+    private var isEdit = false
     
     var arrayOfLikedBusinesses = [PersonalBusiness]()
     public var personalBusinessCoreData = PersonalBusinessCoreData()
@@ -48,6 +52,21 @@ class LikedBusinessesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func editCells(_ sender: Any)
+    {
+        if !self.isEdit
+        {
+            self.editButton.setTitle("Cancel", for: UIControlState.normal)
+            self.tableView.setEditing(true, animated: true)
+            self.isEdit = true
+        }
+        else
+        {
+            self.editButton.setTitle("Edit", for: UIControlState.normal)
+            self.tableView.setEditing(false, animated: true)
+            self.isEdit = false
+        }
+    }
 
     // MARK: - Navigation
 
