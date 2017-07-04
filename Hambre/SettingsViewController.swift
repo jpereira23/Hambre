@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController {
         
         //more view vc  THIS IS NOT WORKING FOR SOME REASON
         self.title = "More"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0), NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
     }
 
     @IBAction func enterCityField(_ sender: Any)

@@ -14,6 +14,7 @@ class BusinessTileViewController: UIViewController {
 
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var businessImage: UIImageView!
+    @IBOutlet weak var businessImage1: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
@@ -33,6 +34,8 @@ class BusinessTileViewController: UIViewController {
     public var theCoordinate : CLLocationCoordinate2D!
     private var initialCall = false
     
+    let maskView = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +43,7 @@ class BusinessTileViewController: UIViewController {
         appDelegate.delegate = self
         print("BusinessTileViewController appeared")
         self.businessImage.isHidden = true
+        self.businessImage1.isHidden = true
         self.businessNameLabel.isHidden = true
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
@@ -49,13 +53,14 @@ class BusinessTileViewController: UIViewController {
         //self.genreLabel.text = "Genre: " + self.genre
         yelpContainer?.delegate = self
         
-        // Do any additional setup after loading the view.
+        //tile image masked
+        maskView.image = UIImage(named: "Tile")
+        businessImage.mask = maskView
+        businessImage1.mask = maskView
         
         //tile view title
         self.title = "Discover"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18.0), NSForegroundColorAttributeName: UIColor.white]
-        
-
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
         
         //right button states
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .normal)
@@ -77,6 +82,13 @@ class BusinessTileViewController: UIViewController {
             self.present(controller, animated: true, completion: nil)
         }
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        maskView.frame = businessImage.bounds
+        maskView.frame = businessImage1.bounds
     }
     
     public func isInitailCall() -> Bool
@@ -149,6 +161,7 @@ class BusinessTileViewController: UIViewController {
         if sender.identifier == "fromGenre"
         {
             self.businessImage.isHidden = true
+            self.businessImage1.isHidden = true
             self.businessNameLabel.isHidden = true
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
@@ -161,6 +174,7 @@ class BusinessTileViewController: UIViewController {
         else if sender.identifier == "genreToTile"
         {
             self.businessImage.isHidden = true
+            self.businessImage1.isHidden = true
             self.businessNameLabel.isHidden = true
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
@@ -173,6 +187,7 @@ class BusinessTileViewController: UIViewController {
         else if sender.identifier == "settingsToTile"
         {
             self.businessImage.isHidden = true
+            self.businessImage1.isHidden = true
             self.businessNameLabel.isHidden = true
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
@@ -252,7 +267,9 @@ class BusinessTileViewController: UIViewController {
         
         self.businessNameLabel.text = aBusiness.getBusinessName()
         self.businessImage.setImageWith(aBusiness.getBusinessImage())
+        self.businessImage1.setImageWith(aBusiness.getBusinessImage())
         self.businessImage.contentMode = UIViewContentMode.scaleToFill
+        self.businessImage1.contentMode = UIViewContentMode.scaleToFill
     }
 
 }
@@ -270,6 +287,7 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.businessImage.isHidden = false
+            self.businessImage1.isHidden = false
             self.businessNameLabel.isHidden = false
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
@@ -332,6 +350,7 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
         self.aBusinessTileOperator.removeAllBusinesses()
         self.activityIndicator.isHidden = false
         self.businessImage.isHidden = true
+        self.businessImage1.isHidden = true
         self.businessNameLabel.isHidden = true
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
