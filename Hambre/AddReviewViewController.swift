@@ -33,11 +33,6 @@ class AddReviewViewController: UIViewController {
         //navbar color and text color - enter review
         UINavigationBar.appearance().barTintColor = UIColor(red:0.98, green:0.70, blue:0.21, alpha:1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
-        
-        //add review vc
-        self.title = "Review"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 18), NSForegroundColorAttributeName: UIColor.white]
-    
     }
 
     @IBAction func valueChanged(_ sender: Any)

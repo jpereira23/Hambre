@@ -31,7 +31,9 @@ class SettingsPopOverViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.reloadData() 
+        self.tableView.reloadData()
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -121,5 +123,12 @@ extension SettingsPopOverViewController : UITableViewDataSource
         cell.textLabel?.text = self.arrayOfGenres[indexPath.row]
         
         return cell
+    }
+}
+
+extension SettingsPopOverViewController : UITabBarDelegate
+{
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Jeff something was selected from tab bar")
     }
 }

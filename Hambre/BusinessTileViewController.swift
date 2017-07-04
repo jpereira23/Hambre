@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import GooglePlaces
 
-class BusinessTileViewController: UIViewController {
+class BusinessTileViewController: UIViewController{
 
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var businessImage: UIImageView!
@@ -41,6 +41,10 @@ class BusinessTileViewController: UIViewController {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.delegate = self
+       
+        
+        self.tabBarController?.delegate = self
+        
         print("BusinessTileViewController appeared")
         self.businessImage.isHidden = true
         self.businessImage1.isHidden = true
@@ -72,8 +76,8 @@ class BusinessTileViewController: UIViewController {
         self.leftButton.setImage(UIImage(named: "Not.png"), for: .highlighted)
         //info button states
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .normal)
-        self.infoButton.setImage(UIImage(named: "Info.png"), for: .selected)
-        self.infoButton.setImage(UIImage(named: "Info.png"), for: .highlighted)
+        self.infoButton.setImage(UIImage(named: "Infox.png"), for: .selected)
+        self.infoButton.setImage(UIImage(named: "Infox.png"), for: .highlighted)
         
         if !appDelegate.isInternetAvailable()
         {
@@ -96,6 +100,10 @@ class BusinessTileViewController: UIViewController {
         return self.initialCall
     }
     
+    public func getGenre() -> String
+    {
+        return self.genre
+    }
     public func initialCallWasCalled()
     {
         self.initialCall = true
@@ -194,12 +202,20 @@ class BusinessTileViewController: UIViewController {
             self.infoButton.isEnabled = false
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+            self.aBusinessTileOperator.removeAllBusinesses()
+            if self.distance == 0
+            {
+                self.yelpContainer = nil
+                
+                self.yelpContainer = YelpContainer(cityAndState: self.cityState)
+                self.yelpContainer?.delegate = self
+                self.yelpContainer?.changeGenre(genre: self.genre)
+                self.yelpContainer?.yelpAPICallForBusinesses()
+            }
             print("And the distance is \(self.distance)")
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            
             // Change this below to be relative to the latitude and longitude of set city too not necessarily the one you are on 
 
-            self.radiiDistances = RadiiDistances(latitude: appDelegate.getLatitude(), longitude: appDelegate.getLongitude(), distance: Double(self.distance))
+            self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(self.distance))
             self.radiiDistances.delegate = self
             
         }
@@ -209,6 +225,8 @@ class BusinessTileViewController: UIViewController {
 
         }
     }
+    
+   
     // MARK: - Navigation
 
     
@@ -314,7 +332,8 @@ extension BusinessTileViewController : AppDelegateDelegate
         {
             self.initialCallWasCalled()
             self.yelpContainer = nil
-        
+            self.setCityState(cityState: appDelegate.getCityAndState())
+            self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
             self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
             self.yelpContainer?.delegate = self
             self.yelpContainer?.yelpAPICallForBusinesses()
@@ -330,7 +349,9 @@ extension BusinessTileViewController : RadiiDistancesDelegate
         {
             self.addToArrayOfPlaces(place: place)
             self.yelpContainer = nil
+            
             self.yelpContainer = YelpContainer(cityAndState: place)
+            self.yelpContainer?.changeGenre(genre: self.getGenre())
             self.yelpContainer?.delegate = self
             self.yelpContainer?.yelpAPICallForBusinesses()
         }
@@ -341,13 +362,16 @@ extension BusinessTileViewController : RadiiDistancesDelegate
 extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        
+        self.setTheCoordinate(coordinate: place.coordinate)
         self.setCityState(cityState: place.formattedAddress!)
         self.yelpContainer = nil
         self.yelpContainer = YelpContainer(cityAndState: place.formattedAddress!)
         self.yelpContainer?.delegate = self
         self.yelpContainer?.yelpAPICallForBusinesses()
-        self.aBusinessTileOperator.removeAllBusinesses()
+        if self.aBusinessTileOperator != nil
+        {
+            self.aBusinessTileOperator.removeAllBusinesses()
+        }
         self.activityIndicator.isHidden = false
         self.businessImage.isHidden = true
         self.businessImage1.isHidden = true
@@ -380,5 +404,16 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+
+extension BusinessTileViewController : UITabBarControllerDelegate
+{
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+        if self.presentedViewController != nil
+        {
+            self.presentedViewController?.dismiss(animated: true, completion: nil)
+        }
     }
 }

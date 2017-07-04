@@ -13,6 +13,10 @@ class LikedBusinessesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var editButton: UIButton!
+    
+    
+    private var isEdit = false
     
     var arrayOfLikedBusinesses = [PersonalBusiness]()
     public var personalBusinessCoreData = PersonalBusinessCoreData()
@@ -52,6 +56,21 @@ class LikedBusinessesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func editCells(_ sender: Any)
+    {
+        if !self.isEdit
+        {
+            self.editButton.setTitle("Cancel", for: UIControlState.normal)
+            self.tableView.setEditing(true, animated: true)
+            self.isEdit = true
+        }
+        else
+        {
+            self.editButton.setTitle("Edit", for: UIControlState.normal)
+            self.tableView.setEditing(false, animated: true)
+            self.isEdit = false
+        }
+    }
 
     // MARK: - Navigation
 
@@ -83,8 +102,6 @@ class LikedBusinessesViewController: UIViewController {
         navBar.barTintColor = UIColor(red: 0.98, green: 0.70, blue: 0.21, alpha: 1.0)
         
         */
-        
-        
         let businessViewController = segue.destination as! BusinessViewController
         businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
         businessViewController.setLongitude(longitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLongitude())
@@ -145,10 +162,6 @@ extension LikedBusinessesViewController : UITableViewDataSource
 {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell") as! LikedTableViewCell
-        
-        let chevron = UIImage(named: "ForwardChevron.png")
-        cell.accessoryType = .disclosureIndicator
-        cell.accessoryView = UIImageView(image: chevron)
         
         cell.distanceField.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
         

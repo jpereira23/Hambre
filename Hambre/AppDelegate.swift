@@ -154,6 +154,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return self.state 
     }
     
+    public func getCoordinate() -> CLLocationCoordinate2D
+    {
+        return self.theCoordinate
+    }
     
     private func configureCityAndStateWithCoordinate()
     {
