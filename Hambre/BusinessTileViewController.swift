@@ -30,6 +30,7 @@ class BusinessTileViewController: UIViewController{
     private var arrayOfPlaces = [String]()
     private var distance = 0
     public var radiiDistances : RadiiDistances! = nil
+    private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     private var initialCall = false
