@@ -99,4 +99,16 @@ class CoreDataLocation: NSObject {
         }
     }
     
+    public func resetCoreData()
+    {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "UserLocation")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        do {
+            _ = try self.managedContext.execute(request)
+        } catch let error as NSError {
+            print("Could not save. \(error). \(error.userInfo)")
+        }
+    }
+    
 }

@@ -167,16 +167,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             var placeMark : CLPlacemark!
             placeMark = placemarks?[0]
-            
-            if let state = placeMark.addressDictionary?["State"] as? String {
-                self.state = state
-                print("State: \(state)")
-            }
-            
-            if let city = placeMark.addressDictionary?["City"] as? String {
-                self.city = city
-                print("City: \(city)")
+            if placeMark != nil
+            {
+                if let state = placeMark.addressDictionary?["State"] as? String {
+                    self.state = state
+                    print("State: \(state)")
+                }
                 
+                if let city = placeMark.addressDictionary?["City"] as? String {
+                    self.city = city
+                    print("City: \(city)")
+                    
+                }
             }
             
         })

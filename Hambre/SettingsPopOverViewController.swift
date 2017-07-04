@@ -15,6 +15,7 @@ class SettingsPopOverViewController: UIViewController {
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var distanceSlider: UISlider!
     
+    private var radiusCoreData = RadiusCoreData()
     private var indexOfSelectedCell = 0
     private var cityState : String!
     private var sliderValue = 0
@@ -22,9 +23,13 @@ class SettingsPopOverViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        if !radiusCoreData.checkIfCoreDataIsEmpty()
+        {
+            self.sliderValue = radiusCoreData.loadRadius()
+        }
         self.doneButton.isEnabled = false
-        self.distanceSlider.value = Float(self.sliderValue)
+        //self.distanceSlider.value = Float(self.sliderValue)
+        self.distanceSlider.setValue(Float(self.sliderValue), animated: true)
         self.distanceSlider.maximumValue = 50
         self.distanceSlider.minimumValue = 1
         self.distanceLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
@@ -32,7 +37,7 @@ class SettingsPopOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
-        
+        self.distanceSlider.setValue(Float(self.sliderValue), animated: true)
         
         // Do any additional setup after loading the view.
     }
@@ -78,6 +83,7 @@ class SettingsPopOverViewController: UIViewController {
                 tileViewController.setCityState(cityState: self.cityState)
                 tileViewController.setGenre(genre: self.arrayOfGenres[self.indexOfSelectedCell])
             }
+            self.radiusCoreData.saveRadius(distance: self.sliderValue)
             tileViewController.setDistance(distance:self.sliderValue)
         }
     }
