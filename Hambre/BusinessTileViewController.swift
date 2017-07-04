@@ -192,6 +192,7 @@ class BusinessTileViewController: UIViewController{
             self.infoButton.isEnabled = false
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+            self.aBusinessTileOperator.removeAllBusinesses()
             if self.distance == 0
             {
                 self.yelpContainer = nil
