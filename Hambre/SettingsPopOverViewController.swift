@@ -50,6 +50,12 @@ class SettingsPopOverViewController: UIViewController {
     public func setSelectedCell(index: Int)
     {
         self.indexOfSelectedCell = index
+        
+    }
+    
+    public func setSliderValue(value: Int)
+    {
+        self.sliderValue = value
     }
     
     public func getIndexOfSelectedCell() -> Int{
@@ -79,6 +85,7 @@ class SettingsPopOverViewController: UIViewController {
                 tileViewController.setGenre(genre: self.arrayOfGenres[self.indexOfSelectedCell])
             }
             tileViewController.setDistance(distance:self.sliderValue)
+            tileViewController.setIndexOfSelectedGenre(index: self.indexOfSelectedCell)
         }
     }
 

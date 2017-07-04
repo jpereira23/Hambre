@@ -28,6 +28,7 @@ class BusinessTileViewController: UIViewController{
     private var cityState = "San Francisco, California"
     private var arrayOfPlaces = [String]()
     private var distance = 0
+    private var indexOfSelectedGenre = 0
     private var radiiDistances : RadiiDistances! = nil
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
@@ -91,6 +92,16 @@ class BusinessTileViewController: UIViewController{
     public func isInitailCall() -> Bool
     {
         return self.initialCall
+    }
+    
+    public func setIndexOfSelectedGenre(index: Int)
+    {
+        self.indexOfSelectedGenre = index
+    }
+    
+    public func getIndexOfSelectedGenre() -> Int
+    {
+        return self.indexOfSelectedGenre
     }
     
     public func getGenre() -> String
@@ -239,10 +250,11 @@ class BusinessTileViewController: UIViewController{
             businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
             
         }
-        else if segue.identifier == "tileToSetting"
+        else if segue.identifier == "tileToSettings"
         {
-            let settingsViewController = segue.destination as! SettingsViewController
+            let settingsViewController = segue.destination as! SettingsPopOverViewController
             settingsViewController.setSliderValue(value: self.distance)
+            settingsViewController.setSelectedCell(index: self.indexOfSelectedGenre)
         }
     }
     
