@@ -196,7 +196,7 @@ class BusinessViewController: UIViewController {
             (status: CKAccountStatus, error: Error?) in
             DispatchQueue.main.async(execute: {
                 if error != nil{
-                    print(error)
+                    print(error!)
                 } else {
                     switch status{
                     case .available:
