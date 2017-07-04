@@ -28,14 +28,13 @@ class BusinessTileViewController: UIViewController{
     private var cityState = "San Francisco, California"
     private var arrayOfPlaces = [String]()
     private var distance = 0
-    private var radiiDistances : RadiiDistances! = nil
+    public var radiiDistances : RadiiDistances! = nil
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     private var initialCall = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.delegate = self
        
@@ -317,6 +316,16 @@ extension BusinessTileViewController : AppDelegateDelegate
         
         if !self.isInitailCall()
         {
+            self.setCityState(cityState: appDelegate.getCityAndState())
+            self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
+            let radiusCoreData = RadiusCoreData()
+            if !radiusCoreData.checkIfCoreDataIsEmpty()
+            {
+                let distance = radiusCoreData.loadRadius()
+                self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(distance))
+                self.radiiDistances.delegate = self
+                
+            }
             self.initialCallWasCalled()
             self.yelpContainer = nil
             self.setCityState(cityState: appDelegate.getCityAndState())

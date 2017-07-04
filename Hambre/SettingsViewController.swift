@@ -15,7 +15,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet var enterCityTextField: UITextField!
     @IBOutlet var saveButton: UIButton!
     private var cityState : String!
-    private var coreDataLocation = CoreDataLocation()
     private var sliderValue = 0
     @IBOutlet var slider: UISlider!
     
