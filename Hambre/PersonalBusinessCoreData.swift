@@ -8,17 +8,18 @@
 
 import UIKit
 import CoreData
-
+import CoreLocation
 class PersonalBusinessCoreData: NSObject {
     private var managedObjects = [NSManagedObject]()
     private var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var managedContext : NSManagedObjectContext!
     private var entity: NSEntityDescription!
-    
-    public override init()
+    private var coordinate : CLLocationCoordinate2D!
+    public init(coordinate: CLLocationCoordinate2D)
     {
         self.managedContext = self.appDelegate.persistentContainer.viewContext
         self.entity = NSEntityDescription.entity(forEntityName: "PersonalBusinessData", in: self.managedContext)
+        self.coordinate = coordinate
     }
     
     public func saveBusiness(personalBusiness: PersonalBusiness)
@@ -80,7 +81,7 @@ class PersonalBusinessCoreData: NSObject {
             
             let websiteUrl = businesses.value(forKeyPath: "websiteUrl") as! String
             
-            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl)
+            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl, coordinate: self.coordinate)
             
             
             temporaryBusiness.append(personalBusiness)

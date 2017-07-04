@@ -1,3 +1,4 @@
+
 //
 //  PersonalBusiness.swift
 //  Hambre
@@ -22,10 +23,11 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     private var address : String!
     private var isClosed : Bool!
     private var websiteUrl : String!
+    private var coordinate : CLLocationCoordinate2D!
     
     
     
-    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double)
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, coordinate: CLLocationCoordinate2D)
     {
         super.init(businessName: businessName, businessImageUrl:
             businessImageUrl)
@@ -39,10 +41,11 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.websiteUrl = "www.google.com"
         self.phoneNumber = "(000) 000 0000"
         self.address = "123 Westwood, Zimbabwe, Africa"
+        self.coordinate = coordinate
        
     }
     
-    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, address: [String], isClosed: Bool, websiteUrl: String)
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, address: [String], isClosed: Bool, websiteUrl: String, coordinate: CLLocationCoordinate2D)
     {
         super.init(businessName: businessName, businessImageUrl:
             businessImageUrl)
@@ -55,12 +58,20 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.likes = likes
         self.distance = self.getADistance()
         self.phoneNumber = phoneNumber
-        self.address = address[0] + ", " + city + ", " + state
+        if address.count > 0
+        {
+            self.address = address[0] + ", " + city + ", " + state
+        }
+        else
+        {
+            self.address = city + ", " + state
+        }
         self.isClosed = isClosed
         self.websiteUrl = websiteUrl
+        self.coordinate = coordinate
     }
     
-    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, theAddress: String, isClosed: Bool, websiteUrl: String)
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, theAddress: String, isClosed: Bool, websiteUrl: String, coordinate: CLLocationCoordinate2D)
     {
         super.init(businessName: businessName, businessImageUrl:
             businessImageUrl)
@@ -75,6 +86,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.address = theAddress + ", " + city + ", " + state
         self.isClosed = isClosed
         self.websiteUrl = websiteUrl
+        self.coordinate = coordinate
     }
     
     public init()
@@ -98,9 +110,16 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     
     private func getADistance() -> Int
     {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let coordinate0 = CLLocation(latitude: CLLocationDegrees(appDelegate.getLatitude()), longitude: CLLocationDegrees(appDelegate.getLongitude()))
+        let coordinate0 : CLLocation!
+        if self.coordinate != nil
+        {
+            coordinate0 = CLLocation(latitude: CLLocationDegrees(self.coordinate.latitude), longitude: CLLocationDegrees(self.coordinate.longitude))
+        }
+        else
+        {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            coordinate0 = CLLocation(latitude: CLLocationDegrees(appDelegate.getLatitude()), longitude: CLLocationDegrees(appDelegate.getLongitude()))
+        }
         
         let coordinate1 = CLLocation(latitude: self.latitude, longitude: self.longitude)
         

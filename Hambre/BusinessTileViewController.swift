@@ -329,12 +329,13 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.infoButton.isEnabled = true
         if self.aBusinessTileOperator == nil
         {
-            self.aBusinessTileOperator = BusinessTileOperator(city: yelpContainer.getCity(), state: yelpContainer.getState())
+            self.aBusinessTileOperator = BusinessTileOperator(city: yelpContainer.getCity(), state: yelpContainer.getState(), coordinate: self.theCoordinate)
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
             self.refreshTileAttributes()
         }
         else
-        {   
+        {
+            self.aBusinessTileOperator.setTheCoordinate(coordinate: self.theCoordinate)
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
             self.refreshTileAttributes()
         }

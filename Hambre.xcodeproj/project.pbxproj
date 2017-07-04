@@ -83,6 +83,7 @@
 		642A7CD01EDCDD950085062A /* BusinessTileOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTileOperator.swift; sourceTree = "<group>"; };
 		642A7CD21EDCE0A00085062A /* BusinessTileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessTileViewController.swift; sourceTree = "<group>"; };
 		644BCA071EE75A94004324E2 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		644DFABB1F0C37860092FACF /* Negocios5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios5.xcdatamodel; sourceTree = "<group>"; };
 		644FA6EF1F0C0C700034D574 /* RadiusCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiusCoreData.swift; sourceTree = "<group>"; };
 		644FA6F11F0C0FD80034D574 /* Negocios4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios4.xcdatamodel; sourceTree = "<group>"; };
 		6450958A1EDB842400427A83 /* Hambre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hambre.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -893,6 +894,7 @@
 		642A7CCD1EDCDCB40085062A /* Negocios.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				644DFABB1F0C37860092FACF /* Negocios5.xcdatamodel */,
 				644FA6F11F0C0FD80034D574 /* Negocios4.xcdatamodel */,
 				64932DDA1EEF8A35001727AE /* Negocios3.xcdatamodel */,
 				646B59DD1EE8C19100CCB194 /* Negocios2.xcdatamodel */,
