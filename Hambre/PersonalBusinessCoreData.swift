@@ -139,6 +139,12 @@ class PersonalBusinessCoreData: NSObject {
         }
         return false
     }
+    
+    public func reloadCoreData()
+    {
+        _ = self.loadCoreData()
+    }
+    
     public func resetCoreData()
     {
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PersonalBusinessData")
