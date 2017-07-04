@@ -60,11 +60,18 @@ class DetailView: UIView {
         self.view = loadViewFromNib()
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        self.address = self.formatAddress()
         self.addressField.setTitle(self.address, for: .normal)
         self.phoneFIeld.setTitle(self.phoneNumber, for: .normal)
         self.isClosedField.setTitle(self.isClosed, for: .normal)
         self.websiteUrlField.setTitle("GET BIZ NAME Website", for: .normal)
         addSubview(view)
+    }
+    
+    private func formatAddress() -> String
+    {
+        self.address = self.address.replacingOccurrences(of: ",", with: "\n")
+        return self.address
     }
     
     public func loadViewFromNib() -> UIView {
