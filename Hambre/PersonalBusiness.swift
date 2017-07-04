@@ -55,7 +55,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.likes = likes
         self.distance = self.getADistance()
         self.phoneNumber = phoneNumber
-        self.address = address[0] + ", " + city + ", " + state
+        self.address = "Catracho Crib" //theAddress + ", " + city + ", " + state
         self.isClosed = isClosed
         self.websiteUrl = websiteUrl
     }
@@ -72,7 +72,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.distance = self.getADistance()
         self.likes = likes
         self.phoneNumber = phoneNumber
-        self.address = theAddress + ", " + city + ", " + state
+        self.address = "Something"//theAddress + ", " + city + ", " + state
         self.isClosed = isClosed
         self.websiteUrl = websiteUrl
     }
@@ -89,7 +89,8 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     
     private func setAddress(address: [String]) -> String
     {
-        let theAddress = address[0] + ", " + self.city + ", " + self.state
+        let theAddress = "Something"//theAddress + ", " + self.city + ", " + self.state
+        
         
         return theAddress
 

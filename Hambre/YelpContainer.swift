@@ -203,7 +203,7 @@ class YelpContainer: NSObject {
     {
         let delimiter = " "
         var token = self.location.components(separatedBy: delimiter)
-        return token[1]
+        return token[0]
     }
     
     public func getLocation() -> String
