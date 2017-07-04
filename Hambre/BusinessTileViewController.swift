@@ -100,6 +100,16 @@ class BusinessTileViewController: UIViewController{
         return self.initialCall
     }
     
+    public func setIndexOfSelectedGenre(index: Int)
+    {
+        self.indexOfSelectedGenre = index
+    }
+    
+    public func getIndexOfSelectedGenre() -> Int
+    {
+        return self.indexOfSelectedGenre
+    }
+    
     public func getGenre() -> String
     {
         return self.genre
@@ -255,10 +265,11 @@ class BusinessTileViewController: UIViewController{
             businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
             
         }
-        else if segue.identifier == "tileToSetting"
+        else if segue.identifier == "tileToSettings"
         {
-            let settingsViewController = segue.destination as! SettingsViewController
+            let settingsViewController = segue.destination as! SettingsPopOverViewController
             settingsViewController.setSliderValue(value: self.distance)
+            settingsViewController.setSelectedCell(index: self.indexOfSelectedGenre)
         }
     }
     

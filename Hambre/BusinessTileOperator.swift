@@ -42,19 +42,19 @@ class BusinessTileOperator: NSObject {
             if business.imageURL == nil && business.phone == nil
             {
                 
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
             }
             else if business.imageURL == nil
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
             }
             else if business.phone == nil
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
             }
             else
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: city, state: state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
                 
             }
             
