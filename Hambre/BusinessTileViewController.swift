@@ -38,7 +38,8 @@ class BusinessTileViewController: UIViewController{
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.delegate = self
-        self.cityState = appDelegate.getCityAndState()
+       
+        
         self.tabBarController?.delegate = self
         
         print("BusinessTileViewController appeared")
@@ -83,6 +84,10 @@ class BusinessTileViewController: UIViewController{
         
     }
     
+    public func setTheCoordinate(coordinate: CLLocationCoordinate2D)
+    {
+        self.theCoordinate = coordinate
+    }
     public func isInitailCall() -> Bool
     {
         return self.initialCall
@@ -190,7 +195,6 @@ class BusinessTileViewController: UIViewController{
             if self.distance == 0
             {
                 self.yelpContainer = nil
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 
                 self.yelpContainer = YelpContainer(cityAndState: self.cityState)
                 self.yelpContainer?.delegate = self
@@ -198,10 +202,9 @@ class BusinessTileViewController: UIViewController{
                 self.yelpContainer?.yelpAPICallForBusinesses()
             }
             print("And the distance is \(self.distance)")
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             // Change this below to be relative to the latitude and longitude of set city too not necessarily the one you are on 
 
-            self.radiiDistances = RadiiDistances(latitude: appDelegate.getLatitude(), longitude: appDelegate.getLongitude(), distance: Double(self.distance))
+            self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(self.distance))
             self.radiiDistances.delegate = self
             
         }
@@ -315,7 +318,8 @@ extension BusinessTileViewController : AppDelegateDelegate
         {
             self.initialCallWasCalled()
             self.yelpContainer = nil
-        
+            self.setCityState(cityState: appDelegate.getCityAndState())
+            self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
             self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
             self.yelpContainer?.delegate = self
             self.yelpContainer?.yelpAPICallForBusinesses()
@@ -344,7 +348,7 @@ extension BusinessTileViewController : RadiiDistancesDelegate
 extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        
+        self.setTheCoordinate(coordinate: place.coordinate)
         self.setCityState(cityState: place.formattedAddress!)
         self.yelpContainer = nil
         self.yelpContainer = YelpContainer(cityAndState: place.formattedAddress!)
