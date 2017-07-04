@@ -132,7 +132,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xTk-m5-YNo" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="pvf-a5-doL"/>
+                                    <segue destination="xTk-m5-YNo" kind="presentation" identifier="tileToSettings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="pvf-a5-doL"/>
                                 </connections>
                             </button>
                         </barButtonItem>
