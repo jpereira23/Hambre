@@ -59,6 +59,7 @@ class BusinessTileViewController: UIViewController{
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
+        
         //tile image masked
         maskView.image = UIImage(named: "Tile")
         businessImage1.mask = maskView
