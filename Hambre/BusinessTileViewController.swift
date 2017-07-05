@@ -54,6 +54,11 @@ class BusinessTileViewController: UIViewController{
         //self.genreLabel.text = "Genre: " + self.genre
         yelpContainer?.delegate = self
         
+        //custom back button
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackChevron")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
         //tile image masked
         maskView.image = UIImage(named: "Tile")
         businessImage1.mask = maskView

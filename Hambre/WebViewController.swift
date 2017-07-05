@@ -19,6 +19,11 @@ class WebViewController: UIViewController {
         self.webView.loadRequest(URLRequest(url: URL(string: self.website)! as URL) as URLRequest)
         self.tabBarController?.tabBar.isHidden = true 
         // Do any additional setup after loading the view.
+        
+        //custom back button
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackChevron")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
 
     override func didReceiveMemoryWarning() {
