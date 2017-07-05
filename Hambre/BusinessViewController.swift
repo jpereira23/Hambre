@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import YelpAPI
 import CloudKit
-
+import GoogleMaps
 
 class BusinessViewController: UIViewController {
 
@@ -56,7 +56,6 @@ class BusinessViewController: UIViewController {
         self.segmentView.addSubview(self.currentView)
         
     }
-    
     
     
     let regionRadius: CLLocationDistance = 1000
