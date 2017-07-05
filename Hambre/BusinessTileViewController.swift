@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import GooglePlaces
 
-class BusinessTileViewController: UIViewController{
+class BusinessTileViewController: UIViewController, DraggableViewDelegate{
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var leftButton: UIButton!
@@ -20,7 +20,11 @@ class BusinessTileViewController: UIViewController{
     @IBOutlet var locationImage: UIImageView!
     var aBusinessTileOperator : BusinessTileOperator! = nil
     var yelpContainer: YelpContainer?
-    private var arrayOfBusinesses = [PersonalBusiness]()
+    public var arrayOfBusinesses = [PersonalBusiness]()
+    public var allCards = [DraggableView]()
+    private var cardsLoadedIndex: Int = 0
+    private var loadedCards = [DraggableView]()
+    
     private var genre = "all restuarants"
     private var cityState = "San Francisco, California"
     private var arrayOfPlaces = [String]()
@@ -32,6 +36,7 @@ class BusinessTileViewController: UIViewController{
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
+    var MAX_BUFFER_SIZE: Int = 2
     
     let maskView = UIImageView()
     
@@ -85,6 +90,113 @@ class BusinessTileViewController: UIViewController{
             self.present(controller, animated: true, completion: nil)
         }
         
+    }
+    
+    func cardSwipedLeft(_ card: UIView) {
+        loadedCards.remove(at: 0)
+        
+        if cardsLoadedIndex < allCards.count {
+            
+            loadedCards.append(allCards[cardsLoadedIndex])
+            cardsLoadedIndex += 1
+            loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
+            loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
+            let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
+            let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
+            aView1.frame.origin.x = 25
+            aView2.frame.origin.x = 25
+            aView1.frame.origin.y = 86
+            aView2.frame.origin.y = 86
+            
+            self.view.insertSubview(aView1, belowSubview: aView2)
+        }
+    }
+    
+    func cardSwipedRight(_ card: UIView) {
+        
+        
+        loadedCards.remove(at: 0)
+        
+        if cardsLoadedIndex < allCards.count {
+        
+            loadedCards.append(allCards[cardsLoadedIndex])
+            cardsLoadedIndex += 1
+            loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
+            loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
+            let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
+            let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
+            aView1.frame.origin.x = 25
+            aView2.frame.origin.x = 25
+            aView1.frame.origin.y = 86
+            aView2.frame.origin.y = 86
+            
+            self.view.insertSubview(aView1, belowSubview: aView2)
+        }
+    }
+    
+    private func createDraggableViewWithData(at index: Int) -> DraggableView {
+        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: 325, height: 395))
+        
+        draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
+        draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
+        
+        draggableView.setMiles(miles: String(self.arrayOfBusinesses[index].getDistance()) + " mile(s)")
+        if self.arrayOfReviews.count > 0
+        {
+            let num = self.filterArrayOfReviews(url: self.arrayOfBusinesses[index].getBusinessImage())
+            draggableView.setReviews(reviews: String(num) + ((num > 1 || num == 0) ? " reviews" : " review"))
+        }
+        else
+        {
+            draggableView.setReviews(reviews: "No reviews")
+        }
+        draggableView.delegate = self
+        
+        return draggableView
+    }
+    
+    public func loadCards()
+    {
+        if self.arrayOfBusinesses.count > 0
+        {
+            let numLoadedCardsCap: Int = (self.arrayOfBusinesses.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : self.arrayOfBusinesses.count
+            
+            for i in 0..<self.arrayOfBusinesses.count
+            {
+                let newCard: DraggableView? = self.createDraggableViewWithData(at: i)
+                allCards.append(newCard!)
+                if i < numLoadedCardsCap {
+                    loadedCards.append(newCard!)
+                }
+            }
+            
+            for i in 0..<loadedCards.count
+            {
+                if i > 0
+                {
+                    
+                    loadedCards[i].xibSetUp()
+                    loadedCards[i-1].xibSetUp()
+                    let aView1 = loadedCards[i].getView()
+                    let aView2 = loadedCards[i-1].getView()
+                    aView1.frame.origin.x = 25
+                    aView2.frame.origin.x = 25
+                    aView1.frame.origin.y = 86
+                    aView2.frame.origin.y = 86
+                    
+                    self.view.insertSubview(aView1, belowSubview: aView2)
+                }
+                else
+                {
+                    loadedCards[i].xibSetUp()
+                    let aView = loadedCards[i].getView()
+                    aView.frame.origin.x = 25
+                    aView.frame.origin.y = 86
+                    self.view.addSubview(aView)
+                }
+                cardsLoadedIndex += 1
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -300,13 +412,22 @@ class BusinessTileViewController: UIViewController{
     
     
     @IBAction func swipeLeft(_ sender: Any) {
-        self.aBusinessTileOperator.swipeLeft()
-        self.refreshTileAttributes()
+        let dragView: DraggableView? = loadedCards.first
+        dragView?.overlayView?.mode = .GGOverlayViewModeLeft
+        UIView.animate(withDuration: 0.2, animations: {() -> Void in
+            dragView?.overlayView?.alpha = 1
+        })
+        dragView?.leftClickAction()
     }
     
     @IBAction func swipeRight(_ sender: Any) {
-        self.aBusinessTileOperator.swipeRight()
-        self.refreshTileAttributes()
+        
+        let dragView: DraggableView? = loadedCards.first
+        dragView?.overlayView?.mode = .GGOverlayViewModeRight
+        UIView.animate(withDuration: 0.2, animations: {() -> Void in
+            dragView?.overlayView?.alpha = 1
+        })
+        dragView?.rightClickAction()
     }
     
     public func refreshTileAttributes()
@@ -353,13 +474,16 @@ extension BusinessTileViewController : YelpContainerDelegate
         {
             self.aBusinessTileOperator = BusinessTileOperator(city: yelpContainer.getCity(), state: yelpContainer.getState(), coordinate: self.theCoordinate)
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
-            self.refreshTileAttributes()
+            
+            self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
+            self.loadCards()
         }
         else
         {
             self.aBusinessTileOperator.setTheCoordinate(coordinate: self.theCoordinate)
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
-            self.refreshTileAttributes()
+            self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
+            self.loadCards()
         }
     }
 }

@@ -28,6 +28,7 @@
 		645911661EE65363006517CB /* LikedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645911651EE65363006517CB /* LikedTableViewCell.swift */; };
 		645A31EF1EE2114D001A958A /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645A31EE1EE2114D001A958A /* AddReviewViewController.swift */; };
 		646B59DC1EE8C15700CCB194 /* CoreDataLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646B59DB1EE8C15700CCB194 /* CoreDataLocation.swift */; };
+		646ED0901F0D778400E3253B /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646ED08F1F0D778400E3253B /* OverlayView.swift */; };
 		646F529F1F06D70100D977B3 /* RadiiLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F529E1F06D70100D977B3 /* RadiiLocation.swift */; };
 		64716E871EE8850300970C07 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64716E861EE8850300970C07 /* SettingsViewController.swift */; };
 		64716E891EE88E2B00970C07 /* GenrePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64716E881EE88E2B00970C07 /* GenrePickerViewController.swift */; };
@@ -105,6 +106,7 @@
 		645A31EE1EE2114D001A958A /* AddReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		646B59DB1EE8C15700CCB194 /* CoreDataLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataLocation.swift; sourceTree = "<group>"; };
 		646B59DD1EE8C19100CCB194 /* Negocios2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios2.xcdatamodel; sourceTree = "<group>"; };
+		646ED08F1F0D778400E3253B /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		646F529E1F06D70100D977B3 /* RadiiLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiiLocation.swift; sourceTree = "<group>"; };
 		64716E861EE8850300970C07 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		64716E881EE88E2B00970C07 /* GenrePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenrePickerViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				64AB3F941F0C790800F280B7 /* DraggableView.xib */,
 				64AB3F961F0C799B00F280B7 /* DraggableView.swift */,
+				646ED08F1F0D778400E3253B /* OverlayView.swift */,
 			);
 			name = Tile;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				645A31EF1EE2114D001A958A /* AddReviewViewController.swift in Sources */,
 				6499FE661F0AFED50000D23A /* SettingsPopOverViewController.swift in Sources */,
 				5B52042C1EEA5C600069AD33 /* CALayerExtension.swift in Sources */,
+				646ED0901F0D778400E3253B /* OverlayView.swift in Sources */,
 				648B74CE1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift in Sources */,
 				64D8E8371EEA38F400D5DB31 /* DetailView.swift in Sources */,
 				64D8E8341EE9F5C900D5DB31 /* MainTabViewController.swift in Sources */,

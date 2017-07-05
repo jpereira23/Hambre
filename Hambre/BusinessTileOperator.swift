@@ -109,6 +109,11 @@ class BusinessTileOperator: NSObject {
         return self.arrayOfNegocios
     }
     
+    public func obtainBusinessesForCards() -> [PersonalBusiness]
+    {
+        return self.arrayOfLeftBusinesses
+    }
+    
     private func updateUserGeneratedData()
     {
         
