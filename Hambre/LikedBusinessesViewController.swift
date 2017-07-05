@@ -7,25 +7,27 @@
 //
 
 import UIKit
-
+import CoreLocation
 
 class LikedBusinessesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var editButton: UIButton!
-    
-    
+    private var coordinate : CLLocationCoordinate2D!
     private var isEdit = false
     
+    
     var arrayOfLikedBusinesses = [PersonalBusiness]()
-    public var personalBusinessCoreData = PersonalBusinessCoreData()
+    public var personalBusinessCoreData : PersonalBusinessCoreData!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //personalBusinessCoreData.resetCoreData()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: appDelegate.getCoordinate())
         self.cloudKitDatabaseHandler.delegate = self
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
@@ -48,6 +50,11 @@ class LikedBusinessesViewController: UIViewController {
         //businessTileViewController.delegate = self
         // Do any additional setup after loading the view.
             }
+    
+    public func setCoordinate(coordinate: CLLocationCoordinate2D)
+    {
+        self.coordinate = coordinate
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         //print("The LikedBusinessController is going to appear")

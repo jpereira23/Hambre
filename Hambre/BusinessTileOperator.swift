@@ -9,6 +9,7 @@
 import UIKit
 import YelpAPI
 import BrightFutures
+import CoreLocation
 
 class BusinessTileOperator: NSObject {
     private var arrayOfBusinesses = [PersonalBusiness]()
@@ -16,24 +17,27 @@ class BusinessTileOperator: NSObject {
     private var arrayOfLeftBusinesses = [PersonalBusiness]()
     private var globalIndexForCurrentCompany = 0
     private var arrayOfNegocios = [YLPBusiness]()
-    private var personalBusinessCoreData = PersonalBusinessCoreData()
+    private var personalBusinessCoreData : PersonalBusinessCoreData!
     private var city = "San Francisco"
     private var state = "California"
+    private var coordinate : CLLocationCoordinate2D!
     
     let appId = "M8_cEGzomTyCzwz3BDYY4Q"
     let appSecret = "9zi4Z5OMoP2NJMVKjLE5Yk0AzquHDWyIYgbblBaTW3sumGzu6LJZcJUdcMa1GfKD"
     
-    public init(city: String, state: String)
+    public init(city: String, state: String, coordinate: CLLocationCoordinate2D)
     {
         super.init()
         self.city = city
         self.state = state
+        self.coordinate = coordinate
+        self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.coordinate)
     }
     
     public func addBusinesses(arrayOfBusinesses: [YLPBusiness])
     {
         self.personalBusinessCoreData.reloadCoreData()
-        self.personalBusinessCoreData = PersonalBusinessCoreData()
+        self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.coordinate)
         
         for business in arrayOfBusinesses
         {
@@ -42,19 +46,19 @@ class BusinessTileOperator: NSObject {
             if business.imageURL == nil && business.phone == nil
             {
                 
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate)
             }
             else if business.imageURL == nil
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate)
             }
             else if business.phone == nil
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate)
             }
             else
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate)
                 
             }
             
@@ -74,6 +78,11 @@ class BusinessTileOperator: NSObject {
 
     }
     
+    public func setTheCoordinate(coordinate: CLLocationCoordinate2D)
+    {
+        self.coordinate = coordinate 
+    }
+    
     public func removeAllBusinesses()
     {
         self.arrayOfLeftBusinesses.removeAll()
@@ -87,7 +96,7 @@ class BusinessTileOperator: NSObject {
         {
             if business.name != "" && business.imageURL != nil
             {
-                let personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: self.city, state: self.state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString)
+                let personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: self.city, state: self.state, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: business.phone!, address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate)
             
                 self.arrayOfBusinesses.append(personalBusiness)
                 self.arrayOfLeftBusinesses.append(personalBusiness)
