@@ -33,9 +33,7 @@
 		64716E871EE8850300970C07 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64716E861EE8850300970C07 /* SettingsViewController.swift */; };
 		64716E891EE88E2B00970C07 /* GenrePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64716E881EE88E2B00970C07 /* GenrePickerViewController.swift */; };
 		648B74C51EDE25F400B5D2CE /* YelpContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74C41EDE25F400B5D2CE /* YelpContainer.swift */; };
-		648B74C71EDE278300B5D2CE /* YelpContainerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74C61EDE278300B5D2CE /* YelpContainerTest.swift */; };
 		648B74C91EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74C81EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift */; };
-		648B74CB1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74CA1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift */; };
 		648B74CE1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */; };
 		64932DD71EEF75A1001727AE /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64932DD61EEF75A1001727AE /* ReviewView.xib */; };
 		64932DD91EEF75B9001727AE /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64932DD81EEF75B9001727AE /* ReviewView.swift */; };
@@ -46,7 +44,6 @@
 		64AB3F971F0C799B00F280B7 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB3F961F0C799B00F280B7 /* DraggableView.swift */; };
 		64CEE48F1EE0A50A0065082F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CEE48E1EE0A50A0065082F /* CloudKit.framework */; };
 		64CEE4911EE0A7660065082F /* CloudKitDatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */; };
-		64CEE4931EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4921EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift */; };
 		64D8E8341EE9F5C900D5DB31 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8E8331EE9F5C900D5DB31 /* MainTabViewController.swift */; };
 		64D8E8371EEA38F400D5DB31 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D8E8361EEA38F400D5DB31 /* DetailView.swift */; };
 		64D8E8391EEA39F000D5DB31 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D8E8381EEA39F000D5DB31 /* View.xib */; };
@@ -111,9 +108,7 @@
 		64716E861EE8850300970C07 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		64716E881EE88E2B00970C07 /* GenrePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenrePickerViewController.swift; sourceTree = "<group>"; };
 		648B74C41EDE25F400B5D2CE /* YelpContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpContainer.swift; sourceTree = "<group>"; };
-		648B74C61EDE278300B5D2CE /* YelpContainerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpContainerTest.swift; sourceTree = "<group>"; };
 		648B74C81EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusinessCoreData.swift; sourceTree = "<group>"; };
-		648B74CA1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusinessCoreDataTest.swift; sourceTree = "<group>"; };
 		648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedBusinessesViewController.swift; sourceTree = "<group>"; };
 		64932DD61EEF75A1001727AE /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
 		64932DD81EEF75B9001727AE /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
@@ -126,7 +121,6 @@
 		64CEE48D1EE0A4F40065082F /* Hambre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hambre.entitlements; sourceTree = "<group>"; };
 		64CEE48E1EE0A50A0065082F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseHandler.swift; sourceTree = "<group>"; };
-		64CEE4921EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseHandlerTest.swift; sourceTree = "<group>"; };
 		64D8E8331EE9F5C900D5DB31 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		64D8E8361EEA38F400D5DB31 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		64D8E8381EEA39F000D5DB31 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
@@ -258,10 +252,7 @@
 		645095A31EDB842400427A83 /* HambreTests */ = {
 			isa = PBXGroup;
 			children = (
-				648B74C61EDE278300B5D2CE /* YelpContainerTest.swift */,
 				645095A61EDB842400427A83 /* Info.plist */,
-				648B74CA1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift */,
-				64CEE4921EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift */,
 			);
 			path = HambreTests;
 			sourceTree = "<group>";
@@ -629,9 +620,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64CEE4931EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift in Sources */,
-				648B74CB1EDE504100B5D2CE /* PersonalBusinessCoreDataTest.swift in Sources */,
-				648B74C71EDE278300B5D2CE /* YelpContainerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
