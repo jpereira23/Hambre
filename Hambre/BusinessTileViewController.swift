@@ -24,7 +24,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     public var allCards = [DraggableView]()
     private var cardsLoadedIndex: Int = 0
     private var loadedCards = [DraggableView]()
-    
+    public var personalBusinessCoreData : PersonalBusinessCoreData!
     private var genre = "all restuarants"
     private var cityState = "San Francisco, California"
     private var arrayOfPlaces = [String]()
@@ -32,6 +32,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     public var radiiDistances : RadiiDistances! = nil
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
+    private var globalIndexForCurrentCompany = 0
     public var theCoordinate : CLLocationCoordinate2D!
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
@@ -44,7 +45,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.delegate = self
-        
+       
         self.cloudKitDatabaseHandler.delegate = self
         
         self.tabBarController?.delegate = self
@@ -97,18 +98,22 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         
         if cardsLoadedIndex < allCards.count {
             
-            loadedCards.append(allCards[cardsLoadedIndex])
-            cardsLoadedIndex += 1
-            loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
-            loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
-            let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
-            let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
-            aView1.frame.origin.x = 25
-            aView2.frame.origin.x = 25
-            aView1.frame.origin.y = 86
-            aView2.frame.origin.y = 86
-            
-            self.view.insertSubview(aView1, belowSubview: aView2)
+            if self.arrayOfBusinesses.count > 0
+            {
+                self.checkAndUpdateGlobalIndex()
+                loadedCards.append(allCards[cardsLoadedIndex])
+                cardsLoadedIndex += 1
+                loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
+                loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
+                let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
+                let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
+                aView1.frame.origin.x = 25
+                aView2.frame.origin.x = 25
+                aView1.frame.origin.y = 86
+                aView2.frame.origin.y = 86
+                
+                self.view.insertSubview(aView1, belowSubview: aView2)
+            }
         }
     }
     
@@ -119,18 +124,26 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         
         if cardsLoadedIndex < allCards.count {
         
-            loadedCards.append(allCards[cardsLoadedIndex])
-            cardsLoadedIndex += 1
-            loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
-            loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
-            let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
-            let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
-            aView1.frame.origin.x = 25
-            aView2.frame.origin.x = 25
-            aView1.frame.origin.y = 86
-            aView2.frame.origin.y = 86
-            
-            self.view.insertSubview(aView1, belowSubview: aView2)
+            if self.arrayOfBusinesses.count > 0
+            {
+                self.personalBusinessCoreData.saveBusiness(personalBusiness: self.arrayOfBusinesses[self.globalIndexForCurrentCompany])
+                self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
+                self.allCards.remove(at: self.globalIndexForCurrentCompany)
+                self.checkAndUpdateGlobalIndex()
+                
+                loadedCards.append(allCards[cardsLoadedIndex])
+                cardsLoadedIndex += 1
+                loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
+                loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
+                let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
+                let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
+                aView1.frame.origin.x = 25
+                aView2.frame.origin.x = 25
+                aView1.frame.origin.y = 86
+                aView2.frame.origin.y = 86
+                
+                self.view.insertSubview(aView1, belowSubview: aView2)
+            }
         }
     }
     
@@ -412,25 +425,42 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     
     @IBAction func swipeLeft(_ sender: Any) {
+        
         loadedCards.first?.xibSetUp()
         let dragView: DraggableView? = loadedCards.first
         dragView?.overlayView?.mode = .GGOverlayViewModeLeft
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
             dragView?.overlayView?.alpha = 1
+            dragView?.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
         })
         dragView?.leftClickAction()
+        
+        
     }
     
     @IBAction func swipeRight(_ sender: Any) {
-        
+            
         loadedCards.first?.xibSetUp()
         
         let dragView: DraggableView? = loadedCards.first
         dragView?.overlayView?.mode = .GGOverlayViewModeRight
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
             dragView?.overlayView?.alpha = 1
+            
         })
         dragView?.rightClickAction()
+    }
+    
+    private func checkAndUpdateGlobalIndex()
+    {
+        if (self.globalIndexForCurrentCompany + 1) >= self.arrayOfBusinesses.count
+        {
+            self.globalIndexForCurrentCompany = 0
+        }
+        else
+        {
+            self.globalIndexForCurrentCompany = self.globalIndexForCurrentCompany + 1
+        }
     }
     
     public func refreshTileAttributes()
@@ -499,6 +529,8 @@ extension BusinessTileViewController : AppDelegateDelegate
         {
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
+            
+             self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.theCoordinate)
             let radiusCoreData = RadiusCoreData()
             if !radiusCoreData.checkIfCoreDataIsEmpty()
             {

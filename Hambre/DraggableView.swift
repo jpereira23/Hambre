@@ -17,7 +17,7 @@ let ACTION_MARGIN = 120
 let SCALE_STRENGTH = 4
 let SCALE_MAX = 0.93
 let ROTATION_MAX = 1
-let ROTATION_STRENGTH = 320
+let ROTATION_STRENGTH = 360
 let ROTATION_ANGLE = Double.pi/8.0
 
 class DraggableView: UIView {
@@ -66,14 +66,14 @@ class DraggableView: UIView {
         if self.imageUrl != nil
         {
             self.imageView.setImageWith(self.imageUrl!)
-            self.imageView.contentMode = UIViewContentMode.scaleAspectFit
+            self.imageView.contentMode = UIViewContentMode.scaleAspectFill
         }
         // Need else statement for businesses that dont have url
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         view.addGestureRecognizer(panGestureRecognizer!)
         overlayView = OverlayView(frame: CGRect(x: CGFloat(self.frame.size.width / 2 - 100), y: CGFloat(0), width: CGFloat(100), height: CGFloat(100)))
         overlayView?.alpha = 0
-        view.addSubview(overlayView!)
+        addSubview(overlayView!)
         addSubview(view)
         
     }
@@ -115,7 +115,7 @@ class DraggableView: UIView {
         switch gestureRecognizer.state {
         
         case .began:
-            originalPoint = center
+            originalPoint = self.view.center
         
         case .changed:
             let rotationStrength: CGFloat = min(xFromCenter / CGFloat(ROTATION_STRENGTH), CGFloat(ROTATION_MAX))
@@ -166,7 +166,7 @@ class DraggableView: UIView {
     }
     
     func rightAction() {
-        let finishPoint = CGPoint(x: CGFloat(500), y: CGFloat(2 * yFromCenter + originalPoint.y))
+        let finishPoint = CGPoint(x: CGFloat(1000), y: CGFloat(4 * yFromCenter + originalPoint.y))
         UIView.animate(withDuration: 0.3, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
@@ -186,25 +186,30 @@ class DraggableView: UIView {
     }
     
     func rightClickAction() {
-        let finishPoint = CGPoint(x: CGFloat(600), y: CGFloat(center.y))
-        UIView.animate(withDuration: 0.3, animations: {() -> Void in
-            self.view.center = finishPoint
-            self.view.transform = CGAffineTransform(rotationAngle: 1)
+        
+        UIView.animate(withDuration: 1.0, animations: {() -> Void in
+            self.view.transform = CGAffineTransform(scaleX: 11, y: 11)
+            //self.transform = CGAffineTransform(translationX: CGFloat(600), y: 0)
+            //self.transform = CGAffineTransform(rotationAngle: 1)
+            
         }, completion: {(_ complete: Bool) -> Void in
             self.view.removeFromSuperview()
+            self.delegate?.cardSwipedRight(self)
         })
-        delegate?.cardSwipedRight(self)
+        
     }
     
     func leftClickAction() {
-        let finishPoint = CGPoint(x: CGFloat(-600), y: CGFloat(center.y))
-        UIView.animate(withDuration: 0.3, animations: {() -> Void in
-            self.view.center = finishPoint
-            self.view.transform = CGAffineTransform(rotationAngle: -1)
+        
+        UIView.animate(withDuration: 1.0, animations: {() -> Void in
+            self.view.transform = CGAffineTransform(scaleX: 11, y: 11)
+            //self.transform = CGAffineTransform(translationX: CGFloat(-600), y: 0)
+            //self.transform = CGAffineTransform(rotationAngle: -1)
         }, completion: {(_ complete: Bool) -> Void in
             self.view.removeFromSuperview()
+            self.delegate?.cardSwipedLeft(self)
         })
-        delegate?.cardSwipedLeft(self)
+        
     }
     
     
