@@ -21,6 +21,7 @@ class BusinessTileViewController: UIViewController{
     @IBOutlet weak var distanceField: UILabel!
     @IBOutlet var infoButton: UIButton!
     
+    @IBOutlet var reviewCountField: UILabel!
     @IBOutlet var locationImage: UIImageView!
     @IBOutlet var genreLabel: UILabel!
     var aBusinessTileOperator : BusinessTileOperator! = nil
@@ -34,6 +35,8 @@ class BusinessTileViewController: UIViewController{
     public var checkIfReady = 0
     public var theCoordinate : CLLocationCoordinate2D!
     private var initialCall = false
+    public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
+    public var arrayOfReviews = [Review]()
     
     let maskView = UIImageView()
     
@@ -42,7 +45,7 @@ class BusinessTileViewController: UIViewController{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.delegate = self
         
-        
+        self.cloudKitDatabaseHandler.delegate = self
         
         self.tabBarController?.delegate = self
         
@@ -274,6 +277,22 @@ class BusinessTileViewController: UIViewController{
         }
     }
     
+    public func filterArrayOfReviews(url: URL) -> Int
+    {
+        let stringUrl = url.absoluteString
+        var tmpArray = [Review]()
+        
+        for review in self.arrayOfReviews
+        {
+            if review.getId() == stringUrl
+            {
+                tmpArray.append(review)
+            }
+        }
+        
+        return tmpArray.count
+    }
+    
     public func isPlaceAlreadyInArray(place: String) -> Bool
     {
         if self.arrayOfPlaces.contains(place)
@@ -299,7 +318,15 @@ class BusinessTileViewController: UIViewController{
     {
         let aBusiness = self.aBusinessTileOperator.presentCurrentBusiness()
         self.distanceField.text = String(self.aBusinessTileOperator.presentCurrentBusiness().getDistance()) + " mile(s)"
-        
+        if self.arrayOfReviews.count > 0
+        {
+            let num = self.filterArrayOfReviews(url: aBusiness.getBusinessImage())
+            self.reviewCountField.text = String(num) + ((num > 1 || num == 0) ? " reviews" : " review")
+        }
+        else
+        {
+            self.reviewCountField.text = "No reviews"
+        }
         self.businessNameLabel.text = aBusiness.getBusinessName()
         self.businessImage.setImageWith(aBusiness.getBusinessImage())
         self.businessImage1.setImageWith(aBusiness.getBusinessImage())
@@ -443,5 +470,16 @@ extension BusinessTileViewController : UITabBarControllerDelegate
         {
             self.presentedViewController?.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension BusinessTileViewController : CloudKitDatabaseHandlerDelegate
+{
+    func modelUpdated() {
+        self.arrayOfReviews = cloudKitDatabaseHandler.accessArrayOfReviews()
+    }
+    
+    func errorUpdating(_ error: NSError) {
+        print(error)
     }
 }

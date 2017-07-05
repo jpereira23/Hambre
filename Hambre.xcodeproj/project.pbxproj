@@ -183,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				642A7CC91EDCD9430085062A /* Negocio.swift */,
+				644DFABC1F0C44430092FACF /* Tile */,
 				642A7CCB1EDCDA520085062A /* PersonalBusiness.swift */,
 				648B74C81EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift */,
 				642A7CD01EDCDD950085062A /* BusinessTileOperator.swift */,
@@ -192,6 +193,13 @@
 				64A69A811F05D52700EC3F8C /* NoInternetConnectionViewController.swift */,
 			);
 			name = TileWork;
+			sourceTree = "<group>";
+		};
+		644DFABC1F0C44430092FACF /* Tile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tile;
 			sourceTree = "<group>";
 		};
 		645095811EDB842400427A83 = {

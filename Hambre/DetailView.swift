@@ -34,7 +34,7 @@ class DetailView: UIView {
     
     
     
-    
+    private var title : String! = "Title"
     private var address : String! = "Not an address"
     private var phoneNumber : String! = "Phone Number: (000) 000-0000"
     private var isClosed : String! = "Closed"
@@ -64,7 +64,7 @@ class DetailView: UIView {
         self.addressField.setTitle(self.address, for: .normal)
         self.phoneFIeld.setTitle(self.phoneNumber, for: .normal)
         self.isClosedField.setTitle(self.isClosed, for: .normal)
-        self.websiteUrlField.setTitle("GET BIZ NAME Website", for: .normal)
+        self.websiteUrlField.setTitle(self.title + "'s Website", for: .normal)
         addSubview(view)
     }
     
@@ -79,6 +79,12 @@ class DetailView: UIView {
         let nib = UINib(nibName: self.nibName, bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
+    }
+    
+    
+    public func setTitle(title: String)
+    {
+        self.title = title
     }
     
     public func setAddressField(address: String)

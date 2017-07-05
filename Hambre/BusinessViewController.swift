@@ -29,7 +29,7 @@ class BusinessViewController: UIViewController {
     private var isClosed : Bool!
     private var address : String!
     private var websiteUrl : String!
-    internal var aTitle : String!
+    private var aTitle : String!
     private var reviewView : ReviewView!
     private var detailView : DetailView!
     private var mapView : MapView!
@@ -49,6 +49,7 @@ class BusinessViewController: UIViewController {
         self.detailView.setPhoneField(phone: self.phoneNumber)
         self.detailView.setIsClosed(isClosed: self.isClosed)
         self.detailView.setWebsiteUrl(url: self.websiteUrl)
+        self.detailView.setTitle(title: self.aTitle)
         self.detailView.xibSetUp()
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
          self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
@@ -130,6 +131,7 @@ class BusinessViewController: UIViewController {
         self.detailView.setPhoneField(phone: self.phoneNumber)
         self.detailView.setIsClosed(isClosed: self.isClosed)
         self.detailView.setWebsiteUrl(url: self.websiteUrl)
+        self.detailView.setTitle(title: self.aTitle)
         self.detailView.xibSetUp()
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
         self.currentView = self.detailView.getView()
