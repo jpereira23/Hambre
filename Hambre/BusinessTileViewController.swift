@@ -412,6 +412,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     
     @IBAction func swipeLeft(_ sender: Any) {
+        loadedCards.first?.xibSetUp()
         let dragView: DraggableView? = loadedCards.first
         dragView?.overlayView?.mode = .GGOverlayViewModeLeft
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
@@ -421,6 +422,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     }
     
     @IBAction func swipeRight(_ sender: Any) {
+        
+        loadedCards.first?.xibSetUp()
         
         let dragView: DraggableView? = loadedCards.first
         dragView?.overlayView?.mode = .GGOverlayViewModeRight
