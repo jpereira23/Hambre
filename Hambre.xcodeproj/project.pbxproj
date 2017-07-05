@@ -41,6 +41,8 @@
 		6499FE661F0AFED50000D23A /* SettingsPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499FE651F0AFED50000D23A /* SettingsPopOverViewController.swift */; };
 		64A69A821F05D52700EC3F8C /* NoInternetConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A69A811F05D52700EC3F8C /* NoInternetConnectionViewController.swift */; };
 		64AA366B1F032D19002DB2AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AA366A1F032D19002DB2AC /* WebViewController.swift */; };
+		64AB3F951F0C790800F280B7 /* DraggableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64AB3F941F0C790800F280B7 /* DraggableView.xib */; };
+		64AB3F971F0C799B00F280B7 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AB3F961F0C799B00F280B7 /* DraggableView.swift */; };
 		64CEE48F1EE0A50A0065082F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CEE48E1EE0A50A0065082F /* CloudKit.framework */; };
 		64CEE4911EE0A7660065082F /* CloudKitDatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */; };
 		64CEE4931EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CEE4921EE0AF270065082F /* CloudKitDatabaseHandlerTest.swift */; };
@@ -117,6 +119,8 @@
 		6499FE651F0AFED50000D23A /* SettingsPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPopOverViewController.swift; sourceTree = "<group>"; };
 		64A69A811F05D52700EC3F8C /* NoInternetConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoInternetConnectionViewController.swift; sourceTree = "<group>"; };
 		64AA366A1F032D19002DB2AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		64AB3F941F0C790800F280B7 /* DraggableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraggableView.xib; sourceTree = "<group>"; };
+		64AB3F961F0C799B00F280B7 /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
 		64CEE48D1EE0A4F40065082F /* Hambre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hambre.entitlements; sourceTree = "<group>"; };
 		64CEE48E1EE0A50A0065082F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseHandler.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 		644DFABC1F0C44430092FACF /* Tile */ = {
 			isa = PBXGroup;
 			children = (
+				64AB3F941F0C790800F280B7 /* DraggableView.xib */,
+				64AB3F961F0C799B00F280B7 /* DraggableView.swift */,
 			);
 			name = Tile;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				6450959A1EDB842400427A83 /* LaunchScreen.storyboard in Resources */,
 				642079C11EF0D77D00F78230 /* MapView.xib in Resources */,
 				645095971EDB842400427A83 /* Assets.xcassets in Resources */,
+				64AB3F951F0C790800F280B7 /* DraggableView.xib in Resources */,
 				645095951EDB842400427A83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +612,7 @@
 				64932DD91EEF75B9001727AE /* ReviewView.swift in Sources */,
 				6451BB631EDB98DC002E33DA /* Business.swift in Sources */,
 				64E1E8C81EDBAA020052EABA /* YLPClient.swift in Sources */,
+				64AB3F971F0C799B00F280B7 /* DraggableView.swift in Sources */,
 				642A7CD11EDCDD950085062A /* BusinessTileOperator.swift in Sources */,
 				644BCA081EE75A95004324E2 /* ReviewTableViewCell.swift in Sources */,
 				648B74C51EDE25F400B5D2CE /* YelpContainer.swift in Sources */,
