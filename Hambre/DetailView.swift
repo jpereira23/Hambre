@@ -63,7 +63,7 @@ class DetailView: UIView {
         self.addressField.setTitle(self.address, for: .normal)
         self.phoneFIeld.setTitle(self.phoneNumber, for: .normal)
         self.isClosedField.setTitle(self.isClosed, for: .normal)
-        self.websiteUrlField.setTitle("GET BIZ NAME Website", for: .normal)
+        self.websiteUrlField.setTitle("View Website", for: .normal)
         addSubview(view)
     }
     

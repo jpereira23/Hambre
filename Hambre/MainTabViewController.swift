@@ -19,7 +19,7 @@ class MainTabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //custom back button
+        //custom back button - don't beliebe this works because each VC appears to need their own
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackChevron")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)

@@ -9,7 +9,7 @@
 
 import UIKit
 
-class AddReviewViewController: UIViewController {
+class AddReviewViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var sliderLabel: UILabel!
@@ -26,14 +26,37 @@ class AddReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.greetingField.text = "Please submit your review, " + appDelegate.accessICloudName()
+        self.greetingField.text = "By: " + appDelegate.accessICloudName()
         
         // Do any additional setup after loading the view.
         
-        //navbar color and text color - enter review
-        UINavigationBar.appearance().barTintColor = UIColor(red:0.98, green:0.70, blue:0.21, alpha:1.0)
-        UINavigationBar.appearance().tintColor = UIColor.white
+        self.title = "Review"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
+        
+        commentView.delegate = self
+        self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes my this all a reality."
+        self.commentView.textColor = UIColor.lightGray
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        if self.commentView.textColor == UIColor.lightGray {
+            self.commentView.text = ""
+            self.commentView.textColor = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 1)
+            
+            //init(red: 63, green: 63, blue: 63, alpha: 1)
+        }
+    }
+    
+    //I NEED HEEEEEELP HERE JEFF, THIS "IF" DOESN'T WORK ---------------------------------
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        if self.commentView.text == "" {
+            self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes my this all a reality."
+            self.commentView.textColor = UIColor.lightGray
+        }
+    }
+    
 
     @IBAction func valueChanged(_ sender: Any)
     {
