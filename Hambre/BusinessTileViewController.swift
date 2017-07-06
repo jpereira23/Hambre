@@ -62,6 +62,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         //self.genreLabel.text = "Genre: " + self.genre
         yelpContainer?.delegate = self
         
+        
+        //custom back button
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackChevron")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
+        
         //tile image masked
         maskView.image = UIImage(named: "Tile")
         //businessImage.mask = maskView
@@ -69,7 +76,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         
         //tile view title
         self.title = "Discover"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
         
         //right button states
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .normal)
@@ -81,8 +88,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         self.leftButton.setImage(UIImage(named: "Not.png"), for: .highlighted)
         //info button states
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .normal)
-        self.infoButton.setImage(UIImage(named: "Infox.png"), for: .selected)
-        self.infoButton.setImage(UIImage(named: "Infox.png"), for: .highlighted)
+        self.infoButton.setImage(UIImage(named: "Info.png"), for: .selected)
+        self.infoButton.setImage(UIImage(named: "Info.png"), for: .highlighted)
         
         if !appDelegate.isInternetAvailable()
         {
@@ -591,7 +598,44 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
         self.activityIndicator.startAnimating()
         dismiss(animated: true, completion: nil)
         
+        
+        //UISearchBar.appearance().tintColor = UIColor.white
+        //UISearchBar.appearance().backgroundColor = UIColor.red
+        //UISearchBar.appearance().setSearchImageColor = UIColor.white
+        //UINavigationBar.appearance().barTintColor = UIColor.white
+        //UINavigationBar.appearance().tintColor = UIColor.white
+      
+        
+        
+        /*
+        open var tableCellBackgroundColor: UIColor
+        
+        open var tableCellSeparatorColor: UIColor
+        
+        open var primaryTextColor: UIColor
+        
+        open var primaryTextHighlightColor: UIColor
+        
+        open var secondaryTextColor: UIColor
+        
+        open var tintColor: UIColor?
+         
+         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: (searchController?.searchBar)!)
+         
+         [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+         setBackgroundImage:myNavBarButtonBackgroundImage forState:state barMetrics:metrics];
+         */
+        
+        
+        
+        //self.title = "Discover"
+        //self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
+        
+        
+        
     }
+    
+    
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error: \(error)")
@@ -613,6 +657,15 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+
+public extension UISearchBar {
+    
+    public func setNewcolor(color: UIColor) {
+        let clrChange = subviews.flatMap { $0.subviews }
+        guard let sc = (clrChange.filter { $0 is UITextField }).first as? UITextField else { return }
+        sc.textColor = color
     }
 }
 

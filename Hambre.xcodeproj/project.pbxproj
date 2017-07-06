@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C1F6918A45D0CDC6A497D44 /* Pods_Hambre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */; };
+		5B2114D61F0D86C200367ACE /* Righteous-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B2114D51F0D86C200367ACE /* Righteous-Regular.ttf */; };
 		5B52042C1EEA5C600069AD33 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52042B1EEA5C600069AD33 /* CALayerExtension.swift */; };
 		6408B5851EF862F900600538 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6408B5841EF862F900600538 /* ReviewTableViewCell.xib */; };
 		642079C11EF0D77D00F78230 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642079C01EF0D77D00F78230 /* MapView.xib */; };
@@ -72,6 +73,7 @@
 /* Begin PBXFileReference section */
 		13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hambre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.debug.xcconfig"; sourceTree = "<group>"; };
+		5B2114D51F0D86C200367ACE /* Righteous-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Righteous-Regular.ttf"; path = "../../../../../var/folders/px/1bcs4l996t54wx30v1s42gk40000gn/T/com.apple.iChat/Messages/Transfers/Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		5B52042B1EEA5C600069AD33 /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
 		5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6408B5841EF862F900600538 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				5B52042B1EEA5C600069AD33 /* CALayerExtension.swift */,
 				645095961EDB842400427A83 /* Assets.xcassets */,
 				645095981EDB842400427A83 /* LaunchScreen.storyboard */,
+				5B2114D51F0D86C200367ACE /* Righteous-Regular.ttf */,
 				6450959B1EDB842400427A83 /* Info.plist */,
 				642A7CCD1EDCDCB40085062A /* Negocios.xcdatamodeld */,
 			);
@@ -458,6 +461,7 @@
 			files = (
 				6408B5851EF862F900600538 /* ReviewTableViewCell.xib in Resources */,
 				64D8E8391EEA39F000D5DB31 /* View.xib in Resources */,
+				5B2114D61F0D86C200367ACE /* Righteous-Regular.ttf in Resources */,
 				64932DD71EEF75A1001727AE /* ReviewView.xib in Resources */,
 				6450959A1EDB842400427A83 /* LaunchScreen.storyboard in Resources */,
 				642079C11EF0D77D00F78230 /* MapView.xib in Resources */,

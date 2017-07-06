@@ -20,19 +20,19 @@ class SettingsViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.slider.maximumValue = 50
-        self.slider.minimumValue = 1
-        self.sliderLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
+        //self.slider.maximumValue = 50
+        //self.slider.minimumValue = 1
+        //self.sliderLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
         
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.saveButton.isEnabled = false
-        self.slider.maximumValue = 500
-        self.slider.minimumValue = 1
+        //self.saveButton.isEnabled = false
+        //self.slider.maximumValue = 500
+        //self.slider.minimumValue = 1
         
-        //more view vc  THIS IS NOT WORKING FOR SOME REASON
+        //more view vc
         self.title = "More"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
     }
@@ -110,6 +110,7 @@ extension SettingsViewController : GMSAutocompleteViewControllerDelegate
         print("Place attributions: \(String(describing: place.attributions))")
         */
         dismiss(animated: true, completion: nil)
+        
         
     }
     

@@ -38,6 +38,11 @@ class LikedBusinessesViewController: UIViewController {
         self.title = "Favorites"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
         
+        //custom back button
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackChevron")
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
         
         
         //tableView.reloadData()
@@ -169,6 +174,11 @@ extension LikedBusinessesViewController : UITableViewDataSource
 {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell") as! LikedTableViewCell
+        
+        //custom orange forward chevron for favorites
+        let chevron = UIImage(named: "ForwardChevron")
+        cell.accessoryType = .disclosureIndicator
+        cell.accessoryView = UIImageView(image: chevron)
         
         cell.distanceField.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
         
