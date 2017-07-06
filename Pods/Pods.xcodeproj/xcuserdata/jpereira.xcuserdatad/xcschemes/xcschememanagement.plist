@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AFNetworking.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>BDBOAuth1Manager.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>BrightFutures.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,17 +32,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1ED8BE8BD6A53853974A60E1AC8B1019</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4551A02DCD158A5143D803E0FE76C4F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7BE727D93261EAB78C6AF9EF46ED1BFB</key>
+		<key>4697ED3B26B73B9DD24A842CFB71CBA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +47,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC964D8BE90F9AFB241E0480AAB38F9A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B2203719047078D13EE2CF76292EDC16</key>
+		<key>D388EC0746501FF4FA85A7D57874DA15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
