@@ -177,17 +177,7 @@ class BusinessViewController: UIViewController {
             
             
             break
-            
-        case 2:
-            self.mapView = MapView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
-            self.mapView.setLatitude(latitude: self.latitude)
-            self.mapView.setLongitude(longitude: self.longitude)
-            self.mapView.setRestaurantTitle(restaurant: self.aTitle)
-            self.mapView.xibSetUp()
-            self.mapView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-            self.currentView = self.mapView.getView()
-            self.segmentView.addSubview(currentView)
-            break
+
 
         default:
             

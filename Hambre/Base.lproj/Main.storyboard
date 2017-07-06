@@ -336,7 +336,6 @@
                                 <segments>
                                     <segment title="Details"/>
                                     <segment title="Reviews"/>
-                                    <segment title="Map"/>
                                 </segments>
                                 <color key="tintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
