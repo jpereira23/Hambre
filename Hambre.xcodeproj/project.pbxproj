@@ -905,7 +905,7 @@
 				645911641EE64D92006517CB /* Negocios1.xcdatamodel */,
 				642A7CCE1EDCDCB40085062A /* Negocios.xcdatamodel */,
 			);
-			currentVersion = 644FA6F11F0C0FD80034D574 /* Negocios4.xcdatamodel */;
+			currentVersion = 644DFABB1F0C37860092FACF /* Negocios5.xcdatamodel */;
 			path = Negocios.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

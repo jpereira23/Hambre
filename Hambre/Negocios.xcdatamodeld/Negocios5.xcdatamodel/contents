@@ -5,6 +5,7 @@
         <attribute name="businessName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="businessUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullAddress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isClosed" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="liked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -18,7 +19,7 @@
         <attribute name="distance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PersonalBusinessData" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="PersonalBusinessData" positionX="-54" positionY="-9" width="128" height="240"/>
         <element name="Radius" positionX="-54" positionY="81" width="128" height="60"/>
     </elements>
 </model>

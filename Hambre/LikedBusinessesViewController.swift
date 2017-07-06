@@ -25,9 +25,10 @@ class LikedBusinessesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //personalBusinessCoreData.resetCoreData()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: appDelegate.getCoordinate())
+        //personalBusinessCoreData.resetCoreData()
         self.cloudKitDatabaseHandler.delegate = self
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
@@ -119,7 +120,7 @@ class LikedBusinessesViewController: UIViewController {
         businessViewController.setLongitude(longitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLongitude())
         businessViewController.setLatitude(latitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLatitude())
         businessViewController.setPhoneNumber(phone: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getNumber())
-        businessViewController.setAddress(address: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getAddress())
+        businessViewController.setAddress(address: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getFullAddress())
         businessViewController.setIsClosed(isClosed: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getIsClosed())
         businessViewController.setWebsiteUrl(url: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getWebsiteUrl())
         businessViewController.setTitle(title: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessName())

@@ -41,6 +41,7 @@ class PersonalBusinessCoreData: NSObject {
         
         aBusiness.setValue(personalBusiness.getIsClosed(), forKeyPath: "isClosed")
         aBusiness.setValue(personalBusiness.getWebsiteUrl(), forKeyPath: "websiteUrl")
+        aBusiness.setValue(personalBusiness.getFullAddress(), forKeyPath: "fullAddress")
         
         do
         {
@@ -80,8 +81,8 @@ class PersonalBusinessCoreData: NSObject {
             let isClosed = businesses.value(forKeyPath: "isClosed") as! Bool
             
             let websiteUrl = businesses.value(forKeyPath: "websiteUrl") as! String
-            
-            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl, coordinate: self.coordinate)
+            let fullAddress = businesses.value(forKeyPath: "fullAddress") as! String
+            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl, coordinate: self.coordinate, fullAddress: fullAddress)
             
             
             temporaryBusiness.append(personalBusiness)

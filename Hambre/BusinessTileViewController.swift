@@ -395,7 +395,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             businessViewController.setPhoneNumber(phone: self.aBusinessTileOperator.presentCurrentBusiness().getNumber())
             businessViewController.setWebsiteUrl(url: self.aBusinessTileOperator.presentCurrentBusiness().getWebsiteUrl())
             businessViewController.setIsClosed(isClosed: self.aBusinessTileOperator.presentCurrentBusiness().getIsClosed())
-            businessViewController.setAddress(address: self.aBusinessTileOperator.presentCurrentBusiness().getAddress())
+            businessViewController.setAddress(address: self.aBusinessTileOperator.presentCurrentBusiness().getFullAddress())
             businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
             
         }
