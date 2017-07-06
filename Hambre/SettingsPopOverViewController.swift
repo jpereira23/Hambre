@@ -40,6 +40,7 @@ class SettingsPopOverViewController: UIViewController {
         self.distanceSlider.setValue(Float(self.sliderValue), animated: true)
         
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,7 +128,10 @@ extension SettingsPopOverViewController : UITableViewDataSource
         
         if indexPath.row == self.getIndexOfSelectedCell()
         {
+            //let orangeCircle = UIImage(named: "Picked")
             cell.accessoryType = .checkmark
+            //cell.accessoryView = UIImageView(image: orangeCircle)
+            
         }
         else
         {
