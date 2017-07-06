@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import GoogleMaps
 import YelpAPI
 import CloudKit
 import GoogleMaps
@@ -39,8 +40,16 @@ class BusinessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = false 
-        self.imageView.setImageWith(self.imageUrl)
+        self.tabBarController?.tabBar.isHidden = false
+        
+        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 18.0)
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+        self.view.addSubview(mapView)
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+        marker.title = self.aTitle
+        marker.snippet = "Selected Restaurant"
+        marker.map = mapView
         
         //self.cloudKitDatabaseHandler.delegate = self
         
@@ -53,6 +62,7 @@ class BusinessViewController: UIViewController {
         self.detailView.xibSetUp()
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
          self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
@@ -152,6 +162,8 @@ class BusinessViewController: UIViewController {
             self.detailView.xibSetUp()
             self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
             self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
+            self.detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+            
             self.currentView = self.detailView.getView()
             self.segmentView.addSubview(self.currentView)
             
@@ -167,17 +179,7 @@ class BusinessViewController: UIViewController {
             
             
             break
-            
-        case 2:
-            self.mapView = MapView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
-            self.mapView.setLatitude(latitude: self.latitude)
-            self.mapView.setLongitude(longitude: self.longitude)
-            self.mapView.setRestaurantTitle(restaurant: self.aTitle)
-            self.mapView.xibSetUp()
-            self.mapView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-            self.currentView = self.mapView.getView()
-            self.segmentView.addSubview(currentView)
-            break
+
 
         default:
             

@@ -45,7 +45,8 @@ class LikedTableViewCell: UITableViewCell {
     public func setURL(url: URL)
     {
         self.theURL = url
-        self.theImageView.setImageWith(self.theURL)
+        let data = try? Data(contentsOf: url)
+        self.theImageView.image = UIImage(data: data!)
         self.theImageView.contentMode = UIViewContentMode.scaleToFill
     }
     

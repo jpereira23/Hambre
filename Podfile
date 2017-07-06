@@ -8,8 +8,6 @@ target 'Hambre' do
   use_frameworks!
 
   # Pods for Yelp
-  pod 'AFNetworking', '~> 2.5'
-  pod 'BDBOAuth1Manager'
   pod 'YelpAPI'
   pod 'BrightFutures'
   pod 'GooglePlaces'

@@ -65,7 +65,8 @@ class DraggableView: UIView {
         self.reviewsField.text = self.reviews
         if self.imageUrl != nil
         {
-            self.imageView.setImageWith(self.imageUrl!)
+            let data = try? Data(contentsOf: self.imageUrl!)
+            self.imageView.image = UIImage(data: data!)
             self.imageView.contentMode = UIViewContentMode.scaleAspectFill
         }
         // Need else statement for businesses that dont have url
