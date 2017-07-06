@@ -11,7 +11,7 @@ import MapKit
 import GoogleMaps
 import YelpAPI
 import CloudKit
-import GoogleMaps
+import CoreLocation
 
 class BusinessViewController: UIViewController {
 
