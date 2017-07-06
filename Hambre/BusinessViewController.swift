@@ -8,9 +8,10 @@
 
 import UIKit
 import MapKit
+import GoogleMaps
 import YelpAPI
 import CloudKit
-
+import CoreLocation
 
 class BusinessViewController: UIViewController {
 
@@ -40,8 +41,15 @@ class BusinessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = false
-        let data = try? Data(contentsOf: self.imageUrl)
-        self.imageView.image = UIImage(data: data!)
+        
+        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 18.0)
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+        self.view.addSubview(mapView)
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+        marker.title = self.aTitle
+        marker.snippet = "Selected Restaurant"
+        marker.map = mapView
         
         //self.cloudKitDatabaseHandler.delegate = self
         
