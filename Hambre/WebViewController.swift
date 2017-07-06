@@ -23,7 +23,7 @@ class WebViewController: UIViewController {
         //custom back button
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "BackChevron")
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
 
     }
 

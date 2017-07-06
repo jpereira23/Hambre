@@ -12,6 +12,9 @@ import GooglePlaces
 
 class BusinessTileViewController: UIViewController, DraggableViewDelegate{
 
+    @IBOutlet weak var locationIcon: UIBarButtonItem!
+    @IBOutlet weak var businessNameLabel: UILabel!
+    @IBOutlet weak var businessImage1: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!

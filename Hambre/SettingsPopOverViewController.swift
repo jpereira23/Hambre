@@ -128,14 +128,16 @@ extension SettingsPopOverViewController : UITableViewDataSource
         
         if indexPath.row == self.getIndexOfSelectedCell()
         {
-            //let orangeCircle = UIImage(named: "Picked")
+            let orangeCircle = UIImage(named: "Picked")
             cell.accessoryType = .checkmark
-            //cell.accessoryView = UIImageView(image: orangeCircle)
+            cell.accessoryView = UIImageView(image: orangeCircle)
             
         }
         else
         {
             cell.accessoryType = .none
+            cell.accessoryView = nil
+            
         }
         cell.textLabel?.text = self.arrayOfGenres[indexPath.row]
         
