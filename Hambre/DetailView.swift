@@ -16,6 +16,7 @@ class DetailView: UIView {
     @IBOutlet var isClosedField: UILabel!
     @IBOutlet var websiteUrlField: UILabel!
     */
+    @IBOutlet var directionsButton: UIButton!
     
     @IBOutlet weak var websiteUrlField: UIButton!
     
