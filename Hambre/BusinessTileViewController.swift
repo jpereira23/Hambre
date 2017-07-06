@@ -406,11 +406,11 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
         dismiss(animated: true, completion: nil)
         
         
-        UISearchBar.appearance().tintColor = UIColor.white
-        UISearchBar.appearance().backgroundColor = UIColor.red
+        //UISearchBar.appearance().tintColor = UIColor.white
+        //UISearchBar.appearance().backgroundColor = UIColor.red
         //UISearchBar.appearance().setSearchImageColor = UIColor.white
-        UINavigationBar.appearance().barTintColor = UIColor.white
-        UINavigationBar.appearance().tintColor = UIColor.white
+        //UINavigationBar.appearance().barTintColor = UIColor.white
+        //UINavigationBar.appearance().tintColor = UIColor.white
       
         
         
