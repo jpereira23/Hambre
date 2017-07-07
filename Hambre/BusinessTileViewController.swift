@@ -150,7 +150,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     func cardSwipedRight(_ card: UIView) {
         
-        self.personalBusinessCoreData.saveBusiness(personalBusiness: loadedCards[0].getBusiness())
+        if loadedCards.count > 0
+        {
+            self.personalBusinessCoreData.saveBusiness(personalBusiness: loadedCards[1].getBusiness())
+        }
         loadedCards.remove(at: 0)
         
         if cardsLoadedIndex < allCards.count {
@@ -203,6 +206,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     public func loadCards()
     {
+        
         if self.arrayOfBusinesses.count > 0
         {
             let numLoadedCardsCap: Int = (self.arrayOfBusinesses.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : self.arrayOfBusinesses.count
@@ -211,36 +215,39 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             {
                 let newCard: DraggableView? = self.createDraggableViewWithData(at: i)
                 allCards.append(newCard!)
-                if i < numLoadedCardsCap {
+                if i < numLoadedCardsCap && loadedCards.count < MAX_BUFFER_SIZE{
                     loadedCards.append(newCard!)
                 }
             }
             
-            for i in 0..<loadedCards.count
+            if loadedCards.count <= MAX_BUFFER_SIZE
             {
-                if i > 0
+                for i in 0..<loadedCards.count
                 {
-                    
-                    loadedCards[i].xibSetUp()
-                    loadedCards[i-1].xibSetUp()
-                    let aView1 = loadedCards[i].getView()
-                    let aView2 = loadedCards[i-1].getView()
-                    aView1.frame.origin.x = 25
-                    aView2.frame.origin.x = 25
-                    aView1.frame.origin.y = 86
-                    aView2.frame.origin.y = 86
-                    
-                    self.view.insertSubview(aView1, belowSubview: aView2)
+                    if i > 0
+                    {
+                        
+                        loadedCards[i].xibSetUp()
+                        loadedCards[i-1].xibSetUp()
+                        let aView1 = loadedCards[i].getView()
+                        let aView2 = loadedCards[i-1].getView()
+                        aView1.frame.origin.x = 25
+                        aView2.frame.origin.x = 25
+                        aView1.frame.origin.y = 86
+                        aView2.frame.origin.y = 86
+                        
+                        self.view.insertSubview(aView1, belowSubview: aView2)
+                    }
+                    else
+                    {
+                        loadedCards[i].xibSetUp()
+                        let aView = loadedCards[i].getView()
+                        aView.frame.origin.x = 25
+                        aView.frame.origin.y = 86
+                        self.view.addSubview(aView)
+                    }
+                    cardsLoadedIndex += 1
                 }
-                else
-                {
-                    loadedCards[i].xibSetUp()
-                    let aView = loadedCards[i].getView()
-                    aView.frame.origin.x = 25
-                    aView.frame.origin.y = 86
-                    self.view.addSubview(aView)
-                }
-                cardsLoadedIndex += 1
             }
         }
     }
