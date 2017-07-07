@@ -12,16 +12,21 @@ import UIKit
 class AddReviewViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var reviewSlider: UISlider!
     @IBOutlet weak var greetingField: UILabel!
     @IBOutlet weak var commentView: UITextView!
+    @IBOutlet var reviewStarOne: UIImageView!
+    @IBOutlet var reviewStarTwo: UIImageView!
+    @IBOutlet var reviewStarThree: UIImageView!
+    @IBOutlet var reviewStarFour: UIImageView!
+    @IBOutlet var reviewStarFive: UIImageView!
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         reviewSlider.maximumValue = 5
         reviewSlider.minimumValue = 0
         reviewSlider.setValue(0.0, animated: animated)
-        sliderLabel.text = String(0)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +62,61 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-
+    private func changeStars(num: Int)
+    {
+        if num == 0
+        {
+            self.reviewStarOne.image = UIImage(named: "graystar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if num == 1
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if num == 2
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if num == 3
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if num == 4
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if num == 5
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "fullstar")
+        }
+    }
     @IBAction func valueChanged(_ sender: Any)
     {
-        sliderLabel.text = String(Int(roundf(reviewSlider.value)))
+        self.changeStars(num: Int(roundf(reviewSlider.value)))
+        
     }
     
     override func didReceiveMemoryWarning() {
