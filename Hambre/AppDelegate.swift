@@ -39,8 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.locationManager.delegate = self
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if appDelegate.isInternetAvailable()
+      
+        if self.isInternetAvailable()
         {
             self.configueCoordinates()
         }
@@ -87,6 +87,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     
                 }
             })
+        }
+    }
+    
+    public func checkForLocationServices()
+    {
+        if CLLocationManager.locationServicesEnabled()
+        {
+            switch(CLLocationManager.authorizationStatus())
+            {
+            case .restricted, .denied:
+                self.delegate?.locationServicesUpdated(appDelegate: self)
+                break
+            default:
+                print("Nothing works")
+            }
         }
     }
     

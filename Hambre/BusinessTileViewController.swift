@@ -48,7 +48,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.delegate = self
-       
+        appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
         
         self.tabBarController?.delegate = self
@@ -352,6 +352,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
 
             self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(self.distance))
             self.radiiDistances.delegate = self
+            self.radiiDistances.calculate()
             
         }
         else if sender.identifier == "noInternetToTile"
