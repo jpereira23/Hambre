@@ -69,6 +69,7 @@ class DraggableView: UIView {
         self.businessNameField.text = self.businessName
         self.milesField.text = self.miles
         self.reviewsField.text = self.reviews
+        self.setReviewImages()
         if self.imageUrl != nil
         {
             let data = try? Data(contentsOf: self.imageUrl!)
@@ -78,6 +79,7 @@ class DraggableView: UIView {
         // Need else statement for businesses that dont have url
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
         view.addGestureRecognizer(panGestureRecognizer!)
+        
         overlayView = OverlayView(frame: CGRect(x: CGFloat(self.frame.size.width / 2 - 100), y: CGFloat(0), width: CGFloat(100), height: CGFloat(100)))
         overlayView?.alpha = 0
         addSubview(overlayView!)
@@ -90,6 +92,99 @@ class DraggableView: UIView {
         let nib = UINib(nibName: "DraggableView", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
+    }
+    
+    public func setReviewImages()
+    {
+        if self.floatForStar == 0.0
+        {
+            self.starImageOne.image = UIImage(named: "graystar")
+            self.starImageTwo.image = UIImage(named: "graystar")
+            self.starImageThree.image = UIImage(named: "graystar")
+            self.starImageFour.image = UIImage(named: "graystar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 0.0 && self.floatForStar <= 0.5
+        {
+            self.starImageOne.image = UIImage(named: "halfstar")
+            self.starImageTwo.image = UIImage(named: "graystar")
+            self.starImageThree.image = UIImage(named: "graystar")
+            self.starImageFour.image = UIImage(named: "graystar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 0.5 && self.floatForStar <= 1.0
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "graystar")
+            self.starImageThree.image = UIImage(named: "graystar")
+            self.starImageFour.image = UIImage(named: "graystar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 1.0 && self.floatForStar <= 1.5
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "halfstar")
+            self.starImageThree.image = UIImage(named: "graystar")
+            self.starImageFour.image = UIImage(named: "graystar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 1.5 && self.floatForStar <= 2.0
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "fullstar")
+            self.starImageThree.image = UIImage(named: "graystar")
+            self.starImageFour.image = UIImage(named: "graystar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 2.0 && self.floatForStar <= 2.5
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "fullstar")
+            self.starImageThree.image = UIImage(named: "halfstar")
+            self.starImageFour.image = UIImage(named: "graystar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 2.5 && self.floatForStar <= 3.0
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "fullstar")
+            self.starImageThree.image = UIImage(named: "fullstar")
+            self.starImageFour.image = UIImage(named: "graystar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 3.0 && self.floatForStar <= 3.5
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "fullstar")
+            self.starImageThree.image = UIImage(named: "fullstar")
+            self.starImageFour.image = UIImage(named: "halfstar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 3.5 && self.floatForStar <= 4.0
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "fullstar")
+            self.starImageThree.image = UIImage(named: "fullstar")
+            self.starImageFour.image = UIImage(named: "fullstar")
+            self.starImageFive.image = UIImage(named: "graystar")
+        }
+        else if self.floatForStar > 4.0 && self.floatForStar <= 4.5
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "fullstar")
+            self.starImageThree.image = UIImage(named: "fullstar")
+            self.starImageFour.image = UIImage(named: "fullstar")
+            self.starImageFive.image = UIImage(named: "halfstar")
+        }
+        else if self.floatForStar > 4.5
+        {
+            self.starImageOne.image = UIImage(named: "fullstar")
+            self.starImageTwo.image = UIImage(named: "fullstar")
+            self.starImageThree.image = UIImage(named: "fullstar")
+            self.starImageFour.image = UIImage(named: "fullstar")
+            self.starImageFive.image = UIImage(named: "fullstar")
+        }
+
     }
     
     public func setBusinessName(name: String)

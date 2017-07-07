@@ -759,7 +759,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vd-Ra-RgT">
-                                                    <rect key="frame" x="153" y="50" width="188" height="14"/>
+                                                    <rect key="frame" x="243" y="50" width="98" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                                     <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -770,6 +770,26 @@
                                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="0.96862745100000003" green="0.96470588239999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fh1-V8-rNb">
+                                                    <rect key="frame" x="153" y="50" width="16" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PrE-Iw-1oa">
+                                                    <rect key="frame" x="169" y="50" width="16" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GvA-Cc-T4h">
+                                                    <rect key="frame" x="186" y="50" width="16" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6tY-DI-yDW">
+                                                    <rect key="frame" x="202" y="50" width="16" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wy3-Pz-gaj">
+                                                    <rect key="frame" x="219" y="50" width="16" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -777,6 +797,11 @@
                                         <connections>
                                             <outlet property="amountOfReviewsField" destination="7Vd-Ra-RgT" id="6HV-nN-bWV"/>
                                             <outlet property="distanceField" destination="WMR-j7-Fl2" id="fAz-uI-33I"/>
+                                            <outlet property="reviewStarFive" destination="Wy3-Pz-gaj" id="rMH-Nw-hg6"/>
+                                            <outlet property="reviewStarFour" destination="6tY-DI-yDW" id="a7Y-gv-rNq"/>
+                                            <outlet property="reviewStarOne" destination="Fh1-V8-rNb" id="8Ut-bx-Hax"/>
+                                            <outlet property="reviewStarThree" destination="GvA-Cc-T4h" id="uPw-Mm-Tc0"/>
+                                            <outlet property="reviewStarTwo" destination="PrE-Iw-1oa" id="tj5-St-kDv"/>
                                             <outlet property="theImageView" destination="Av7-bu-h8v" id="Ra2-FG-VWv"/>
                                             <outlet property="titleField" destination="Z2r-TM-RTu" id="K61-qz-gen"/>
                                             <segue destination="R2h-Pv-c51" kind="show" id="bn3-9e-jQ8"/>
@@ -1054,6 +1079,6 @@
         <image name="graystar" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sh3-GC-Plj"/>
+        <segue reference="bn3-9e-jQ8"/>
     </inferredMetricsTieBreakers>
 </document>

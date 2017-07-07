@@ -182,7 +182,7 @@ extension LikedBusinessesViewController : UITableViewDataSource
         cell.accessoryView = UIImageView(image: chevron)
         
         cell.distanceField.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
-        
+        cell.setAverageReview(averageReview: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage().absoluteString))
         cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
         cell.setURL(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage())
         let reviewsArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
@@ -190,11 +190,11 @@ extension LikedBusinessesViewController : UITableViewDataSource
         
         if numOfReviews == 0
         {
-            cell.amountOfReviewsField.text = "Be the first to review!"
+            cell.amountOfReviewsField.text = "0 Reviews"
         }
         else
         {
-            cell.amountOfReviewsField.text = String(numOfReviews) + " Reviews"
+            cell.amountOfReviewsField.text = ((numOfReviews > 1) ? String(numOfReviews) + " Reviews" : String(numOfReviews) + " Review")
         }
         return cell
     }
