@@ -21,7 +21,7 @@ class LikedBusinessesViewController: UIViewController {
     var arrayOfLikedBusinesses = [PersonalBusiness]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,7 +175,7 @@ extension LikedBusinessesViewController : UITableViewDataSource
         cell.accessoryType = .disclosureIndicator
         cell.accessoryView = UIImageView(image: chevron)
         
-        cell.distanceField.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
+        cell.distanceField.text = ((appDelegate.isLocationEnabled()) ? String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)" : "Miles not available")
         cell.setAverageReview(averageReview: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage().absoluteString))
         cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
         cell.setURL(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage())
