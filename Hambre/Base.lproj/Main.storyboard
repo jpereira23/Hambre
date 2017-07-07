@@ -480,13 +480,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKp-11-R7I">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKp-11-R7I">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OKp-11-R7I" firstAttribute="leading" secondItem="AXE-qo-is7" secondAttribute="leading" id="OpR-Ov-zpf"/>
+                            <constraint firstAttribute="trailing" secondItem="OKp-11-R7I" secondAttribute="trailing" id="PeS-4m-rmq"/>
+                            <constraint firstItem="OKp-11-R7I" firstAttribute="top" secondItem="AXE-qo-is7" secondAttribute="top" id="imF-8d-mni"/>
+                            <constraint firstItem="BJS-Me-lDo" firstAttribute="top" secondItem="OKp-11-R7I" secondAttribute="bottom" id="sJI-Oe-2re"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="webView" destination="OKp-11-R7I" id="rLA-b2-ZsQ"/>
