@@ -52,6 +52,15 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
         
+        if !appDelegate.isLocationEnabled()
+        {
+            let alert = UIAlertController(title: "Location Disabled", message: "Your Location is Disabled go to Settings > Zendish and enable them. Features of the app are currently limited.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                // perhaps use action.title here
+            })
+            
+            self.present(alert, animated: true)
+        }
         self.tabBarController?.delegate = self
         
         print("BusinessTileViewController appeared")
