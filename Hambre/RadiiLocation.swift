@@ -34,15 +34,9 @@ class RadiiDistances: NSObject {
         self.latitude = latitude
         self.longitude = longitude
         self.distance = distance
-        
-        while self.distance != 0
-        {
-            self.calculate()
-            self.distance = self.distance - 10 
-        }
     }
     
-    private func calculate()
+    public func calculate()
     {
         
         for degree in bearingUnitCircleRadians
@@ -67,6 +61,13 @@ class RadiiDistances: NSObject {
         }
         
         
+    }
+    
+    public func callDelegate()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.delegate?.placeFound(place: appDelegate.getCityAndState(), radiiDistances: self)
     }
     
     private func convertCoordinatesToUserFriendly(coordinate: Coordinate)

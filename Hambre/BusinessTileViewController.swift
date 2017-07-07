@@ -28,7 +28,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     private var cardsLoadedIndex: Int = 0
     private var loadedCards = [DraggableView]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
-    private var genre = "all restuarants"
+    private var genre = "restaurants"
     private var cityState = "San Francisco, California"
     private var arrayOfPlaces = [String]()
     private var distance = 0
@@ -104,8 +104,17 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     }
     
     func cardSwipedLeft(_ card: UIView) {
-        loadedCards.remove(at: 0)
+        //if loadedCards.count == 0
+        //{
+          //  self.activityIndicator.isHidden = false
+           // self.activityIndicator.startAnimating()
+            //self.loadCards()
+            //self.activityIndicator.isHidden = true
+            //self.activityIndicator.stopAnimating()
+        //}
         
+            //loadedCards.remove(at: 0)
+            
         if cardsLoadedIndex < allCards.count {
             
             if self.arrayOfBusinesses.count > 0
@@ -521,18 +530,35 @@ extension BusinessTileViewController : AppDelegateDelegate
             let radiusCoreData = RadiusCoreData()
             if !radiusCoreData.checkIfCoreDataIsEmpty()
             {
-                let distance = radiusCoreData.loadRadius()
+                var distance = radiusCoreData.loadRadius()
                 self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(distance))
                 self.radiiDistances.delegate = self
                 
+                if distance == 0
+                {
+                    self.radiiDistances.callDelegate()
+                }
+                while distance != 0
+                {
+                    self.radiiDistances.calculate()
+                    distance = distance - 10
+                }
+                
+                
+                
+            }
+            else
+            {
+                self.yelpContainer = nil
+                self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
+                self.yelpContainer?.delegate = self
+                self.yelpContainer?.yelpAPICallForBusinesses()
             }
             self.initialCallWasCalled()
-            //self.yelpContainer = nil
+            
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
-            //self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
-            //self.yelpContainer?.delegate = self
-            //self.yelpContainer?.yelpAPICallForBusinesses()
+            
         }
     }
 }
