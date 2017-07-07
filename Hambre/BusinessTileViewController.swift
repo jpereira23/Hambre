@@ -113,10 +113,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             //self.activityIndicator.stopAnimating()
         //}
         
-            //loadedCards.remove(at: 0)
+        loadedCards.remove(at: 0)
             
-        if cardsLoadedIndex < allCards.count {
-            
+        if cardsLoadedIndex == allCards.count {
+            cardsLoadedIndex = 0 
+        }
+        
             if self.arrayOfBusinesses.count > 0
             {
                 self.checkAndUpdateGlobalIndex()
@@ -133,7 +135,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 
                 self.view.insertSubview(aView1, belowSubview: aView2)
             }
-        }
+        
     }
     
     func cardSwipedRight(_ card: UIView) {
