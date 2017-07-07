@@ -169,11 +169,15 @@ class BusinessViewController: UIViewController {
             
             break
         case 1:
-            self.reviewView = ReviewView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+            let average = self.cloudKitDatabaseHandler.getAverageReviews(url: self.imageUrl.absoluteString)
+            self.reviewView = ReviewView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height), averageOfReviews: average)
             self.reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
             self.reviewView.setUrl(url: self.imageUrl.absoluteString)
+            
+            self.reviewView.setAverageReviews(averageReviews: average) 
             self.reviewView.xibSetUp()
             self.reviewView.addReviewButton.addTarget(self, action: #selector(addReviewButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+            self.reviewView.setReviewLinup()
             self.currentView = self.reviewView.getView()
             self.segmentView.addSubview(currentView)
             

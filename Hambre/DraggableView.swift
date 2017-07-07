@@ -26,6 +26,11 @@ class DraggableView: UIView {
     @IBOutlet var businessNameField: UILabel!
     @IBOutlet var milesField: UILabel!
     @IBOutlet var reviewsField: UILabel!
+    @IBOutlet var starImageOne: UIImageView!
+    @IBOutlet var starImageTwo: UIImageView!
+    @IBOutlet var starImageThree: UIImageView!
+    @IBOutlet var starImageFour: UIImageView!
+    @IBOutlet var starImageFive: UIImageView!
     
     weak var delegate: DraggableViewDelegate?
     var panGestureRecognizer: UIPanGestureRecognizer?
@@ -37,6 +42,7 @@ class DraggableView: UIView {
     private var reviews = "0 reviews"
     private var xFromCenter: CGFloat = 0.0
     private var yFromCenter: CGFloat = 0.0
+    private var floatForStar : Float!
     
     private var view: UIView!
     required init(coder aDecoder: NSCoder)
@@ -44,10 +50,10 @@ class DraggableView: UIView {
         super.init(coder: aDecoder)!
     }
     
-    override init(frame: CGRect)
+    init(frame: CGRect, floatForStar: Float)
     {
         super.init(frame: frame)
-        
+        self.floatForStar = floatForStar
     }
     
     public func getView() -> UIView
@@ -173,6 +179,7 @@ class DraggableView: UIView {
         }, completion: {(_ complete: Bool) -> Void in
             self.view.removeFromSuperview()
         })
+        print(self.floatForStar)
         delegate?.cardSwipedRight(self)
     }
     

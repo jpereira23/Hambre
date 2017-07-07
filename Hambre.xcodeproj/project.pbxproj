@@ -120,7 +120,6 @@
 		64D8E8331EE9F5C900D5DB31 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		64D8E8361EEA38F400D5DB31 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		64D8E8381EEA39F000D5DB31 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
-		64E1A8981F0EE8F400C6BF2D /* Righteous-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Righteous-Regular.ttf"; path = "../../../../../var/folders/75/j7pzjvb957721h0_xk4jsvsr0000gn/T/com.apple.iChat/Messages/Transfers/Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		64E1A8991F0EE90400C6BF2D /* Righteous-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Righteous-Regular.ttf"; path = "../../Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		64E1E8C71EDBAA020052EABA /* YLPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLPClient.swift; sourceTree = "<group>"; };
 		64F8566B1EDF61D3004E352F /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +225,6 @@
 		6450958C1EDB842400427A83 /* Hambre */ = {
 			isa = PBXGroup;
 			children = (
-				64E1A8981F0EE8F400C6BF2D /* Righteous-Regular.ttf */,
 				64CEE48D1EE0A4F40065082F /* Hambre.entitlements */,
 				6450958D1EDB842400427A83 /* AppDelegate.swift */,
 				64716E851EE884EB00970C07 /* Settings */,

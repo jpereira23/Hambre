@@ -15,6 +15,11 @@
                 <outlet property="imageView" destination="91L-GP-Dv7" id="EsA-cc-g8b"/>
                 <outlet property="milesField" destination="BPG-a3-7Jd" id="dcc-1A-Z0K"/>
                 <outlet property="reviewsField" destination="zyq-Ei-MS9" id="X1N-d6-qlt"/>
+                <outlet property="starImageFive" destination="YB9-VL-5LS" id="fES-yt-OPv"/>
+                <outlet property="starImageFour" destination="g70-kY-SbB" id="BwJ-T9-gjC"/>
+                <outlet property="starImageOne" destination="D0p-60-HoS" id="rIj-K1-lVD"/>
+                <outlet property="starImageThree" destination="o89-lG-SZZ" id="8Es-un-XJB"/>
+                <outlet property="starImageTwo" destination="MG5-QI-XUf" id="9Qd-m9-QCw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -56,13 +61,34 @@
                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D0p-60-HoS">
+                    <rect key="frame" x="111" y="369" width="19" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MG5-QI-XUf">
+                    <rect key="frame" x="132" y="369" width="19" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o89-lG-SZZ">
+                    <rect key="frame" x="153" y="369" width="19" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g70-kY-SbB">
+                    <rect key="frame" x="174" y="369" width="19" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YB9-VL-5LS">
+                    <rect key="frame" x="194" y="369" width="19" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33.5" y="87.5"/>
         </view>
     </objects>
     <resources>
-        <image name="Tile" width="325" height="411"/>
+        <image name="Tile" width="325" height="341"/>
         <image name="location" width="12" height="17"/>
     </resources>
 </document>

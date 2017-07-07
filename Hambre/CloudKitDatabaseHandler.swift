@@ -95,6 +95,26 @@ class CloudKitDatabaseHandler: NSObject {
         self.arrayOfReviews.append(review)
     }
     
+    public func getAverageReviews(url: String) -> Float
+    {
+        var runningCount = 0
+        var amountOfReviews = 0
+        for review in self.arrayOfReviews
+        {
+            if review.getId() == url
+            {
+                runningCount = runningCount + review.getReview()
+                amountOfReviews = amountOfReviews + 1
+            }
+        }
+        if amountOfReviews != 0
+        {
+            return Float(runningCount / amountOfReviews)
+        }
+        return 0.0
+        
+    }
+    
     public func loadDataFromCloudKit()
     {
         let aPredicate = NSPredicate(value: true)

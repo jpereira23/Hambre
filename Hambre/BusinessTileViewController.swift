@@ -158,7 +158,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     }
     
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
-        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: 325, height: 395))
+        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: 325, height: 395), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/DraggableView.swift"
-            timestampString = "521001464.307857"
+            timestampString = "521073835.275395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "rightClickAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/DraggableView.swift"
-            timestampString = "521001464.307857"
+            timestampString = "521073835.275395"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "leftClickAction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hambre.DraggableView.leftClickAction () -&gt; ()"
+                  moduleName = "Hambre"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/DraggableView.swift"
+                  timestampString = "521080328.625231"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hambre.DraggableView.(leftClickAction () -&gt; ()).(closure #1)"
+                  moduleName = "Hambre"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jpereira/Desktop/Hambre/Hambre/DraggableView.swift"
+                  timestampString = "521080328.628501"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "213"
+                  endingLineNumber = "213"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hambre/ReviewView.swift"
+            timestampString = "521079199.774267"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "setArrayOfReviews(reviews:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hambre/ReviewView.swift"
+            timestampString = "521079200.176783"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "setArrayOfReviews(reviews:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
