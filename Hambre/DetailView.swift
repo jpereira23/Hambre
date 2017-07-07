@@ -90,6 +90,14 @@ class DetailView: UIView {
     public func setPhoneField(phone: String)
     {
         self.phoneNumber = phone
+        var index = phoneNumber.index(phoneNumber.startIndex, offsetBy:0)
+        self.phoneNumber.remove(at: index)
+        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 1)
+        self.phoneNumber.insert("(", at: index)
+        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 5)
+        self.phoneNumber.insert(")", at: index)
+        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 9)
+        self.phoneNumber.insert("-", at: index)
     }
     
     public func setWebsiteUrl(url: String)
