@@ -28,7 +28,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     private var cardsLoadedIndex: Int = 0
     private var loadedCards = [DraggableView]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
-    private var genre = "all restuarants"
+    private var genre = "restaurants"
     private var cityState = "San Francisco, California"
     private var arrayOfPlaces = [String]()
     private var distance = 0
@@ -40,17 +40,27 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var MAX_BUFFER_SIZE: Int = 2
     
     let maskView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         appDelegate.delegate = self
-       
+        appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
         
+        if !appDelegate.isLocationEnabled()
+        {
+            let alert = UIAlertController(title: "Location Disabled", message: "Your Location is Disabled go to Settings > Zendish and enable them. Features of the app are currently limited.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                // perhaps use action.title here
+            })
+            
+            self.present(alert, animated: true)
+        }
         self.tabBarController?.delegate = self
         
         print("BusinessTileViewController appeared")
@@ -104,10 +114,21 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     }
     
     func cardSwipedLeft(_ card: UIView) {
-        loadedCards.remove(at: 0)
+        //if loadedCards.count == 0
+        //{
+          //  self.activityIndicator.isHidden = false
+           // self.activityIndicator.startAnimating()
+            //self.loadCards()
+            //self.activityIndicator.isHidden = true
+            //self.activityIndicator.stopAnimating()
+        //}
         
-        if cardsLoadedIndex < allCards.count {
+        loadedCards.remove(at: 0)
             
+        if cardsLoadedIndex == allCards.count {
+            cardsLoadedIndex = 0 
+        }
+        
             if self.arrayOfBusinesses.count > 0
             {
                 self.checkAndUpdateGlobalIndex()
@@ -124,19 +145,19 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 
                 self.view.insertSubview(aView1, belowSubview: aView2)
             }
-        }
+        
     }
     
     func cardSwipedRight(_ card: UIView) {
         
-        
+        self.personalBusinessCoreData.saveBusiness(personalBusiness: loadedCards[0].getBusiness())
         loadedCards.remove(at: 0)
         
         if cardsLoadedIndex < allCards.count {
         
             if self.arrayOfBusinesses.count > 0
             {
-                self.personalBusinessCoreData.saveBusiness(personalBusiness: self.arrayOfBusinesses[self.globalIndexForCurrentCompany])
+                
                 self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
                 self.allCards.remove(at: self.globalIndexForCurrentCompany)
                 self.checkAndUpdateGlobalIndex()
@@ -162,8 +183,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
-        
-        draggableView.setMiles(miles: String(self.arrayOfBusinesses[index].getDistance()) + " mile(s)")
+        draggableView.setBusiness(business: self.arrayOfBusinesses[index])
+        draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mile(s)" : "Miles not available"))
+    
+
         if self.arrayOfReviews.count > 0
         {
             let num = self.filterArrayOfReviews(url: self.arrayOfBusinesses[index].getBusinessImage())
@@ -315,33 +338,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     @IBAction func unwindToTileView(_ sender: UIStoryboardSegue)
     {
-        if sender.identifier == "fromGenre"
-        {
-            //self.businessImage.isHidden = true
-            //self.businessImage1.isHidden = true
-            //self.businessNameLabel.isHidden = true
-            self.leftButton.isEnabled = false
-            self.rightButton.isEnabled = false
-            self.infoButton.isEnabled = false
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-            self.yelpContainer?.changeGenre(genre: self.genre)
-            
-        }
-        else if sender.identifier == "genreToTile"
-        {
-            //self.businessImage.isHidden = true
-            //self.businessImage1.isHidden = true
-            //self.businessNameLabel.isHidden = true
-            self.leftButton.isEnabled = false
-            self.rightButton.isEnabled = false
-            self.infoButton.isEnabled = false
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-            
-            self.yelpContainer?.changeGenre(genre: self.genre)
-        }
-        else if sender.identifier == "settingsToTile"
+        if sender.identifier == "settingsToTile"
         {
             //self.businessImage.isHidden = true
             //self.businessImage1.isHidden = true
@@ -366,6 +363,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
 
             self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(self.distance))
             self.radiiDistances.delegate = self
+            self.radiiDistances.calculate()
             
         }
         else if sender.identifier == "noInternetToTile"
@@ -389,14 +387,14 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             let businessViewController = segue.destination as! BusinessViewController
             businessViewController.setIdentifier(id: "fromTileView")
             
-            businessViewController.setUrl(aUrl: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessImage())
-            businessViewController.setLongitude(longitude: self.aBusinessTileOperator.presentCurrentBusiness().getLongitude())
-            businessViewController.setLatitude(latitude: self.aBusinessTileOperator.presentCurrentBusiness().getLatitude())
-            businessViewController.setPhoneNumber(phone: self.aBusinessTileOperator.presentCurrentBusiness().getNumber())
-            businessViewController.setWebsiteUrl(url: self.aBusinessTileOperator.presentCurrentBusiness().getWebsiteUrl())
-            businessViewController.setIsClosed(isClosed: self.aBusinessTileOperator.presentCurrentBusiness().getIsClosed())
-            businessViewController.setAddress(address: self.aBusinessTileOperator.presentCurrentBusiness().getFullAddress())
-            businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
+            businessViewController.setUrl(aUrl: loadedCards[0].getBusiness().getBusinessImage())
+            businessViewController.setLongitude(longitude: loadedCards[0].getBusiness().getLongitude())
+            businessViewController.setLatitude(latitude: loadedCards[0].getBusiness().getLatitude())
+            businessViewController.setPhoneNumber(phone: loadedCards[0].getBusiness().getNumber())
+            businessViewController.setWebsiteUrl(url: loadedCards[0].getBusiness().getWebsiteUrl())
+            businessViewController.setIsClosed(isClosed: loadedCards[0].getBusiness().getIsClosed())
+            businessViewController.setAddress(address: loadedCards[0].getBusiness().getFullAddress())
+            businessViewController.setTitle(title: loadedCards[0].getBusiness().getBusinessName())
             
         }
         else if segue.identifier == "tileToSettings"
@@ -546,18 +544,35 @@ extension BusinessTileViewController : AppDelegateDelegate
             let radiusCoreData = RadiusCoreData()
             if !radiusCoreData.checkIfCoreDataIsEmpty()
             {
-                let distance = radiusCoreData.loadRadius()
+                var distance = radiusCoreData.loadRadius()
                 self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(distance))
                 self.radiiDistances.delegate = self
                 
+                if distance == 0
+                {
+                    self.radiiDistances.callDelegate()
+                }
+                while distance != 0
+                {
+                    self.radiiDistances.calculate()
+                    distance = distance - 10
+                }
+                
+                
+                
+            }
+            else
+            {
+                self.yelpContainer = nil
+                self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
+                self.yelpContainer?.delegate = self
+                self.yelpContainer?.yelpAPICallForBusinesses()
             }
             self.initialCallWasCalled()
-            self.yelpContainer = nil
+            
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
-            self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
-            self.yelpContainer?.delegate = self
-            self.yelpContainer?.yelpAPICallForBusinesses()
+            
         }
     }
 }

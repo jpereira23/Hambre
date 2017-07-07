@@ -21,7 +21,7 @@ class LikedBusinessesViewController: UIViewController {
     var arrayOfLikedBusinesses = [PersonalBusiness]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +44,8 @@ class LikedBusinessesViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
-        
-        
-        //tableView.reloadData()
-        //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController
-        //businessTileViewController.delegate = self
-        // Do any additional setup after loading the view.
-            }
+    
+        }
     
     public func setCoordinate(coordinate: CLLocationCoordinate2D)
     {
@@ -58,7 +53,6 @@ class LikedBusinessesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //print("The LikedBusinessController is going to appear")
         self.arrayOfLikedBusinesses.removeAll()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
         self.tableView.reloadData()
@@ -181,7 +175,7 @@ extension LikedBusinessesViewController : UITableViewDataSource
         cell.accessoryType = .disclosureIndicator
         cell.accessoryView = UIImageView(image: chevron)
         
-        cell.distanceField.text = String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)"
+        cell.distanceField.text = ((appDelegate.isLocationEnabled()) ? String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mile(s)" : "Miles not available")
         cell.setAverageReview(averageReview: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage().absoluteString))
         cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
         cell.setURL(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage())

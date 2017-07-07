@@ -29,18 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     private var locationManager = CLLocationManager()
     private var iCloudName : String! = "AnonymousUser"
-    private var theCoordinate : CLLocationCoordinate2D!
+    private var theCoordinate = CLLocationCoordinate2D(latitude: 37.773972, longitude: -122.431297)
     private var city = "San Francisco"
     private var state = "California"
     private var latitude: Double = 0000
     private var longitude: Double = 00000
-    
+    private var locationSwitch = false
+    private var locationEnabled = true
     var delegate: AppDelegateDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.locationManager.delegate = self
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if appDelegate.isInternetAvailable()
+      
+        if self.isInternetAvailable()
         {
             self.configueCoordinates()
         }
@@ -82,13 +83,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             
                         }
                     default:
-                        print("not working")
+                        print("iCloud is not available")
                     }
                     
                 }
             })
         }
-        print(self.iCloudName)
+    }
+    
+    public func checkForLocationServices()
+    {
+        if CLLocationManager.locationServicesEnabled()
+        {
+            switch(CLLocationManager.authorizationStatus())
+            {
+            case .restricted, .denied:
+                self.delegate?.locationServicesUpdated(appDelegate: self)
+                self.locationEnabled = false
+                break
+            default:
+                print("Nothing works")
+            }
+        }
+    }
+    
+    public func isLocationEnabled() -> Bool
+    {
+        return self.locationEnabled
     }
     
     private func configueCoordinates()
@@ -180,18 +201,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     
                 }
             }
+            self.delegate?.locationServicesUpdated(appDelegate: self)
             
         })
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        self.theCoordinate = manager.location?.coordinate
-        self.configureCityAndStateWithCoordinate()
-        self.delegate?.locationServicesUpdated(appDelegate: self)
-        self.longitude = Double((manager.location?.coordinate.longitude)!)
-        self.latitude = Double((manager.location?.coordinate.latitude)!)
-        manager.stopUpdatingLocation()
+        if self.locationSwitch == false
+        {
+            self.locationSwitch = true
+            self.theCoordinate = (manager.location?.coordinate)!
+            self.configureCityAndStateWithCoordinate()
+            
+            self.longitude = Double((manager.location?.coordinate.longitude)!)
+            self.latitude = Double((manager.location?.coordinate.latitude)!)
+            manager.stopUpdatingLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

@@ -43,8 +43,9 @@ class DraggableView: UIView {
     private var xFromCenter: CGFloat = 0.0
     private var yFromCenter: CGFloat = 0.0
     private var floatForStar : Float!
-    
+    private var theBusiness : PersonalBusiness? = nil
     private var view: UIView!
+    private var milesEnabled = true
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)!
@@ -67,6 +68,10 @@ class DraggableView: UIView {
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.businessNameField.text = self.businessName
+        if self.miles == "Miles not available"
+        {
+            self.milesField.font = UIFont(name: self.milesField.font.fontName, size: 8)
+        }
         self.milesField.text = self.miles
         self.reviewsField.text = self.reviews
         self.setReviewImages()
@@ -185,6 +190,16 @@ class DraggableView: UIView {
             self.starImageFive.image = UIImage(named: "fullstar")
         }
 
+    }
+    
+    public func setBusiness(business: PersonalBusiness)
+    {
+        self.theBusiness = business
+    }
+    
+    public func getBusiness() -> PersonalBusiness
+    {
+        return self.theBusiness!
     }
     
     public func setBusinessName(name: String)

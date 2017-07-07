@@ -34,15 +34,9 @@ class RadiiDistances: NSObject {
         self.latitude = latitude
         self.longitude = longitude
         self.distance = distance
-        
-        while self.distance != 0
-        {
-            self.calculate()
-            self.distance = self.distance - 10 
-        }
     }
     
-    private func calculate()
+    public func calculate()
     {
         
         for degree in bearingUnitCircleRadians
@@ -61,17 +55,24 @@ class RadiiDistances: NSObject {
             self.arrayOfCoordinates.append(aCoordinate)
         }
         
-        for coordinate in self.arrayOfCoordinates
+        for i in 0..<self.arrayOfCoordinates.count
         {
-            self.convertCoordinatesToUserFriendly(coordinate: coordinate)
+            self.convertCoordinatesToUserFriendly(coordinate: self.arrayOfCoordinates[i], index: i)
         }
         
         
     }
     
-    private func convertCoordinatesToUserFriendly(coordinate: Coordinate)
+    public func callDelegate()
     {
-        let location = CLLocation(latitude: self.arrayOfCoordinates[0].latitude, longitude: self.arrayOfCoordinates[0].longitude)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        self.delegate?.placeFound(place: appDelegate.getCityAndState(), radiiDistances: self)
+    }
+    
+    private func convertCoordinatesToUserFriendly(coordinate: Coordinate, index: Int)
+    {
+        let location = CLLocation(latitude: self.arrayOfCoordinates[index].latitude, longitude: self.arrayOfCoordinates[index].longitude)
         let geocoder = CLGeocoder()
         var compactString : String! = "N/A"
         geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in

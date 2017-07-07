@@ -144,7 +144,6 @@ class YelpContainer: NSObject {
     public func changeGenre(genre: String)
     {
         self.genre = genre
-        self.yelpAPICallForBusinesses()
     }
     
     public func setCityState(cityState: String)
@@ -162,7 +161,14 @@ class YelpContainer: NSObject {
         {
             var query : YLPQuery
             query = YLPQuery(location: self.location)
-            query.term = self.genre
+            if self.genre == "All Restaurants"
+            {
+                query.term = "restaurants"
+            }
+            else
+            {
+                query.term = self.genre
+            }
             query.limit = 50
             YLPClient.authorize(withAppId: appId, secret: appSecret).flatMap { client in
                 client.search(withQuery: query)
