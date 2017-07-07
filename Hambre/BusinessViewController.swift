@@ -177,7 +177,7 @@ class BusinessViewController: UIViewController {
             self.reviewView.setAverageReviews(averageReviews: average) 
             self.reviewView.xibSetUp()
             self.reviewView.addReviewButton.addTarget(self, action: #selector(addReviewButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-            self.reviewView.setReviewLinup()
+            
             self.currentView = self.reviewView.getView()
             self.segmentView.addSubview(currentView)
             

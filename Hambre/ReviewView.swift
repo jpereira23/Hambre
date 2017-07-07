@@ -33,95 +33,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     init(frame: CGRect, averageOfReviews: Float)
     {
         super.init(frame: frame)
-        if averageOfReviews == 0.0
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 0.0 && self.averageOfReviews <= 0.5
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "halfstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 0.5 && averageOfReviews <= 1.0
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 0.5 && averageOfReviews <= 1.5
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "halfstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 1.5 && averageOfReviews <= 2.0
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 2.0 && averageOfReviews <= 2.5
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "halfstar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 2.5 && averageOfReviews <= 3.0
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "graystar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 3.0 && averageOfReviews <= 3.5
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "halfstar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 3.5 && averageOfReviews <= 4.0
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "graystar.png"))
-        }
-        else if averageOfReviews > 4.0 && averageOfReviews <= 4.5
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "halfstar.png"))
-        }
-        else if averageOfReviews > 4.5 && averageOfReviews <= 5.0
-        {
-            self.reviewStarOne = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarTwo = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarThree = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFour = UIImageView(image: UIImage(named: "fullstar.png"))
-            self.reviewStarFive = UIImageView(image: UIImage(named: "fullstar.png"))
-        }
-        
+        self.averageOfReviews = averageOfReviews
     }
     
     public func setArrayOfReviews(reviews: [Review])
@@ -185,6 +97,8 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.view.setUrl(url: self.url)
         self.view.setArrayOfReviews(reviews: self.arrayOfReviews)
+        self.view.averageOfReviews = self.averageOfReviews
+        self.view.setReviewLinup()
         addSubview(self.view)
         print(self.averageOfReviews)
     }
@@ -205,13 +119,93 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     public func setReviewLinup()
     {
-        if self.averageOfReviews > 0.0 && self.averageOfReviews <= 0.5
+        if self.averageOfReviews == 0.0
         {
-            self.reviewStarOne.image = UIImage(named: "halfstar.png")
+            self.reviewStarOne.image = UIImage(named: "graystar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
         }
-        else if self.averageOfReviews > 0.5
+        else if self.averageOfReviews > 0.0 && self.averageOfReviews <= 0.5
         {
-            self.reviewStarOne.image = UIImage(named: "fullstar.png")
+            self.reviewStarOne.image = UIImage(named: "halfstar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 0.5 && self.averageOfReviews <= 1.0
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 0.5 && self.averageOfReviews <= 1.5
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "halfstar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 1.5 && self.averageOfReviews <= 2.0
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 2.0 && self.averageOfReviews <= 2.5
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "halfstar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 2.5 && self.averageOfReviews <= 3.0
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 3.0 && self.averageOfReviews <= 3.5
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "halfstar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 3.5 && self.averageOfReviews <= 4.0
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if self.averageOfReviews > 4.0 && self.averageOfReviews <= 4.5
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "halfstar")
+        }
+        else if self.averageOfReviews > 4.5 && self.averageOfReviews <= 5.0
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "fullstar")
         }
        
     }
@@ -248,8 +242,8 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         let array = self.filterArray(anId: self.getUrl())
         cell?.nameField.text = array[indexPath.row].getReviewer()
         cell?.commentField.text = array[indexPath.row].getSummaryReview()
-        cell?.reviewField.text = "Review: " + String(array[indexPath.row].getReview())
         cell?.dateCreatedField.text = array[indexPath.row].getCreationDate()
+        cell?.setStars(averageOfReviews: Float(array[indexPath.row].getReview()))
         
         return cell!
     }

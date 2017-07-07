@@ -15,7 +15,13 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var commentField: UILabel!
     @IBOutlet weak var reviewField: UILabel!
     @IBOutlet var dateCreatedField: UILabel!
+    @IBOutlet var reviewStarOne: UIImageView!
+    @IBOutlet var reviewStarTwo: UIImageView!
+    @IBOutlet var reviewStarThree: UIImageView!
+    @IBOutlet var reviewStarFour: UIImageView!
+    @IBOutlet var reviewStarFive: UIImageView!
     
+    public var averageOfReviews : Float = 0.0
     private var name : String = "Generic name"
     private var comment : String = "A generic comment."
     private var review : Int = 0
@@ -32,6 +38,110 @@ class ReviewTableViewCell: UITableViewCell {
         // Initialization code
         
         
+        
+        
+    }
+    
+    public func setStars(averageOfReviews: Float)
+    {
+        self.averageOfReviews = averageOfReviews
+        
+        if averageOfReviews == 0.0
+        {
+            self.reviewStarOne.image = UIImage(named: "graystar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 0.0 && averageOfReviews <= 0.5
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "halfstar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 0.5 && averageOfReviews <= 1.0
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "graystar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 1.0 && averageOfReviews <= 1.5
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "halfstar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 1.5 && averageOfReviews <= 2.0
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "graystar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 2.0 && averageOfReviews <= 2.5
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "halfstar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 2.5 && averageOfReviews <= 3.0
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "graystar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 3.0 && averageOfReviews <= 3.5
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "halfstar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 3.5 && averageOfReviews <= 4.0
+        {
+            
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "graystar")
+        }
+        else if averageOfReviews > 4.0 && averageOfReviews <= 4.5
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "halfstar")
+        }
+        else if averageOfReviews > 4.5
+        {
+            self.reviewStarOne.image = UIImage(named: "fullstar")
+            self.reviewStarTwo.image = UIImage(named: "fullstar")
+            self.reviewStarThree.image = UIImage(named: "fullstar")
+            self.reviewStarFour.image = UIImage(named: "fullstar")
+            self.reviewStarFive.image = UIImage(named: "fullstar")
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
