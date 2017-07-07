@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     private var state = "California"
     private var latitude: Double = 0000
     private var longitude: Double = 00000
-    
+    private var locationSwitch = false
     var delegate: AppDelegateDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -179,18 +179,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     
                 }
             }
+            self.delegate?.locationServicesUpdated(appDelegate: self)
             
         })
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        self.theCoordinate = manager.location?.coordinate
-        self.configureCityAndStateWithCoordinate()
-        self.delegate?.locationServicesUpdated(appDelegate: self)
-        self.longitude = Double((manager.location?.coordinate.longitude)!)
-        self.latitude = Double((manager.location?.coordinate.latitude)!)
-        manager.stopUpdatingLocation()
+        if self.locationSwitch == false
+        {
+            self.locationSwitch = true
+            self.theCoordinate = manager.location?.coordinate
+            self.configureCityAndStateWithCoordinate()
+            
+            self.longitude = Double((manager.location?.coordinate.longitude)!)
+            self.latitude = Double((manager.location?.coordinate.latitude)!)
+            manager.stopUpdatingLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

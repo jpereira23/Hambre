@@ -6,32 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "521095432.908702"
+            filePath = "Hambre/AppDelegate.swift"
+            timestampString = "521145215.278333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "cardSwipedRight(_:)"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "configureCityAndStateWithCoordinate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/RadiiLocation.swift"
-            timestampString = "521095629.446439"
+            filePath = "Hambre/AppDelegate.swift"
+            timestampString = "521145216.434215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "convertCoordinatesToUserFriendly(coordinate:)"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "configureCityAndStateWithCoordinate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "521144160.024646"
+            timestampString = "521145311.18553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
-            landmarkName = "placeFound(place:radiiDistances:)"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "setCityState(cityState:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,61 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "521095961.61561"
+            filePath = "Hambre/AppDelegate.swift"
+            timestampString = "521145387.377014"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "recallYelpContainer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "521095963.860953"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
-            landmarkName = "cityRequiresRefresh()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "521144160.024646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
-            landmarkName = "unwindToTileView(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "521144160.024646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "566"
-            endingLineNumber = "566"
-            landmarkName = "viewController(_:didAutocompleteWith:)"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "configureCityAndStateWithCoordinate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
