@@ -15,11 +15,14 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var reviewSlider: UISlider!
     @IBOutlet weak var greetingField: UILabel!
     @IBOutlet weak var commentView: UITextView!
-    @IBOutlet var reviewStarOne: UIImageView!
-    @IBOutlet var reviewStarTwo: UIImageView!
-    @IBOutlet var reviewStarThree: UIImageView!
-    @IBOutlet var reviewStarFour: UIImageView!
-    @IBOutlet var reviewStarFive: UIImageView!
+    
+    @IBOutlet weak var reviewStarOne: UIButton!
+    @IBOutlet weak var reviewStarTwo: UIButton!
+    @IBOutlet weak var reviewStarThree: UIButton!
+    @IBOutlet weak var reviewStarFour: UIButton!
+    @IBOutlet weak var reviewStarFive: UIButton!
+    
+ 
     
     
     
@@ -66,51 +69,53 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     {
         if num == 0
         {
-            self.reviewStarOne.image = UIImage(named: "graystar")
-            self.reviewStarTwo.image = UIImage(named: "graystar")
-            self.reviewStarThree.image = UIImage(named: "graystar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
+            self.reviewStarOne.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarTwo.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarThree.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarFour.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarFive.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            
         }
         else if num == 1
         {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "graystar")
-            self.reviewStarThree.image = UIImage(named: "graystar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
+            self.reviewStarOne.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarTwo.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarThree.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarFour.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarFive.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            
         }
         else if num == 2
         {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "graystar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
+            self.reviewStarOne.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarTwo.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarThree.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarFour.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarFive.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
         }
         else if num == 3
         {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "fullstar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
+            self.reviewStarOne.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarTwo.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarThree.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarFour.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
+            self.reviewStarFive.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
         }
         else if num == 4
         {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "fullstar")
-            self.reviewStarFour.image = UIImage(named: "fullstar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
+            self.reviewStarOne.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarTwo.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarThree.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarFour.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarFive.setImage(UIImage(named: "graystar"), for: UIControlState.normal)
         }
         else if num == 5
         {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "fullstar")
-            self.reviewStarFour.image = UIImage(named: "fullstar")
-            self.reviewStarFive.image = UIImage(named: "fullstar")
+            self.reviewStarOne.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarTwo.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarThree.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarFour.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
+            self.reviewStarFive.setImage(UIImage(named: "fullstar"), for: UIControlState.normal)
         }
     }
     @IBAction func valueChanged(_ sender: Any)
