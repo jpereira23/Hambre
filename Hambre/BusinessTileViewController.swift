@@ -387,14 +387,14 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             let businessViewController = segue.destination as! BusinessViewController
             businessViewController.setIdentifier(id: "fromTileView")
             
-            businessViewController.setUrl(aUrl: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessImage())
-            businessViewController.setLongitude(longitude: self.aBusinessTileOperator.presentCurrentBusiness().getLongitude())
-            businessViewController.setLatitude(latitude: self.aBusinessTileOperator.presentCurrentBusiness().getLatitude())
-            businessViewController.setPhoneNumber(phone: self.aBusinessTileOperator.presentCurrentBusiness().getNumber())
-            businessViewController.setWebsiteUrl(url: self.aBusinessTileOperator.presentCurrentBusiness().getWebsiteUrl())
-            businessViewController.setIsClosed(isClosed: self.aBusinessTileOperator.presentCurrentBusiness().getIsClosed())
-            businessViewController.setAddress(address: self.aBusinessTileOperator.presentCurrentBusiness().getFullAddress())
-            businessViewController.setTitle(title: self.aBusinessTileOperator.presentCurrentBusiness().getBusinessName())
+            businessViewController.setUrl(aUrl: loadedCards[0].getBusiness().getBusinessImage())
+            businessViewController.setLongitude(longitude: loadedCards[0].getBusiness().getLongitude())
+            businessViewController.setLatitude(latitude: loadedCards[0].getBusiness().getLatitude())
+            businessViewController.setPhoneNumber(phone: loadedCards[0].getBusiness().getNumber())
+            businessViewController.setWebsiteUrl(url: loadedCards[0].getBusiness().getWebsiteUrl())
+            businessViewController.setIsClosed(isClosed: loadedCards[0].getBusiness().getIsClosed())
+            businessViewController.setAddress(address: loadedCards[0].getBusiness().getFullAddress())
+            businessViewController.setTitle(title: loadedCards[0].getBusiness().getBusinessName())
             
         }
         else if segue.identifier == "tileToSettings"
