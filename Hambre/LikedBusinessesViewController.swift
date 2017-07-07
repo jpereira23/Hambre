@@ -44,13 +44,8 @@ class LikedBusinessesViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
-        
-        
-        //tableView.reloadData()
-        //let businessTileViewController = self.tabBarController!.viewControllers![1] as! BusinessTileViewController
-        //businessTileViewController.delegate = self
-        // Do any additional setup after loading the view.
-            }
+    
+        }
     
     public func setCoordinate(coordinate: CLLocationCoordinate2D)
     {
@@ -58,7 +53,6 @@ class LikedBusinessesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //print("The LikedBusinessController is going to appear")
         self.arrayOfLikedBusinesses.removeAll()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
         self.tableView.reloadData()

@@ -129,14 +129,14 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     func cardSwipedRight(_ card: UIView) {
         
-        
+        self.personalBusinessCoreData.saveBusiness(personalBusiness: loadedCards[0].getBusiness())
         loadedCards.remove(at: 0)
         
         if cardsLoadedIndex < allCards.count {
         
             if self.arrayOfBusinesses.count > 0
             {
-                self.personalBusinessCoreData.saveBusiness(personalBusiness: self.arrayOfBusinesses[self.globalIndexForCurrentCompany])
+                
                 self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
                 self.allCards.remove(at: self.globalIndexForCurrentCompany)
                 self.checkAndUpdateGlobalIndex()
@@ -162,6 +162,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
+        draggableView.setBusiness(business: self.arrayOfBusinesses[index])
         
         draggableView.setMiles(miles: String(self.arrayOfBusinesses[index].getDistance()) + " mile(s)")
         if self.arrayOfReviews.count > 0
@@ -315,33 +316,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     @IBAction func unwindToTileView(_ sender: UIStoryboardSegue)
     {
-        if sender.identifier == "fromGenre"
-        {
-            //self.businessImage.isHidden = true
-            //self.businessImage1.isHidden = true
-            //self.businessNameLabel.isHidden = true
-            self.leftButton.isEnabled = false
-            self.rightButton.isEnabled = false
-            self.infoButton.isEnabled = false
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-            self.yelpContainer?.changeGenre(genre: self.genre)
-            
-        }
-        else if sender.identifier == "genreToTile"
-        {
-            //self.businessImage.isHidden = true
-            //self.businessImage1.isHidden = true
-            //self.businessNameLabel.isHidden = true
-            self.leftButton.isEnabled = false
-            self.rightButton.isEnabled = false
-            self.infoButton.isEnabled = false
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-            
-            self.yelpContainer?.changeGenre(genre: self.genre)
-        }
-        else if sender.identifier == "settingsToTile"
+        if sender.identifier == "settingsToTile"
         {
             //self.businessImage.isHidden = true
             //self.businessImage1.isHidden = true
@@ -552,12 +527,12 @@ extension BusinessTileViewController : AppDelegateDelegate
                 
             }
             self.initialCallWasCalled()
-            self.yelpContainer = nil
+            //self.yelpContainer = nil
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
-            self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
-            self.yelpContainer?.delegate = self
-            self.yelpContainer?.yelpAPICallForBusinesses()
+            //self.yelpContainer = YelpContainer(cityAndState: appDelegate.getCityAndState())
+            //self.yelpContainer?.delegate = self
+            //self.yelpContainer?.yelpAPICallForBusinesses()
         }
     }
 }

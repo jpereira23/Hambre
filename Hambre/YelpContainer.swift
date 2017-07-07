@@ -144,7 +144,6 @@ class YelpContainer: NSObject {
     public func changeGenre(genre: String)
     {
         self.genre = genre
-        self.yelpAPICallForBusinesses()
     }
     
     public func setCityState(cityState: String)

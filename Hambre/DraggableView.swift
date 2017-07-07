@@ -43,7 +43,7 @@ class DraggableView: UIView {
     private var xFromCenter: CGFloat = 0.0
     private var yFromCenter: CGFloat = 0.0
     private var floatForStar : Float!
-    
+    private var theBusiness : PersonalBusiness? = nil
     private var view: UIView!
     required init(coder aDecoder: NSCoder)
     {
@@ -185,6 +185,16 @@ class DraggableView: UIView {
             self.starImageFive.image = UIImage(named: "fullstar")
         }
 
+    }
+    
+    public func setBusiness(business: PersonalBusiness)
+    {
+        self.theBusiness = business
+    }
+    
+    public func getBusiness() -> PersonalBusiness
+    {
+        return self.theBusiness!
     }
     
     public func setBusinessName(name: String)

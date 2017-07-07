@@ -82,13 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             
                         }
                     default:
-                        print("not working")
+                        print("iCloud is not available")
                     }
                     
                 }
             })
         }
-        print(self.iCloudName)
     }
     
     private func configueCoordinates()
