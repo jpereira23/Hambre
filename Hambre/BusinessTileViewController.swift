@@ -40,6 +40,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
+    public var backgroundView : UIView!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var MAX_BUFFER_SIZE: Int = 2
     
@@ -114,14 +115,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     }
     
     func cardSwipedLeft(_ card: UIView) {
-        //if loadedCards.count == 0
-        //{
-          //  self.activityIndicator.isHidden = false
-           // self.activityIndicator.startAnimating()
-            //self.loadCards()
-            //self.activityIndicator.isHidden = true
-            //self.activityIndicator.stopAnimating()
-        //}
+    
         
         loadedCards.remove(at: 0)
             
@@ -129,28 +123,37 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             cardsLoadedIndex = 0 
         }
         
-            if self.arrayOfBusinesses.count > 0
-            {
-                self.checkAndUpdateGlobalIndex()
-                loadedCards.append(allCards[cardsLoadedIndex])
-                cardsLoadedIndex += 1
-                loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
-                loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
-                let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
-                let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
-                aView1.frame.origin.x = 25
-                aView2.frame.origin.x = 25
-                aView1.frame.origin.y = 86
-                aView2.frame.origin.y = 86
-                
-                self.view.insertSubview(aView1, belowSubview: aView2)
-            }
         
+        if self.arrayOfBusinesses.count > 0
+        {
+            self.checkAndUpdateGlobalIndex()
+            loadedCards.append(allCards[cardsLoadedIndex])
+            cardsLoadedIndex += 1
+            loadedCards[(MAX_BUFFER_SIZE-1)].xibSetUp()
+            loadedCards[(MAX_BUFFER_SIZE-2)].xibSetUp()
+            let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
+            let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
+            aView1.frame.origin.x = 25
+            aView2.frame.origin.x = 25
+            aView1.frame.origin.y = 86
+            aView2.frame.origin.y = 86
+            //self.view.addSubview(aView2)
+            self.view.insertSubview(aView1, belowSubview: aView2)
+            //backgroundView.removeFromSuperview()
+            //backgroundView = nil
+            //backgroundView = aView2
+            
+        }
+    
     }
     
     func cardSwipedRight(_ card: UIView) {
         
-        self.personalBusinessCoreData.saveBusiness(personalBusiness: loadedCards[0].getBusiness())
+        if loadedCards.count > 0
+        {
+            self.personalBusinessCoreData.saveBusiness(personalBusiness: loadedCards[1].getBusiness())
+        }
+        
         loadedCards.remove(at: 0)
         
         if cardsLoadedIndex < allCards.count {
@@ -203,6 +206,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     public func loadCards()
     {
+        
         if self.arrayOfBusinesses.count > 0
         {
             let numLoadedCardsCap: Int = (self.arrayOfBusinesses.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : self.arrayOfBusinesses.count
@@ -211,36 +215,41 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             {
                 let newCard: DraggableView? = self.createDraggableViewWithData(at: i)
                 allCards.append(newCard!)
-                if i < numLoadedCardsCap {
+                if i < numLoadedCardsCap && loadedCards.count < MAX_BUFFER_SIZE{
                     loadedCards.append(newCard!)
                 }
             }
             
-            for i in 0..<loadedCards.count
+            if loadedCards.count <= MAX_BUFFER_SIZE && cardsLoadedIndex < MAX_BUFFER_SIZE
             {
-                if i > 0
+                for i in 0..<loadedCards.count
                 {
-                    
-                    loadedCards[i].xibSetUp()
-                    loadedCards[i-1].xibSetUp()
-                    let aView1 = loadedCards[i].getView()
-                    let aView2 = loadedCards[i-1].getView()
-                    aView1.frame.origin.x = 25
-                    aView2.frame.origin.x = 25
-                    aView1.frame.origin.y = 86
-                    aView2.frame.origin.y = 86
-                    
-                    self.view.insertSubview(aView1, belowSubview: aView2)
+                    if i > 0
+                    {
+                        
+                        loadedCards[i].xibSetUp()
+                        loadedCards[i-1].xibSetUp()
+                        let aView1 = loadedCards[i].getView()
+                        let aView2 = loadedCards[i-1].getView()
+                        aView1.frame.origin.x = 25
+                        aView2.frame.origin.x = 25
+                        aView1.frame.origin.y = 86
+                        aView2.frame.origin.y = 86
+                        
+                        self.view.insertSubview(aView1, belowSubview: aView2)
+                    }
+                
+                    else
+                    {
+                        loadedCards[i].xibSetUp()
+                        let aView = loadedCards[i].getView()
+                        aView.frame.origin.x = 25
+                        aView.frame.origin.y = 86
+                        self.view.addSubview(aView)
+                    }
+ 
+                    cardsLoadedIndex += 1
                 }
-                else
-                {
-                    loadedCards[i].xibSetUp()
-                    let aView = loadedCards[i].getView()
-                    aView.frame.origin.x = 25
-                    aView.frame.origin.y = 86
-                    self.view.addSubview(aView)
-                }
-                cardsLoadedIndex += 1
             }
         }
     }
@@ -386,21 +395,35 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         {
             let businessViewController = segue.destination as! BusinessViewController
             businessViewController.setIdentifier(id: "fromTileView")
-            
-            businessViewController.setUrl(aUrl: loadedCards[0].getBusiness().getBusinessImage())
-            businessViewController.setLongitude(longitude: loadedCards[0].getBusiness().getLongitude())
-            businessViewController.setLatitude(latitude: loadedCards[0].getBusiness().getLatitude())
-            businessViewController.setPhoneNumber(phone: loadedCards[0].getBusiness().getNumber())
-            businessViewController.setWebsiteUrl(url: loadedCards[0].getBusiness().getWebsiteUrl())
-            businessViewController.setIsClosed(isClosed: loadedCards[0].getBusiness().getIsClosed())
-            businessViewController.setAddress(address: loadedCards[0].getBusiness().getFullAddress())
-            businessViewController.setTitle(title: loadedCards[0].getBusiness().getBusinessName())
+            if loadedCards.count > 0
+            {
+                businessViewController.setUrl(aUrl: loadedCards[1].getBusiness().getBusinessImage())
+                businessViewController.setLongitude(longitude: loadedCards[1].getBusiness().getLongitude())
+                businessViewController.setLatitude(latitude: loadedCards[1].getBusiness().getLatitude())
+                businessViewController.setPhoneNumber(phone: loadedCards[1].getBusiness().getNumber())
+                businessViewController.setWebsiteUrl(url: loadedCards[1].getBusiness().getWebsiteUrl())
+                businessViewController.setIsClosed(isClosed: loadedCards[1].getBusiness().getIsClosed())
+                businessViewController.setAddress(address: loadedCards[1].getBusiness().getFullAddress())
+                businessViewController.setTitle(title: loadedCards[1].getBusiness().getBusinessName())
+            }
+            else
+            {
+                businessViewController.setUrl(aUrl: loadedCards[0].getBusiness().getBusinessImage())
+                businessViewController.setLongitude(longitude: loadedCards[0].getBusiness().getLongitude())
+                businessViewController.setLatitude(latitude: loadedCards[0].getBusiness().getLatitude())
+                businessViewController.setPhoneNumber(phone: loadedCards[0].getBusiness().getNumber())
+                businessViewController.setWebsiteUrl(url: loadedCards[0].getBusiness().getWebsiteUrl())
+                businessViewController.setIsClosed(isClosed: loadedCards[0].getBusiness().getIsClosed())
+                businessViewController.setAddress(address: loadedCards[0].getBusiness().getFullAddress())
+                businessViewController.setTitle(title: loadedCards[0].getBusiness().getBusinessName())
+            }
             
         }
         else if segue.identifier == "tileToSettings"
         {
             let settingsViewController = segue.destination as! SettingsPopOverViewController
-            settingsViewController.setSliderValue(value: self.distance)
+            let radiusCoreData = RadiusCoreData()
+            settingsViewController.setSliderValue(value: radiusCoreData.loadRadius())
             settingsViewController.setSelectedCell(index: self.indexOfSelectedGenre)
         }
     }
