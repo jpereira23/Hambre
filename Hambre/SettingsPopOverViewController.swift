@@ -19,25 +19,32 @@ class SettingsPopOverViewController: UIViewController {
     private var indexOfSelectedCell = 0
     private var cityState : String!
     private var sliderValue = 0
+    let step: Float = 10
     var arrayOfGenres = ["All Restaurants", "Afghan", "African", "American", "Arabian", "Argentine", "Armenian", "Asian Fusion", "Australian", "Austrian", "Bangladeshi", "Barbeque", "Basque", "Belgian", "Brasseries", "Brazillian", "Breakfast & Brunch", "British", "Buffets", "Burgers", "Burmese", "Cafes", "Cafeteria", "Cajun/Creole", "Cambodian", "Caribbean", "Catalan", "Cheesesteaks", "Chicken Shop", "Chicken Wings", "Chinese", "Comfort Food", "Creperies", "Cuban", "Czech", "Delis", "Diners", "Dinner Theater", "Ethiopian", "Fast Food", "Filipino", "Fish & Chips", "Fondue", "Food Court", "Food Stands", "French", "Game Meat", "Gastropubs", "German", "Gluten-Free", "Greek", "Guamanian", "Halai", "Hawaiian", "Himalayan/Neplaese", "Honduran", "Hong Kong Style Cafe", "Hot Dogs", "Hot Pot", "Hungarian", "Iberian", "Indian", "Indonesian", "Irish", "Italian", "Japanese", "Kebab", "Korean", "Kosher", "Laotian", "Latin American", "Live/Raw Food", "Malaysian", "Mediterranean", "Mexican", "Middle Eastern", "Modern European", "Mongolian", "Moroccan",  "New Mexican Cafe", "Nicaraguan", "Noodles", "Pakistani", "Pan Asian", "Persian/Iranian", "Peruvian", "Pizza", "Polish", "Pop-Up Restaurants", "Portuguese", "Poutineries", "Russian", "Salad", "Sandwiches", "Scandinavian", "Scottish", "Seafood", "Singaporean", "Slovakian", "Soul Food", "Soup", "Southern", "Spanish", "Sri Lankan", "Steakhouses", "Supper Clubs", "Sushi Bars", "Syrian", "Taiwanese", "Tapas Bars", "Tapas/Small Plates", "Tex-Mex", "Thai", "Turkish", "Ukranian", "Uzbek", "Vegan", "Vegetarian", "Vietnamese", "Waffles", "Wraps"]
     
     
     override func viewWillAppear(_ animated: Bool) {
+       
+        UIView.animate(withDuration: 0.3, animations: {
+            self.distanceSlider.setValue(30.0, animated: true)
+            self.distanceSlider.value = 30.0 
+        })
         if !radiusCoreData.checkIfCoreDataIsEmpty()
         {
             self.sliderValue = radiusCoreData.loadRadius()
         }
         self.doneButton.isEnabled = false
-        //self.distanceSlider.value = Float(self.sliderValue)
-        self.distanceSlider.setValue(Float(self.sliderValue), animated: true)
+       
         self.distanceSlider.maximumValue = 50
         self.distanceSlider.minimumValue = 1
         self.distanceLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableView.reloadData()
-        self.distanceSlider.setValue(Float(self.sliderValue), animated: true)
+        
+       
         
         // Do any additional setup after loading the view.
         
@@ -62,13 +69,14 @@ class SettingsPopOverViewController: UIViewController {
     public func setSliderValue(value: Int)
     {
         self.sliderValue = value
+        
     }
     
     public func getIndexOfSelectedCell() -> Int{
         return self.indexOfSelectedCell
     }
     
-    let step: Float = 10
+    
     
     @IBAction func sliderChangedValue(_ sender: Any) {
         self.doneButton.isEnabled = true
