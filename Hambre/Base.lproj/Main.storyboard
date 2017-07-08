@@ -425,9 +425,11 @@
                                 <rect key="frame" x="176" y="483" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hWa-ga-NBy">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hWa-ga-NBy">
                                 <rect key="frame" x="25" y="293" width="325" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="0Z6-pA-oZP"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Details"/>
                                     <segment title="Reviews"/>
@@ -438,7 +440,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-l8-Dzw" customClass="DetailView" customModule="Hambre" customModuleProvider="target">
-                                <rect key="frame" x="20" y="341" width="325" height="326"/>
+                                <rect key="frame" x="25" y="341" width="325" height="326"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
@@ -449,8 +451,23 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBr-jM-jTd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="209"/>
+                                <color key="backgroundColor" red="0.38929578993055558" green="0.71126302083333337" blue="0.42268880203888887" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="209" id="PNy-kA-r7e"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hWa-ga-NBy" firstAttribute="top" secondItem="cBr-jM-jTd" secondAttribute="bottom" constant="20" id="4mo-6z-75S"/>
+                            <constraint firstItem="hWa-ga-NBy" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leadingMargin" constant="9" id="888-gO-gfu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hWa-ga-NBy" secondAttribute="trailing" constant="9" id="QG7-wn-yEw"/>
+                            <constraint firstItem="cBr-jM-jTd" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" id="Wx9-QE-gRB"/>
+                            <constraint firstItem="cBr-jM-jTd" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" id="X5X-1e-TiM"/>
+                            <constraint firstAttribute="trailing" secondItem="cBr-jM-jTd" secondAttribute="trailing" id="sCd-io-fiD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Sd-Zi-VXx">
                         <barButtonItem key="backBarButtonItem" title="back" id="poN-wW-Skr">
@@ -466,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDK-1I-Vgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1790" y="2221"/>
+            <point key="canvasLocation" x="1789.5999999999999" y="2220.5397301349326"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="nUa-sE-gdi">
