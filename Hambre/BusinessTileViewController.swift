@@ -114,6 +114,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     func cardSwipedLeft(_ card: UIView) {
     
         

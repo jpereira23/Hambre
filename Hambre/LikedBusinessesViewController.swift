@@ -47,12 +47,15 @@ class LikedBusinessesViewController: UIViewController {
     
         }
     
+    
     public func setCoordinate(coordinate: CLLocationCoordinate2D)
     {
         self.coordinate = coordinate
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        
         self.arrayOfLikedBusinesses.removeAll()
         self.arrayOfLikedBusinesses = personalBusinessCoreData.loadCoreData()
         self.tableView.reloadData()
