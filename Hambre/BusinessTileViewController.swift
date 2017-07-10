@@ -41,6 +41,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
     public var backgroundView : UIView!
+    public var forgroundView : UIView!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var MAX_BUFFER_SIZE: Int = 2
     
@@ -231,6 +232,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                         loadedCards[i-1].xibSetUp()
                         let aView1 = loadedCards[i].getView()
                         let aView2 = loadedCards[i-1].getView()
+                        forgroundView = aView1
+                        backgroundView = aView2
                         aView1.frame.origin.x = 25
                         aView2.frame.origin.x = 25
                         aView1.frame.origin.y = 86
@@ -349,9 +352,20 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     {
         if sender.identifier == "settingsToTile"
         {
+            backgroundView.isHidden = true
+            for view in self.view.subviews
+            {
+                if NSStringFromClass(view.classForCoder) == "UIView"
+                {
+                    view.isHidden = true
+                }
+            }
             //self.businessImage.isHidden = true
             //self.businessImage1.isHidden = true
             //self.businessNameLabel.isHidden = true
+            self.arrayOfBusinesses.removeAll()
+            self.loadedCards.removeAll()
+            self.allCards.removeAll() 
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
             self.infoButton.isEnabled = false
@@ -360,6 +374,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             self.aBusinessTileOperator.removeAllBusinesses()
             if self.distance == 0
             {
+                
                 self.yelpContainer = nil
                 
                 self.yelpContainer = YelpContainer(cityAndState: self.cityState)
@@ -548,6 +563,14 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
             self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
             self.loadCards()
+        }
+        
+        for view in self.view.subviews
+        {
+            if NSStringFromClass(view.classForCoder) == "UIView"
+            {
+                view.isHidden = false
+            }
         }
     }
 }

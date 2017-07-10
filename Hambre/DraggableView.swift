@@ -78,8 +78,11 @@ class DraggableView: UIView {
         if self.imageUrl != nil
         {
             let data = try? Data(contentsOf: self.imageUrl!)
-            self.imageView.image = UIImage(data: data!)
-            self.imageView.contentMode = UIViewContentMode.scaleAspectFill
+            if data != nil
+            {
+                self.imageView.image = UIImage(data: data!)
+                self.imageView.contentMode = UIViewContentMode.scaleAspectFill
+            }
         }
         // Need else statement for businesses that dont have url
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.beingDragged))
