@@ -42,7 +42,7 @@ class BusinessViewController: UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = self.aTitle
-        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 18.0)
+        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
         self.view.addSubview(mapView)
         let marker = GMSMarker()
