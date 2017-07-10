@@ -439,17 +439,21 @@
                                     <action selector="indexChanged:" destination="R2h-Pv-c51" eventType="valueChanged" id="go7-Tl-2q4"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-l8-Dzw" customClass="DetailView" customModule="Hambre" customModuleProvider="target">
-                                <rect key="frame" x="25" y="341" width="325" height="327"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-l8-Dzw" customClass="DetailView" customModule="Hambre" customModuleProvider="target">
+                                <rect key="frame" x="25" y="341" width="325" height="326"/>
                                 <subviews>
-                                    <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="327"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="326"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="uiv-fc-41g" firstAttribute="leading" secondItem="5mf-l8-Dzw" secondAttribute="leading" id="4SY-Gd-5kl"/>
+                                    <constraint firstAttribute="bottom" secondItem="uiv-fc-41g" secondAttribute="bottom" id="a6e-or-TRq"/>
+                                    <constraint firstItem="uiv-fc-41g" firstAttribute="top" secondItem="5mf-l8-Dzw" secondAttribute="top" id="cIY-iR-LE2"/>
+                                    <constraint firstAttribute="trailing" secondItem="uiv-fc-41g" secondAttribute="trailing" id="ccL-6L-olg"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBr-jM-jTd">
                                 <rect key="frame" x="0.0" y="64" width="375" height="209"/>
@@ -463,10 +467,14 @@
                         <constraints>
                             <constraint firstItem="hWa-ga-NBy" firstAttribute="top" secondItem="cBr-jM-jTd" secondAttribute="bottom" constant="20" id="4mo-6z-75S"/>
                             <constraint firstItem="hWa-ga-NBy" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leadingMargin" constant="9" id="888-gO-gfu"/>
+                            <constraint firstAttribute="bottom" secondItem="5mf-l8-Dzw" secondAttribute="bottom" id="Ofd-vX-baq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hWa-ga-NBy" secondAttribute="trailing" constant="9" id="QG7-wn-yEw"/>
                             <constraint firstItem="cBr-jM-jTd" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" id="Wx9-QE-gRB"/>
                             <constraint firstItem="cBr-jM-jTd" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" id="X5X-1e-TiM"/>
+                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" constant="25" id="ax4-Ht-qcI"/>
+                            <constraint firstAttribute="trailing" secondItem="5mf-l8-Dzw" secondAttribute="trailing" constant="25" id="mMC-NL-Ud0"/>
                             <constraint firstAttribute="trailing" secondItem="cBr-jM-jTd" secondAttribute="trailing" id="sCd-io-fiD"/>
+                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="hWa-ga-NBy" secondAttribute="bottom" constant="20" id="sbE-cl-kVu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Sd-Zi-VXx">
@@ -1052,7 +1060,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tkQ-uH-K3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1074,7 +1082,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Setting" id="Aq9-nL-244"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1096,7 +1104,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="TabHeart" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xxh-aD-K9r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xxh-aD-K9r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1118,7 +1126,7 @@
                     <tabBarItem key="tabBarItem" title="Discover" image="Cards" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="otW-5u-Ixy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="otW-5u-Ixy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1140,7 +1148,7 @@
                     <tabBarItem key="tabBarItem" title="More" image="MoreIcon" id="sJF-NA-R2e"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7jO-3w-ijP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7jO-3w-ijP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1189,6 +1197,6 @@
         <image name="graystar" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bn3-9e-jQ8"/>
+        <segue reference="Sh3-GC-Plj"/>
     </inferredMetricsTieBreakers>
 </document>
