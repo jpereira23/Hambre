@@ -115,7 +115,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.38929578990000002" green="0.71126302080000003" blue="0.42268880199999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Jwm-xs-ThL" secondAttribute="trailing" constant="16" id="27J-9n-PrN"/>
                 <constraint firstItem="6iU-eE-K9y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2bE-67-dD3"/>

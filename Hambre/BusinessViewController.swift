@@ -53,7 +53,7 @@ class BusinessViewController: UIViewController {
         
         //self.cloudKitDatabaseHandler.delegate = self
         
-        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: 352, height: 248))
+        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
         self.detailView.setAddressField(address: self.address)
         self.detailView.setPhoneField(phone: self.phoneNumber)
         self.detailView.setIsClosed(isClosed: self.isClosed)
