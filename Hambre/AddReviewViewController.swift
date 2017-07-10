@@ -20,13 +20,11 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var reviewStarThree: UIImageView!
     @IBOutlet var reviewStarFour: UIImageView!
     @IBOutlet var reviewStarFive: UIImageView!
-    
+    private var review : Int = 0
     
     
     override func viewWillAppear(_ animated: Bool) {
-        reviewSlider.maximumValue = 5
-        reviewSlider.minimumValue = 0
-        reviewSlider.setValue(0.0, animated: animated)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +35,23 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         
         self.title = "Review"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
+        let firstStarRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstStarTapped(tapGestureRecognizer:)))
+        self.reviewStarOne.isUserInteractionEnabled = true
+        self.reviewStarOne.addGestureRecognizer(firstStarRecognizer)
+        let secondStarRecognizer = UITapGestureRecognizer(target: self, action: #selector(secondStarTapped(tapGestureRecognizer:)))
+        self.reviewStarTwo.isUserInteractionEnabled = true
+        self.reviewStarTwo.addGestureRecognizer(secondStarRecognizer)
+        let thirdStarRecognizer = UITapGestureRecognizer(target: self, action: #selector(thirdStarTapped(tapGestureRecognizer:)))
+        self.reviewStarThree.isUserInteractionEnabled = true
+        self.reviewStarThree.addGestureRecognizer(thirdStarRecognizer)
+        let fourthStarRecognizer = UITapGestureRecognizer(target: self, action: #selector(fourthStarTapped(tapGestureRecognizer:)))
+        self.reviewStarFour.isUserInteractionEnabled = true
+        self.reviewStarFour.addGestureRecognizer(fourthStarRecognizer)
+        let fifthStarRecognizer = UITapGestureRecognizer(target: self, action: #selector(fifthStarTapped(tapGestureRecognizer:)))
+        self.reviewStarFive.isUserInteractionEnabled = true
+        self.reviewStarFive.addGestureRecognizer(fifthStarRecognizer)
+        
+        
         
         commentView.delegate = self
         self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes my this all a reality."
@@ -62,61 +77,54 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private func changeStars(num: Int)
+    func firstStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        if num == 0
-        {
-            self.reviewStarOne.image = UIImage(named: "graystar")
-            self.reviewStarTwo.image = UIImage(named: "graystar")
-            self.reviewStarThree.image = UIImage(named: "graystar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
-        }
-        else if num == 1
-        {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "graystar")
-            self.reviewStarThree.image = UIImage(named: "graystar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
-        }
-        else if num == 2
-        {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "graystar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
-        }
-        else if num == 3
-        {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "fullstar")
-            self.reviewStarFour.image = UIImage(named: "graystar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
-        }
-        else if num == 4
-        {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "fullstar")
-            self.reviewStarFour.image = UIImage(named: "fullstar")
-            self.reviewStarFive.image = UIImage(named: "graystar")
-        }
-        else if num == 5
-        {
-            self.reviewStarOne.image = UIImage(named: "fullstar")
-            self.reviewStarTwo.image = UIImage(named: "fullstar")
-            self.reviewStarThree.image = UIImage(named: "fullstar")
-            self.reviewStarFour.image = UIImage(named: "fullstar")
-            self.reviewStarFive.image = UIImage(named: "fullstar")
-        }
+        self.reviewStarOne.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "graystar")
+        self.reviewStarThree.image = UIImage(named: "graystar")
+        self.reviewStarFour.image = UIImage(named: "graystar")
+        self.reviewStarFive.image = UIImage(named: "graystar")
+        self.review = 1
     }
-    @IBAction func valueChanged(_ sender: Any)
+ 
+    func secondStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        self.changeStars(num: Int(roundf(reviewSlider.value)))
-        
+        self.reviewStarOne.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "fullstar")
+        self.reviewStarThree.image = UIImage(named: "graystar")
+        self.reviewStarFour.image = UIImage(named: "graystar")
+        self.reviewStarFive.image = UIImage(named: "graystar")
+        self.review = 2
+    }
+    
+    func thirdStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.reviewStarOne.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "fullstar")
+        self.reviewStarThree.image = UIImage(named: "fullstar")
+        self.reviewStarFour.image = UIImage(named: "graystar")
+        self.reviewStarFive.image = UIImage(named: "graystar")
+        self.review = 3
+    }
+    
+    func fourthStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.reviewStarOne.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "fullstar")
+        self.reviewStarThree.image = UIImage(named: "fullstar")
+        self.reviewStarFour.image = UIImage(named: "fullstar")
+        self.reviewStarFive.image = UIImage(named: "graystar")
+        self.review = 4
+    }
+    
+    func fifthStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.reviewStarOne.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "fullstar")
+        self.reviewStarThree.image = UIImage(named: "fullstar")
+        self.reviewStarFour.image = UIImage(named: "fullstar")
+        self.reviewStarFive.image = UIImage(named: "fullstar")
+        self.review = 5
     }
     
     override func didReceiveMemoryWarning() {
@@ -134,7 +142,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let businessViewController = segue.destination as! BusinessViewController
-            let review = Review(id: businessViewController.getURL(), review: Int(self.reviewSlider.value), reviewer: appDelegate.accessICloudName(), summaryReview: self.commentView.text)
+            let review = Review(id: businessViewController.getURL(), review: self.review, reviewer: appDelegate.accessICloudName(), summaryReview: self.commentView.text)
             
             businessViewController.cloudKitDatabaseHandler.appendToArrayOfReviews(review: review)
     
