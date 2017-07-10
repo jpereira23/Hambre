@@ -26,7 +26,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     public var arrayOfBusinesses = [PersonalBusiness]()
     public var allCards = [DraggableView]()
     private var cardsLoadedIndex: Int = 0
-    private var loadedCards = [DraggableView]()
+    public var loadedCards = [DraggableView]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
     private var genre = "restaurants"
     private var cityState = "San Francisco, California"
@@ -644,6 +644,18 @@ extension BusinessTileViewController : RadiiDistancesDelegate
 extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        for view in self.view.subviews
+        {
+            if NSStringFromClass(view.classForCoder) == "UIView"
+            {
+                view.isHidden = true
+            }
+        }
+        
+        self.arrayOfBusinesses.removeAll()
+        self.loadedCards.removeAll()
+        self.allCards.removeAll() 
         self.setTheCoordinate(coordinate: place.coordinate)
         self.setCityState(cityState: place.formattedAddress!)
         self.yelpContainer = nil
