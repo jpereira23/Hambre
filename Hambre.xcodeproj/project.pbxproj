@@ -118,6 +118,7 @@
 		64CEE48D1EE0A4F40065082F /* Hambre.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hambre.entitlements; sourceTree = "<group>"; };
 		64CEE48E1EE0A50A0065082F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		64CEE4901EE0A7660065082F /* CloudKitDatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitDatabaseHandler.swift; sourceTree = "<group>"; };
+		64D7AFB31F14015400070ED5 /* Negocios6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Negocios6.xcdatamodel; sourceTree = "<group>"; };
 		64D8E8331EE9F5C900D5DB31 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		64D8E8361EEA38F400D5DB31 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		64D8E8381EEA39F000D5DB31 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
@@ -898,6 +899,7 @@
 		642A7CCD1EDCDCB40085062A /* Negocios.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				64D7AFB31F14015400070ED5 /* Negocios6.xcdatamodel */,
 				644DFABB1F0C37860092FACF /* Negocios5.xcdatamodel */,
 				644FA6F11F0C0FD80034D574 /* Negocios4.xcdatamodel */,
 				64932DDA1EEF8A35001727AE /* Negocios3.xcdatamodel */,

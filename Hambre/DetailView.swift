@@ -93,10 +93,14 @@ class DetailView: UIView {
         var index = phoneNumber.index(phoneNumber.startIndex, offsetBy:0)
         self.phoneNumber.remove(at: index)
         index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 1)
+        self.phoneNumber.insert(" ", at: index)
+        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 2)
         self.phoneNumber.insert("(", at: index)
-        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 5)
+        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 6)
         self.phoneNumber.insert(")", at: index)
-        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 9)
+        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 7)
+        self.phoneNumber.insert(" ", at: index)
+        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 11)
         self.phoneNumber.insert("-", at: index)
     }
     

@@ -43,6 +43,7 @@ class PersonalBusinessCoreData: NSObject {
         aBusiness.setValue(personalBusiness.getWebsiteUrl(), forKeyPath: "websiteUrl")
         aBusiness.setValue(personalBusiness.getFullAddress(), forKeyPath: "fullAddress")
         
+        
         do
         {
             try self.managedContext.save()
@@ -82,7 +83,8 @@ class PersonalBusinessCoreData: NSObject {
             
             let websiteUrl = businesses.value(forKeyPath: "websiteUrl") as! String
             let fullAddress = businesses.value(forKeyPath: "fullAddress") as! String
-            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl, coordinate: self.coordinate, fullAddress: fullAddress)
+            let zipcode = businesses.value(forKeyPath: "zipcode") as! String
+            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl, coordinate: self.coordinate, fullAddress: fullAddress, zipcode: zipcode)
             
             
             temporaryBusiness.append(personalBusiness)

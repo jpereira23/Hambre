@@ -25,6 +25,7 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     private var websiteUrl : String!
     private var coordinate : CLLocationCoordinate2D!
     private var fullAddress : String!
+    private var zipcode: String!
     
     
     
@@ -44,10 +45,11 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.address = "123 Westwood, Zimbabwe, Africa"
         self.coordinate = coordinate
         self.fullAddress = fullAddress
+        self.zipcode = "95376"
        
     }
     
-    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, address: [String], isClosed: Bool, websiteUrl: String, coordinate: CLLocationCoordinate2D)
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, address: [String], isClosed: Bool, websiteUrl: String, coordinate: CLLocationCoordinate2D, zipcode: String)
     {
         super.init(businessName: businessName, businessImageUrl:
             businessImageUrl)
@@ -60,22 +62,24 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.likes = likes
         self.distance = self.getADistance()
         self.phoneNumber = phoneNumber
+        self.zipcode = zipcode
         if address.count > 0
         {
             self.address = address[0]
-            self.fullAddress = self.address + "\n" + self.city + ", " + self.state
+            self.fullAddress = self.address + "\n" + self.city + ", " + self.state + " " + self.zipcode
         }
         else
         {
             self.address = "N/A"
-            self.fullAddress = self.city + ", " + self.state 
+            self.fullAddress = self.city + ", " + self.state + " " + self.zipcode
         }
         self.isClosed = isClosed
         self.websiteUrl = websiteUrl
         self.coordinate = coordinate
+        
     }
     
-    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, theAddress: String, isClosed: Bool, websiteUrl: String, coordinate: CLLocationCoordinate2D, fullAddress: String)
+    public init(businessName: String, businessImageUrl: URL, city: String, state: String, liked: Bool, likes: Int, longitude: Double, latitude: Double, phoneNumber : String, theAddress: String, isClosed: Bool, websiteUrl: String, coordinate: CLLocationCoordinate2D, fullAddress: String, zipcode: String)
     {
         super.init(businessName: businessName, businessImageUrl:
             businessImageUrl)
@@ -87,11 +91,12 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
         self.distance = self.getADistance()
         self.likes = likes
         self.phoneNumber = phoneNumber
-        self.address = "Something"//theAddress + ", " + city + ", " + state
+        self.address = theAddress
         self.isClosed = isClosed
         self.websiteUrl = websiteUrl
         self.coordinate = coordinate
-        self.fullAddress = fullAddress 
+        self.fullAddress = fullAddress
+        self.zipcode = zipcode
     }
     
     public init()
@@ -147,6 +152,11 @@ class PersonalBusiness: Negocio, CLLocationManagerDelegate {
     public func getLiked() -> Bool
     {
         return self.liked
+    }
+    
+    public func getZipcode() -> String
+    {
+        return self.zipcode
     }
     
     public func getFullAddress() -> String
