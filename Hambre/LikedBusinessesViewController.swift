@@ -71,12 +71,16 @@ class LikedBusinessesViewController: UIViewController {
         if !self.isEdit
         {
             self.editButton.setTitle("Cancel", for: UIControlState.normal)
+            self.editButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold)
             self.tableView.setEditing(true, animated: true)
             self.isEdit = true
+            
+            //self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
         }
         else
         {
             self.editButton.setTitle("Edit", for: UIControlState.normal)
+            self.editButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightRegular)
             self.tableView.setEditing(false, animated: true)
             self.isEdit = false
         }
