@@ -30,7 +30,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     public var personalBusinessCoreData : PersonalBusinessCoreData!
     private var genre = "restaurants"
     private var cityState = "San Francisco, California"
-    private var arrayOfPlaces = [String]()
+    public var arrayOfPlaces = [String]()
     private var distance = 0
     public var radiiDistances : RadiiDistances! = nil
     private var indexOfSelectedGenre = 0
@@ -421,7 +421,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             }
             print("And the distance is \(self.distance)")
             // Change this below to be relative to the latitude and longitude of set city too not necessarily the one you are on 
-
+            self.arrayOfPlaces.removeAll()
             self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(self.distance))
             self.radiiDistances.delegate = self
             self.radiiDistances.calculate()
@@ -525,7 +525,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     @IBAction func swipeRight(_ sender: Any) {
             
         loadedCards.first??.xibSetUp()
-        
         let dragView: DraggableView? = loadedCards.first as! DraggableView
         dragView?.overlayView?.mode = .GGOverlayViewModeRight
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
@@ -545,26 +544,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         {
             self.globalIndexForCurrentCompany = self.globalIndexForCurrentCompany + 1
         }
-    }
-    
-    public func refreshTileAttributes()
-    {
-        let aBusiness = self.aBusinessTileOperator.presentCurrentBusiness()
-        //self.distanceField.text = String(self.aBusinessTileOperator.presentCurrentBusiness().getDistance()) + " mile(s)"
-        if self.arrayOfReviews.count > 0
-        {
-            let num = self.filterArrayOfReviews(url: aBusiness.getBusinessImage())
-            //self.reviewCountField.text = String(num) + ((num > 1 || num == 0) ? " reviews" : " review")
-        }
-        else
-        {
-            //self.reviewCountField.text = "No reviews"
-        }
-        //self.businessNameLabel.text = aBusiness.getBusinessName()
-        //self.businessImage.setImageWith(aBusiness.getBusinessImage())
-        //self.businessImage1.setImageWith(aBusiness.getBusinessImage())
-        //self.businessImage.contentMode = UIViewContentMode.scaleToFill
-        //self.businessImage1.contentMode = UIViewContentMode.scaleToFill
     }
 
 }
@@ -593,6 +572,17 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
             
             self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
+            for i in 0..<self.arrayOfBusinesses.count
+            {
+                if appDelegate.isLocationEnabled() == true && i < self.arrayOfBusinesses.count
+                {
+                    let radiusCoreData = RadiusCoreData()
+                    if radiusCoreData.checkIfCoreDataIsEmpty() == false && radiusCoreData.loadRadius() != 0 &&  self.arrayOfBusinesses[i].getDistance() >= radiusCoreData.loadRadius()
+                    {
+                        self.arrayOfBusinesses.remove(at: i)
+                    }
+                }
+            }
             self.loadCards()
         }
         else
@@ -600,6 +590,18 @@ extension BusinessTileViewController : YelpContainerDelegate
             self.aBusinessTileOperator.setTheCoordinate(coordinate: self.theCoordinate)
             self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
             self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
+            
+            for i in 0..<self.arrayOfBusinesses.count
+            {
+                if appDelegate.isLocationEnabled() == true && i < self.arrayOfBusinesses.count
+                {
+                    let radiusCoreData = RadiusCoreData()
+                    if radiusCoreData.checkIfCoreDataIsEmpty() == false && self.arrayOfBusinesses[i].getDistance() >= radiusCoreData.loadRadius()
+                    {
+                        self.arrayOfBusinesses.remove(at: i)
+                    }
+                }
+            }
             self.loadCards()
         }
         
@@ -629,6 +631,7 @@ extension BusinessTileViewController : AppDelegateDelegate
             if !radiusCoreData.checkIfCoreDataIsEmpty()
             {
                 var distance = radiusCoreData.loadRadius()
+                self.arrayOfPlaces.removeAll()
                 self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(distance))
                 self.radiiDistances.delegate = self
                 
@@ -665,7 +668,16 @@ extension BusinessTileViewController : RadiiDistancesDelegate
 {
     func placeFound(place: String, radiiDistances: RadiiDistances) {
         
-        if !self.isPlaceAlreadyInArray(place: place)
+        if self.arrayOfPlaces.count == 0
+        {
+            self.yelpContainer = nil
+            
+            self.yelpContainer = YelpContainer(cityAndState: place)
+            self.yelpContainer?.changeGenre(genre: self.getGenre())
+            self.yelpContainer?.delegate = self
+            self.yelpContainer?.yelpAPICallForBusinesses()
+        }
+        else if !self.isPlaceAlreadyInArray(place: place)
         {
             self.addToArrayOfPlaces(place: place)
             self.yelpContainer = nil
