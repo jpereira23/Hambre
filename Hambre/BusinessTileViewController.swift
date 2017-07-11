@@ -173,10 +173,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)].getView()
                 let aView2 = loadedCards[(MAX_BUFFER_SIZE-2)].getView()
                 aView1.frame.origin.x = 25
-                aView2.frame.origin.x = 25
+                //aView2.frame.origin.x = 25
                 aView1.frame.origin.y = 86
-                aView2.frame.origin.y = 86
-                self.view.insertSubview(aView1, aboveSubview: backgroundView)
+                //aView2.frame.origin.y = 86
                 self.view.insertSubview(aView2, belowSubview: aView1)
             }
         }
@@ -230,9 +229,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                         
                         loadedCards[i].xibSetUp()
                         loadedCards[i-1].xibSetUp()
+                       
+                        
+                        
                         let aView1 = loadedCards[i].getView()
                         let aView2 = loadedCards[i-1].getView()
-                        forgroundView = aView1
+                        
+                        
                         backgroundView = aView2
                         aView1.frame.origin.x = 25
                         aView2.frame.origin.x = 25

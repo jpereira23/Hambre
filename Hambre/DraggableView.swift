@@ -44,7 +44,7 @@ class DraggableView: UIView {
     private var yFromCenter: CGFloat = 0.0
     private var floatForStar : Float!
     private var theBusiness : PersonalBusiness? = nil
-    private var view: UIView!
+    private var view: DraggableView!
     private var milesEnabled = true
     required init(coder aDecoder: NSCoder)
     {
@@ -64,7 +64,7 @@ class DraggableView: UIView {
     
     func xibSetUp()
     {
-        self.view = loadViewFromNib()
+        self.view = loadViewFromNib() as! DraggableView
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.businessNameField.text = self.businessName
@@ -74,6 +74,15 @@ class DraggableView: UIView {
         }
         self.milesField.text = self.miles
         self.reviewsField.text = self.reviews
+        
+        let rectShape = CAShapeLayer()
+        rectShape.bounds = self.view.frame
+        rectShape.position = self.view.center
+        rectShape.path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomRight, .bottomLeft], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+        self.view.layer.mask = rectShape
+        
+       
+        
         self.setReviewImages()
         if self.imageUrl != nil
         {
@@ -82,6 +91,12 @@ class DraggableView: UIView {
             {
                 self.imageView.image = UIImage(data: data!)
                 self.imageView.contentMode = UIViewContentMode.scaleAspectFill
+                let rectShape1 = CAShapeLayer()
+                rectShape1.bounds = self.view.imageView.frame
+                rectShape1.position = self.view.imageView.center
+                rectShape1.path = UIBezierPath(roundedRect: self.view.imageView.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+                self.view.imageView.layer.mask = rectShape1
+                
             }
         }
         // Need else statement for businesses that dont have url
