@@ -21,11 +21,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>required to obtain location data</string>
+	<string>Zendish uses your location to help you find restaurants near you.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>required to obtain location data</string>
+	<string>Zendish uses your location to help you find restaurants near you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>required to obtain location data</string>
+	<string>Zendish uses your location to help you find restaurants near you.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Righteous-Regular.ttf</string>
@@ -35,8 +35,8 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>LSApplicationQueriesSchemes</key>
-	<array> 
-			<string>tel</string>
+	<array>
+		<string>tel</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
