@@ -100,7 +100,7 @@ class DraggableView: UIView {
         let rectShape = CAShapeLayer()
         rectShape.bounds = self.view.frame
         rectShape.position = self.view.center
-        rectShape.path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomRight, .bottomLeft], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+        rectShape.path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomRight, .bottomLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
         self.view.layer.mask = rectShape
         
        
@@ -116,7 +116,7 @@ class DraggableView: UIView {
                 let rectShape1 = CAShapeLayer()
                 rectShape1.bounds = self.view.imageView.frame
                 rectShape1.position = self.view.imageView.center
-                rectShape1.path = UIBezierPath(roundedRect: self.view.imageView.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+                rectShape1.path = UIBezierPath(roundedRect: self.view.imageView.bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
                 self.view.imageView.layer.mask = rectShape1
                 
             }
