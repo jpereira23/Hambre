@@ -21,6 +21,10 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var reviewStarFour: UIImageView!
     @IBOutlet var reviewStarFive: UIImageView!
     private var review : Int = 0
+
+    
+ 
+    
     
     
     override func viewWillAppear(_ animated: Bool) {

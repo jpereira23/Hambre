@@ -723,6 +723,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Uoy-CM-k7C">
+                                <rect key="frame" x="60" y="131" width="254" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="valueChanged:" destination="ZU0-DI-gXU" eventType="valueChanged" id="79c-xL-r6f"/>
+                                </connections>
+                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PlaceHolder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mt3-yZ-3b6">
                                 <rect key="frame" x="25" y="440" width="325" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -764,7 +772,7 @@
                                 <rect key="frame" x="244" y="110" width="27" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="graystar"/>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -982,7 +990,8 @@
                                     <constraint firstAttribute="height" constant="36" id="XCp-9K-oSp"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Please check your network  settings and try again.">
+                                    <fragment content="Please check your network 
+settings and try again.">
                                         <attributes>
                                             <color key="NSColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" metaFont="system" size="15"/>
