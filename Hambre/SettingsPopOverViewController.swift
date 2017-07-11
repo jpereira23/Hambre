@@ -27,7 +27,6 @@ class SettingsPopOverViewController: UIViewController {
        
         UIView.animate(withDuration: 0.3, animations: {
             self.distanceSlider.setValue(30.0, animated: true)
-            self.distanceSlider.value = 30.0 
         })
         if !radiusCoreData.checkIfCoreDataIsEmpty()
         {

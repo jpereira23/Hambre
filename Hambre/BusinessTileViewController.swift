@@ -475,6 +475,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         {
             let settingsViewController = segue.destination as! SettingsPopOverViewController
             let radiusCoreData = RadiusCoreData()
+            //settingsViewController.distanceSlider.setValue(Float(radiusCoreData.loadRadius()), animated: true)
             settingsViewController.setSliderValue(value: radiusCoreData.loadRadius())
             settingsViewController.setSelectedCell(index: self.indexOfSelectedGenre)
         }

@@ -24,11 +24,13 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.getICloudAccess()
         self.greetingField.text = "By: " + appDelegate.accessICloudName()
         
         // Do any additional setup after loading the view.
