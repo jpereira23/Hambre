@@ -57,6 +57,19 @@ class DraggableView: UIView {
         self.floatForStar = floatForStar
     }
     
+    deinit
+    {
+        self.view = nil
+        self.starImageOne = nil
+        self.starImageTwo = nil
+        self.starImageThree = nil
+        self.starImageFour = nil
+        self.imageView = nil
+        self.businessNameField = nil
+        self.milesField = nil
+        self.reviewsField = nil 
+        
+    }
     public func getView() -> UIView
     {
         return self.view

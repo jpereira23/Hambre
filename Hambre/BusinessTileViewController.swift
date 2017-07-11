@@ -117,7 +117,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     func cardSwipedLeft(_ card: UIView) {
     
-        loadedCards[0]?.removeFromSuperview()
+        loadedCards[(MAX_BUFFER_SIZE-2)] = nil
+        backgroundView = nil
+        forgroundView = nil
+        loadedCards.remove(at: 0) 
             
         if cardsLoadedIndex == allCards.count {
             cardsLoadedIndex = 0 
@@ -131,16 +134,17 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             cardsLoadedIndex += 1
             loadedCards[(MAX_BUFFER_SIZE-1)]?.xibSetUp()
             loadedCards[(MAX_BUFFER_SIZE-2)]?.xibSetUp()
-            let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)]?.getView()
-            var aView2 : UIView? = loadedCards[(MAX_BUFFER_SIZE-2)]?.getView()
-            aView1?.frame.origin.x = 25
-            aView2?.frame.origin.x = 25
-            aView1?.frame.origin.y = 86
-            aView2?.frame.origin.y = 86
-            
+            backgroundView = loadedCards[(MAX_BUFFER_SIZE-1)]?.getView()
+            forgroundView = loadedCards[(MAX_BUFFER_SIZE-2)]?.getView()
+            backgroundView.frame.origin.x = 25
+            forgroundView.frame.origin.x = 25
+            backgroundView.frame.origin.y = 86
+            forgroundView.frame.origin.y = 86
+             /*
             backgroundView.removeFromSuperview()
             backgroundView = nil
             
+           
             if cardsLoadedIndex == allCards.count
             {
                 allCards[0].xibSetUp()
@@ -152,11 +156,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 backgroundView = allCards[cardsLoadedIndex].getView()
             }
             
+ 
             backgroundView.frame.origin.x = 25
             backgroundView.frame.origin.y = 86
-            self.view.addSubview(aView1!)
-            self.view.insertSubview(aView2!, aboveSubview: aView1!)
-            self.view.insertSubview(backgroundView, aboveSubview: aView2!)
+            */
+            //self.view.addSubview(aView1!)
+            self.view.insertSubview(backgroundView, aboveSubview:forgroundView)
+            //self.view.insertSubview(backgroundView, aboveSubview: aView2!)
             
         }
     
@@ -168,7 +174,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
         }
-        
+        loadedCards[0] = nil
         loadedCards.remove(at: 0)
         
         if cardsLoadedIndex < allCards.count {
@@ -266,25 +272,24 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                        
                         
                         
-                        let aView1 = loadedCards[i]?.getView()
-                        let aView2 = loadedCards[i-1]?.getView()
+                        backgroundView = loadedCards[i]?.getView()
+                        forgroundView = loadedCards[i-1]?.getView()
                         
                         
                         
-                        aView1?.frame.origin.x = 25
-                        aView2?.frame.origin.x = 25
-                        aView1?.frame.origin.y = 86
-                        aView2?.frame.origin.y = 86
-                        self.view.insertSubview(aView1!, belowSubview: aView2!)
+                        backgroundView.frame.origin.x = 25
+                        forgroundView.frame.origin.x = 25
+                        backgroundView.frame.origin.y = 86
+                        forgroundView.frame.origin.y = 86
+                        self.view.insertSubview(forgroundView, belowSubview:backgroundView)
                     }
                 
                     else
                     {
                         loadedCards[i]?.xibSetUp()
-                        let aView = loadedCards[i]?.getView()
-                        aView?.frame.origin.x = 25
-                        aView?.frame.origin.y = 86
-                        backgroundView = aView
+                        backgroundView = loadedCards[i]?.getView()
+                        backgroundView.frame.origin.x = 25
+                        backgroundView.frame.origin.y = 86
                         self.view.addSubview(backgroundView)
                     }
  
@@ -382,6 +387,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         let autocompleteController = GMSAutocompleteViewController()
         
         autocompleteController.delegate = self
+        var placeholderAttributes: [AnyHashable: Any] = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: CGFloat(UIFont.systemFontSize))]
+        // Color of the default search text.
+        // NOTE: In a production scenario, "Search" would be a localized string
         present(autocompleteController, animated: true, completion: nil)
     }
     
