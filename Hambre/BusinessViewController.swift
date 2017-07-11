@@ -40,9 +40,9 @@ class BusinessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = self.aTitle
-        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 18.0)
+        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
         self.view.addSubview(mapView)
         let marker = GMSMarker()
@@ -53,7 +53,7 @@ class BusinessViewController: UIViewController {
         
         //self.cloudKitDatabaseHandler.delegate = self
         
-        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: 352, height: 248))
+        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
         self.detailView.setAddressField(address: self.address)
         self.detailView.setPhoneField(phone: self.phoneNumber)
         self.detailView.setIsClosed(isClosed: self.isClosed)

@@ -32,6 +32,7 @@ class MainTabViewController: UITabBarController {
         self.tabBar.layer.borderWidth = 0.50
         self.tabBar.layer.borderColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1.0).cgColor
         self.tabBar.clipsToBounds = true
+        //self.tabBar.clipsToBounds =  true
         
         
         for viewController in self.viewControllers!        {
