@@ -42,6 +42,7 @@ class PersonalBusinessCoreData: NSObject {
         aBusiness.setValue(personalBusiness.getIsClosed(), forKeyPath: "isClosed")
         aBusiness.setValue(personalBusiness.getWebsiteUrl(), forKeyPath: "websiteUrl")
         aBusiness.setValue(personalBusiness.getFullAddress(), forKeyPath: "fullAddress")
+        aBusiness.setValue(personalBusiness.getZipcode(), forKeyPath: "zipcode") 
         
         
         do

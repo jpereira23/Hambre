@@ -139,7 +139,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             aView1.frame.origin.y = 86
             aView2.frame.origin.y = 86
             //self.view.addSubview(aView2)
-            self.view.insertSubview(aView1, belowSubview: aView2)
+            self.view.insertSubview(aView2, belowSubview: aView1)
             //backgroundView.removeFromSuperview()
             //backgroundView = nil
             //backgroundView = aView2
@@ -176,8 +176,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 aView2.frame.origin.x = 25
                 aView1.frame.origin.y = 86
                 aView2.frame.origin.y = 86
-                
-                self.view.insertSubview(aView1, belowSubview: aView2)
+                self.view.insertSubview(aView1, aboveSubview: backgroundView)
+                self.view.insertSubview(aView2, belowSubview: aView1)
             }
         }
     }
