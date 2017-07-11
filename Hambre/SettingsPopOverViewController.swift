@@ -25,9 +25,7 @@ class SettingsPopOverViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.distanceSlider.setValue(30.0, animated: true)
-        })
+        
         if !radiusCoreData.checkIfCoreDataIsEmpty()
         {
             self.sliderValue = radiusCoreData.loadRadius()
@@ -36,6 +34,7 @@ class SettingsPopOverViewController: UIViewController {
        
         self.distanceSlider.maximumValue = 50
         self.distanceSlider.minimumValue = 1
+        self.distanceSlider.setValue(Float(self.sliderValue), animated: false)
         self.distanceLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
     }
     override func viewDidLoad() {

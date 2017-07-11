@@ -59,6 +59,15 @@ class DraggableView: UIView {
     
     deinit
     {
+        //self.view.imageView = nil
+        //self.view.starImageOne = nil
+        //self.view.starImageTwo = nil
+        //self.view.starImageThree = nil
+        //self.view.starImageFour = nil
+        //self.view.starImageFive = nil
+        //self.view.businessNameField = nil
+        //self.view.milesField = nil
+        //self.view.reviewsField = nil
         self.view = nil
         self.starImageOne = nil
         self.starImageTwo = nil
