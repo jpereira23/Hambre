@@ -25,7 +25,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     var yelpContainer: YelpContainer?
     public var arrayOfBusinesses = [PersonalBusiness]()
     public var allCards = [DraggableView]()
-    private var cardsLoadedIndex: Int = 0
+    public var cardsLoadedIndex: Int = 0
     public var loadedCards = [DraggableView?]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
     private var genre = "restaurants"
@@ -399,9 +399,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         if sender.identifier == "settingsToTile"
         {
             backgroundView?.isHidden = true
+            forgroundView?.isHidden = true
             for view in self.view.subviews
             {
-                if NSStringFromClass(view.classForCoder) == "UIView"
+                if NSStringFromClass(view.classForCoder) == "Hambre.DraggableView"
                 {
                     view.isHidden = true
                 }
@@ -566,7 +567,8 @@ extension BusinessTileViewController : YelpContainerDelegate
 
     func yelpAPICallback(_ yelpContainer: YelpContainer) {
         
-        
+        self.loadedCards.removeAll()
+        cardsLoadedIndex = 0
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             //self.businessImage.isHidden = false
@@ -592,6 +594,8 @@ extension BusinessTileViewController : YelpContainerDelegate
                     }
                 }
             }
+            backgroundView = nil
+            forgroundView = nil
             self.loadCards()
         }
         else
@@ -611,12 +615,15 @@ extension BusinessTileViewController : YelpContainerDelegate
                     }
                 }
             }
+            backgroundView = nil
+            forgroundView = nil
             self.loadCards()
         }
-        
+        backgroundView?.isHidden = false
+        forgroundView?.isHidden = false
         for view in self.view.subviews
         {
-            if NSStringFromClass(view.classForCoder) == "UIView"
+            if NSStringFromClass(view.classForCoder) == "Hambre.DraggableView"
             {
                 view.isHidden = false
             }
