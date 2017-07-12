@@ -18,9 +18,6 @@ class SettingsViewController: UIViewController {
     private var sliderValue = 0
     @IBOutlet var slider: UISlider!
     
-    let myButton = UIButton()
-    var buttonCons:[NSLayoutConstraint] = []
-    
     override func viewWillAppear(_ animated: Bool) {
         //self.slider.maximumValue = 50
         //self.slider.minimumValue = 1
@@ -36,32 +33,14 @@ class SettingsViewController: UIViewController {
         //self.slider.minimumValue = 1
         
         
-        //testing out auto layout programmatically
-        myButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        myButton.backgroundColor = UIColor.orange
-        myButton.setTitle("PRESS ME", for: .normal)
-        myButton.setTitleColor(UIColor.white, for: .normal)
-        self.view.addSubview(myButton)
-        
-        //constraints
-        
-        self.myButton.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor).isActive = true
-        let leftConstraint = myButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let rightConstraint = myButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let buttonHeight = myButton.heightAnchor.constraint(equalToConstant: 209)
-        
-        //let xPlacement = myButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        //let yPlacement = myButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        
-        buttonCons = [leftConstraint, rightConstraint, buttonHeight]
-        NSLayoutConstraint.activate(buttonCons)
-        
-    
         //more view vc
         self.title = "More"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold), NSForegroundColorAttributeName: UIColor.white]
+
+        
     }
+    
+    
 
     @IBAction func enterCityField(_ sender: Any)
     {

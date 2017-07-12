@@ -51,6 +51,7 @@ class BusinessViewController: UIViewController {
         marker.snippet = "Selected Restaurant"
         marker.map = mapView
         
+        
         //self.cloudKitDatabaseHandler.delegate = self
         
         self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
@@ -66,7 +67,19 @@ class BusinessViewController: UIViewController {
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
+        mapView.translatesAutoresizingMaskIntoConstraints =  false
+        
+        //auto layout constraint
+        let leftCons = NSLayoutConstraint(item: mapView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
+        let rightCons = NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+        let topCons = NSLayoutConstraint(item: mapView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
+        let mapHeight = NSLayoutConstraint(item: mapView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 0, constant: 209)
+        
+        
+        view.addConstraints([leftCons, rightCons, topCons, mapHeight])
     }
+    
+    
     
     
     let regionRadius: CLLocationDistance = 1000
