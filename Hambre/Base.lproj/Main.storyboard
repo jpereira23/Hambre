@@ -495,10 +495,10 @@
                             <constraint firstItem="cBr-jM-jTd" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" id="Wx9-QE-gRB"/>
                             <constraint firstItem="cBr-jM-jTd" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" id="X5X-1e-TiM"/>
                             <constraint firstItem="5mf-l8-Dzw" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" constant="25" id="ax4-Ht-qcI"/>
+                            <constraint firstItem="spu-YF-ayN" firstAttribute="top" secondItem="cBr-jM-jTd" secondAttribute="bottom" constant="394" id="jJv-fq-tXc"/>
                             <constraint firstAttribute="trailing" secondItem="5mf-l8-Dzw" secondAttribute="trailing" constant="25" id="mMC-NL-Ud0"/>
                             <constraint firstAttribute="trailing" secondItem="cBr-jM-jTd" secondAttribute="trailing" id="sCd-io-fiD"/>
                             <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="hWa-ga-NBy" secondAttribute="bottom" constant="20" id="sbE-cl-kVu"/>
-                            <constraint firstItem="spu-YF-ayN" firstAttribute="top" secondItem="hWa-ga-NBy" secondAttribute="bottom" constant="346" id="tJH-8F-XBo"/>
                             <constraint firstItem="hWa-ga-NBy" firstAttribute="top" secondItem="cBr-jM-jTd" secondAttribute="bottom" constant="20" id="zCr-5f-dUy"/>
                         </constraints>
                     </view>
@@ -584,7 +584,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="325" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCG-QO-8KU" id="EXn-67-Nnw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <color key="tintColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -856,7 +856,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rDj-We-568" id="Qb4-b3-jcq">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="94"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="93.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMR-j7-Fl2">

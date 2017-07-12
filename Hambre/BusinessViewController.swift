@@ -75,8 +75,10 @@ class BusinessViewController: UIViewController {
         let topCons = NSLayoutConstraint(item: mapView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
         let mapHeight = NSLayoutConstraint(item: mapView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 0, constant: 209)
         
+        let bottom = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 394)
         
-        view.addConstraints([leftCons, rightCons, topCons, mapHeight])
+        
+        view.addConstraints([leftCons, rightCons, topCons, mapHeight, bottom])
     }
     
     
