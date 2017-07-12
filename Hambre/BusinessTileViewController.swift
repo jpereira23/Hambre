@@ -40,8 +40,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
-    public var backgroundView : UIView!
-    public var forgroundView : UIView!
+    public var backgroundView : DraggableView?
+    public var forgroundView : DraggableView?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var MAX_BUFFER_SIZE: Int = 2
     
@@ -139,25 +139,27 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             aView1?.frame.origin.y = 86
             aView2?.frame.origin.y = 86
             
-            backgroundView.removeFromSuperview()
+            backgroundView?.removeFromSuperview()
             backgroundView = nil
             
             if cardsLoadedIndex == allCards.count
             {
                 allCards[0].xibSetUp()
-                backgroundView = allCards[0].getView()
+                backgroundView = allCards[0].getView() as! DraggableView
+                backgroundView?.setBusiness(business: allCards[0].getBusiness())
             }
             else
             {
                 allCards[cardsLoadedIndex].xibSetUp()
-                backgroundView = allCards[cardsLoadedIndex].getView()
+                backgroundView = allCards[cardsLoadedIndex].getView() as! DraggableView
+                backgroundView?.setBusiness(business: allCards[cardsLoadedIndex].getBusiness())
             }
             
-            backgroundView.frame.origin.x = 25
-            backgroundView.frame.origin.y = 86
+            backgroundView?.frame.origin.x = 25
+            backgroundView?.frame.origin.y = 86
             self.view.addSubview(aView1!)
             self.view.insertSubview(aView2!, aboveSubview: aView1!)
-            self.view.insertSubview(backgroundView, aboveSubview: aView2!)
+            self.view.insertSubview(backgroundView!, aboveSubview: aView2!)
             
         }
     }
@@ -166,7 +168,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         
         if loadedCards.count > 0
         {
-            self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
+            self.personalBusinessCoreData.saveBusiness(personalBusiness: (backgroundView?.getBusiness())!)
         }
         
         loadedCards.remove(at: 0)
@@ -185,31 +187,33 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 loadedCards[(MAX_BUFFER_SIZE-1)]?.xibSetUp()
                 loadedCards[(MAX_BUFFER_SIZE-2)]?.xibSetUp()
                 let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)]?.getView()
-                var aView2 : UIView? = loadedCards[(MAX_BUFFER_SIZE-2)]?.getView()
+                let aView2 : UIView? = loadedCards[(MAX_BUFFER_SIZE-2)]?.getView()
                 aView1?.frame.origin.x = 25
                 aView2?.frame.origin.x = 25
                 aView1?.frame.origin.y = 86
                 aView2?.frame.origin.y = 86
-                backgroundView.removeFromSuperview()
+                backgroundView?.removeFromSuperview()
                 backgroundView = nil
                 
                 
                 if cardsLoadedIndex == allCards.count
                 {
                     allCards[0].xibSetUp()
-                    backgroundView = allCards[0].getView()
+                    backgroundView = allCards[0].getView() as! DraggableView
+                    backgroundView?.setBusiness(business: allCards[0].getBusiness())
                 }
                 else
                 {
                     allCards[cardsLoadedIndex].xibSetUp()
-                    backgroundView = allCards[cardsLoadedIndex].getView()
+                    backgroundView = allCards[cardsLoadedIndex].getView() as! DraggableView
+                    backgroundView?.setBusiness(business: allCards[cardsLoadedIndex].getBusiness())
                 }
                 
-                backgroundView.frame.origin.x = 25
-                backgroundView.frame.origin.y = 86
+                backgroundView?.frame.origin.x = 25
+                backgroundView?.frame.origin.y = 86
                 self.view.addSubview(aView1!)
                 self.view.insertSubview(aView2!, aboveSubview: aView1!)
-                self.view.insertSubview(backgroundView, aboveSubview: aView2!)
+                self.view.insertSubview(backgroundView!, aboveSubview: aView2!)
                 
             }
         }
@@ -266,25 +270,28 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                        
                         
                         
-                        backgroundView = loadedCards[i]?.getView()
-                        forgroundView = loadedCards[i-1]?.getView()
+                        forgroundView = loadedCards[i]?.getView() as! DraggableView
+                        forgroundView?.setBusiness(business: (loadedCards[i]?.getBusiness())!)
+                        backgroundView = loadedCards[i-1]?.getView() as! DraggableView
+                        backgroundView?.setBusiness(business: (loadedCards[i-1]?.getBusiness())!)
                         
                         
                         
-                        backgroundView.frame.origin.x = 25
-                        forgroundView.frame.origin.x = 25
-                        backgroundView.frame.origin.y = 86
-                        forgroundView.frame.origin.y = 86
-                        self.view.insertSubview(forgroundView, belowSubview:backgroundView)
+                        backgroundView?.frame.origin.x = 25
+                        forgroundView?.frame.origin.x = 25
+                        backgroundView?.frame.origin.y = 86
+                        forgroundView?.frame.origin.y = 86
+                        self.view.insertSubview(backgroundView!, belowSubview:forgroundView!)
                     }
                 
                     else
                     {
                         loadedCards[i]?.xibSetUp()
-                        backgroundView = loadedCards[i]?.getView()
-                        backgroundView.frame.origin.x = 25
-                        backgroundView.frame.origin.y = 86
-                        self.view.addSubview(backgroundView)
+                        backgroundView = loadedCards[i]?.getView() as! DraggableView
+                        backgroundView?.setBusiness(business: (loadedCards[i]?.getBusiness())!)
+                        backgroundView?.frame.origin.x = 25
+                        backgroundView?.frame.origin.y = 86
+                        self.view.addSubview(backgroundView!)
                     }
  
                     cardsLoadedIndex += 1
@@ -391,7 +398,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     {
         if sender.identifier == "settingsToTile"
         {
-            backgroundView.isHidden = true
+            backgroundView?.isHidden = true
             for view in self.view.subviews
             {
                 if NSStringFromClass(view.classForCoder) == "UIView"
@@ -451,25 +458,25 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             businessViewController.setIdentifier(id: "fromTileView")
             if loadedCards.count > 0
             {
-                businessViewController.setUrl(aUrl: (loadedCards[1]?.getBusiness().getBusinessImage())!)
-                businessViewController.setLongitude(longitude: (loadedCards[1]?.getBusiness().getLongitude())!)
-                businessViewController.setLatitude(latitude: (loadedCards[1]?.getBusiness().getLatitude())!)
-                businessViewController.setPhoneNumber(phone: (loadedCards[1]?.getBusiness().getNumber())!)
-                businessViewController.setWebsiteUrl(url: (loadedCards[1]?.getBusiness().getWebsiteUrl())!)
-                businessViewController.setIsClosed(isClosed: (loadedCards[1]?.getBusiness().getIsClosed())!)
-                businessViewController.setAddress(address: (loadedCards[1]?.getBusiness().getFullAddress())!)
-                businessViewController.setTitle(title: (loadedCards[1]?.getBusiness().getBusinessName())!)
+                businessViewController.setUrl(aUrl: (backgroundView?.getBusiness().getBusinessImage())!)
+                businessViewController.setLongitude(longitude: (backgroundView?.getBusiness().getLongitude())!)
+                businessViewController.setLatitude(latitude: (backgroundView?.getBusiness().getLatitude())!)
+                businessViewController.setPhoneNumber(phone: (backgroundView?.getBusiness().getNumber())!)
+                businessViewController.setWebsiteUrl(url: (backgroundView?.getBusiness().getWebsiteUrl())!)
+                businessViewController.setIsClosed(isClosed: (backgroundView?.getBusiness().getIsClosed())!)
+                businessViewController.setAddress(address: (backgroundView?.getBusiness().getFullAddress())!)
+                businessViewController.setTitle(title: (backgroundView?.getBusiness().getBusinessName())!)
             }
             else
             {
-                businessViewController.setUrl(aUrl: (loadedCards[0]?.getBusiness().getBusinessImage())!)
-                businessViewController.setLongitude(longitude: (loadedCards[0]?.getBusiness().getLongitude())!)
-                businessViewController.setLatitude(latitude: (loadedCards[0]?.getBusiness().getLatitude())!)
-                businessViewController.setPhoneNumber(phone: (loadedCards[0]?.getBusiness().getNumber())!)
-                businessViewController.setWebsiteUrl(url: (loadedCards[0]?.getBusiness().getWebsiteUrl())!)
-                businessViewController.setIsClosed(isClosed: (loadedCards[0]?.getBusiness().getIsClosed())!)
-                businessViewController.setAddress(address: (loadedCards[0]?.getBusiness().getFullAddress())!)
-                businessViewController.setTitle(title: (loadedCards[0]?.getBusiness().getBusinessName())!)
+                businessViewController.setUrl(aUrl: (backgroundView?.getBusiness().getBusinessImage())!)
+                businessViewController.setLongitude(longitude: (backgroundView?.getBusiness().getLongitude())!)
+                businessViewController.setLatitude(latitude: (backgroundView?.getBusiness().getLatitude())!)
+                businessViewController.setPhoneNumber(phone: (backgroundView?.getBusiness().getNumber())!)
+                businessViewController.setWebsiteUrl(url: (backgroundView?.getBusiness().getWebsiteUrl())!)
+                businessViewController.setIsClosed(isClosed: (backgroundView?.getBusiness().getIsClosed())!)
+                businessViewController.setAddress(address: (backgroundView?.getBusiness().getFullAddress())!)
+                businessViewController.setTitle(title: (backgroundView?.getBusiness().getBusinessName())!)
             }
             
         }
