@@ -46,16 +46,15 @@ class SettingsViewController: UIViewController {
         
         //constraints
         
-        let topConstraint = myButton.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let bottomConstraint = myButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
+        self.myButton.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor).isActive = true
         let leftConstraint = myButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         let rightConstraint = myButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-    
-        //let buttonHeight = myButton.heightAnchor.constraint(equalToConstant: 209)
+        let buttonHeight = myButton.heightAnchor.constraint(equalToConstant: 209)
+        
         //let xPlacement = myButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         //let yPlacement = myButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         
-        buttonCons = [topConstraint, bottomConstraint, leftConstraint, rightConstraint]
+        buttonCons = [leftConstraint, rightConstraint, buttonHeight]
         NSLayoutConstraint.activate(buttonCons)
         
     
