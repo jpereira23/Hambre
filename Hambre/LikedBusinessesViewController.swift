@@ -71,7 +71,7 @@ class LikedBusinessesViewController: UIViewController {
         if !self.isEdit
         {
             self.editButton.setTitle("Cancel", for: UIControlState.normal)
-            self.editButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightSemibold)
+            self.editButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightSemibold)
             self.tableView.setEditing(true, animated: true)
             self.isEdit = true
             
@@ -80,7 +80,7 @@ class LikedBusinessesViewController: UIViewController {
         else
         {
             self.editButton.setTitle("Edit", for: UIControlState.normal)
-            self.editButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightRegular)
+            self.editButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)
             self.tableView.setEditing(false, animated: true)
             self.isEdit = false
         }
