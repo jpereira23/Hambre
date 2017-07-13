@@ -24,7 +24,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     var aBusinessTileOperator : BusinessTileOperator! = nil
     var yelpContainer: YelpContainer?
     public var arrayOfBusinesses = [PersonalBusiness]()
-    public var allCards = [DraggableView?]()
     public var cardsLoadedIndex: Int = 0
     public var loadedCards = [DraggableView?]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
@@ -40,10 +39,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
-    public var objectForBackground : DraggableView?
-    public var objectForForground : DraggableView?
     public var backgroundView : DraggableView?
     public var forgroundView : DraggableView?
+    public var anotherView : DraggableView?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var MAX_BUFFER_SIZE: Int = 2
     
@@ -124,117 +122,141 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
 
     
     func cardSwipedLeft(_ card: UIView) {
-        backgroundView = nil
-        forgroundView = nil
-        print("deinit should happen here")
-        /*
-        loadedCards[0]?.removeFromSuperview()
         
-        if cardsLoadedIndex == allCards.count {
-            cardsLoadedIndex = 0
+        if self.arrayOfBusinesses.count != 1 || self.arrayOfBusinesses.count != 0
+        {
+            loadedCards.remove(at: 0)
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
+            loadedCards.remove(at: 0)
+            forgroundView?.removeFromSuperview()
+            forgroundView = nil
+            loadedCards.remove(at: 0)
+            anotherView?.removeFromSuperview()
+            anotherView = nil
         }
-        
+        else
+        {
+            let aView = self.createDraggableViewWithData(at: 0)
+            loadedCards.append(aView)
+            loadedCards[0]?.xibSetUp()
+            backgroundView = loadedCards[0]?.getView() as? DraggableView
+            backgroundView?.frame.origin.x = 25
+            backgroundView?.frame.origin.y = 86
+            self.view.addSubview(backgroundView!)
+        }
         
         if self.arrayOfBusinesses.count > 0
         {
-            self.checkAndUpdateGlobalIndex()
-            loadedCards.append(allCards[cardsLoadedIndex])
-            cardsLoadedIndex += 1
-            loadedCards[(MAX_BUFFER_SIZE-1)]?.xibSetUp()
-            loadedCards[(MAX_BUFFER_SIZE-2)]?.xibSetUp()
-            let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)]?.getView()
-            var aView2 : UIView? = loadedCards[(MAX_BUFFER_SIZE-2)]?.getView()
-            aView1?.frame.origin.x = 25
-            aView2?.frame.origin.x = 25
-            aView1?.frame.origin.y = 86
-            aView2?.frame.origin.y = 86
-            
-            backgroundView?.removeFromSuperview()
-            backgroundView = nil
-            objectForBackground = nil
-            
-            if cardsLoadedIndex == allCards.count
+            if self.arrayOfBusinesses.count == 1
             {
-                objectForBackground = allCards[0]
-                allCards[0]?.xibSetUp()
-                backgroundView = allCards[0]?.getView() as! DraggableView
-                backgroundView?.setBusiness(business: (allCards[0]?.getBusiness())!)
+                let aView = self.createDraggableViewWithData(at: 0)
+                loadedCards.append(aView)
+                loadedCards[0]?.xibSetUp()
+                backgroundView = loadedCards[0]?.getView() as? DraggableView
+                backgroundView?.frame.origin.x = 25
+                backgroundView?.frame.origin.y = 86
+                self.view.addSubview(backgroundView!)
             }
             else
             {
-                objectForBackground = allCards[cardsLoadedIndex]
-                allCards[cardsLoadedIndex]?.xibSetUp()
-                backgroundView = allCards[cardsLoadedIndex]?.getView() as! DraggableView
-                backgroundView?.setBusiness(business: (allCards[cardsLoadedIndex]?.getBusiness())!)
+                if self.globalIndexForCurrentCompany + 1 >= self.arrayOfBusinesses.count
+                {
+                    self.globalIndexForCurrentCompany = 0
+                }
+                let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
+                let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                loadedCards.append(aView)
+                loadedCards.append(aView1)
+                loadedCards.append(aView2)
+                loadedCards[0]?.xibSetUp()
+                loadedCards[1]?.xibSetUp()
+                loadedCards[2]?.xibSetUp()
+                backgroundView = loadedCards[0]?.getView() as? DraggableView
+                forgroundView = loadedCards[1]?.getView() as? DraggableView
+                anotherView = loadedCards[2]?.getView() as? DraggableView
+                backgroundView?.frame.origin.x = 25
+                forgroundView?.frame.origin.x = 25
+                anotherView?.frame.origin.x = 25
+                backgroundView?.frame.origin.y = 86
+                forgroundView?.frame.origin.y = 86
+                anotherView?.frame.origin.y = 86
+                self.view.addSubview(backgroundView!)
+                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
+                self.globalIndexForCurrentCompany += 1
             }
-            
-            backgroundView?.frame.origin.x = 25
-            backgroundView?.frame.origin.y = 86
-            self.view.addSubview(aView1!)
-            self.view.insertSubview(aView2!, aboveSubview: aView1!)
-            self.view.insertSubview(backgroundView!, aboveSubview: aView2!)
- 
         }
-    */
     }
     
     func cardSwipedRight(_ card: UIView) {
-        /*
-        if loadedCards.count > 0
+        
+        
+        
+        if self.arrayOfBusinesses.count == 1
         {
-            self.personalBusinessCoreData.saveBusiness(personalBusiness: (backgroundView?.getBusiness())!)
+            self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[0]?.getBusiness())!)
+            self.arrayOfBusinesses.remove(at: 0)
+        }
+        else
+        {
+            self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
+            self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany-1)
         }
         
-        loadedCards.remove(at: 0)
-        
-        if cardsLoadedIndex < allCards.count {
-            
-            if self.arrayOfBusinesses.count > 0
+        if self.arrayOfBusinesses.count != 0
+        {
+            loadedCards.remove(at: 0)
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
+            loadedCards.remove(at: 0)
+            forgroundView?.removeFromSuperview()
+            forgroundView = nil
+            loadedCards.remove(at: 0)
+            anotherView?.removeFromSuperview()
+            anotherView = nil
+        }
+        if self.arrayOfBusinesses.count > 0
+        {
+            if self.arrayOfBusinesses.count == 1
             {
-                
-                self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
-                self.allCards.remove(at: self.globalIndexForCurrentCompany)
-                self.checkAndUpdateGlobalIndex()
-                
-                loadedCards.append(allCards[cardsLoadedIndex])
-                cardsLoadedIndex += 1
-                loadedCards[(MAX_BUFFER_SIZE-1)]?.xibSetUp()
-                loadedCards[(MAX_BUFFER_SIZE-2)]?.xibSetUp()
-                let aView1 = loadedCards[(MAX_BUFFER_SIZE-1)]?.getView()
-                let aView2 : UIView? = loadedCards[(MAX_BUFFER_SIZE-2)]?.getView()
-                aView1?.frame.origin.x = 25
-                aView2?.frame.origin.x = 25
-                aView1?.frame.origin.y = 86
-                aView2?.frame.origin.y = 86
-                objectForBackground = nil
-                backgroundView?.removeFromSuperview()
-                backgroundView = nil
-                
-                
-                if cardsLoadedIndex == allCards.count
-                {
-                    objectForBackground = allCards[0]
-                    allCards[0]?.xibSetUp()
-                    backgroundView = allCards[0]?.getView() as! DraggableView
-                    backgroundView?.setBusiness(business: (allCards[0]?.getBusiness())!)
-                }
-                else
-                {
-                    objectForBackground = allCards[cardsLoadedIndex]
-                    allCards[cardsLoadedIndex]?.xibSetUp()
-                    backgroundView = allCards[cardsLoadedIndex]?.getView() as! DraggableView
-                    backgroundView?.setBusiness(business: (allCards[cardsLoadedIndex]?.getBusiness())!)
-                }
-                
+                let aView = self.createDraggableViewWithData(at: 0)
+                loadedCards.append(aView)
+                loadedCards[0]?.xibSetUp()
+                backgroundView = loadedCards[0]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
-                self.view.addSubview(aView1!)
-                self.view.insertSubview(aView2!, aboveSubview: aView1!)
-                self.view.insertSubview(backgroundView!, aboveSubview: aView2!)
-                
+                self.view.addSubview(backgroundView!)
+            }
+            else
+            {
+                if self.globalIndexForCurrentCompany + 1 >= self.arrayOfBusinesses.count
+                {
+                    self.globalIndexForCurrentCompany = 0
+                }
+                let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
+                let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                loadedCards.append(aView)
+                loadedCards.append(aView1)
+                loadedCards.append(aView2)
+                loadedCards[0]?.xibSetUp()
+                loadedCards[1]?.xibSetUp()
+                loadedCards[2]?.xibSetUp()
+                backgroundView = loadedCards[0]?.getView() as? DraggableView
+                forgroundView = loadedCards[1]?.getView() as? DraggableView
+                anotherView = loadedCards[2]?.getView() as? DraggableView
+                backgroundView?.frame.origin.x = 25
+                forgroundView?.frame.origin.x = 25
+                anotherView?.frame.origin.x = 25
+                backgroundView?.frame.origin.y = 86
+                forgroundView?.frame.origin.y = 86
+                anotherView?.frame.origin.y = 86
+                self.view.addSubview(backgroundView!)
+                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
+                self.globalIndexForCurrentCompany += 1
             }
         }
-        */
     }
     
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
@@ -262,77 +284,48 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     public func loadCards()
     {
-        
-        let aView1 = self.createDraggableViewWithData(at: 0)
-        let aView2 = self.createDraggableViewWithData(at: 1)
-        aView1.xibSetUp()
-        aView2.xibSetUp()
-        forgroundView = aView1.getView() as! DraggableView
-        backgroundView = aView2.getView() as! DraggableView
-        backgroundView?.frame.origin.x = 25
-        forgroundView?.frame.origin.x = 25
-        backgroundView?.frame.origin.y = 86
-        forgroundView?.frame.origin.y = 86
-        self.view.addSubview(forgroundView!)
-        self.view.insertSubview(backgroundView!, belowSubview: forgroundView!)
-        
-        /*
-        
-        if self.arrayOfBusinesses.count > 0
+        if self.arrayOfBusinesses.count != 0
         {
-            let numLoadedCardsCap: Int = (self.arrayOfBusinesses.count > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : self.arrayOfBusinesses.count
-            
-            for i in 0..<self.arrayOfBusinesses.count
+            if self.arrayOfBusinesses.count == 1
             {
-                let newCard: DraggableView? = self.createDraggableViewWithData(at: i)
-                allCards.append(newCard!)
-                if i < numLoadedCardsCap && loadedCards.count < MAX_BUFFER_SIZE{
-                    loadedCards.append(newCard!)
-                }
+                let aView = self.createDraggableViewWithData(at: 0)
+                loadedCards.append(aView)
+                loadedCards[0]?.xibSetUp()
+                backgroundView = loadedCards[0]?.getView() as? DraggableView
+                backgroundView?.frame.origin.x = 25
+                backgroundView?.frame.origin.y = 86
+                self.view.addSubview(backgroundView!)
             }
-            
-            if loadedCards.count <= MAX_BUFFER_SIZE && cardsLoadedIndex < MAX_BUFFER_SIZE
+            else
             {
-                for i in 0..<loadedCards.count
+                if self.globalIndexForCurrentCompany + 1 >= self.arrayOfBusinesses.count
                 {
-                    if i > 0
-                    {
-                        
-                        loadedCards[i]?.xibSetUp()
-                        loadedCards[i-1]?.xibSetUp()
-                       
-                        
-                        objectForForground = loadedCards[i]
-                        forgroundView = loadedCards[i]?.getView() as! DraggableView
-                        forgroundView?.setBusiness(business: (loadedCards[i]?.getBusiness())!)
-                        objectForBackground = loadedCards[i-1]
-                        backgroundView = loadedCards[i-1]?.getView() as! DraggableView
-                        backgroundView?.setBusiness(business: (loadedCards[i-1]?.getBusiness())!)
-                        
-                        
-                        
-                        backgroundView?.frame.origin.x = 25
-                        forgroundView?.frame.origin.x = 25
-                        backgroundView?.frame.origin.y = 86
-                        forgroundView?.frame.origin.y = 86
-                        self.view.insertSubview(backgroundView!, belowSubview:forgroundView!)
-                    }
-                
-                    else
-                    {
-                        loadedCards[i]?.xibSetUp()
-                        backgroundView = loadedCards[i]?.getView() as! DraggableView
-                        backgroundView?.setBusiness(business: (loadedCards[i]?.getBusiness())!)
-                        backgroundView?.frame.origin.x = 25
-                        backgroundView?.frame.origin.y = 86
-                        self.view.addSubview(backgroundView!)
-                    }
- 
-                    cardsLoadedIndex += 1
+                    self.globalIndexForCurrentCompany = 0
                 }
+               
+                let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
+                let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                loadedCards.append(aView)
+                loadedCards.append(aView1)
+                loadedCards.append(aView2)
+                loadedCards[0]?.xibSetUp()
+                loadedCards[1]?.xibSetUp()
+                loadedCards[2]?.xibSetUp()
+                backgroundView = loadedCards[0]?.getView() as? DraggableView
+                forgroundView = loadedCards[1]?.getView() as? DraggableView
+                anotherView = loadedCards[2]?.getView() as? DraggableView
+                backgroundView?.frame.origin.x = 25
+                forgroundView?.frame.origin.x = 25
+                anotherView?.frame.origin.x = 25
+                backgroundView?.frame.origin.y = 86
+                forgroundView?.frame.origin.y = 86
+                anotherView?.frame.origin.y = 86
+                self.view.addSubview(backgroundView!)
+                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
+                self.globalIndexForCurrentCompany += 1
             }
         }
-        */
     }
  
     
@@ -441,7 +434,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             //self.businessNameLabel.isHidden = true
             self.arrayOfBusinesses.removeAll()
             self.loadedCards.removeAll()
-            self.allCards.removeAll() 
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
             self.infoButton.isEnabled = false
@@ -488,25 +480,25 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             businessViewController.setIdentifier(id: "fromTileView")
             if loadedCards.count > 0
             {
-                businessViewController.setUrl(aUrl: (backgroundView?.getBusiness().getBusinessImage())!)
-                businessViewController.setLongitude(longitude: (backgroundView?.getBusiness().getLongitude())!)
-                businessViewController.setLatitude(latitude: (backgroundView?.getBusiness().getLatitude())!)
-                businessViewController.setPhoneNumber(phone: (backgroundView?.getBusiness().getNumber())!)
-                businessViewController.setWebsiteUrl(url: (backgroundView?.getBusiness().getWebsiteUrl())!)
-                businessViewController.setIsClosed(isClosed: (backgroundView?.getBusiness().getIsClosed())!)
-                businessViewController.setAddress(address: (backgroundView?.getBusiness().getFullAddress())!)
-                businessViewController.setTitle(title: (backgroundView?.getBusiness().getBusinessName())!)
+                businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+                businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
+                businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
+                businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
+                businessViewController.setWebsiteUrl(url: (loadedCards[1]!.getBusiness().getWebsiteUrl()))
+                businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
+                businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
+                businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
             }
             else
             {
-                businessViewController.setUrl(aUrl: (backgroundView?.getBusiness().getBusinessImage())!)
-                businessViewController.setLongitude(longitude: (backgroundView?.getBusiness().getLongitude())!)
-                businessViewController.setLatitude(latitude: (backgroundView?.getBusiness().getLatitude())!)
-                businessViewController.setPhoneNumber(phone: (backgroundView?.getBusiness().getNumber())!)
-                businessViewController.setWebsiteUrl(url: (backgroundView?.getBusiness().getWebsiteUrl())!)
-                businessViewController.setIsClosed(isClosed: (backgroundView?.getBusiness().getIsClosed())!)
-                businessViewController.setAddress(address: (backgroundView?.getBusiness().getFullAddress())!)
-                businessViewController.setTitle(title: (backgroundView?.getBusiness().getBusinessName())!)
+                businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+                businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
+                businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
+                businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
+                businessViewController.setWebsiteUrl(url: (loadedCards[1]!.getBusiness().getWebsiteUrl()))
+                businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
+                businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
+                businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
             }
             
         }
@@ -548,7 +540,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     
     
     @IBAction func swipeLeft(_ sender: Any) {
-        
+        // Still needs to be worked out after what i changed for tileView
         loadedCards.first??.xibSetUp()
         let dragView: DraggableView? = loadedCards.first as! DraggableView
         dragView?.overlayView?.mode = .GGOverlayViewModeLeft
@@ -562,7 +554,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     }
     
     @IBAction func swipeRight(_ sender: Any) {
-            
+        // still needs to be worked out after what i did for tileview
         loadedCards.first??.xibSetUp()
         let dragView: DraggableView? = loadedCards.first as! DraggableView
         dragView?.overlayView?.mode = .GGOverlayViewModeRight
@@ -596,16 +588,27 @@ extension BusinessTileViewController : YelpContainerDelegate
 
     func yelpAPICallback(_ yelpContainer: YelpContainer) {
         
-        self.loadedCards.removeAll()
-        cardsLoadedIndex = 0
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-            //self.businessImage.isHidden = false
-            //self.businessImage1.isHidden = false
-            //self.businessNameLabel.isHidden = false
-            self.leftButton.isEnabled = true
-            self.rightButton.isEnabled = true
-            self.infoButton.isEnabled = true
+        if !loadedCards.isEmpty
+        {
+            loadedCards.remove(at: 0)
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
+            loadedCards.remove(at: 0)
+            forgroundView?.removeFromSuperview()
+            forgroundView = nil
+            loadedCards.remove(at: 0)
+            anotherView?.removeFromSuperview()
+            anotherView = nil
+        }
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        //self.businessImage.isHidden = false
+        //self.businessImage1.isHidden = false
+        //self.businessNameLabel.isHidden = false
+        self.leftButton.isEnabled = true
+        self.rightButton.isEnabled = true
+        self.infoButton.isEnabled = true
+        
         if self.aBusinessTileOperator == nil
         {
             self.aBusinessTileOperator = BusinessTileOperator(city: yelpContainer.getCity(), state: yelpContainer.getState(), coordinate: self.theCoordinate)
@@ -623,10 +626,6 @@ extension BusinessTileViewController : YelpContainerDelegate
                     }
                 }
             }
-            backgroundView = nil
-            forgroundView = nil
-            objectForBackground = nil
-            objectForForground = nil
             self.loadCards()
         }
         else
@@ -646,20 +645,7 @@ extension BusinessTileViewController : YelpContainerDelegate
                     }
                 }
             }
-            objectForBackground = nil
-            objectForForground = nil
-            backgroundView = nil
-            forgroundView = nil
             self.loadCards()
-        }
-        backgroundView?.isHidden = false
-        forgroundView?.isHidden = false
-        for view in self.view.subviews
-        {
-            if NSStringFromClass(view.classForCoder) == "Hambre.DraggableView"
-            {
-                view.isHidden = false
-            }
         }
     }
 }
@@ -756,7 +742,6 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
         
         self.arrayOfBusinesses.removeAll()
         self.loadedCards.removeAll()
-        self.allCards.removeAll() 
         self.setTheCoordinate(coordinate: place.coordinate)
         self.setCityState(cityState: place.formattedAddress!)
         self.yelpContainer = nil
