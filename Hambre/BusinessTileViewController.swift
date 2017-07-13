@@ -10,8 +10,8 @@ import UIKit
 import CoreLocation
 import GooglePlaces
 
-//class BusinessTileViewController: UIViewController, DraggableViewDelegate{
-class BusinessTileViewController: UIViewController {
+
+class BusinessTileViewController: UIViewController, DraggableViewDelegate{
 @IBOutlet weak var locationIcon: UIBarButtonItem!
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var businessImage1: UIImageView!
@@ -177,9 +177,9 @@ class BusinessTileViewController: UIViewController {
         }
     */
     }
-    /*
+    
     func cardSwipedRight(_ card: UIView) {
-        
+        /*
         if loadedCards.count > 0
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (backgroundView?.getBusiness())!)
@@ -234,8 +234,9 @@ class BusinessTileViewController: UIViewController {
                 
             }
         }
+        */
     }
-    */
+    
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
         let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: 325, height: 395), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
         
@@ -254,7 +255,7 @@ class BusinessTileViewController: UIViewController {
         {
             draggableView.setReviews(reviews: "No reviews")
         }
-        //draggableView.delegate = self
+        draggableView.delegate = self
         
         return draggableView
     }
