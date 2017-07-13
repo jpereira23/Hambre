@@ -101,7 +101,7 @@ class CloudKitYelpApi: NSObject
 
 @objc protocol YelpContainerDelegate
 {
-    func yelpAPICallback(_ yelpContainer: YelpContainer)
+    func yelpAPICallback(_ yelpContainer: YelpContainer, worked: Bool)
     func yelpLocationCallback(_ yelpContainer: YelpContainer)
 }
 
@@ -176,7 +176,7 @@ class YelpContainer: NSObject {
                     //Fix this, bad practice
                     if let _ = search.businesses.last {
                         self.arrayOfBusinesses += search.businesses
-                        self.delegate.yelpAPICallback(self)
+                        self.delegate.yelpAPICallback(self, worked: true)
                         /*
                          
                          This is how you can get business names and other attributes about YLPBusiness
@@ -193,6 +193,7 @@ class YelpContainer: NSObject {
                     
                 }.onFailure { error in
                     print("Search errored: \(error)")
+                    self.delegate.yelpAPICallback(self, worked: false)
             }
         }
     }
@@ -241,7 +242,6 @@ extension YelpContainer : CloudKitYelpApiDelegate
     }
     
     func modelUpdated(cloudKitYelpApi: CloudKitYelpApi) {
-        print("So far so good")
         self.setAppId(appId: cloudKitYelpApi.getAppId())
         self.setAppSecret(appSecret: cloudKitYelpApi.getAppSecret())
         
