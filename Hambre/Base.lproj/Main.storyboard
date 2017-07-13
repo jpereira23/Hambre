@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -479,27 +479,16 @@
                                     <constraint firstAttribute="trailing" secondItem="uiv-fc-41g" secondAttribute="trailing" id="ccL-6L-olg"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBr-jM-jTd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="209"/>
-                                <color key="backgroundColor" red="0.38929578993055558" green="0.71126302083333337" blue="0.42268880203888887" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="209" id="PNy-kA-r7e"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hWa-ga-NBy" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leadingMargin" constant="9" id="888-gO-gfu"/>
+                            <constraint firstItem="hWa-ga-NBy" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" constant="229" id="Dwv-L7-Zet"/>
                             <constraint firstAttribute="bottom" secondItem="5mf-l8-Dzw" secondAttribute="bottom" id="Ofd-vX-baq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hWa-ga-NBy" secondAttribute="trailing" constant="9" id="QG7-wn-yEw"/>
-                            <constraint firstItem="cBr-jM-jTd" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" id="Wx9-QE-gRB"/>
-                            <constraint firstItem="cBr-jM-jTd" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" id="X5X-1e-TiM"/>
                             <constraint firstItem="5mf-l8-Dzw" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" constant="25" id="ax4-Ht-qcI"/>
-                            <constraint firstItem="spu-YF-ayN" firstAttribute="top" secondItem="cBr-jM-jTd" secondAttribute="bottom" constant="394" id="jJv-fq-tXc"/>
                             <constraint firstAttribute="trailing" secondItem="5mf-l8-Dzw" secondAttribute="trailing" constant="25" id="mMC-NL-Ud0"/>
-                            <constraint firstAttribute="trailing" secondItem="cBr-jM-jTd" secondAttribute="trailing" id="sCd-io-fiD"/>
                             <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="hWa-ga-NBy" secondAttribute="bottom" constant="20" id="sbE-cl-kVu"/>
-                            <constraint firstItem="hWa-ga-NBy" firstAttribute="top" secondItem="cBr-jM-jTd" secondAttribute="bottom" constant="20" id="zCr-5f-dUy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Sd-Zi-VXx">
