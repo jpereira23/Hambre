@@ -130,6 +130,8 @@ class DraggableView: UIView {
         addSubview(overlayView!)
         addSubview(view)
         
+        
+        
     }
     
     public func loadViewFromNib() -> UIView {

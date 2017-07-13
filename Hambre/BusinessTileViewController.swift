@@ -230,7 +230,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
         draggableView.setBusiness(business: self.arrayOfBusinesses[index])
-        draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mile(s)" : "Miles not available"))
+        draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mi" : "Miles not available"))
     
 
         if self.arrayOfReviews.count > 0
