@@ -79,6 +79,8 @@ class BusinessViewController: UIViewController {
         
         
         view.addConstraints([leftCons, rightCons, topCons, mapHeight, bottom])
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
     
     
