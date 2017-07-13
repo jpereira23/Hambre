@@ -419,8 +419,23 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     {
         if sender.identifier == "settingsToTile"
         {
-            backgroundView?.isHidden = true
-            forgroundView?.isHidden = true
+            if !loadedCards.isEmpty
+            {
+                backgroundView?.isHidden = true
+                forgroundView?.isHidden = true
+                anotherView?.isHidden = true
+                loadedCards.remove(at: 0)
+                backgroundView?.removeFromSuperview()
+                backgroundView = nil
+                loadedCards.remove(at: 0)
+                forgroundView?.removeFromSuperview()
+                forgroundView = nil
+                loadedCards.remove(at: 0)
+                anotherView?.removeFromSuperview()
+                anotherView = nil
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
             for view in self.view.subviews
             {
                 if NSStringFromClass(view.classForCoder) == "Hambre.DraggableView"
@@ -428,11 +443,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                     view.isHidden = true
                 }
             }
-            //self.businessImage.isHidden = true
-            //self.businessImage1.isHidden = true
-            //self.businessNameLabel.isHidden = true
             self.arrayOfBusinesses.removeAll()
-            self.loadedCards.removeAll()
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
             self.infoButton.isEnabled = false
@@ -449,8 +460,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.yelpContainer?.changeGenre(genre: self.genre)
                 self.yelpContainer?.yelpAPICallForBusinesses()
             }
-            print("And the distance is \(self.distance)")
-            // Change this below to be relative to the latitude and longitude of set city too not necessarily the one you are on 
             self.arrayOfPlaces.removeAll()
             self.radiiDistances = RadiiDistances(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude, distance: Double(self.distance))
             self.radiiDistances.delegate = self
@@ -460,7 +469,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         else if sender.identifier == "noInternetToTile"
         {
             self.recallYelpContainer()
-
         }
     }
     
@@ -581,78 +589,97 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
     }
     
-    func yelpAPICallback(_ yelpContainer: YelpContainer) {
-        if !loadedCards.isEmpty
+    func yelpAPICallback(_ yelpContainer: YelpContainer, worked: Bool) {
+        if worked == true
         {
-            backgroundView?.isHidden = true
-            forgroundView?.isHidden = true
-            anotherView?.isHidden = true
-            loadedCards.remove(at: 0)
-            backgroundView?.removeFromSuperview()
-            backgroundView = nil
-            loadedCards.remove(at: 0)
-            forgroundView?.removeFromSuperview()
-            forgroundView = nil
-            loadedCards.remove(at: 0)
-            anotherView?.removeFromSuperview()
-            anotherView = nil
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        }
-        if self.aBusinessTileOperator == nil
-        {
-            self.aBusinessTileOperator = BusinessTileOperator(city: yelpContainer.getCity(), state: yelpContainer.getState(), coordinate: self.theCoordinate)
-            self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
-            
-            self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
-            for i in 0..<self.arrayOfBusinesses.count
+            if !loadedCards.isEmpty
             {
-                let radiusCoreData = RadiusCoreData()
-                let isEmpty = radiusCoreData.checkIfCoreDataIsEmpty()
-                let radius = radiusCoreData.loadRadius()
+                backgroundView?.isHidden = true
+                forgroundView?.isHidden = true
+                anotherView?.isHidden = true
+                loadedCards.remove(at: 0)
+                backgroundView?.removeFromSuperview()
+                backgroundView = nil
+                loadedCards.remove(at: 0)
+                forgroundView?.removeFromSuperview()
+                forgroundView = nil
+                loadedCards.remove(at: 0)
+                anotherView?.removeFromSuperview()
+                anotherView = nil
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+            if self.aBusinessTileOperator == nil
+            {
+                self.aBusinessTileOperator = BusinessTileOperator(city: yelpContainer.getCity(), state: yelpContainer.getState(), coordinate: self.theCoordinate)
+                self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
                 
-                if appDelegate.isLocationEnabled() == true && i < self.arrayOfBusinesses.count
+                self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
+                for i in 0..<self.arrayOfBusinesses.count
                 {
                     let radiusCoreData = RadiusCoreData()
-                    if isEmpty == false && radiusCoreData.loadRadius() != 0 &&  self.arrayOfBusinesses[i].getDistance() >= radius
+                    let isEmpty = radiusCoreData.checkIfCoreDataIsEmpty()
+                    let radius = radiusCoreData.loadRadius()
+                    
+                    if appDelegate.isLocationEnabled() == true && i < self.arrayOfBusinesses.count
                     {
-                        self.arrayOfBusinesses.remove(at: i)
+                        let radiusCoreData = RadiusCoreData()
+                        if isEmpty == false && radiusCoreData.loadRadius() != 0 &&  self.arrayOfBusinesses[i].getDistance() >= radius
+                        {
+                            self.arrayOfBusinesses.remove(at: i)
+                        }
                     }
                 }
+            }
+            else
+            {
+                self.aBusinessTileOperator.setTheCoordinate(coordinate: self.theCoordinate)
+                self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
+                self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
+                let radiusCoreData = RadiusCoreData()
+                let radius = radiusCoreData.loadRadius()
+                let isEmpty = radiusCoreData.checkIfCoreDataIsEmpty()
+                for i in 0..<self.arrayOfBusinesses.count
+                {
+                    if appDelegate.isLocationEnabled() == true && i < self.arrayOfBusinesses.count
+                    {
+                        
+                        if isEmpty == false && self.arrayOfBusinesses[i].getDistance() >= radius
+                        {
+                            self.arrayOfBusinesses.remove(at: i)
+                        }
+                    }
+                }
+            }
+            if radiusIndex != 0
+            {
+                radiusIndex -= 1
+            }
+            if radiusIndex == 0
+            {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.leftButton.isEnabled = true
+                self.rightButton.isEnabled = true
+                self.infoButton.isEnabled = true
+                self.loadCards()
             }
         }
         else
         {
-            self.aBusinessTileOperator.setTheCoordinate(coordinate: self.theCoordinate)
-            self.aBusinessTileOperator.addBusinesses(arrayOfBusinesses: yelpContainer.getBusinesses())
-            self.arrayOfBusinesses = self.aBusinessTileOperator.obtainBusinessesForCards()
-            let radiusCoreData = RadiusCoreData()
-            let radius = radiusCoreData.loadRadius()
-            let isEmpty = radiusCoreData.checkIfCoreDataIsEmpty()
-            for i in 0..<self.arrayOfBusinesses.count
+            if radiusIndex != 0
             {
-                if appDelegate.isLocationEnabled() == true && i < self.arrayOfBusinesses.count
-                {
-                    
-                    if isEmpty == false && self.arrayOfBusinesses[i].getDistance() >= radius
-                    {
-                        self.arrayOfBusinesses.remove(at: i)
-                    }
-                }
+                radiusIndex -= 1
             }
-        }
-        if radiusIndex != 0
-        {
-            radiusIndex -= 1
-        }
-        if radiusIndex == 0
-        {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-            self.leftButton.isEnabled = true
-            self.rightButton.isEnabled = true
-            self.infoButton.isEnabled = true
-            self.loadCards()
+            if radiusIndex == 0
+            {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.leftButton.isEnabled = true
+                self.rightButton.isEnabled = true
+                self.infoButton.isEnabled = true
+                self.loadCards()
+            }
         }
     }
     
@@ -731,16 +758,24 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        for view in self.view.subviews
+        if !loadedCards.isEmpty
         {
-            if NSStringFromClass(view.classForCoder) == "UIView"
-            {
-                view.isHidden = true
-            }
+            backgroundView?.isHidden = true
+            forgroundView?.isHidden = true
+            anotherView?.isHidden = true
+            loadedCards.remove(at: 0)
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
+            loadedCards.remove(at: 0)
+            forgroundView?.removeFromSuperview()
+            forgroundView = nil
+            loadedCards.remove(at: 0)
+            anotherView?.removeFromSuperview()
+            anotherView = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
         }
-        
         self.arrayOfBusinesses.removeAll()
-        self.loadedCards.removeAll()
         self.setTheCoordinate(coordinate: place.coordinate)
         self.setCityState(cityState: place.formattedAddress!)
         self.yelpContainer = nil
@@ -752,9 +787,6 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
             self.aBusinessTileOperator.removeAllBusinesses()
         }
         self.activityIndicator.isHidden = false
-        //self.businessImage.isHidden = true
-        //self.businessImage1.isHidden = true
-        //self.businessNameLabel.isHidden = true
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
         self.infoButton.isEnabled = false

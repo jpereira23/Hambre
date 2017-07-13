@@ -20,9 +20,8 @@ class RadiiDistances: NSObject {
     private var bearingUnitCircleRadians = [0, 30, 45, 60, 90, 120, 135, 150, 180, -30, -45, -60, -90, -120, -135, -150]
     private var arrayOfCoordinates = [Coordinate]()
     private var currentPlace : String! = "San Francisco, California"
-    private var currentIndex : Int! = 0
     public var delegate : RadiiDistancesDelegate?
-    
+    private var confirmedIndex = 0
     private var distance : Double!
     private var latitude : Double!
     private var longitude : Double!
@@ -94,7 +93,15 @@ class RadiiDistances: NSObject {
             var placeMark : CLPlacemark!
             placeMark = placemarks?[0]
             
-            
+            if let error = error
+            {
+                self.confirmedIndex += 1
+                if self.confirmedIndex == (self.arrayOfCoordinates.count-1)
+                {
+                    self.delegate?.finishedQuerying(radiiDistances: self)
+                }
+                print("there was an error at index: \(index)")
+            }
             if placeMark != nil
             {
                 if let city = placeMark.addressDictionary?["City"] as? String {
@@ -103,13 +110,15 @@ class RadiiDistances: NSObject {
                 if let state = placeMark.addressDictionary?["State"] as? String {
                     compactString = compactString + state
                 }
-            
+                
+                self.confirmedIndex += 1
                 self.delegate?.placeFound(place: compactString, radiiDistances: self)
-                if index == (self.arrayOfCoordinates.count-1)
+                if self.confirmedIndex == (self.arrayOfCoordinates.count-1)
                 {
                     self.delegate?.finishedQuerying(radiiDistances: self)
                 }
             }
+           
         })
     }
 }
