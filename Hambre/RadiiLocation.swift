@@ -12,6 +12,7 @@ struct Coordinate
 
 protocol RadiiDistancesDelegate{
     func placeFound(place: String, radiiDistances: RadiiDistances)
+    func finishedQuerying(radiiDistances: RadiiDistances)
 }
 
 class RadiiDistances: NSObject {
@@ -36,7 +37,24 @@ class RadiiDistances: NSObject {
         self.distance = distance
     }
     
-    public func calculate()
+    public func calculateForDistance(distance: Double)
+    {
+        
+        var aDistance = distance
+        
+        while aDistance != -10
+        {
+            self.distance = aDistance
+            self.calculate()
+            aDistance -= 10.0
+        }
+        for i in 0..<self.arrayOfCoordinates.count
+        {
+            self.convertCoordinatesToUserFriendly(coordinate: self.arrayOfCoordinates[i], index: i)
+        }
+    }
+    
+    private func calculate()
     {
         
         for degree in bearingUnitCircleRadians
@@ -55,10 +73,7 @@ class RadiiDistances: NSObject {
             self.arrayOfCoordinates.append(aCoordinate)
         }
         
-        for i in 0..<self.arrayOfCoordinates.count
-        {
-            self.convertCoordinatesToUserFriendly(coordinate: self.arrayOfCoordinates[i], index: i)
-        }
+       
         
         
     }
@@ -90,7 +105,10 @@ class RadiiDistances: NSObject {
                 }
             
                 self.delegate?.placeFound(place: compactString, radiiDistances: self)
-            
+                if index == (self.arrayOfCoordinates.count-1)
+                {
+                    self.delegate?.finishedQuerying(radiiDistances: self)
+                }
             }
         })
     }
