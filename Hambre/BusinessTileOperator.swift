@@ -50,7 +50,7 @@ class BusinessTileOperator: NSObject {
             }
             else if business.phone == nil && business.location.coordinate == nil
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: business.location.coordinate!.longitude, latitude: business.location.coordinate!.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: self.coordinate.longitude, latitude: self.coordinate.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
             }
             else if business.imageURL == nil
             {
