@@ -22,6 +22,8 @@ let ROTATION_ANGLE = Double.pi/8.0
 
 class DraggableView: UIView {
 
+    
+    //All User Interface definitions
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var businessNameField: UILabel!
     @IBOutlet var milesField: UILabel!
@@ -32,6 +34,7 @@ class DraggableView: UIView {
     @IBOutlet var starImageFour: UIImageView!
     @IBOutlet var starImageFive: UIImageView!
     
+    // All personal decelarations and housekeeping definitions
     weak var delegate: DraggableViewDelegate?
     var panGestureRecognizer: UIPanGestureRecognizer?
     var originalPoint = CGPoint.zero
@@ -46,6 +49,10 @@ class DraggableView: UIView {
     private var theBusiness : PersonalBusiness? = nil
     private var view: DraggableView!
     private var milesEnabled = true
+    
+    // All definitions to check for memory testing
+    private var data : Data?
+    
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)!
@@ -59,15 +66,8 @@ class DraggableView: UIView {
     
     deinit
     {
-        //self.view.imageView = nil
-        //self.view.starImageOne = nil
-        //self.view.starImageTwo = nil
-        //self.view.starImageThree = nil
-        //self.view.starImageFour = nil
-        //self.view.starImageFive = nil
-        //self.view.businessNameField = nil
-        //self.view.milesField = nil
-        //self.view.reviewsField = nil
+        print("deinit happened for business")
+        data = nil
         self.view = nil
         self.starImageOne = nil
         self.starImageTwo = nil
@@ -108,7 +108,7 @@ class DraggableView: UIView {
         self.setReviewImages()
         if self.imageUrl != nil
         {
-            let data = try? Data(contentsOf: self.imageUrl!)
+            data = try? Data(contentsOf: self.imageUrl!)
             if data != nil
             {
                 self.imageView.image = UIImage(data: data!)

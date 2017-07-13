@@ -10,9 +10,9 @@ import UIKit
 import CoreLocation
 import GooglePlaces
 
-class BusinessTileViewController: UIViewController, DraggableViewDelegate{
-
-    @IBOutlet weak var locationIcon: UIBarButtonItem!
+//class BusinessTileViewController: UIViewController, DraggableViewDelegate{
+class BusinessTileViewController: UIViewController {
+@IBOutlet weak var locationIcon: UIBarButtonItem!
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var businessImage1: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -24,7 +24,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     var aBusinessTileOperator : BusinessTileOperator! = nil
     var yelpContainer: YelpContainer?
     public var arrayOfBusinesses = [PersonalBusiness]()
-    public var allCards = [DraggableView]()
+    public var allCards = [DraggableView?]()
     public var cardsLoadedIndex: Int = 0
     public var loadedCards = [DraggableView?]()
     public var personalBusinessCoreData : PersonalBusinessCoreData!
@@ -40,6 +40,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
+    public var objectForBackground : DraggableView?
+    public var objectForForground : DraggableView?
     public var backgroundView : DraggableView?
     public var forgroundView : DraggableView?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -119,10 +121,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
+
     
     func cardSwipedLeft(_ card: UIView) {
-    
-        
+        backgroundView = nil
+        forgroundView = nil
+        print("deinit should happen here")
+        /*
         loadedCards[0]?.removeFromSuperview()
         
         if cardsLoadedIndex == allCards.count {
@@ -146,18 +151,21 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             
             backgroundView?.removeFromSuperview()
             backgroundView = nil
+            objectForBackground = nil
             
             if cardsLoadedIndex == allCards.count
             {
-                allCards[0].xibSetUp()
-                backgroundView = allCards[0].getView() as! DraggableView
-                backgroundView?.setBusiness(business: allCards[0].getBusiness())
+                objectForBackground = allCards[0]
+                allCards[0]?.xibSetUp()
+                backgroundView = allCards[0]?.getView() as! DraggableView
+                backgroundView?.setBusiness(business: (allCards[0]?.getBusiness())!)
             }
             else
             {
-                allCards[cardsLoadedIndex].xibSetUp()
-                backgroundView = allCards[cardsLoadedIndex].getView() as! DraggableView
-                backgroundView?.setBusiness(business: allCards[cardsLoadedIndex].getBusiness())
+                objectForBackground = allCards[cardsLoadedIndex]
+                allCards[cardsLoadedIndex]?.xibSetUp()
+                backgroundView = allCards[cardsLoadedIndex]?.getView() as! DraggableView
+                backgroundView?.setBusiness(business: (allCards[cardsLoadedIndex]?.getBusiness())!)
             }
             
             backgroundView?.frame.origin.x = 25
@@ -165,10 +173,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             self.view.addSubview(aView1!)
             self.view.insertSubview(aView2!, aboveSubview: aView1!)
             self.view.insertSubview(backgroundView!, aboveSubview: aView2!)
-            
+ 
         }
+    */
     }
-    
+    /*
     func cardSwipedRight(_ card: UIView) {
         
         if loadedCards.count > 0
@@ -197,21 +206,24 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 aView2?.frame.origin.x = 25
                 aView1?.frame.origin.y = 86
                 aView2?.frame.origin.y = 86
+                objectForBackground = nil
                 backgroundView?.removeFromSuperview()
                 backgroundView = nil
                 
                 
                 if cardsLoadedIndex == allCards.count
                 {
-                    allCards[0].xibSetUp()
-                    backgroundView = allCards[0].getView() as! DraggableView
-                    backgroundView?.setBusiness(business: allCards[0].getBusiness())
+                    objectForBackground = allCards[0]
+                    allCards[0]?.xibSetUp()
+                    backgroundView = allCards[0]?.getView() as! DraggableView
+                    backgroundView?.setBusiness(business: (allCards[0]?.getBusiness())!)
                 }
                 else
                 {
-                    allCards[cardsLoadedIndex].xibSetUp()
-                    backgroundView = allCards[cardsLoadedIndex].getView() as! DraggableView
-                    backgroundView?.setBusiness(business: allCards[cardsLoadedIndex].getBusiness())
+                    objectForBackground = allCards[cardsLoadedIndex]
+                    allCards[cardsLoadedIndex]?.xibSetUp()
+                    backgroundView = allCards[cardsLoadedIndex]?.getView() as! DraggableView
+                    backgroundView?.setBusiness(business: (allCards[cardsLoadedIndex]?.getBusiness())!)
                 }
                 
                 backgroundView?.frame.origin.x = 25
@@ -223,7 +235,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
             }
         }
     }
-    
+    */
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
         let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: 325, height: 395), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
         
@@ -242,13 +254,28 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
         {
             draggableView.setReviews(reviews: "No reviews")
         }
-        draggableView.delegate = self
+        //draggableView.delegate = self
         
         return draggableView
     }
     
     public func loadCards()
     {
+        
+        let aView1 = self.createDraggableViewWithData(at: 0)
+        let aView2 = self.createDraggableViewWithData(at: 1)
+        aView1.xibSetUp()
+        aView2.xibSetUp()
+        forgroundView = aView1.getView() as! DraggableView
+        backgroundView = aView2.getView() as! DraggableView
+        backgroundView?.frame.origin.x = 25
+        forgroundView?.frame.origin.x = 25
+        backgroundView?.frame.origin.y = 86
+        forgroundView?.frame.origin.y = 86
+        self.view.addSubview(forgroundView!)
+        self.view.insertSubview(backgroundView!, belowSubview: forgroundView!)
+        
+        /*
         
         if self.arrayOfBusinesses.count > 0
         {
@@ -274,9 +301,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                         loadedCards[i-1]?.xibSetUp()
                        
                         
-                        
+                        objectForForground = loadedCards[i]
                         forgroundView = loadedCards[i]?.getView() as! DraggableView
                         forgroundView?.setBusiness(business: (loadedCards[i]?.getBusiness())!)
+                        objectForBackground = loadedCards[i-1]
                         backgroundView = loadedCards[i-1]?.getView() as! DraggableView
                         backgroundView?.setBusiness(business: (loadedCards[i-1]?.getBusiness())!)
                         
@@ -303,14 +331,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate{
                 }
             }
         }
+        */
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        //maskView.frame = businessImage.bounds
-        //maskView.frame = businessImage1.bounds
-    }
+ 
     
     public func isInitailCall() -> Bool
     {
@@ -601,6 +624,8 @@ extension BusinessTileViewController : YelpContainerDelegate
             }
             backgroundView = nil
             forgroundView = nil
+            objectForBackground = nil
+            objectForForground = nil
             self.loadCards()
         }
         else
@@ -620,6 +645,8 @@ extension BusinessTileViewController : YelpContainerDelegate
                     }
                 }
             }
+            objectForBackground = nil
+            objectForForground = nil
             backgroundView = nil
             forgroundView = nil
             self.loadCards()
