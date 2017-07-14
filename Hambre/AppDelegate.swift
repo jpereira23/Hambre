@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.locationManager.delegate = self
-      
+      print("A-OK")
         if self.isInternetAvailable()
         {
             self.configueCoordinates()
