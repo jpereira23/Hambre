@@ -40,11 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.locationManager.delegate = self
-      
+        /*
         if self.isInternetAvailable()
         {
             self.configueCoordinates()
         }
+        */
         //make status bar white
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -112,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return self.locationEnabled
     }
     
-    private func configueCoordinates()
+    public func configueCoordinates()
     {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()

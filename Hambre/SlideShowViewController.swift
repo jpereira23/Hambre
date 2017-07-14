@@ -8,22 +8,21 @@
 
 import UIKit
 
-class SlideShowViewController: UIPageViewController {
+class SlideShowViewController: UIPageViewController, FirstPageViewControllerDelegate, SecondPageViewControllerDelegate {
 
     
-    public lazy var orderedViewControllers:[UIViewController] = {
-        return [self.newColoredViewController(name: "First"),
-                self.newColoredViewController(name: "Second")]
-    }()
+    public lazy var orderedViewControllers = [UIViewController]()
     
-    private func newColoredViewController(name: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewController(withIdentifier: "\(name)PageController")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstPageController") as! FirstPageViewController
+        vc.delegate = self
+        orderedViewControllers.append(vc)
+        let vc1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondPageController") as! SecondPageViewController
+        vc1.delegate = self
+        orderedViewControllers.append(vc1)
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
@@ -32,6 +31,24 @@ class SlideShowViewController: UIPageViewController {
         }
         // Do any additional setup after loading the view.
     }
+    
+    func nextButtonWasClicked()
+    {
+        let vc = orderedViewControllers[1]
+        setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func skipButtonWasClicked()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func secondNextButton()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

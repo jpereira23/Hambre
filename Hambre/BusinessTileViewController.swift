@@ -50,6 +50,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
+        self.present(viewController, animated:true, completion:nil)
+        
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
@@ -64,10 +67,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.present(alert, animated: true)
         }
         
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let viewController = storyboard.instantiateViewController(withIdentifier: "slideShowView")
-        
-        //self.present(viewController, animated:true, completion:nil)
         self.tabBarController?.delegate = self
 
         self.leftButton.isEnabled = false
