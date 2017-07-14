@@ -84,7 +84,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         
         //tile image masked
-        maskView.image = UIImage(named: "Tile")
+        //maskView.image = UIImage(named: "Tile")
         //businessImage.mask = maskView
         //businessImage1.mask = maskView
         
