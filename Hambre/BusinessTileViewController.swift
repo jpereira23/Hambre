@@ -34,7 +34,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
     private var globalIndexForCurrentCompany = 0
-    public var theCoordinate : CLLocationCoordinate2D!
+    public var theCoordinate = CLLocationCoordinate2D(latitude: 37.787938, longitude: -122.407506)
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
@@ -748,6 +748,7 @@ extension BusinessTileViewController : AppDelegateDelegate
         }
         //if !self.isInitailCall()
         //{
+        
             self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.theCoordinate)
             self.personalBusinessCoreData.resetCoreData()
             

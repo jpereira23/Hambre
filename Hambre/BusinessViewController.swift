@@ -42,14 +42,28 @@ class BusinessViewController: UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = self.aTitle
-        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
-        self.view.addSubview(mapView)
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-        marker.title = self.aTitle
-        marker.snippet = "Selected Restaurant"
-        marker.map = mapView
+        if self.latitude != 6666.0
+        {
+            let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
+            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+            self.view.addSubview(mapView)
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+            marker.title = self.aTitle
+            marker.snippet = "Selected Restaurant"
+            marker.map = mapView
+        }
+        else
+        {
+            let camera = GMSCameraPosition.camera(withLatitude: -76.295604, longitude: 22.319117, zoom: 16.5)
+            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+            self.view.addSubview(mapView)
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: -76.295604, longitude: 22.319117)
+            marker.title = "The restaurant selected claims that it can never be found."
+            marker.snippet = "Welcome to beautiful Antarctica!"
+            marker.map = mapView
+        }
         
         //self.cloudKitDatabaseHandler.delegate = self
         
