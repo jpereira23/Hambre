@@ -704,6 +704,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.yelpContainer = YelpContainer(cityAndState: place)
             self.yelpContainer?.changeGenre(genre: self.getGenre())
             self.yelpContainer?.delegate = self
+            usleep(200000)
             self.yelpContainer?.yelpAPICallForBusinesses()
             radiusIndex += 1
         }
