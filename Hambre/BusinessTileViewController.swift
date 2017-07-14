@@ -748,7 +748,8 @@ extension BusinessTileViewController : AppDelegateDelegate
         }
         //if !self.isInitailCall()
         //{
-        
+            self.setCityState(cityState: appDelegate.getCityAndState())
+            self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
             self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.theCoordinate)
             self.personalBusinessCoreData.resetCoreData()
             

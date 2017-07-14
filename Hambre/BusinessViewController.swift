@@ -42,6 +42,20 @@ class BusinessViewController: UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = self.aTitle
+        
+        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
+        self.detailView.setAddressField(address: self.address)
+        self.detailView.setPhoneField(phone: self.phoneNumber)
+        self.detailView.setIsClosed(isClosed: self.isClosed)
+        self.detailView.setWebsiteUrl(url: self.websiteUrl)
+        self.detailView.setTitle(title: self.aTitle)
+        self.detailView.xibSetUp()
+        self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.currentView = self.detailView.getView()
+        self.segmentView.addSubview(self.currentView)
+        
         if self.latitude != 6666.0
         {
             let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
@@ -55,30 +69,20 @@ class BusinessViewController: UIViewController {
         }
         else
         {
+            detailView.directionsButton.isEnabled = false 
             let camera = GMSCameraPosition.camera(withLatitude: -76.295604, longitude: 22.319117, zoom: 16.5)
             let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
             self.view.addSubview(mapView)
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: -76.295604, longitude: 22.319117)
-            marker.title = "The restaurant selected claims that it can never be found."
-            marker.snippet = "Welcome to beautiful Antarctica!"
+            marker.title = "This restaurants coordinates cannot be found"
+            marker.snippet = "NOT FOUND"
             marker.map = mapView
         }
         
         //self.cloudKitDatabaseHandler.delegate = self
         
-        self.detailView = DetailView(frame: CGRect(x: 0, y: 0, width: self.segmentView.frame.width, height: self.segmentView.frame.height))
-        self.detailView.setAddressField(address: self.address)
-        self.detailView.setPhoneField(phone: self.phoneNumber)
-        self.detailView.setIsClosed(isClosed: self.isClosed)
-        self.detailView.setWebsiteUrl(url: self.websiteUrl)
-        self.detailView.setTitle(title: self.aTitle)
-        self.detailView.xibSetUp()
-        self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-         self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
-        self.detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-        self.currentView = self.detailView.getView()
-        self.segmentView.addSubview(self.currentView)
+        
         
     }
     
