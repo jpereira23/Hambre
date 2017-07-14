@@ -81,7 +81,36 @@ class DraggableView: UIView {
     }
     public func getView() -> UIView
     {
+        self.view.translatesAutoresizingMaskIntoConstraints =  false
+        
+        //auto layout constraint
+        
+        
+        let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let leading = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
+        let trailing = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 9)
+        
+        view.addConstraints([top, leading, trailing])
+        
+        
+        /*
+         let leftCons = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
+         
+         let rightCons = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+         
+         let topCons = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
+         
+         let mapHeight = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 0, constant: 209)
+         
+         let bottom = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 394)
+         */
+        
+        
+        //view.addConstraints([])
+        
+        
         return self.view
+        
     }
     
     func xibSetUp()

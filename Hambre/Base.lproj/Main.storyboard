@@ -83,7 +83,7 @@
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i38-fW-Qaf">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i38-fW-Qaf">
                                 <rect key="frame" x="29" y="22" width="356" height="481"/>
                                 <color key="backgroundColor" red="0.38929578990000002" green="0.71126302080000003" blue="0.42268880199999997" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -100,14 +100,13 @@
                             <constraint firstItem="Nal-M1-5Sy" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="9" id="e60-4q-5BS"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="NXd-SI-ZjL" secondAttribute="bottom" constant="53" id="gST-G3-1qi"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="7Vz-zb-1Kf" secondAttribute="bottom" constant="34" id="hrT-7e-m3R"/>
-                            <constraint firstItem="i38-fW-Qaf" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="22" id="iug-8D-UWE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7Vz-zb-1Kf" secondAttribute="trailing" constant="9" id="ulq-pS-HYg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MXN-iV-Smi">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Jv9-1y-xa2">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="l9b-AT-qiR">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Filter">
@@ -120,7 +119,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="LocationCircle" style="plain" id="Iw5-3t-7dt">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r8b-kb-gdW">
-                                <rect key="frame" x="264" y="9" width="95" height="25"/>
+                                <rect key="frame" x="299" y="9" width="95" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" image="LocationCircle">
@@ -886,7 +885,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2r-TM-RTu">
-                                                    <rect key="frame" x="153" y="21" width="163" height="21"/>
+                                                    <rect key="frame" x="153" y="21" width="202" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="H5s-B6-ib2"/>
                                                     </constraints>
@@ -1110,7 +1109,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tkQ-uH-K3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1132,7 +1131,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Setting" id="Aq9-nL-244"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1154,7 +1153,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="TabHeart" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="xxh-aD-K9r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="xxh-aD-K9r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1220,7 +1219,7 @@
                     <tabBarItem key="tabBarItem" title="Discover" image="Cards" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="otW-5u-Ixy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="otW-5u-Ixy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1242,7 +1241,7 @@
                     <tabBarItem key="tabBarItem" title="More" image="MoreIcon" id="sJF-NA-R2e"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7jO-3w-ijP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="7jO-3w-ijP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1291,6 +1290,6 @@
         <image name="graystar" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bn3-9e-jQ8"/>
+        <segue reference="Sh3-GC-Plj"/>
     </inferredMetricsTieBreakers>
 </document>
