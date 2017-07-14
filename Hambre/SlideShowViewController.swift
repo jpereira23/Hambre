@@ -12,7 +12,7 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
 
     
     public lazy var orderedViewControllers = [UIViewController]()
-    
+    public var appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -34,12 +34,20 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
     
     func nextButtonWasClicked()
     {
+        if appDelegate.isInternetAvailable()
+        {
+            appDelegate.configueCoordinates()
+        }
         let vc = orderedViewControllers[1]
         setViewControllers([vc], direction: .forward, animated: true, completion: nil)
     }
     
     func skipButtonWasClicked()
     {
+        if appDelegate.isInternetAvailable()
+        {
+            appDelegate.configueCoordinates()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

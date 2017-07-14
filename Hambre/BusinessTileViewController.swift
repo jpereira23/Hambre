@@ -61,8 +61,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             let alert = UIAlertController(title: "Location Disabled", message: "Your Location is Disabled go to Settings > Zendish and enable them. Features of the app are currently limited.", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                // perhaps use action.title here
+                
             })
+            
             
             self.present(alert, animated: true)
         }
@@ -189,7 +190,15 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     
     func cardSwipedRight(_ card: UIView) {
         
-        
+        if self.personalBusinessCoreData.checkIfCoreDataIsEmpty()
+        {
+            let alert = UIAlertController(title: "First Liked Restaurant", message: "You liked your first restaurant! Go to the favorites view to view your liked restaurants", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                // perhaps use action.title here
+            })
+            
+            self.present(alert, animated: true)
+        }
         
         if self.arrayOfBusinesses.count == 1
         {

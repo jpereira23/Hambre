@@ -137,54 +137,6 @@
             </objects>
             <point key="canvasLocation" x="877.60000000000002" y="-74.212893553223395"/>
         </scene>
-        <!--Genre Picker View Controller-->
-        <scene sceneID="27C-Jn-Yfb">
-            <objects>
-                <viewController id="grl-yJ-mUV" customClass="GenrePickerViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WVo-gM-obV"/>
-                        <viewControllerLayoutGuide type="bottom" id="gWS-sx-df0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9MQ-rP-94k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wkI-qU-et7">
-                                <rect key="frame" x="0.0" y="192" width="375" height="259"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="grl-yJ-mUV" id="Dj2-ke-j7e"/>
-                                    <outlet property="delegate" destination="grl-yJ-mUV" id="Gka-Gu-ZoN"/>
-                                </connections>
-                            </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXL-Hb-Tw9">
-                                <rect key="frame" x="50" y="104" width="275" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRQ-cB-KIa">
-                                <rect key="frame" x="164" y="529" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Enter"/>
-                                <connections>
-                                    <segue destination="5Uk-Lq-sEI" kind="unwind" identifier="genreToTile" unwindAction="unwindToTileView:" id="sil-8b-Kcp"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="pickerView" destination="wkI-qU-et7" id="rtx-UL-rFD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D6I-xN-FBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="5Uk-Lq-sEI" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2713" y="-851"/>
-        </scene>
         <!--Settings View Controller-->
         <scene sceneID="7sY-qH-YAb">
             <objects>
@@ -348,66 +300,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sGm-BT-O2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2713" y="1421"/>
-        </scene>
-        <!--Settings View Controller-->
-        <scene sceneID="1Fg-ul-O7m">
-            <objects>
-                <viewController id="6Pi-zA-fUf" customClass="SettingsViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tuo-7h-SQg"/>
-                        <viewControllerLayoutGuide type="bottom" id="712-OY-SnD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JhE-xN-qOX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfg-7C-fFI">
-                                <rect key="frame" x="164" y="504" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Enter "/>
-                                <connections>
-                                    <action selector="savingLocation:" destination="6Pi-zA-fUf" eventType="touchUpInside" id="0JT-iM-DGZ"/>
-                                    <segue destination="9zc-lt-atJ" kind="unwind" identifier="settingsToTile" unwindAction="unwindToTileView:" id="SqU-gL-I9n"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="un8-Nw-IGM">
-                                <rect key="frame" x="104" y="182" width="167" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change location"/>
-                                <connections>
-                                    <action selector="enterCityField:" destination="6Pi-zA-fUf" eventType="touchDown" id="eqo-Y7-LOd"/>
-                                </connections>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="LJl-dC-Boa">
-                                <rect key="frame" x="14" y="378" width="347" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="sliderValueChanged:" destination="6Pi-zA-fUf" eventType="valueChanged" id="zde-3r-WRb"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlO-pz-PZf">
-                                <rect key="frame" x="137" y="349" width="100" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Uw8-cV-1g4"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <connections>
-                        <outlet property="saveButton" destination="Rfg-7C-fFI" id="ZHj-wp-Y0c"/>
-                        <outlet property="slider" destination="LJl-dC-Boa" id="MzH-1J-hgH"/>
-                        <outlet property="sliderLabel" destination="nlO-pz-PZf" id="bd0-AC-Dbz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="52D-lm-Pmt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="9zc-lt-atJ" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1790" y="-851"/>
         </scene>
         <!--Business View Controller-->
         <scene sceneID="HLn-xM-say">
@@ -793,7 +685,7 @@
         <!--Liked Businesses View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="LikedBusinessesViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favoritesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="LikedBusinessesViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -1075,9 +967,6 @@
                         <color key="barTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6Pi-zA-fUf" kind="relationship" relationship="rootViewController" id="GMf-q1-d5y"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qr-qM-tGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1308,24 +1197,6 @@
             </objects>
             <point key="canvasLocation" x="878" y="665"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="TTI-D5-Fn2">
-            <objects>
-                <viewController id="Vi7-k8-Z4u" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="t0y-wz-6OX"/>
-                        <viewControllerLayoutGuide type="bottom" id="bJQ-3u-zY1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MXn-rX-aIR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vyL-uo-1vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="17" y="-851"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Cards" width="26" height="23"/>
@@ -1342,6 +1213,6 @@
         <image name="graystar" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sh3-GC-Plj"/>
+        <segue reference="bn3-9e-jQ8"/>
     </inferredMetricsTieBreakers>
 </document>
