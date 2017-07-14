@@ -335,11 +335,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         }
     }
  
-    
+    /*
     public func isInitailCall() -> Bool
     {
         return self.initialCall
     }
+    */
     
     public func setIndexOfSelectedGenre(index: Int)
     {
@@ -355,10 +356,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     {
         return self.genre
     }
+    
+    /*
     public func initialCallWasCalled()
     {
         self.initialCall = true
     }
+    */ 
     
     public func setTheCoordinate(coordinate: CLLocationCoordinate2D)
     {
@@ -724,11 +728,26 @@ extension BusinessTileViewController : AppDelegateDelegate
 {
     func locationServicesUpdated(appDelegate: AppDelegate) {
         
-        if !self.isInitailCall()
+        self.aBusinessTileOperator = nil 
+        if !loadedCards.isEmpty
         {
-            self.setCityState(cityState: appDelegate.getCityAndState())
-            self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
-            
+            backgroundView?.isHidden = true
+            forgroundView?.isHidden = true
+            anotherView?.isHidden = true
+            loadedCards.remove(at: 0)
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
+            loadedCards.remove(at: 0)
+            forgroundView?.removeFromSuperview()
+            forgroundView = nil
+            loadedCards.remove(at: 0)
+            anotherView?.removeFromSuperview()
+            anotherView = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+        //if !self.isInitailCall()
+        //{
             self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.theCoordinate)
             self.personalBusinessCoreData.resetCoreData()
             
@@ -754,12 +773,12 @@ extension BusinessTileViewController : AppDelegateDelegate
                 self.yelpContainer?.delegate = self
                 self.yelpContainer?.yelpAPICallForBusinesses()
             }
-            self.initialCallWasCalled()
+            //self.initialCallWasCalled()
             
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
             
-        }
+        //}
     }
 }
 
