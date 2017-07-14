@@ -119,6 +119,51 @@ class PersonalBusinessCoreData: NSObject {
         }
     }
     
+    
+    public func checkIfCoreDataIsEmpty() -> Bool
+    {
+        var aBusinesses : [PersonalBusiness] = []
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PersonalBusinessData")
+        
+        do {
+            managedObjects = try self.managedContext!.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        for businesses in managedObjects
+        {
+            let businessName = businesses.value(forKeyPath: "businessName") as! String
+            let businessUrl = businesses.value(forKeyPath: "businessUrl") as! String
+            let city = businesses.value(forKeyPath: "city") as! String
+            let state = businesses.value(forKeyPath: "state") as! String
+            let liked = businesses.value(forKeyPath: "liked") as! Bool
+            let likes = businesses.value(forKeyPath: "likes") as! Int
+            let latitude = businesses.value(forKeyPath: "latitude") as! Float
+            let longitude = businesses.value(forKeyPath: "longitude") as! Float
+            let aUrl = URL(string: businessUrl)
+            let aPhone = businesses.value(forKeyPath: "phoneNumber") as! String
+            
+            let address = businesses.value(forKeyPath: "address") as! String
+            
+            let isClosed = businesses.value(forKeyPath: "isClosed") as! Bool
+            
+            let websiteUrl = businesses.value(forKeyPath: "websiteUrl") as! String
+            let fullAddress = businesses.value(forKeyPath: "fullAddress") as! String
+            let zipcode = businesses.value(forKeyPath: "zipcode") as! String
+            let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl, coordinate: self.coordinate, fullAddress: fullAddress, zipcode: zipcode)
+            
+            aBusinesses.append(personalBusiness)
+        }
+        
+        if aBusinesses.count == 0
+        {
+            return true
+        }
+        
+        return false
+    }
     private func deleteObjectFromManagedObjects(objectId: NSManagedObjectID)
     {
         for num in 0..<managedObjects.count

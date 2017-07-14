@@ -34,7 +34,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
     private var globalIndexForCurrentCompany = 0
-    public var theCoordinate : CLLocationCoordinate2D!
+    public var theCoordinate = CLLocationCoordinate2D(latitude: 37.787938, longitude: -122.407506)
     private var initialCall = false
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
@@ -50,6 +50,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
+        self.present(viewController, animated:true, completion:nil)
+        
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
@@ -58,16 +61,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             let alert = UIAlertController(title: "Location Disabled", message: "Your Location is Disabled go to Settings > Zendish and enable them. Features of the app are currently limited.", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                // perhaps use action.title here
+                
             })
+            
             
             self.present(alert, animated: true)
         }
         
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let viewController = storyboard.instantiateViewController(withIdentifier: "slideShowView")
-        
-        //self.present(viewController, animated:true, completion:nil)
         self.tabBarController?.delegate = self
 
         self.leftButton.isEnabled = false
@@ -190,7 +190,15 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     
     func cardSwipedRight(_ card: UIView) {
         
-        
+        if self.personalBusinessCoreData.checkIfCoreDataIsEmpty()
+        {
+            let alert = UIAlertController(title: "First Liked Restaurant", message: "You liked your first restaurant! Go to the favorites view to view your liked restaurants", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                // perhaps use action.title here
+            })
+            
+            self.present(alert, animated: true)
+        }
         
         if self.arrayOfBusinesses.count == 1
         {
@@ -327,11 +335,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         }
     }
  
-    
+    /*
     public func isInitailCall() -> Bool
     {
         return self.initialCall
     }
+    */
     
     public func setIndexOfSelectedGenre(index: Int)
     {
@@ -347,10 +356,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     {
         return self.genre
     }
+    
+    /*
     public func initialCallWasCalled()
     {
         self.initialCall = true
     }
+    */ 
     
     public func setTheCoordinate(coordinate: CLLocationCoordinate2D)
     {
@@ -705,6 +717,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.yelpContainer = YelpContainer(cityAndState: place)
             self.yelpContainer?.changeGenre(genre: self.getGenre())
             self.yelpContainer?.delegate = self
+            usleep(200000)
             self.yelpContainer?.yelpAPICallForBusinesses()
             radiusIndex += 1
         }
@@ -716,11 +729,28 @@ extension BusinessTileViewController : AppDelegateDelegate
 {
     func locationServicesUpdated(appDelegate: AppDelegate) {
         
-        if !self.isInitailCall()
+        self.aBusinessTileOperator = nil 
+        if !loadedCards.isEmpty
         {
+            backgroundView?.isHidden = true
+            forgroundView?.isHidden = true
+            anotherView?.isHidden = true
+            loadedCards.remove(at: 0)
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
+            loadedCards.remove(at: 0)
+            forgroundView?.removeFromSuperview()
+            forgroundView = nil
+            loadedCards.remove(at: 0)
+            anotherView?.removeFromSuperview()
+            anotherView = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+        //if !self.isInitailCall()
+        //{
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
-            
             self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.theCoordinate)
             self.personalBusinessCoreData.resetCoreData()
             
@@ -746,12 +776,12 @@ extension BusinessTileViewController : AppDelegateDelegate
                 self.yelpContainer?.delegate = self
                 self.yelpContainer?.yelpAPICallForBusinesses()
             }
-            self.initialCallWasCalled()
+            //self.initialCallWasCalled()
             
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
             
-        }
+        //}
     }
 }
 

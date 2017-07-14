@@ -845,7 +845,7 @@
         <!--Liked Businesses View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="LikedBusinessesViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favoritesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="LikedBusinessesViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -1139,9 +1139,6 @@
                         <color key="barTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6Pi-zA-fUf" kind="relationship" relationship="rootViewController" id="GMf-q1-d5y"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qr-qM-tGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1172,15 +1169,15 @@
         <!--Slide Show View Controller-->
         <scene sceneID="ElQ-Fs-WON">
             <objects>
-                <pageViewController storyboardIdentifier="slideShowView" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="rL8-SE-ycT" customClass="SlideShowViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="slideShowView" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="rL8-SE-ycT" customClass="SlideShowViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7P-N9-6yb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3686" y="966"/>
         </scene>
-        <!--View Controller-->
+        <!--Second Page View Controller-->
         <scene sceneID="JZ9-2E-ZkB">
             <objects>
-                <viewController storyboardIdentifier="SecondPageController " useStoryboardIdentifierAsRestorationIdentifier="YES" id="o71-qf-xjw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o71-qf-xjw" customClass="SecondPageViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QLW-VU-VIn"/>
                         <viewControllerLayoutGuide type="bottom" id="ca3-zi-oTM"/>
@@ -1188,17 +1185,78 @@
                     <view key="view" contentMode="scaleToFill" id="jRM-D2-dcV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Uz-KB-Fqp">
+                                <rect key="frame" x="67" y="96" width="240" height="185"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe, swipe, swipe." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-p3-6uy">
+                                <rect key="frame" x="103" y="402" width="168" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe right to like a restaurant, or swipe left to dislike a restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-UX-L8p">
+                                <rect key="frame" x="67" y="455" width="240" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1H-hR-0IB">
+                                <rect key="frame" x="103" y="578" width="144" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start Swiping">
+                                    <color key="titleColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startSwiping:" destination="o71-qf-xjw" eventType="touchUpInside" id="Fg8-9z-Pc3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKP-jb-AhP">
+                                <rect key="frame" x="313" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButton:" destination="o71-qf-xjw" eventType="touchUpInside" id="63k-yr-6ch"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vaj-8Y-mhr">
+                                <rect key="frame" x="33" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SKIP">
+                                    <color key="titleColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButton:" destination="o71-qf-xjw" eventType="touchUpInside" id="0nD-a8-B5e"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6SZ-ma-nOt">
+                                <rect key="frame" x="168" y="614" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="1" green="0.0" blue="0.039765733839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="controlSegment" destination="6SZ-ma-nOt" id="XQu-Be-GjF"/>
+                        <outlet property="imageView" destination="9Uz-KB-Fqp" id="gd7-VV-7kl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01r-HK-a5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4521" y="1488"/>
+            <point key="canvasLocation" x="4520.8000000000002" y="1487.4062968515743"/>
         </scene>
-        <!--View Controller-->
+        <!--First Page View Controller-->
         <scene sceneID="w81-89-U7Z">
             <objects>
-                <viewController storyboardIdentifier="FirstPageController " useStoryboardIdentifierAsRestorationIdentifier="YES" id="5KP-xX-nTF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstPageController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5KP-xX-nTF" customClass="FirstPageViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="efe-uP-x7C"/>
                         <viewControllerLayoutGuide type="bottom" id="to0-aG-QNJ"/>
@@ -1206,12 +1264,66 @@
                     <view key="view" contentMode="scaleToFill" id="SgC-99-oeA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.039765733839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-RQ-7xf">
+                                <rect key="frame" x="71" y="107" width="232" height="177"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBe-Hb-tR0">
+                                <rect key="frame" x="116" y="323" width="141" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zendish uses your location to find restaurants near you." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebY-Zt-f5h">
+                                <rect key="frame" x="71" y="396" width="232" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-x4-T3H">
+                                <rect key="frame" x="88" y="535" width="181" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Enable Location Service"/>
+                                <connections>
+                                    <action selector="enableLocationServices:" destination="5KP-xX-nTF" eventType="touchUpInside" id="c0T-LW-KFP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFG-97-qyn">
+                                <rect key="frame" x="313" y="597" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="NEXT"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="5KP-xX-nTF" eventType="touchUpInside" id="keg-0B-9Q8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpC-Z9-vGy">
+                                <rect key="frame" x="16" y="597" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SKIP"/>
+                                <connections>
+                                    <action selector="skipButton:" destination="5KP-xX-nTF" eventType="touchUpInside" id="3tb-6G-QAJ"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fcZ-D5-baq">
+                                <rect key="frame" x="168" y="597" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="1" green="0.0" blue="0.039765733839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="controlSegment" destination="fcZ-D5-baq" id="Qxa-aG-kWu"/>
+                        <outlet property="imageView" destination="1LE-RQ-7xf" id="1U2-J1-PZb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXu-Nt-2Mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4526" y="752"/>
+            <point key="canvasLocation" x="4525.6000000000004" y="751.57421289355329"/>
         </scene>
         <!--Discover-->
         <scene sceneID="SYc-K5-W1U">

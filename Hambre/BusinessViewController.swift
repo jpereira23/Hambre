@@ -42,14 +42,6 @@ class BusinessViewController: UIViewController {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = self.aTitle
-        let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
-        self.view.addSubview(mapView)
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-        marker.title = self.aTitle
-        marker.snippet = "Selected Restaurant"
-        marker.map = mapView
         
         
         //self.cloudKitDatabaseHandler.delegate = self
@@ -62,12 +54,35 @@ class BusinessViewController: UIViewController {
         self.detailView.setTitle(title: self.aTitle)
         self.detailView.xibSetUp()
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
-         self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
         self.detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
         mapView.translatesAutoresizingMaskIntoConstraints =  false
+        if self.latitude != 6666.0
+        {
+            let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
+            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+            self.view.addSubview(mapView)
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+            marker.title = self.aTitle
+            marker.snippet = "Selected Restaurant"
+            marker.map = mapView
+        }
+        else
+        {
+            detailView.directionsButton.isEnabled = false 
+            let camera = GMSCameraPosition.camera(withLatitude: -76.295604, longitude: 22.319117, zoom: 16.5)
+            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+            self.view.addSubview(mapView)
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: -76.295604, longitude: 22.319117)
+            marker.title = "This restaurants coordinates cannot be found"
+            marker.snippet = "NOT FOUND"
+            marker.map = mapView
+        }
         
         //auto layout constraint
         let leftCons = NSLayoutConstraint(item: mapView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)

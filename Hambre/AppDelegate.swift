@@ -40,11 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.locationManager.delegate = self
-      
+        /*
         if self.isInternetAvailable()
         {
             self.configueCoordinates()
         }
+        */
         //make status bar white
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -112,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return self.locationEnabled
     }
     
-    private func configueCoordinates()
+    public func configueCoordinates()
     {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
@@ -237,13 +238,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        self.getICloudAccess()
+        
+        if locationSwitch != false && self.isInternetAvailable()
+        {
+            locationSwitch = false
+            self.configueCoordinates()
+        }
        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        self.getICloudAccess()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
