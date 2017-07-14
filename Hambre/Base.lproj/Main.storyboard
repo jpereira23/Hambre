@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -593,9 +593,9 @@
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28f-ib-esi">
-                                        <rect key="frame" x="20" y="477.66666666666663" width="75" height="19.333333333333371"/>
+                                        <rect key="frame" x="20" y="478" width="216" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="lGh-5B-VKM"/>
+                                            <constraint firstAttribute="width" constant="216" id="lGh-5B-VKM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -698,6 +698,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="averageLabel" destination="28f-ib-esi" id="fYi-cd-DhD"/>
                         <outlet property="distanceLabel" destination="dsM-e1-Z7M" id="f7z-q3-EOW"/>
                         <outlet property="distanceSlider" destination="FC4-4m-bzf" id="XPJ-ph-4NL"/>
                         <outlet property="doneButton" destination="xMZ-v9-iHy" id="8jI-Wy-rMH"/>
@@ -707,7 +708,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jx6-h5-uM6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="85z-c7-yC5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1789.5999999999999" y="-74.212893553223395"/>
+            <point key="canvasLocation" x="1788.4057971014495" y="-75"/>
         </scene>
         <!--Add Review View Controller-->
         <scene sceneID="vV2-Et-4rF">
@@ -1109,7 +1110,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tkQ-uH-K3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1131,7 +1132,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Setting" id="Aq9-nL-244"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1153,7 +1154,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="TabHeart" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="xxh-aD-K9r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="xxh-aD-K9r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1219,7 +1220,7 @@
                     <tabBarItem key="tabBarItem" title="Discover" image="Cards" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="otW-5u-Ixy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="otW-5u-Ixy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1241,7 +1242,7 @@
                     <tabBarItem key="tabBarItem" title="More" image="MoreIcon" id="sJF-NA-R2e"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7jO-3w-ijP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="7jO-3w-ijP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

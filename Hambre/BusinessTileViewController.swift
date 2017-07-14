@@ -515,6 +515,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             let radiusCoreData = RadiusCoreData()
             
             settingsViewController.setSliderValue(value: radiusCoreData.loadRadius())
+            settingsViewController.setCityState(cityState: self.cityState)
             settingsViewController.setSelectedCell(index: self.indexOfSelectedGenre)
         }
     }

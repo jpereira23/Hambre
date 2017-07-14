@@ -14,7 +14,8 @@ class SettingsPopOverViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var distanceSlider: UISlider!
-    
+    @IBOutlet var averageLabel: UILabel!
+    private var textForAverageLabel = "Distance"
     private var radiusCoreData = RadiusCoreData()
     private var indexOfSelectedCell = 0
     private var cityState : String!
@@ -39,7 +40,7 @@ class SettingsPopOverViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.averageLabel.text = textForAverageLabel + " from " + self.cityState
         self.tableView.reloadData()
         
        
