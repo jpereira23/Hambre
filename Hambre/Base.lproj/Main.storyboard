@@ -107,7 +107,7 @@
                     <navigationItem key="navigationItem" id="MXN-iV-Smi">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Jv9-1y-xa2">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="l9b-AT-qiR">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Filter">
@@ -120,7 +120,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="LocationCircle" style="plain" id="Iw5-3t-7dt">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="r8b-kb-gdW">
-                                <rect key="frame" x="209" y="9" width="95" height="25"/>
+                                <rect key="frame" x="299" y="9" width="95" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" image="LocationCircle">
@@ -326,30 +326,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8F-Py-gDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2713" y="663"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="TUN-Rs-GOl">
-            <objects>
-                <viewController id="Ijo-62-ObD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qFc-Hz-vey"/>
-                        <viewControllerLayoutGuide type="bottom" id="GKs-qc-Vmk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ybn-en-Pgb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-KX-GI3">
-                                <rect key="frame" x="142" y="561" width="90" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </pageControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AG9-Bf-Wbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3685.5999999999999" y="677.81109445277366"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="n01-6F-FOb">
@@ -592,8 +568,8 @@
                                             <outlet property="delegate" destination="xTk-m5-YNo" id="bYe-P9-GQp"/>
                                         </connections>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28f-ib-esi">
-                                        <rect key="frame" x="20" y="478" width="216" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28f-ib-esi">
+                                        <rect key="frame" x="20" y="477" width="216" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="216" id="lGh-5B-VKM"/>
                                         </constraints>
@@ -653,6 +629,15 @@
                                             <constraint firstAttribute="height" constant="1" id="eth-OM-bFH"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aow-1M-ETf">
+                                        <rect key="frame" x="20" y="494" width="316" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="216" id="vSx-Y3-F3M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="0.80230629280821919" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -698,7 +683,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="averageLabel" destination="28f-ib-esi" id="fYi-cd-DhD"/>
+                        <outlet property="cityStateLabel" destination="aow-1M-ETf" id="nHq-9f-ixE"/>
                         <outlet property="distanceLabel" destination="dsM-e1-Z7M" id="f7z-q3-EOW"/>
                         <outlet property="distanceSlider" destination="FC4-4m-bzf" id="XPJ-ph-4NL"/>
                         <outlet property="doneButton" destination="xMZ-v9-iHy" id="8jI-Wy-rMH"/>
@@ -973,7 +958,7 @@
                     <navigationItem key="navigationItem" id="4ZG-H4-O8a">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="OKB-Vx-NLp">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eRG-hE-tWy">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <rect key="frame" x="20" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Edit"/>

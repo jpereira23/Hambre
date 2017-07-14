@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsPopOverViewController: UIViewController {
 
+    @IBOutlet var cityStateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
@@ -40,9 +41,8 @@ class SettingsPopOverViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.averageLabel.text = textForAverageLabel + " from " + self.cityState
         self.tableView.reloadData()
-        
+        self.cityStateLabel.text = self.cityState
        
         
         // Do any additional setup after loading the view.
