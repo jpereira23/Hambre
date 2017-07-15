@@ -1,26 +1,28 @@
 //
-//  SecondPageViewController.swift
+//  WelcomeViewController.swift
 //  Hambre
 //
-//  Created by Jeffery Pereira on 7/13/17.
+//  Created by Jeffery Pereira on 7/15/17.
 //  Copyright © 2017 GOODLIFE. All rights reserved.
 //
 
 import UIKit
 
-protocol SecondPageViewControllerDelegate
+protocol WelcomeViewControllerDelegate
 {
-    func secondNextButton()
+    func skipWelcome()
+    func nextWelcome()
 }
-class SecondPageViewController: UIViewController {
 
-    @IBOutlet var controlSegment: UIPageControl!
-    @IBOutlet var imageView: UIImageView!
-    var delegate : SecondPageViewControllerDelegate?
+
+class WelcomeViewController: UIViewController {
+    
+    @IBOutlet var pageControl: UIPageControl!
+    var delegate : WelcomeViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.controlSegment.currentPage = 2
+        self.pageControl.currentPage = 0
         // Do any additional setup after loading the view.
     }
 
@@ -29,19 +31,13 @@ class SecondPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func startSwiping(_ sender: Any) {
-        self.delegate?.secondNextButton()
+    @IBAction func skipAction(_ sender: Any) {
+        self.delegate.skipWelcome()
     }
     
-    @IBAction func skipButton(_ sender: Any) {
-        self.delegate?.secondNextButton()
+    @IBAction func nextAction(_ sender: Any) {
+        self.delegate.nextWelcome()
     }
-    
-    @IBAction func nextButton(_ sender: Any) {
-        self.delegate?.secondNextButton()
-    }
-    
-    
 
     /*
     // MARK: - Navigation

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SlideShowViewController: UIPageViewController, FirstPageViewControllerDelegate, SecondPageViewControllerDelegate {
+class SlideShowViewController: UIPageViewController, FirstPageViewControllerDelegate, SecondPageViewControllerDelegate, WelcomeViewControllerDelegate {
 
     
     public lazy var orderedViewControllers = [UIViewController]()
@@ -17,12 +17,16 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
         super.viewDidLoad()
         dataSource = self
         
+        let wc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomePageController") as! WelcomeViewController
+        wc.delegate = self
+        orderedViewControllers.append(wc)
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstPageController") as! FirstPageViewController
         vc.delegate = self
         orderedViewControllers.append(vc)
         let vc1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondPageController") as! SecondPageViewController
         vc1.delegate = self
         orderedViewControllers.append(vc1)
+        
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
@@ -38,7 +42,7 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
         {
             appDelegate.configueCoordinates()
         }
-        let vc = orderedViewControllers[1]
+        let vc = orderedViewControllers[2]
         setViewControllers([vc], direction: .forward, animated: true, completion: nil)
     }
     
@@ -54,6 +58,18 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
     func secondNextButton()
     {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func skipWelcome()
+    {
+       _ = appDelegate.isInternetAvailable()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func nextWelcome()
+    {
+        let vc = orderedViewControllers[1]
+        setViewControllers([vc], direction: .forward, animated: true, completion: nil)
     }
     
     

@@ -23,7 +23,7 @@ class FirstPageViewController: UIViewController {
     private var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.controlSegment.currentPage = 0
+        self.controlSegment.currentPage = 1
 
         // Do any additional setup after loading the view.
     }
