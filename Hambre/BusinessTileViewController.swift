@@ -422,6 +422,16 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         autocompleteController.delegate = self
         var placeholderAttributes: [AnyHashable: Any] = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: CGFloat(UIFont.systemFontSize))]
+        
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = UIColor(red: 250/255, green: 178/255, blue: 53/255, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        UISearchBar.appearance().setNewcolor(color: UIColor.white)
+        UISearchBar.appearance().barStyle = UIBarStyle.default
+        
+        //Need to add placeholder color to white left
+        
         // Color of the default search text.
         // NOTE: In a production scenario, "Search" would be a localized string
         present(autocompleteController, animated: true, completion: nil)
