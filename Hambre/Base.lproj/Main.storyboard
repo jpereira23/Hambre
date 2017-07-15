@@ -987,7 +987,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2r-TM-RTu">
-                                                    <rect key="frame" x="153" y="21" width="202" height="21"/>
+                                                    <rect key="frame" x="153" y="21" width="163" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="H5s-B6-ib2"/>
                                                     </constraints>

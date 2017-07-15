@@ -81,7 +81,7 @@ class DraggableView: UIView {
     }
     public func getView() -> UIView
     {
-        self.view.translatesAutoresizingMaskIntoConstraints =  false
+        //self.view.translatesAutoresizingMaskIntoConstraints =  false
         
         //auto layout constraint
         
