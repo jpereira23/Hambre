@@ -141,7 +141,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             loadedCards[0]?.xibSetUp()
             backgroundView = loadedCards[0]?.getView() as? DraggableView
             backgroundView?.frame.origin.x = 25
-            backgroundView?.frame.origin.y = 66
+            backgroundView?.frame.origin.y = 86
             self.view.addSubview(backgroundView!)
         }
         
@@ -154,7 +154,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 loadedCards[0]?.xibSetUp()
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 66
+                backgroundView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
             }
             else
@@ -178,9 +178,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.x = 25
                 forgroundView?.frame.origin.x = 25
                 anotherView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 66
-                forgroundView?.frame.origin.y = 66
-                anotherView?.frame.origin.y = 66
+                backgroundView?.frame.origin.y = 86
+                forgroundView?.frame.origin.y = 86
+                anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 self.globalIndexForCurrentCompany += 1
@@ -232,7 +232,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 loadedCards[0]?.xibSetUp()
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 66
+                backgroundView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
             }
             else
@@ -256,9 +256,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.x = 25
                 forgroundView?.frame.origin.x = 25
                 anotherView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 66
-                forgroundView?.frame.origin.y = 66
-                anotherView?.frame.origin.y = 66
+                backgroundView?.frame.origin.y = 86
+                forgroundView?.frame.origin.y = 86
+                anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 self.globalIndexForCurrentCompany += 1
@@ -267,7 +267,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     }
     
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
-        let draggableView = DraggableView(frame: CGRect(x: 25, y: 66, width: 325, height: 395), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
+        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: 325, height: 395), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
@@ -300,7 +300,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 loadedCards[0]?.xibSetUp()
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 66
+                backgroundView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
             }
             else
@@ -325,9 +325,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.x = 25
                 forgroundView?.frame.origin.x = 25
                 anotherView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 66
-                forgroundView?.frame.origin.y = 66
-                anotherView?.frame.origin.y = 66
+                backgroundView?.frame.origin.y = 86
+                forgroundView?.frame.origin.y = 86
+                anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 self.globalIndexForCurrentCompany += 1
