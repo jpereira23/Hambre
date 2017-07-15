@@ -1169,7 +1169,9 @@
         <!--Slide Show View Controller-->
         <scene sceneID="ElQ-Fs-WON">
             <objects>
-                <pageViewController storyboardIdentifier="slideShowView" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="rL8-SE-ycT" customClass="SlideShowViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="slideShowView" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="rL8-SE-ycT" customClass="SlideShowViewController" customModule="Hambre" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7P-N9-6yb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3686" y="966"/>
