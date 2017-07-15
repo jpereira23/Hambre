@@ -1186,63 +1186,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Uz-KB-Fqp">
-                                <rect key="frame" x="67" y="96" width="240" height="185"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swiping" translatesAutoresizingMaskIntoConstraints="NO" id="9Uz-KB-Fqp">
+                                <rect key="frame" x="129" y="89" width="117" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="sLB-bR-QvD"/>
+                                    <constraint firstAttribute="width" constant="117" id="sPe-A2-ry3"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe, swipe, swipe." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-p3-6uy">
-                                <rect key="frame" x="103" y="402" width="168" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe, swipe, swipe." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-p3-6uy">
+                                <rect key="frame" x="16" y="311" width="343" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="KYA-nr-0OL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swipe right to like a restaurant, or swipe left to dislike a restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-UX-L8p">
-                                <rect key="frame" x="67" y="455" width="240" height="115"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe right to like a restaurant, or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-UX-L8p">
+                                <rect key="frame" x="16" y="345" width="343" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="auj-dx-VYU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1H-hR-0IB">
-                                <rect key="frame" x="103" y="578" width="144" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6SZ-ma-nOt">
+                                <rect key="frame" x="168" y="595" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="6mN-pq-G8e"/>
+                                    <constraint firstAttribute="height" constant="37" id="qpd-UT-gL5"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe left to dislike a restaurant." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFe-im-RLj">
+                                <rect key="frame" x="16" y="369" width="343" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="d3D-13-SgT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1H-hR-0IB">
+                                <rect key="frame" x="26" y="428" width="323" height="47"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="VKc-qK-bn3"/>
+                                </constraints>
                                 <state key="normal" title="Start Swiping">
-                                    <color key="titleColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startSwiping:" destination="o71-qf-xjw" eventType="touchUpInside" id="Fg8-9z-Pc3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKP-jb-AhP">
-                                <rect key="frame" x="313" y="617" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="NEXT">
-                                    <color key="titleColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextButton:" destination="o71-qf-xjw" eventType="touchUpInside" id="63k-yr-6ch"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vaj-8Y-mhr">
-                                <rect key="frame" x="33" y="617" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SKIP">
-                                    <color key="titleColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="skipButton:" destination="o71-qf-xjw" eventType="touchUpInside" id="0nD-a8-B5e"/>
-                                </connections>
-                            </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6SZ-ma-nOt">
-                                <rect key="frame" x="168" y="614" width="39" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="pageIndicatorTintColor" red="0.070224850690000007" green="0.1102386085" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="1" green="0.0" blue="0.039765733839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ca3-zi-oTM" firstAttribute="top" secondItem="6SZ-ma-nOt" secondAttribute="bottom" constant="35" id="2b7-TE-rQE"/>
+                            <constraint firstItem="6SZ-ma-nOt" firstAttribute="centerX" secondItem="jRM-D2-dcV" secondAttribute="centerX" id="4EA-q1-nYX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P1H-hR-0IB" secondAttribute="trailing" constant="10" id="BwL-3P-9PV"/>
+                            <constraint firstItem="mFe-im-RLj" firstAttribute="trailing" secondItem="jRM-D2-dcV" secondAttribute="trailingMargin" id="CCb-pu-aCO"/>
+                            <constraint firstItem="YEI-UX-L8p" firstAttribute="leading" secondItem="jRM-D2-dcV" secondAttribute="leadingMargin" id="LG1-Id-IH2"/>
+                            <constraint firstItem="mFe-im-RLj" firstAttribute="top" secondItem="YEI-UX-L8p" secondAttribute="bottom" id="Oix-5e-iha"/>
+                            <constraint firstItem="rGw-p3-6uy" firstAttribute="top" secondItem="9Uz-KB-Fqp" secondAttribute="bottom" constant="101" id="R4S-Cl-6vc"/>
+                            <constraint firstItem="9Uz-KB-Fqp" firstAttribute="top" secondItem="QLW-VU-VIn" secondAttribute="bottom" constant="69" id="XHb-E5-D7h"/>
+                            <constraint firstItem="P1H-hR-0IB" firstAttribute="leading" secondItem="jRM-D2-dcV" secondAttribute="leadingMargin" constant="10" id="bjP-LB-azG"/>
+                            <constraint firstItem="mFe-im-RLj" firstAttribute="leading" secondItem="jRM-D2-dcV" secondAttribute="leadingMargin" id="eVi-0D-adp"/>
+                            <constraint firstItem="rGw-p3-6uy" firstAttribute="leading" secondItem="jRM-D2-dcV" secondAttribute="leadingMargin" id="f5C-Cp-4fs"/>
+                            <constraint firstItem="P1H-hR-0IB" firstAttribute="top" secondItem="mFe-im-RLj" secondAttribute="bottom" constant="35" id="iBM-tL-hj0"/>
+                            <constraint firstItem="YEI-UX-L8p" firstAttribute="trailing" secondItem="jRM-D2-dcV" secondAttribute="trailingMargin" id="m38-MX-jJ3"/>
+                            <constraint firstItem="YEI-UX-L8p" firstAttribute="top" secondItem="rGw-p3-6uy" secondAttribute="bottom" constant="10" id="omi-Q0-yLQ"/>
+                            <constraint firstItem="rGw-p3-6uy" firstAttribute="trailing" secondItem="jRM-D2-dcV" secondAttribute="trailingMargin" id="rBg-gh-HLc"/>
+                            <constraint firstItem="9Uz-KB-Fqp" firstAttribute="centerX" secondItem="rGw-p3-6uy" secondAttribute="centerX" id="yci-mq-FdR"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="controlSegment" destination="6SZ-ma-nOt" id="XQu-Be-GjF"/>
@@ -1461,6 +1486,7 @@
         <image name="MoreIcon" width="23" height="5"/>
         <image name="Not" width="28" height="28"/>
         <image name="Setting" width="24" height="24"/>
+        <image name="Swiping" width="117" height="121"/>
         <image name="TabHeart" width="24" height="22"/>
         <image name="X" width="13" height="13"/>
         <image name="graystar" width="40" height="40"/>
