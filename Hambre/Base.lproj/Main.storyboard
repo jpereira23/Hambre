@@ -1187,14 +1187,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swiping" translatesAutoresizingMaskIntoConstraints="NO" id="9Uz-KB-Fqp">
-                                <rect key="frame" x="129" y="89" width="117" height="121"/>
+                                <rect key="frame" x="129" y="69" width="117" height="121"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="121" id="sLB-bR-QvD"/>
                                     <constraint firstAttribute="width" constant="117" id="sPe-A2-ry3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe, swipe, swipe." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-p3-6uy">
-                                <rect key="frame" x="16" y="311" width="343" height="24"/>
+                                <rect key="frame" x="16" y="291" width="343" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="KYA-nr-0OL"/>
                                 </constraints>
@@ -1203,7 +1203,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe right to like a restaurant, or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEI-UX-L8p">
-                                <rect key="frame" x="16" y="345" width="343" height="24"/>
+                                <rect key="frame" x="16" y="325" width="343" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="auj-dx-VYU"/>
                                 </constraints>
@@ -1221,7 +1221,7 @@
                                 <color key="currentPageIndicatorTintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe left to dislike a restaurant." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFe-im-RLj">
-                                <rect key="frame" x="16" y="369" width="343" height="24"/>
+                                <rect key="frame" x="16" y="349" width="343" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="d3D-13-SgT"/>
                                 </constraints>
@@ -1230,11 +1230,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1H-hR-0IB">
-                                <rect key="frame" x="26" y="428" width="323" height="47"/>
+                                <rect key="frame" x="26" y="408" width="323" height="47"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="VKc-qK-bn3"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Start Swiping">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1269,6 +1270,7 @@
                             <constraint firstItem="9Uz-KB-Fqp" firstAttribute="centerX" secondItem="rGw-p3-6uy" secondAttribute="centerX" id="yci-mq-FdR"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="controlSegment" destination="6SZ-ma-nOt" id="XQu-Be-GjF"/>
                         <outlet property="imageView" destination="9Uz-KB-Fqp" id="gd7-VV-7kl"/>
@@ -1291,7 +1293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map" translatesAutoresizingMaskIntoConstraints="NO" id="1LE-RQ-7xf">
-                                <rect key="frame" x="131.5" y="88" width="111" height="133"/>
+                                <rect key="frame" x="131.5" y="68" width="111" height="133"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="111" id="28n-pZ-gC0"/>
                                     <constraint firstAttribute="height" constant="133" id="Fnu-Rg-B1p"/>
@@ -1324,7 +1326,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-x4-T3H">
-                                <rect key="frame" x="26" y="428" width="323" height="47"/>
+                                <rect key="frame" x="26" y="408" width="323" height="47"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="JnZ-JI-gJv"/>
@@ -1343,7 +1345,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBe-Hb-tR0">
-                                <rect key="frame" x="16" y="311" width="343" height="24"/>
+                                <rect key="frame" x="16" y="291" width="343" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="0Gp-js-yGY"/>
                                 </constraints>
@@ -1352,7 +1354,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zendish uses your location to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebY-Zt-f5h">
-                                <rect key="frame" x="16" y="345" width="343" height="24"/>
+                                <rect key="frame" x="16" y="325" width="343" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="lHB-7h-uRF"/>
                                 </constraints>
@@ -1361,7 +1363,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="find restaurants near you." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nX6-Dw-lJB">
-                                <rect key="frame" x="16" y="369" width="343" height="24"/>
+                                <rect key="frame" x="16" y="349" width="343" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="c1E-q5-Bkf"/>
                                 </constraints>
@@ -1403,6 +1405,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="zMp-x4-T3H" secondAttribute="trailing" constant="10" id="xEO-nu-Cs8"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="controlSegment" destination="fcZ-D5-baq" id="Qxa-aG-kWu"/>
                         <outlet property="imageView" destination="1LE-RQ-7xf" id="1U2-J1-PZb"/>
