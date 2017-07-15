@@ -86,11 +86,11 @@ class DraggableView: UIView {
         //auto layout constraint
         
         
-        let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
-        let leading = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
-        let trailing = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 9)
+        //let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        //let leading = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
+        //let trailing = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 9)
         
-        view.addConstraints([top, leading, trailing])
+        //view.addConstraints([top, leading, trailing])
         
         
         /*
