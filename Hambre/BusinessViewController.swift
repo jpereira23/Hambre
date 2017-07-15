@@ -59,11 +59,11 @@ class BusinessViewController: UIViewController {
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
-        mapView.translatesAutoresizingMaskIntoConstraints =  false
+        
         if self.latitude != 6666.0
         {
             let camera = GMSCameraPosition.camera(withLatitude: self.latitude, longitude: self.longitude, zoom: 16.5)
-            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:0, width: self.segmentView.frame.width, height: self.segmentView.frame.height), camera: camera)
             self.view.addSubview(mapView)
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
@@ -75,7 +75,7 @@ class BusinessViewController: UIViewController {
         {
             detailView.directionsButton.isEnabled = false 
             let camera = GMSCameraPosition.camera(withLatitude: -76.295604, longitude: 22.319117, zoom: 16.5)
-            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:64, width: 375, height: 200), camera: camera)
+            let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:0, width: self.segmentView.frame.width, height: self.segmentView.frame.height), camera: camera)
             self.view.addSubview(mapView)
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: -76.295604, longitude: 22.319117)
@@ -83,8 +83,12 @@ class BusinessViewController: UIViewController {
             marker.snippet = "NOT FOUND"
             marker.map = mapView
         }
+       
         
         //auto layout constraint
+        
+        //mapView.translatesAutoresizingMaskIntoConstraints = false
+        /*
         let leftCons = NSLayoutConstraint(item: mapView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
         let rightCons = NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
         let topCons = NSLayoutConstraint(item: mapView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
@@ -96,6 +100,8 @@ class BusinessViewController: UIViewController {
         view.addConstraints([leftCons, rightCons, topCons, mapHeight, bottom])
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        */
+        
     }
     
     
