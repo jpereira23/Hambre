@@ -421,7 +421,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         let autocompleteController = GMSAutocompleteViewController()
         
         autocompleteController.delegate = self
-        var placeholderAttributes: [AnyHashable: Any] = [NSForegroundColorAttributeName: UIColor.lightGray, NSFontAttributeName: UIFont.systemFont(ofSize: CGFloat(UIFont.systemFontSize))]
         
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = UIColor(red: 250/255, green: 178/255, blue: 53/255, alpha: 1.0)
@@ -429,6 +428,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         UISearchBar.appearance().setNewcolor(color: UIColor.white)
         UISearchBar.appearance().barStyle = UIBarStyle.default
+        autocompleteController.searchDisplayController?.searchBar.barTintColor = UIColor.red
         
         //Need to add placeholder color to white left
         
