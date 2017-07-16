@@ -121,7 +121,8 @@ class DraggableView: UIView {
     {
         self.view = loadViewFromNib() as! DraggableView
         view.frame = self.bounds
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        //view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.businessNameField.text = self.businessName
         if self.miles == "Miles not available"
         {

@@ -19,6 +19,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet var infoButton: UIButton!
+    @IBOutlet weak var referenceLabel: UILabel!
     
     @IBOutlet var locationImage: UIImageView!
     var aBusinessTileOperator : BusinessTileOperator! = nil
@@ -334,6 +335,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 loadedCards.append(aView2)
                 */
                 loadedCards[0]?.xibSetUp()
+                
                 /*
                 loadedCards[1]?.xibSetUp()
                 loadedCards[2]?.xibSetUp()
@@ -349,6 +351,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 //forgroundView?.frame.origin.y = 86
                 //anotherView?.frame.origin.y = 86
+                //self.view.insertSubview(backgroundView!, at: 0)
                 self.view.addSubview(backgroundView!)
                 //self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 self.globalIndexForCurrentCompany += 1
@@ -357,13 +360,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 backgroundView?.translatesAutoresizingMaskIntoConstraints =  false
                 
-                //let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .top, multiplier: 1, constant: 20)
+                let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 25)
                 
-                //let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1, constant: 9)
+                let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 25)
                 
-                //let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: backgroundView, attribute: .trailing, multiplier: 1, constant: 9)
+                let trailing = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1, constant: 25)
                 
-                //backgroundView?.addConstraints([])
+                view.addConstraints([top, leading, trailing])
  
                 //auto layout
                 /*
