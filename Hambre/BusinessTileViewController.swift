@@ -423,14 +423,20 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         autocompleteController.delegate = self
         
+        autocompleteController.searchDisplayController?.searchBar.tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = UIColor(red: 250/255, green: 178/255, blue: 53/255, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
         
+        let placeholderAttributes: [String : AnyObject] = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.systemFont(ofSize: UIFont.systemFontSize)]
+        let attributedPlaceholder: NSAttributedString = NSAttributedString(string: "City, State or Zipcode", attributes: placeholderAttributes)
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
         UISearchBar.appearance().setNewcolor(color: UIColor.white)
         UISearchBar.appearance().barStyle = UIBarStyle.default
         autocompleteController.searchDisplayController?.searchBar.barTintColor = UIColor.red
         
+        UISearchBar.appearance().setImage(UIImage(named: "Map"), for: UISearchBarIcon.search, state: UIControlState.normal)
+        UISearchBar.appearance().setImage(UIImage(named: "EmptyMap"), for: .clear, state: UIControlState.normal)
         //Need to add placeholder color to white left
         
         // Color of the default search text.
