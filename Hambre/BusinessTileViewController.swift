@@ -302,6 +302,19 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
+                
+                //auto layout
+                
+                //backgroundView?.translatesAutoresizingMaskIntoConstraints =  false
+                
+                //let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1, constant: 20)
+                
+                //let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1, constant: 9)
+                
+               // let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1, constant: 9)
+                
+                //backgroundView?.addConstraints([top])
+                
             }
             else
             {
@@ -309,29 +322,81 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 {
                     self.globalIndexForCurrentCompany = 0
                 }
-               
+                
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                /*
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
                 let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                */
                 loadedCards.append(aView)
+                /*
                 loadedCards.append(aView1)
                 loadedCards.append(aView2)
+                */
                 loadedCards[0]?.xibSetUp()
+                /*
                 loadedCards[1]?.xibSetUp()
                 loadedCards[2]?.xibSetUp()
+                */
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
+                /*
                 forgroundView = loadedCards[1]?.getView() as? DraggableView
                 anotherView = loadedCards[2]?.getView() as? DraggableView
+                */
                 backgroundView?.frame.origin.x = 25
-                forgroundView?.frame.origin.x = 25
-                anotherView?.frame.origin.x = 25
+                //forgroundView?.frame.origin.x = 25
+                //anotherView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
-                forgroundView?.frame.origin.y = 86
-                anotherView?.frame.origin.y = 86
+                //forgroundView?.frame.origin.y = 86
+                //anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
-                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
+                //self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 self.globalIndexForCurrentCompany += 1
+                
+                //auto layout
+                
+                backgroundView?.translatesAutoresizingMaskIntoConstraints =  false
+                
+                //let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .top, multiplier: 1, constant: 20)
+                
+                //let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1, constant: 9)
+                
+                //let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: backgroundView, attribute: .trailing, multiplier: 1, constant: 9)
+                
+                //backgroundView?.addConstraints([])
+ 
+                //auto layout
+                /*
+                forgroundView?.translatesAutoresizingMaskIntoConstraints =  false
+                
+                let top1 = NSLayoutConstraint(item: forgroundView!, attribute: .bottom, relatedBy: .equal, toItem: anotherView, attribute: .top, multiplier: 1, constant: 0)
+                
+                let leading1 = NSLayoutConstraint(item: forgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
+                
+                let trailing1 = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: forgroundView!, attribute: .trailing, multiplier: 1, constant: 9)
+                
+                let bottom1 = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 120)
+ 
+                
+                forgroundView?.addConstraints([top1, leading1, trailing1, bottom1])
+                
+                //auto layout
+                
+                anotherView?.translatesAutoresizingMaskIntoConstraints =  false
+                
+                let top2 = NSLayoutConstraint(item: anotherView!, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1, constant: 0)
+                
+                let leading2 = NSLayoutConstraint(item: anotherView!, attribute: .leading, relatedBy: .equal, toItem: anotherView!, attribute: .leading, multiplier: 1, constant: 9)
+                
+                let trailing2 = NSLayoutConstraint(item: anotherView!, attribute: .trailing, relatedBy: .equal, toItem: anotherView, attribute: .trailing, multiplier: 1, constant: 9)
+                
+                let bottom2 = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 120)
+                
+                
+                anotherView?.addConstraints([top2, leading2, trailing2, bottom2])
+                 */
             }
+            
         }
     }
  
@@ -428,7 +493,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         UISearchBar.appearance().setNewcolor(color: UIColor.white)
         UISearchBar.appearance().barStyle = UIBarStyle.default
-        autocompleteController.searchDisplayController?.searchBar.barTintColor = UIColor.red
+        
+        //autocompleteController.searchDisplayController?.searchBar.barTintColor = UIColor.red
         
         //Need to add placeholder color to white left
         
