@@ -360,6 +360,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 //auto layout
                 
+                
                 backgroundView?.translatesAutoresizingMaskIntoConstraints =  false
                 
                 let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 25)
@@ -368,8 +369,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -9)
                 
+                let height = NSLayoutConstraint(item: backgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 395)
                 
-                view.addConstraints([top, leading, trailing])
+                //let trailing1 = NSLayoutConstraint(item: backgroundView?.imageView! as Any, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1, constant: -9)
+                
+                //backgroundView?.addConstraint(trailing1)
+                view.addConstraints([top, leading, trailing, height])
  
                 //auto layout
                 /*
