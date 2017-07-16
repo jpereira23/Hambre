@@ -200,6 +200,16 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.present(alert, animated: true)
         }
         
+        if self.arrayOfBusinesses.count == 1
+        {
+            self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[0]?.getBusiness())!)
+            self.arrayOfBusinesses.remove(at: 0)
+        }
+        else
+        {
+            self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
+            self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany-1)
+        }
        
         
         if self.arrayOfBusinesses.count != 0
@@ -252,19 +262,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
-                self.globalIndexForCurrentCompany += 1
+               // self.globalIndexForCurrentCompany += 1
             }
-        }
-        
-        if self.arrayOfBusinesses.count == 1
-        {
-            self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[0]?.getBusiness())!)
-            self.arrayOfBusinesses.remove(at: 0)
-        }
-        else
-        {
-            self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
-            self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany-1)
         }
     }
     
