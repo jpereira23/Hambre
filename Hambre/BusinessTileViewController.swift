@@ -345,10 +345,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView = loadedCards[1]?.getView() as? DraggableView
                 anotherView = loadedCards[2]?.getView() as? DraggableView
                 */
-                backgroundView?.frame.origin.x = 25
+                //backgroundView?.frame.origin.x = 25
                 //forgroundView?.frame.origin.x = 25
                 //anotherView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 86
+                //backgroundView?.frame.origin.y = 86
+                backgroundView?.frame = CGRect(x: 25, y: 86, width: 325, height: 395)
+                
                 //forgroundView?.frame.origin.y = 86
                 //anotherView?.frame.origin.y = 86
                 //self.view.insertSubview(backgroundView!, at: 0)
@@ -362,9 +364,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 25)
                 
-                let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 25)
+                let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
                 
-                let trailing = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1, constant: 25)
+                let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -9)
+                
                 
                 view.addConstraints([top, leading, trailing])
  
