@@ -20,6 +20,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet var infoButton: UIButton!
     
+    @IBOutlet var GMSButton: UIButton!
     @IBOutlet var locationImage: UIImageView!
     var aBusinessTileOperator : BusinessTileOperator! = nil
     var yelpContainer: YelpContainer?
@@ -92,6 +93,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.title = "Discover"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
         
+        
         //right button states
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .normal)
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .selected)
@@ -104,6 +106,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .normal)
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .selected)
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .highlighted)
+        
+        self.GMSButton.setImage(UIImage(named: "LocationCircle.png"), for: .normal)
+        self.GMSButton.setImage(UIImage(named: "EmptyMap.png"), for: .highlighted)
         
         if !appDelegate.isInternetAvailable()
         {
@@ -433,7 +438,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
         UISearchBar.appearance().setNewcolor(color: UIColor.white)
         UISearchBar.appearance().barStyle = UIBarStyle.default
-        autocompleteController.searchDisplayController?.searchBar.barTintColor = UIColor.red
+        UISearchBar.appearance().tintColor = UIColor.white
         
         UISearchBar.appearance().setImage(UIImage(named: "Map"), for: UISearchBarIcon.search, state: UIControlState.normal)
         UISearchBar.appearance().setImage(UIImage(named: "EmptyMap"), for: .clear, state: UIControlState.normal)
