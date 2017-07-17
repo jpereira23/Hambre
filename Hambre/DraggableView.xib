@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,17 +27,13 @@
             <rect key="frame" x="0.0" y="0.0" width="325" height="395"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tile" translatesAutoresizingMaskIntoConstraints="NO" id="Lsk-zY-082">
-                    <rect key="frame" x="0.0" y="0.0" width="325" height="395"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="91L-GP-Dv7">
                     <rect key="frame" x="0.0" y="0.0" width="325" height="326"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Business" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwq-g2-9YB">
-                    <rect key="frame" x="25" y="342" width="194" height="20"/>
+                    <rect key="frame" x="25" y="342" width="200" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                     <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,18 +66,29 @@
                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="J6h-yn-5No">
-                    <rect key="frame" x="257" y="344" width="12" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="J6h-yn-5No">
+                    <rect key="frame" x="281" y="342" width="12" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12" id="86Z-8V-KRF"/>
+                        <constraint firstAttribute="height" constant="17" id="JVh-yE-fm0"/>
+                    </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPG-a3-7Jd">
-                    <rect key="frame" x="237" y="364" width="53" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPG-a3-7Jd">
+                    <rect key="frame" x="275.33333333333326" y="364" width="24.666666666666686" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="UCZ-ap-Zhk"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BPG-a3-7Jd" secondAttribute="trailing" constant="25" id="OJm-og-VZi"/>
+                <constraint firstItem="BPG-a3-7Jd" firstAttribute="top" secondItem="J6h-yn-5No" secondAttribute="bottom" constant="5" id="aGA-QT-qhJ"/>
+                <constraint firstAttribute="bottom" secondItem="BPG-a3-7Jd" secondAttribute="bottom" constant="16" id="lvb-MR-UoB"/>
+                <constraint firstAttribute="trailing" secondItem="J6h-yn-5No" secondAttribute="trailing" constant="32" id="rj6-tZ-qFR"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -99,7 +106,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Tile" width="325" height="341"/>
         <image name="location" width="12" height="17"/>
     </resources>
 </document>

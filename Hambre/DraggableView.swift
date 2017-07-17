@@ -145,8 +145,11 @@ class DraggableView: UIView {
             data = try? Data(contentsOf: self.imageUrl!)
             if data != nil
             {
-                self.imageView.image = UIImage(data: data!)
-                self.imageView.contentMode = UIViewContentMode.scaleAspectFill
+                
+                self.view.imageView = UIImageView(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height - 69))
+        
+                self.view.imageView.image = UIImage(data: data!)
+                self.view.imageView.contentMode = UIViewContentMode.scaleAspectFill
                 let rectShape1 = CAShapeLayer()
                 rectShape1.bounds = self.view.imageView.frame
                 rectShape1.position = self.view.imageView.center
@@ -161,8 +164,9 @@ class DraggableView: UIView {
         
         overlayView = OverlayView(frame: CGRect(x: CGFloat(self.frame.size.width / 2 - 100), y: CGFloat(0), width: CGFloat(100), height: CGFloat(100)))
         overlayView?.alpha = 0
+        self.view.addSubview(self.view.imageView)
         addSubview(overlayView!)
-        addSubview(view)
+        //addSubview(view)
         
         
         

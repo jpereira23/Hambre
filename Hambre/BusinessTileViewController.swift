@@ -268,7 +268,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     }
     
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
-        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: view.frame.width - 9, height: 395), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
+        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: view.frame.width - 50, height: view.frame.height - 128), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
@@ -354,7 +354,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 //forgroundView?.frame.origin.y = 86
                 //anotherView?.frame.origin.y = 86
                 //self.view.insertSubview(backgroundView!, at: 0)
-                backgroundView?.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .horizontal)
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 //self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
@@ -364,17 +363,29 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 
                 backgroundView?.translatesAutoresizingMaskIntoConstraints =  false
+                backgroundView?.imageView.translatesAutoresizingMaskIntoConstraints =  false
+                
                 
                 let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 25)
                 
-                let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
+                let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 25)
                 
-                let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -9)
+                let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -25)
                 
-                let height = NSLayoutConstraint(item: backgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 395)
+                //let height = NSLayoutConstraint(item: backgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 395)
+                
+                let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: rightButton, attribute: .top, multiplier: 1, constant: -20)
+                
+                let imageViewLeading = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
+                
+                let imageViewTrailing = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 25)
+                
+                let imageViewBottom = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -18)
+               
+                let imageViewTop = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
                 
                 //backgroundView?.addConstraint(trailing1)
-                view.addConstraints([top, leading, trailing, height])
+                view.addConstraints([top, leading, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
  
                 //auto layout
                 /*
