@@ -325,81 +325,74 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 }
                 
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
-                /*
+                
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
                 let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
-                */
+                
                 loadedCards.append(aView)
-                /*
+                
                 loadedCards.append(aView1)
                 loadedCards.append(aView2)
-                */
+                
                 loadedCards[0]?.xibSetUp()
                 
-                /*
+                
                 loadedCards[1]?.xibSetUp()
                 loadedCards[2]?.xibSetUp()
-                */
+                
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
-                /*
+                
                 forgroundView = loadedCards[1]?.getView() as? DraggableView
                 anotherView = loadedCards[2]?.getView() as? DraggableView
-                */
-                backgroundView?.frame.origin.x = 25
-                //forgroundView?.frame.origin.x = 25
-                //anotherView?.frame.origin.x = 25
-                backgroundView?.frame.origin.y = 86
-                //backgroundView?.frame = CGRect(x: 25, y: 86, width: 325, height: 395)
                 
-                //forgroundView?.frame.origin.y = 86
-                //anotherView?.frame.origin.y = 86
-                //self.view.insertSubview(backgroundView!, at: 0)
+                backgroundView?.frame.origin.x = 25
+                forgroundView?.frame.origin.x = 25
+                anotherView?.frame.origin.x = 25
+                backgroundView?.frame.origin.y = 86
+                backgroundView?.frame = CGRect(x: 25, y: 86, width: 325, height: 395)
+                
+                forgroundView?.frame.origin.y = 86
+                anotherView?.frame.origin.y = 86
+                self.view.insertSubview(backgroundView!, at: 0)
                 backgroundView?.backgroundColor = UIColor.white
+                forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
-                //self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
+                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 self.globalIndexForCurrentCompany += 1
                 
                 //auto layout
                 
                 
-                setConstraintsOfDraggableView(draggableView: backgroundView!)
+                setConstraintsOfBackgroundView(draggableView: backgroundView!)
+                
+                forgroundView?.translatesAutoresizingMaskIntoConstraints = false
+                forgroundView?.imageView.translatesAutoresizingMaskIntoConstraints = false
+                
+                let top = NSLayoutConstraint(item: forgroundView!, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
+                
+                let leading = NSLayoutConstraint(item: forgroundView!, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0, constant: 0)
+                
+                let trailing = NSLayoutConstraint(item: forgroundView!, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 0)
+                
+                let bottom = NSLayoutConstraint(item: forgroundView!, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!, attribute: .bottom, multiplier: 1.0, constant: 0)
+                
+                let imageViewLeading = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: forgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
+                
+                let imageViewTrailing = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 25)
+                
+                let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -18)
+                
+                let imageViewTop = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
+                
+            
+                view.addConstraints([top, leading, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
  
-                //auto layout
-                /*
-                forgroundView?.translatesAutoresizingMaskIntoConstraints =  false
-                
-                let top1 = NSLayoutConstraint(item: forgroundView!, attribute: .bottom, relatedBy: .equal, toItem: anotherView, attribute: .top, multiplier: 1, constant: 0)
-                
-                let leading1 = NSLayoutConstraint(item: forgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
-                
-                let trailing1 = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: forgroundView!, attribute: .trailing, multiplier: 1, constant: 9)
-                
-                let bottom1 = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 120)
- 
-                
-                forgroundView?.addConstraints([top1, leading1, trailing1, bottom1])
-                
-                //auto layout
-                
-                anotherView?.translatesAutoresizingMaskIntoConstraints =  false
-                
-                let top2 = NSLayoutConstraint(item: anotherView!, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1, constant: 0)
-                
-                let leading2 = NSLayoutConstraint(item: anotherView!, attribute: .leading, relatedBy: .equal, toItem: anotherView!, attribute: .leading, multiplier: 1, constant: 9)
-                
-                let trailing2 = NSLayoutConstraint(item: anotherView!, attribute: .trailing, relatedBy: .equal, toItem: anotherView, attribute: .trailing, multiplier: 1, constant: 9)
-                
-                let bottom2 = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 120)
-                
-                
-                anotherView?.addConstraints([top2, leading2, trailing2, bottom2])
-                 */
             }
             
         }
     }
     
-    public func setConstraintsOfDraggableView(draggableView: DraggableView)
+    public func setConstraintsOfBackgroundView(draggableView: DraggableView)
     {
         draggableView.translatesAutoresizingMaskIntoConstraints =  false
         draggableView.imageView.translatesAutoresizingMaskIntoConstraints =  false
