@@ -177,10 +177,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             }
             else
             {
+                
                 if self.globalIndexForCurrentCompany + 1 >= self.arrayOfBusinesses.count
                 {
                     self.globalIndexForCurrentCompany = 0
                 }
+                self.globalIndexForCurrentCompany += 1
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
                 let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
@@ -201,7 +203,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
-                self.globalIndexForCurrentCompany += 1
+                
             }
         }
     }
@@ -226,7 +228,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         else
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
-            self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany-1)
+            self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
         }
        
         
@@ -260,6 +262,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 {
                     self.globalIndexForCurrentCompany = 0
                 }
+                
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
                 let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
@@ -280,7 +283,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
-               // self.globalIndexForCurrentCompany += 1
+                
+               
             }
         }
     }
@@ -349,7 +353,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 anotherView?.frame.origin.y = 86
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
-                self.globalIndexForCurrentCompany += 1
+                //self.globalIndexForCurrentCompany += 1
             }
         }
     }

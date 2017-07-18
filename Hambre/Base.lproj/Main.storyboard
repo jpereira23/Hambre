@@ -1429,25 +1429,6 @@
                                     <action selector="skipButton:" destination="5KP-xX-nTF" eventType="touchUpInside" id="3tb-6G-QAJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMp-x4-T3H">
-                                <rect key="frame" x="26" y="408" width="323" height="47"/>
-                                <color key="backgroundColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="JnZ-JI-gJv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="Enable Location Service">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="enableLocationServices:" destination="5KP-xX-nTF" eventType="touchUpInside" id="c0T-LW-KFP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Services" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBe-Hb-tR0">
                                 <rect key="frame" x="16" y="291" width="343" height="24"/>
                                 <constraints>
@@ -1493,20 +1474,17 @@
                             <constraint firstItem="to0-aG-QNJ" firstAttribute="top" secondItem="fcZ-D5-baq" secondAttribute="bottom" constant="35" id="4Kh-xv-Uvg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ebY-Zt-f5h" secondAttribute="trailing" id="4u8-37-e3A"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nX6-Dw-lJB" secondAttribute="trailing" id="5VA-ew-oFe"/>
-                            <constraint firstItem="zMp-x4-T3H" firstAttribute="top" secondItem="nX6-Dw-lJB" secondAttribute="bottom" constant="35" id="71Z-gY-bKq"/>
                             <constraint firstItem="1LE-RQ-7xf" firstAttribute="top" secondItem="efe-uP-x7C" secondAttribute="bottom" constant="68" id="E1k-GO-CZd"/>
                             <constraint firstItem="zBe-Hb-tR0" firstAttribute="leading" secondItem="SgC-99-oeA" secondAttribute="leadingMargin" id="Fxh-MP-gXa"/>
                             <constraint firstItem="to0-aG-QNJ" firstAttribute="top" secondItem="TpC-Z9-vGy" secondAttribute="bottom" constant="45" id="JY5-v0-7BO"/>
                             <constraint firstItem="to0-aG-QNJ" firstAttribute="top" secondItem="cFG-97-qyn" secondAttribute="bottom" constant="45" id="NZD-9Z-woX"/>
                             <constraint firstItem="ebY-Zt-f5h" firstAttribute="top" secondItem="zBe-Hb-tR0" secondAttribute="bottom" constant="10" id="aI3-bA-WNr"/>
-                            <constraint firstItem="zMp-x4-T3H" firstAttribute="leading" secondItem="SgC-99-oeA" secondAttribute="leadingMargin" constant="10" id="afY-W1-0Dh"/>
                             <constraint firstItem="nX6-Dw-lJB" firstAttribute="leading" secondItem="SgC-99-oeA" secondAttribute="leadingMargin" id="ajd-sQ-1vT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zBe-Hb-tR0" secondAttribute="trailing" id="bp2-v9-cqG"/>
                             <constraint firstItem="TpC-Z9-vGy" firstAttribute="leading" secondItem="SgC-99-oeA" secondAttribute="leadingMargin" constant="10" id="gBf-4k-FHj"/>
                             <constraint firstItem="1LE-RQ-7xf" firstAttribute="centerX" secondItem="zBe-Hb-tR0" secondAttribute="centerX" id="urk-gX-WNO"/>
                             <constraint firstItem="zBe-Hb-tR0" firstAttribute="top" secondItem="1LE-RQ-7xf" secondAttribute="bottom" constant="90" id="vnu-a6-lya"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cFG-97-qyn" secondAttribute="trailing" constant="10" id="w03-81-pW1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="zMp-x4-T3H" secondAttribute="trailing" constant="10" id="xEO-nu-Cs8"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>

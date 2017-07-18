@@ -33,13 +33,6 @@ class FirstPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func enableLocationServices(_ sender: Any) {
-        if appDelegate.isInternetAvailable()
-        {
-            appDelegate.configueCoordinates()
-        }
-    }
-    
     
     @IBAction func nextButton(_ sender: Any) {
         self.delegate?.nextButtonWasClicked()
