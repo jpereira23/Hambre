@@ -91,17 +91,21 @@ class BusinessViewController: UIViewController {
             let camera = GMSCameraPosition.camera(withLatitude: -76.295604, longitude: 22.319117, zoom: 16.5)
             let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y:0, width: self.segmentView.frame.width, height: self.segmentView.frame.height), camera: camera)
             self.view.addSubview(mapView)
+            
             mapView.translatesAutoresizingMaskIntoConstraints = false
             
-            let leftCons = NSLayoutConstraint(item: mapView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
-            let rightCons = NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
-            let topCons = NSLayoutConstraint(item: mapView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
+            let leading = NSLayoutConstraint(item: mapView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
+            
+            let trailing = NSLayoutConstraint(item: mapView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
+            
+            let top = NSLayoutConstraint(item: mapView, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
+            
             let mapHeight = NSLayoutConstraint(item: mapView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 0, constant: 209)
             
             let bottom = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 394)
             
             
-            view.addConstraints([leftCons, rightCons, topCons, mapHeight, bottom])
+            view.addConstraints([leading, trailing, top, mapHeight, bottom])
             
 
             let marker = GMSMarker()
@@ -111,6 +115,7 @@ class BusinessViewController: UIViewController {
             marker.map = mapView
         }
        
+
         
         //auto layout constraint
         

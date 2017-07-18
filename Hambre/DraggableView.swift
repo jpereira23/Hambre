@@ -81,19 +81,23 @@ class DraggableView: UIView {
     }
     public func getView() -> UIView
     {
-        //self.view.translatesAutoresizingMaskIntoConstraints =  false
+        
         
         //auto layout constraint
-        
-        
-        //let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
-        //let leading = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 9)
-        //let trailing = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 9)
-        
-        //view.addConstraints([top, leading, trailing])
-        
-        
         /*
+        self.view.translatesAutoresizingMaskIntoConstraints =  false
+        
+        let top = NSLayoutConstraint(item: self.view, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        
+        let leading = NSLayoutConstraint(item: self.view, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 9)
+        
+        let trailing = NSLayoutConstraint(item: self.view, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 9)
+        
+        self.view.addConstraints([top, leading, trailing])
+        
+        
+         -----------
+         
          let leftCons = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
          
          let rightCons = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
@@ -117,7 +121,8 @@ class DraggableView: UIView {
     {
         self.view = loadViewFromNib() as! DraggableView
         view.frame = self.bounds
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        //view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.businessNameField.text = self.businessName
         if self.miles == "Miles not available"
         {
@@ -140,8 +145,11 @@ class DraggableView: UIView {
             data = try? Data(contentsOf: self.imageUrl!)
             if data != nil
             {
-                self.imageView.image = UIImage(data: data!)
-                self.imageView.contentMode = UIViewContentMode.scaleAspectFill
+                
+                self.view.imageView = UIImageView(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height - 69))
+        
+                self.view.imageView.image = UIImage(data: data!)
+                self.view.imageView.contentMode = UIViewContentMode.scaleToFill
                 let rectShape1 = CAShapeLayer()
                 rectShape1.bounds = self.view.imageView.frame
                 rectShape1.position = self.view.imageView.center
@@ -156,8 +164,9 @@ class DraggableView: UIView {
         
         overlayView = OverlayView(frame: CGRect(x: CGFloat(self.frame.size.width / 2 - 100), y: CGFloat(0), width: CGFloat(100), height: CGFloat(100)))
         overlayView?.alpha = 0
+        self.view.addSubview(self.view.imageView)
         addSubview(overlayView!)
-        addSubview(view)
+        //addSubview(view)
         
         
         

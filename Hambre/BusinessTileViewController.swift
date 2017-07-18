@@ -19,6 +19,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet var infoButton: UIButton!
+    @IBOutlet weak var referenceLabel: UILabel!
     
     @IBOutlet var GMSButton: UIButton!
     @IBOutlet var locationImage: UIImageView!
@@ -160,7 +161,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             backgroundView = loadedCards[0]?.getView() as? DraggableView
             backgroundView?.frame.origin.x = 25
             backgroundView?.frame.origin.y = 86
+            backgroundView?.backgroundColor = UIColor.white
             self.view.addSubview(backgroundView!)
+            setConstraintsOfBackgroundView()
         }
         
         if self.arrayOfBusinesses.count > 0
@@ -173,7 +176,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
+                backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                setConstraintsOfBackgroundView()
             }
             else
             {
@@ -201,6 +206,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 forgroundView?.frame.origin.y = 86
                 anotherView?.frame.origin.y = 86
+                backgroundView?.backgroundColor = UIColor.white
+                forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 
@@ -254,7 +261,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
+                backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                setConstraintsOfBackgroundView()
+                
             }
             else
             {
@@ -281,6 +291,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 forgroundView?.frame.origin.y = 86
                 anotherView?.frame.origin.y = 86
+                backgroundView?.backgroundColor = UIColor.white
+                forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 
@@ -290,7 +302,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     }
     
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
-        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: 325, height: 395), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
+        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: view.frame.width - 50, height: view.frame.height - 128), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
@@ -324,7 +336,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
+                backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                setConstraintsOfBackgroundView()
+                
             }
             else
             {
@@ -332,30 +347,96 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 {
                     self.globalIndexForCurrentCompany = 0
                 }
-               
+                
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
                 let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
+                
                 loadedCards.append(aView)
+                
                 loadedCards.append(aView1)
                 loadedCards.append(aView2)
+                
                 loadedCards[0]?.xibSetUp()
+                
+                
                 loadedCards[1]?.xibSetUp()
                 loadedCards[2]?.xibSetUp()
+                
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
+                
                 forgroundView = loadedCards[1]?.getView() as? DraggableView
                 anotherView = loadedCards[2]?.getView() as? DraggableView
+                
                 backgroundView?.frame.origin.x = 25
                 forgroundView?.frame.origin.x = 25
                 anotherView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
+                backgroundView?.frame = CGRect(x: 25, y: 86, width: 325, height: 395)
+                
                 forgroundView?.frame.origin.y = 86
                 anotherView?.frame.origin.y = 86
+                
+                backgroundView?.backgroundColor = UIColor.white
+                forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
                 //self.globalIndexForCurrentCompany += 1
             }
+            
         }
+    }
+    
+    public func setConstraintsOfBackgroundView()
+    {
+        backgroundView!.translatesAutoresizingMaskIntoConstraints =  false
+        backgroundView!.imageView.translatesAutoresizingMaskIntoConstraints =  false
+        
+        
+        let top = NSLayoutConstraint(item: backgroundView!, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 25)
+        
+        let leading = NSLayoutConstraint(item: backgroundView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 25)
+        
+        let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -25)
+        
+        let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: rightButton, attribute: .top, multiplier: 1, constant: -20)
+        
+        let imageViewLeading = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
+        
+        let imageViewTrailing = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 25)
+        
+        let imageViewBottom = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -18)
+        
+        let imageViewTop = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
+        
+        //backgroundView?.addConstraint(trailing1)
+        view.addConstraints([top, leading, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
+    }
+    
+    public func setConstraintsForForgroundView()
+    {
+        forgroundView?.translatesAutoresizingMaskIntoConstraints = false
+        forgroundView?.imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let top = NSLayoutConstraint(item: forgroundView!, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
+        
+        let leading = NSLayoutConstraint(item: forgroundView!, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0, constant: 0)
+        
+        let trailing = NSLayoutConstraint(item: forgroundView!, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 0)
+        
+        let bottom = NSLayoutConstraint(item: forgroundView!, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!, attribute: .bottom, multiplier: 1.0, constant: 0)
+        
+        let imageViewLeading = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: forgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
+        
+        let imageViewTrailing = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 50)
+        
+        let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -18)
+        
+        let imageViewTop = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
+        
+        
+        view.addConstraints([top, leading, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
     }
  
     /*
