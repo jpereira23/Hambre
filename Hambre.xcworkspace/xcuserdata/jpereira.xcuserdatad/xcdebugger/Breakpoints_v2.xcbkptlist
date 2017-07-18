@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "522018971.848226"
+            timestampString = "522090303.450734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "cardSwipedLeft(_:)"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "cardSwipedRight(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
