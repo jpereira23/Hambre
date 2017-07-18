@@ -149,9 +149,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             loadedCards.remove(at: 0)
             forgroundView?.removeFromSuperview()
             forgroundView = nil
-            loadedCards.remove(at: 0)
-            anotherView?.removeFromSuperview()
-            anotherView = nil
+            
         }
         else
         {
@@ -182,30 +180,24 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             }
             else
             {
-                
+                self.globalIndexForCurrentCompany += 1
                 if self.globalIndexForCurrentCompany + 1 >= self.arrayOfBusinesses.count
                 {
                     self.globalIndexForCurrentCompany = 0
                 }
-                self.globalIndexForCurrentCompany += 1
+                
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
-                let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 loadedCards.append(aView)
                 loadedCards.append(aView1)
-                loadedCards.append(aView2)
                 loadedCards[0]?.xibSetUp()
                 loadedCards[1]?.xibSetUp()
-                loadedCards[2]?.xibSetUp()
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 forgroundView = loadedCards[1]?.getView() as? DraggableView
-                anotherView = loadedCards[2]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
                 forgroundView?.frame.origin.x = 25
-                anotherView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
                 forgroundView?.frame.origin.y = 86
-                anotherView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
@@ -250,9 +242,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             loadedCards.remove(at: 0)
             forgroundView?.removeFromSuperview()
             forgroundView = nil
-            loadedCards.remove(at: 0)
-            anotherView?.removeFromSuperview()
-            anotherView = nil
         }
         if self.arrayOfBusinesses.count > 0
         {
@@ -278,26 +267,20 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
-                let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 loadedCards.append(aView)
                 loadedCards.append(aView1)
-                loadedCards.append(aView2)
                 loadedCards[0]?.xibSetUp()
                 loadedCards[1]?.xibSetUp()
-                loadedCards[2]?.xibSetUp()
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 forgroundView = loadedCards[1]?.getView() as? DraggableView
-                anotherView = loadedCards[2]?.getView() as? DraggableView
                 backgroundView?.frame.origin.x = 25
                 forgroundView?.frame.origin.x = 25
-                anotherView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
                 forgroundView?.frame.origin.y = 86
-                anotherView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
-                self.view.insertSubview(forgroundView!, aboveSubview:anotherView!)
+                self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -307,7 +290,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     }
     
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
-        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: view.frame.width - 50, height: view.frame.height - 128), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
+        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: view.frame.width - 50, height: view.frame.height - 177), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
@@ -356,45 +339,39 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
-                let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 
                 loadedCards.append(aView)
                 
                 loadedCards.append(aView1)
-                loadedCards.append(aView2)
                 
                 loadedCards[0]?.xibSetUp()
                 
                 
                 loadedCards[1]?.xibSetUp()
-                loadedCards[2]?.xibSetUp()
                 
                 backgroundView = loadedCards[0]?.getView() as? DraggableView
                 
                 forgroundView = loadedCards[1]?.getView() as? DraggableView
-                anotherView = loadedCards[2]?.getView() as? DraggableView
                 
                 backgroundView?.frame.origin.x = 25
                 forgroundView?.frame.origin.x = 25
-                anotherView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
-                backgroundView?.frame = CGRect(x: 25, y: 86, width: 325, height: 395)
+                
                 
                 forgroundView?.frame.origin.y = 86
-                anotherView?.frame.origin.y = 86
+                
                 
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
+                
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
-                //self.globalIndexForCurrentCompany += 1
                 
                 //auto layout
                 
                 
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
-                //setConstraintsForAnotherView()
                 
                
  
@@ -415,9 +392,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -25)
         
-        let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: rightButton, attribute: .top, multiplier: 1, constant: -20)
+        let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: rightButton, attribute: .top, multiplier: 1, constant: -10)
         
         let imageViewLeading = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
+        
+         let height = NSLayoutConstraint(item: forgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.height - 177)
         
         let imageViewTrailing = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 25)
         
@@ -426,7 +405,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         let imageViewTop = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         
         //backgroundView?.addConstraint(trailing1)
-        view.addConstraints([top, leading, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
+        view.addConstraints([top, leading, height, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
     }
     
     public func setConstraintsForForgroundView()
@@ -442,6 +421,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let bottom = NSLayoutConstraint(item: forgroundView!, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!, attribute: .bottom, multiplier: 1.0, constant: 0)
         
+        let height = NSLayoutConstraint(item: forgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.height - 177)
+        
         let imageViewLeading = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: forgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
         
         let imageViewTrailing = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 50)
@@ -451,7 +432,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         let imageViewTop = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         
         
-        view.addConstraints([top, leading, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
+        view.addConstraints([top, leading, trailing, height, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
     }
  
     /*
