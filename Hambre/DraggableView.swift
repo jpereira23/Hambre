@@ -149,7 +149,7 @@ class DraggableView: UIView {
                 self.view.imageView = UIImageView(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height - 69))
         
                 self.view.imageView.image = UIImage(data: data!)
-                self.view.imageView.contentMode = UIViewContentMode.scaleAspectFill
+                self.view.imageView.contentMode = UIViewContentMode.scaleToFill
                 let rectShape1 = CAShapeLayer()
                 rectShape1.bounds = self.view.imageView.frame
                 rectShape1.position = self.view.imageView.center

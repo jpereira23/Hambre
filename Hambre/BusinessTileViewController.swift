@@ -21,6 +21,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     @IBOutlet var infoButton: UIButton!
     @IBOutlet weak var referenceLabel: UILabel!
     
+    @IBOutlet var GMSButton: UIButton!
     @IBOutlet var locationImage: UIImageView!
     var aBusinessTileOperator : BusinessTileOperator! = nil
     var yelpContainer: YelpContainer?
@@ -51,12 +52,25 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
-        self.present(viewController, animated:true, completion:nil)
+        
         
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
+
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            if appDelegate.isInternetAvailable()
+            {
+                appDelegate.configueCoordinates()
+            }
+        } else {
+            print("First launch, setting UserDefault.")
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
+            self.present(viewController, animated:true, completion:nil)
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
+
         
         if !appDelegate.isLocationEnabled()
         {
@@ -93,6 +107,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.title = "Discover"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
         
+        
         //right button states
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .normal)
         self.rightButton.setImage(UIImage(named: "Heart.png"), for: .selected)
@@ -105,6 +120,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .normal)
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .selected)
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .highlighted)
+        
+        self.GMSButton.setImage(UIImage(named: "LocationCircle.png"), for: .normal)
+        self.GMSButton.setImage(UIImage(named: "EmptyMap.png"), for: .highlighted)
         
         if !appDelegate.isInternetAvailable()
         {
@@ -164,10 +182,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             }
             else
             {
+                
                 if self.globalIndexForCurrentCompany + 1 >= self.arrayOfBusinesses.count
                 {
                     self.globalIndexForCurrentCompany = 0
                 }
+                self.globalIndexForCurrentCompany += 1
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
                 let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
@@ -190,7 +210,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
-                self.globalIndexForCurrentCompany += 1
+                
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -218,8 +238,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         else
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
-            self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany-1)
+            self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
         }
+       
         
         if self.arrayOfBusinesses.count != 0
         {
@@ -254,6 +275,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 {
                     self.globalIndexForCurrentCompany = 0
                 }
+                
                 let aView = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
                 let aView1 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany)
                 let aView2 = self.createDraggableViewWithData(at: self.globalIndexForCurrentCompany + 1)
@@ -279,7 +301,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
-                self.globalIndexForCurrentCompany += 1
+                //self.globalIndexForCurrentCompany += 1
             }
         }
     }
@@ -365,7 +387,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
-                self.globalIndexForCurrentCompany += 1
+                //self.globalIndexForCurrentCompany += 1
                 
                 //auto layout
                 
@@ -519,12 +541,17 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         autocompleteController.delegate = self
         
+        autocompleteController.searchDisplayController?.searchBar.tintColor = UIColor.white
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = UIColor(red: 250/255, green: 178/255, blue: 53/255, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
         
+        let placeholderAttributes: [String : AnyObject] = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.systemFont(ofSize: UIFont.systemFontSize)]
+        let attributedPlaceholder: NSAttributedString = NSAttributedString(string: "City, State or Zipcode", attributes: placeholderAttributes)
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
         UISearchBar.appearance().setNewcolor(color: UIColor.white)
         UISearchBar.appearance().barStyle = UIBarStyle.default
+        UISearchBar.appearance().tintColor = UIColor.white
         
         //autocompleteController.searchDisplayController?.searchBar.barTintColor = UIColor.red
         

@@ -57,12 +57,19 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
     
     func secondNextButton()
     {
+        if appDelegate.isInternetAvailable()
+        {
+            appDelegate.configueCoordinates()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     func skipWelcome()
     {
-       _ = appDelegate.isInternetAvailable()
+        if appDelegate.isInternetAvailable()
+        {
+            appDelegate.configueCoordinates()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
