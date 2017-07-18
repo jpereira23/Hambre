@@ -209,8 +209,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
-                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
+                self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
+                setConstraintsOfBackgroundView()
+                setConstraintsForForgroundView()
+                //setConstraintsForAnotherView()
             }
         }
     }
@@ -294,9 +297,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
-                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
-                
-               
+                self.view.insertSubview(forgroundView!, aboveSubview:anotherView!)
+                setConstraintsOfBackgroundView()
+                setConstraintsForForgroundView()
+                //setConstraintsForAnotherView()
+                //self.globalIndexForCurrentCompany += 1
             }
         }
     }
@@ -381,8 +386,18 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
-                self.view.insertSubview(forgroundView!, belowSubview:anotherView!)
+                self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 //self.globalIndexForCurrentCompany += 1
+                
+                //auto layout
+                
+                
+                setConstraintsOfBackgroundView()
+                setConstraintsForForgroundView()
+                //setConstraintsForAnotherView()
+                
+               
+ 
             }
             
         }
@@ -538,8 +553,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         UISearchBar.appearance().barStyle = UIBarStyle.default
         UISearchBar.appearance().tintColor = UIColor.white
         
-        UISearchBar.appearance().setImage(UIImage(named: "Map"), for: UISearchBarIcon.search, state: UIControlState.normal)
-        UISearchBar.appearance().setImage(UIImage(named: "EmptyMap"), for: .clear, state: UIControlState.normal)
+        //autocompleteController.searchDisplayController?.searchBar.barTintColor = UIColor.red
+        
         //Need to add placeholder color to white left
         
         // Color of the default search text.
