@@ -59,7 +59,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
 
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
-            print("Not first launch.")
+            if appDelegate.isInternetAvailable()
+            {
+                appDelegate.configueCoordinates()
+            }
         } else {
             print("First launch, setting UserDefault.")
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
@@ -83,7 +86,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
 
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
-        self.infoButton.isEnabled = falsea
+        self.infoButton.isEnabled = false
         self.activityIndicator.startAnimating()
         yelpContainer?.delegate = self
         
