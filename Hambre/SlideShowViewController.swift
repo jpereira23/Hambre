@@ -75,10 +75,6 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
     
     func nextWelcome()
     {
-        if appDelegate.isInternetAvailable()
-        {
-            appDelegate.configueCoordinates()
-        }
         let vc = orderedViewControllers[1]
         setViewControllers([vc], direction: .forward, animated: true, completion: nil)
     }

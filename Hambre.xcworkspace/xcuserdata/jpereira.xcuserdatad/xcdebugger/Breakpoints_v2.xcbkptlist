@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/SlideShowViewController.swift"
-            timestampString = "521874257.381381"
+            filePath = "Hambre/BusinessTileViewController.swift"
+            timestampString = "522023791.252271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "pageViewController(_:viewControllerAfter:)"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "cardSwipedLeft(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

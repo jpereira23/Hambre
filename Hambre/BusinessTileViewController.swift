@@ -51,12 +51,22 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
-        self.present(viewController, animated:true, completion:nil)
+        
         
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
+
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        } else {
+            print("First launch, setting UserDefault.")
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
+            self.present(viewController, animated:true, completion:nil)
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
+
         
         if !appDelegate.isLocationEnabled()
         {
@@ -73,7 +83,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
 
         self.leftButton.isEnabled = false
         self.rightButton.isEnabled = false
-        self.infoButton.isEnabled = false
+        self.infoButton.isEnabled = falsea
         self.activityIndicator.startAnimating()
         yelpContainer?.delegate = self
         
