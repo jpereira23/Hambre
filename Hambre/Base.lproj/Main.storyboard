@@ -521,7 +521,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="364" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCG-QO-8KU" id="EXn-67-Nnw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="364" height="49.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <color key="tintColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -933,7 +933,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rDj-We-568" id="Qb4-b3-jcq">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="94.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1234 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMR-j7-Fl2">
@@ -1532,6 +1532,7 @@
         <image name="Map" width="111" height="133"/>
         <image name="MoreIcon" width="23" height="5"/>
         <image name="Not" width="28" height="28"/>
+        <image name="Setting" width="24" height="24"/>
         <image name="Swiping" width="117" height="121"/>
         <image name="TabHeart" width="24" height="22"/>
         <image name="X" width="13" height="13"/>
