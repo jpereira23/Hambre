@@ -161,6 +161,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             backgroundView?.frame.origin.y = 86
             backgroundView?.backgroundColor = UIColor.white
             self.view.addSubview(backgroundView!)
+            
+            let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+            
+            backgroundView?.addGestureRecognizer(gestureRec)
             setConstraintsOfBackgroundView()
         }
         
@@ -176,6 +180,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                backgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
             }
             else
@@ -202,7 +210,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
+                forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -214,7 +224,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         if self.personalBusinessCoreData.checkIfCoreDataIsEmpty()
         {
-            let alert = UIAlertController(title: "First Liked Restaurant", message: "You liked your first restaurant! Go to the favorites view to view your liked restaurants", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: nil, message: "You liked your first restaurant! Go to the favorites view to view your liked restaurants", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
                 // perhaps use action.title here
             })
@@ -255,6 +265,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                backgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 
             }
@@ -281,6 +295,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
+                
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -367,6 +385,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                forgroundView?.addGestureRecognizer(gestureRec)
+                
+                
                 //auto layout
                 
                 
@@ -378,6 +401,38 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             }
             
         }
+    }
+    
+    public func tapDetailViewForBusinessView(sender: UITapGestureRecognizer)
+    {
+        let businessViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "businessViewController") as! BusinessViewController
+        
+        if loadedCards.count > 0
+        {
+            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+            businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
+            businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
+            businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
+            businessViewController.setWebsiteUrl(url: (loadedCards[1]!.getBusiness().getWebsiteUrl()))
+            businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
+            businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
+            businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+        }
+        else
+        {
+            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+            businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
+            businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
+            businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
+            businessViewController.setWebsiteUrl(url: (loadedCards[1]!.getBusiness().getWebsiteUrl()))
+            businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
+            businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
+            businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+        }
+        
+        self.navigationController?.pushViewController(businessViewController, animated: true)
+        
+        
     }
     
     public func setConstraintsOfBackgroundView()
