@@ -10,6 +10,7 @@
 		3C1F6918A45D0CDC6A497D44 /* Pods_Hambre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13551CDA5DFB9578A718E151 /* Pods_Hambre.framework */; };
 		5B01B5261F1052AC00EB8AF3 /* Righteous-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B01B5251F1052AC00EB8AF3 /* Righteous-Regular.ttf */; };
 		5B52042C1EEA5C600069AD33 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52042B1EEA5C600069AD33 /* CALayerExtension.swift */; };
+		5B61E0AF1F1EE2F500EB5E65 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61E0AE1F1EE2F500EB5E65 /* MoreViewController.swift */; };
 		6408B5851EF862F900600538 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6408B5841EF862F900600538 /* ReviewTableViewCell.xib */; };
 		6412DEB51F186B07000EC19C /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6412DEB41F186B07000EC19C /* FirstPageViewController.swift */; };
 		6412DEB71F186B0F000EC19C /* SecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6412DEB61F186B0F000EC19C /* SecondPageViewController.swift */; };
@@ -75,6 +76,7 @@
 		2DD9A9129711824D51E13F5A /* Pods-Hambre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hambre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hambre/Pods-Hambre.debug.xcconfig"; sourceTree = "<group>"; };
 		5B01B5251F1052AC00EB8AF3 /* Righteous-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Righteous-Regular.ttf"; sourceTree = "<group>"; };
 		5B52042B1EEA5C600069AD33 /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
+		5B61E0AE1F1EE2F500EB5E65 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		5E8D6256026A9DBC42650E1A /* Pods-HambreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HambreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HambreTests/Pods-HambreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6408B5841EF862F900600538 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		6412DEB41F186B07000EC19C /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		64716E851EE884EB00970C07 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5B61E0AE1F1EE2F500EB5E65 /* MoreViewController.swift */,
 				6499FE651F0AFED50000D23A /* SettingsPopOverViewController.swift */,
 				644FA6EF1F0C0C700034D574 /* RadiusCoreData.swift */,
 				646B59DB1EE8C15700CCB194 /* CoreDataLocation.swift */,
@@ -611,6 +614,7 @@
 				64D8E8371EEA38F400D5DB31 /* DetailView.swift in Sources */,
 				64D8E8341EE9F5C900D5DB31 /* MainTabViewController.swift in Sources */,
 				642A7CCF1EDCDCB40085062A /* Negocios.xcdatamodeld in Sources */,
+				5B61E0AF1F1EE2F500EB5E65 /* MoreViewController.swift in Sources */,
 				64CEE4911EE0A7660065082F /* CloudKitDatabaseHandler.swift in Sources */,
 				64F8566C1EDF61D3004E352F /* BusinessViewController.swift in Sources */,
 				642079C31EF0D78900F78230 /* MapView.swift in Sources */,

@@ -20,7 +20,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="GIt-pV-zie">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZendishTitle" translatesAutoresizingMaskIntoConstraints="NO" id="608-CC-PJM">
+                                <rect key="frame" x="61" y="290" width="253" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="253" id="8zt-ah-WTu"/>
+                                    <constraint firstAttribute="height" constant="87" id="akn-6K-TZj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="608-CC-PJM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="6VZ-xS-YMU"/>
+                            <constraint firstItem="GIt-pV-zie" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8L6-Ib-MAD"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="GIt-pV-zie" secondAttribute="bottom" id="CZU-jS-Fgh"/>
+                            <constraint firstAttribute="trailing" secondItem="GIt-pV-zie" secondAttribute="trailing" id="KVN-IL-pGL"/>
+                            <constraint firstItem="GIt-pV-zie" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="gHz-BI-1vR"/>
+                            <constraint firstItem="608-CC-PJM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ihA-oP-Yvv"/>
+                        </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
@@ -29,4 +49,8 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchImage" width="16" height="16"/>
+        <image name="ZendishTitle" width="248" height="54"/>
+    </resources>
 </document>
