@@ -33,7 +33,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RvV-qA-4Bn">
-                    <rect key="frame" x="15" y="19" width="150" height="18"/>
+                    <rect key="frame" x="15" y="19" width="203" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="2Fr-JD-xM1"/>
                     </constraints>
@@ -96,10 +96,10 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwm-xs-ThL">
-                    <rect key="frame" x="193" y="0.0" width="116" height="37"/>
+                    <rect key="frame" x="239" y="0.0" width="70" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="37" id="6nX-Fv-Ylf"/>
-                        <constraint firstAttribute="width" constant="116" id="UDn-wn-m0I"/>
+                        <constraint firstAttribute="width" constant="70" id="2dm-dA-SyT"/>
+                        <constraint firstAttribute="height" constant="30" id="X6m-U8-Bqg"/>
                     </constraints>
                     <state key="normal" title="hours">
                         <color key="titleColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -118,7 +118,7 @@
                 <constraint firstItem="974-dh-eCC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="FHg-Gw-aFD"/>
                 <constraint firstAttribute="trailing" secondItem="6iU-eE-K9y" secondAttribute="trailing" id="GXc-zJ-bZR"/>
                 <constraint firstItem="mFH-hf-PqR" firstAttribute="top" secondItem="974-dh-eCC" secondAttribute="bottom" constant="5" id="Gd0-gT-CxN"/>
-                <constraint firstItem="Jwm-xs-ThL" firstAttribute="leading" secondItem="RvV-qA-4Bn" secondAttribute="trailing" constant="28" id="H52-dm-3ow"/>
+                <constraint firstItem="Jwm-xs-ThL" firstAttribute="leading" secondItem="RvV-qA-4Bn" secondAttribute="trailing" constant="21" id="H52-dm-3ow"/>
                 <constraint firstItem="RvV-qA-4Bn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="KWS-YR-2gD"/>
                 <constraint firstItem="pPz-sB-N7Y" firstAttribute="top" secondItem="pUd-D8-RhT" secondAttribute="bottom" constant="5" id="c4E-pJ-pUi"/>
                 <constraint firstAttribute="trailing" secondItem="mFH-hf-PqR" secondAttribute="trailing" constant="16" id="cN8-fk-qA1"/>
@@ -131,7 +131,7 @@
                 <constraint firstItem="t9M-TN-Gjz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="sGC-aL-laH"/>
                 <constraint firstAttribute="trailing" secondItem="t9M-TN-Gjz" secondAttribute="trailing" constant="16" id="sKX-tV-LCc"/>
                 <constraint firstItem="974-dh-eCC" firstAttribute="top" secondItem="RvV-qA-4Bn" secondAttribute="bottom" constant="17" id="vxr-GJ-alT"/>
-                <constraint firstAttribute="trailing" secondItem="RvV-qA-4Bn" secondAttribute="trailing" constant="160" id="wJY-E8-gkz"/>
+                <constraint firstAttribute="trailing" secondItem="RvV-qA-4Bn" secondAttribute="trailing" constant="107" id="wJY-E8-gkz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="2.5" y="81.5"/>

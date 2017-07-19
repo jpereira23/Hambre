@@ -35,7 +35,7 @@ class DetailView: UIView {
     
     
     
-    private var title : String! = "Title"
+    private var title : String! = ""
     private var address : String! = "Not an address"
     private var phoneNumber : String! = "Phone Number: (000) 000-0000"
     private var isClosed : String! = "Closed"
@@ -64,7 +64,7 @@ class DetailView: UIView {
         self.addressField.setTitle(self.address, for: .normal)
         self.phoneFIeld.setTitle(self.phoneNumber, for: .normal)
         self.isClosedField.setTitle(self.isClosed, for: .normal)
-        self.websiteUrlField.setTitle(self.title + "'s Website", for: .normal)
+        self.websiteUrlField.setTitle(self.title + " Website", for: .normal)
         addSubview(view)
     }
 
@@ -113,11 +113,11 @@ class DetailView: UIView {
     {
         if isClosed
         {
-            self.isClosed = "Currently closed."
+            self.isClosed = "Closed"
         }
         else
         {
-            self.isClosed = "Currently open."
+            self.isClosed = "Open"
         }
     }
 

@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-Hh-75c">
-                    <rect key="frame" x="231" y="10" width="80" height="18"/>
+                    <rect key="frame" x="257" y="10" width="80" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="gWp-gA-6oP"/>
                     </constraints>
@@ -29,7 +29,7 @@
                     </state>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OQZ-GY-U8c">
-                    <rect key="frame" x="47" y="0.0" width="94" height="36"/>
+                    <rect key="frame" x="27" y="0.0" width="94" height="36"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktz-2e-Nko">
                             <rect key="frame" x="0.0" y="0.0" width="94" height="18"/>
@@ -95,8 +95,8 @@
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ysg-b3-9ih">
                     <rect key="frame" x="0.0" y="59" width="364" height="336"/>
-                    <color key="backgroundColor" red="0.38823529410000002" green="0.71126302080000003" blue="0.42268880199999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="separatorColor" red="0.96862745100000003" green="0.96470588239999999" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="jf8-O0-CWW"/>
@@ -109,11 +109,11 @@
                 <constraint firstAttribute="trailing" secondItem="Ysg-b3-9ih" secondAttribute="trailing" id="1RN-j0-VLH"/>
                 <constraint firstItem="kL3-Hh-75c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="3C7-MJ-Utj"/>
                 <constraint firstAttribute="bottom" secondItem="Ysg-b3-9ih" secondAttribute="bottom" id="5c0-SU-ObR"/>
-                <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="53" id="TuN-p5-aUr"/>
+                <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="27" id="TuN-p5-aUr"/>
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YRj-F0-57Q"/>
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="59" id="cCI-mz-58g"/>
                 <constraint firstItem="OQZ-GY-U8c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ek5-qx-Sfx"/>
-                <constraint firstItem="OQZ-GY-U8c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="47" id="kN5-wc-4qm"/>
+                <constraint firstItem="OQZ-GY-U8c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="27" id="kN5-wc-4qm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

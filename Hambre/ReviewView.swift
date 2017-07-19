@@ -248,7 +248,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         
         let array = self.filterArray(anId: self.getUrl())
-        cell?.nameField.text = array[indexPath.row].getReviewer()
+        cell?.nameField.text = "By " + array[indexPath.row].getReviewer()
         cell?.commentField.text = array[indexPath.row].getSummaryReview()
         cell?.dateCreatedField.text = array[indexPath.row].getCreationDate()
         cell?.setStars(averageOfReviews: Float(array[indexPath.row].getReview()))
