@@ -35,6 +35,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     public var radiiDistances : RadiiDistances! = nil
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
+    public var leftHasHappened = false
+    public var launchedBefore : Bool! = true
     private var globalIndexForCurrentCompany = 0
     public var theCoordinate = CLLocationCoordinate2D(latitude: 37.787938, longitude: -122.407506)
     private var initialCall = false
@@ -59,8 +61,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
 
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
+            leftHasHappened = true
             if appDelegate.isInternetAvailable()
             {
                 appDelegate.configueCoordinates()
@@ -69,7 +72,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             print("First launch, setting UserDefault.")
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
             self.present(viewController, animated:true, completion:nil)
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
         }
 
         
@@ -141,6 +144,19 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
 
     
     func cardSwipedLeft(_ card: UIView) {
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if !launchedBefore && !leftHasHappened{
+            leftHasHappened = true
+            let alert = UIAlertController(title: nil, message: "You disliked your first restaurant. We appreciate your honesty!", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                // perhaps use action.title here
+            })
+            
+            self.present(alert, animated: true)
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+        }
         
         if self.arrayOfBusinesses.count != 1 || self.arrayOfBusinesses.count != 0
         {
