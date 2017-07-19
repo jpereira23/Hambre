@@ -124,7 +124,7 @@ class DraggableView: UIView {
         //view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.translatesAutoresizingMaskIntoConstraints = false
         self.businessNameField.text = self.businessName
-        if self.miles == "Miles not available"
+        if self.miles == "N/A"
         {
             self.milesField.font = UIFont(name: self.milesField.font.fontName, size: 8)
         }

@@ -15,16 +15,21 @@ class MoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated
+        
+        //let navBorder: UIView = UIView(frame: CGRectMake(0, navigationController!.navigationBar.frame.size.height, navigationController!.navigationBar.frame.size.width, 1))
+        
+        //navBorder.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1.0)
+        //self.navigationController?.navigationBar.addSubview(navBorder)
+        
         
     }
     
+    //func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+    //        return CGRect(x: x, y: y, width: width, height: height)
+    //    }
+    
     @IBAction func rateUsPressed(_ sender: Any) {
-        let link = SFSafariViewController(url: URL(string: "https://itunes.apple.com/us/app/clash-royale/id1053012308?mt=8")!)
+        let link = SFSafariViewController(url: URL(string: "https://itunes.apple.com/us/app/clash-royale/1256178549?mt=8")!)
         self.present(link, animated: true, completion: nil)
     }
     
