@@ -71,23 +71,19 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         print("MOVED TO SUPERVIEW")
     }
     
-    override func willMove(toWindow newWindow: UIWindow?) {
-        self.tableView.estimatedRowHeight = 200
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-    }
-    
     override func didMoveToWindow() {
         self.tableView.register(ReviewTableViewCell.self, forCellReuseIdentifier: "cell")
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-    
+       
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.tableView.reloadData()
     
         let numOfReviews = self.filterArray(anId: self.url)
         self.howManyReviews.text! = String(numOfReviews.count) + " Reviews"
-        
-        
         
         
     }
@@ -227,6 +223,14 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         return reviews
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.filterArray(anId: self.getUrl()).count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         var cell: ReviewTableViewCell?
         
@@ -249,10 +253,12 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell?.dateCreatedField.text = array[indexPath.row].getCreationDate()
         cell?.setStars(averageOfReviews: Float(array[indexPath.row].getReview()))
         
+        cell?.textLabel?.numberOfLines = 0
+        
         return cell!
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+    /*public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
         let array = self.filterArray(anId: self.getUrl())
         let comment = array[indexPath.row].getSummaryReview()
@@ -262,8 +268,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         return 95
     }
+ */
+
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.filterArray(anId: self.getUrl()).count
-    }
 }
