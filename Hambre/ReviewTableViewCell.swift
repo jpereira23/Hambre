@@ -37,9 +37,6 @@ class ReviewTableViewCell: UITableViewCell {
         //self.textLabel?.text = name
         // Initialization code
         
-        
-        
-        
     }
     
     public func setStars(averageOfReviews: Float)

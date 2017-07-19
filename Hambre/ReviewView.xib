@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-Hh-75c">
-                    <rect key="frame" x="231" y="20" width="80" height="18"/>
+                    <rect key="frame" x="231" y="10" width="80" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="EoD-2A-uhr"/>
                     </constraints>
@@ -29,7 +29,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktz-2e-Nko">
-                    <rect key="frame" x="47" y="10" width="92" height="18"/>
+                    <rect key="frame" x="47" y="0.0" width="92" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="92" id="3PF-5G-5Wc"/>
                         <constraint firstAttribute="height" constant="18" id="dBB-yD-yum"/>
@@ -52,7 +52,7 @@
                     </connections>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="LfY-PX-Snx">
-                    <rect key="frame" x="46" y="31" width="94" height="18"/>
+                    <rect key="frame" x="46" y="21" width="94" height="18"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graystar" translatesAutoresizingMaskIntoConstraints="NO" id="YwX-lc-0jz">
                             <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
@@ -103,12 +103,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ktz-2e-Nko" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="47" id="BgZ-v0-hKC"/>
-                <constraint firstItem="ktz-2e-Nko" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="CR8-rU-HC5"/>
+                <constraint firstItem="ktz-2e-Nko" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CR8-rU-HC5"/>
                 <constraint firstItem="LfY-PX-Snx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="46" id="JMY-dg-4E1"/>
-                <constraint firstItem="kL3-Hh-75c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="JMf-iJ-IYS"/>
+                <constraint firstItem="kL3-Hh-75c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="JMf-iJ-IYS"/>
                 <constraint firstAttribute="trailing" secondItem="Ysg-b3-9ih" secondAttribute="trailing" constant="19" id="JgK-YF-uxL"/>
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="Q23-dY-YhZ"/>
-                <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="kL3-Hh-75c" secondAttribute="bottom" constant="21" id="TH3-7Y-wJh"/>
+                <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="kL3-Hh-75c" secondAttribute="bottom" constant="31" id="TH3-7Y-wJh"/>
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="leading" secondItem="LfY-PX-Snx" secondAttribute="trailing" constant="-121" id="cC0-Wo-g8I"/>
                 <constraint firstAttribute="bottom" secondItem="Ysg-b3-9ih" secondAttribute="bottom" id="fXL-pi-y1I"/>
                 <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="53" id="kBA-Dm-ZpJ"/>
