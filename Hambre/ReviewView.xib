@@ -112,6 +112,7 @@
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="leading" secondItem="LfY-PX-Snx" secondAttribute="trailing" constant="-121" id="cC0-Wo-g8I"/>
                 <constraint firstAttribute="bottom" secondItem="Ysg-b3-9ih" secondAttribute="bottom" id="fXL-pi-y1I"/>
                 <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="53" id="kBA-Dm-ZpJ"/>
+                <constraint firstItem="kL3-Hh-75c" firstAttribute="leading" secondItem="ljD-qR-QNM" secondAttribute="trailing" constant="91" id="qLU-tT-wPS"/>
                 <constraint firstItem="LfY-PX-Snx" firstAttribute="top" secondItem="ktz-2e-Nko" secondAttribute="bottom" constant="3" id="zHg-e9-jLv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -125,7 +126,7 @@
                 <outlet property="reviewStarTwo" destination="jiG-b5-iTN" id="F6J-Dm-1cM"/>
                 <outlet property="tableView" destination="Ysg-b3-9ih" id="X0h-jI-OdH"/>
             </connections>
-            <point key="canvasLocation" x="239" y="140.5"/>
+            <point key="canvasLocation" x="272" y="139"/>
         </view>
     </objects>
     <resources>
