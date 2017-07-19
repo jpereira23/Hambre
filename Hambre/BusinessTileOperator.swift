@@ -46,12 +46,12 @@ class BusinessTileOperator: NSObject {
             if business.imageURL == nil && business.phone == nil && business.location.coordinate == nil
             {
                 print(business.name)
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: 6666, latitude: 6666, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/59/Facultat_Filosofia_URL.JPG")!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: 6666, latitude: 6666, phoneNumber: "Not Available", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
             }
             else if business.phone == nil && business.location.coordinate == nil
             {
                 print(business.name)
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: 6666, latitude: 6666, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: 6666, latitude: 6666, phoneNumber: "Not Available", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
             }
             else if business.imageURL == nil && business.location.coordinate == nil
             {
@@ -65,7 +65,7 @@ class BusinessTileOperator: NSObject {
             }
             else if business.phone == nil
             {
-                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: self.coordinate.longitude, latitude: self.coordinate.latitude, phoneNumber: "(000) 000-0000", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
+                personalBusiness = PersonalBusiness(businessName: business.name, businessImageUrl: business.imageURL!, city: business.location.city, state: business.location.stateCode, liked: false, likes: 0, longitude: self.coordinate.longitude, latitude: self.coordinate.latitude, phoneNumber: "Not Available", address: business.location.address, isClosed: business.isClosed, websiteUrl: business.url.absoluteString, coordinate: self.coordinate, zipcode: business.location.postalCode)
             }
             else if business.location.coordinate == nil
             {

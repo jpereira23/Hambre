@@ -92,7 +92,8 @@ class CloudKitDatabaseHandler: NSObject {
     
     public func appendToArrayOfReviews(review: Review)
     {
-        self.arrayOfReviews.append(review)
+        self.arrayOfReviews = self.arrayOfReviews.sorted(by: { $0.getCreationDate() > $1.getCreationDate() })
+        self.arrayOfReviews.insert(review, at: 0)
     }
     
     public func getAverageReviews(url: String) -> Float
@@ -139,6 +140,7 @@ class CloudKitDatabaseHandler: NSObject {
     }
     public func accessArrayOfReviews() -> [Review]
     {
+        self.arrayOfReviews = self.arrayOfReviews.sorted(by: { $0.getCreationDate() > $1.getCreationDate() })
         return self.arrayOfReviews
     }
     

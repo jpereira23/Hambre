@@ -87,45 +87,15 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     
     func firstStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        self.reviewStarThree.image = UIImage(named: "fullstar")
         self.reviewStarOne.image = UIImage(named: "fullstar")
         self.reviewStarTwo.image = UIImage(named: "graystar")
-        self.reviewStarThree.image = UIImage(named: "graystar")
-        self.reviewStarFour.image = UIImage(named: "graystar")
-        self.reviewStarFive.image = UIImage(named: "graystar")
-        self.review = 1
-    }
- 
-    func secondStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        self.reviewStarOne.image = UIImage(named: "fullstar")
-        self.reviewStarTwo.image = UIImage(named: "fullstar")
-        self.reviewStarThree.image = UIImage(named: "graystar")
         self.reviewStarFour.image = UIImage(named: "graystar")
         self.reviewStarFive.image = UIImage(named: "graystar")
         self.review = 2
     }
-    
-    func thirdStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        self.reviewStarOne.image = UIImage(named: "fullstar")
-        self.reviewStarTwo.image = UIImage(named: "fullstar")
-        self.reviewStarThree.image = UIImage(named: "fullstar")
-        self.reviewStarFour.image = UIImage(named: "graystar")
-        self.reviewStarFive.image = UIImage(named: "graystar")
-        self.review = 3
-    }
-    
-    func fourthStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        self.reviewStarOne.image = UIImage(named: "fullstar")
-        self.reviewStarTwo.image = UIImage(named: "fullstar")
-        self.reviewStarThree.image = UIImage(named: "fullstar")
-        self.reviewStarFour.image = UIImage(named: "fullstar")
-        self.reviewStarFive.image = UIImage(named: "graystar")
-        self.review = 4
-    }
-    
-    func fifthStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
+ 
+    func secondStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         self.reviewStarOne.image = UIImage(named: "fullstar")
         self.reviewStarTwo.image = UIImage(named: "fullstar")
@@ -133,6 +103,45 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         self.reviewStarFour.image = UIImage(named: "fullstar")
         self.reviewStarFive.image = UIImage(named: "fullstar")
         self.review = 5
+    }
+    
+    func thirdStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.reviewStarThree.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "graystar")
+        self.reviewStarOne.image = UIImage(named: "graystar")
+        self.reviewStarFour.image = UIImage(named: "graystar")
+        self.reviewStarFive.image = UIImage(named: "graystar")
+        self.review = 1
+        
+    }
+    
+    func fourthStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        self.reviewStarThree.image = UIImage(named: "fullstar")
+        self.reviewStarOne.image = UIImage(named: "fullstar")
+        self.reviewStarFour.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "graystar")
+        self.reviewStarFive.image = UIImage(named: "graystar")
+        self.review = 3
+        
+        //
+        
+    }
+    
+    func fifthStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        self.reviewStarOne.image = UIImage(named: "fullstar")
+        self.reviewStarFive.image = UIImage(named: "fullstar")
+        self.reviewStarThree.image = UIImage(named: "fullstar")
+        self.reviewStarFour.image = UIImage(named: "fullstar")
+        self.reviewStarTwo.image = UIImage(named: "graystar")
+        self.review = 4
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

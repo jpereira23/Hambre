@@ -35,6 +35,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     public var radiiDistances : RadiiDistances! = nil
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
+    public var leftHasHappened = false
+    public var launchedBefore : Bool! = true
     private var globalIndexForCurrentCompany = 0
     public var theCoordinate = CLLocationCoordinate2D(latitude: 37.787938, longitude: -122.407506)
     private var initialCall = false
@@ -46,20 +48,22 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     public var radiusIndex = 0
     var MAX_BUFFER_SIZE: Int = 2
+    @IBOutlet var outOfTiles: UIView!
     
     let maskView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.outOfTiles.isHidden = true
         
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
 
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
+            leftHasHappened = true
             if appDelegate.isInternetAvailable()
             {
                 appDelegate.configueCoordinates()
@@ -68,7 +72,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             print("First launch, setting UserDefault.")
             let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "slideShowView")
             self.present(viewController, animated:true, completion:nil)
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
         }
 
         
@@ -141,6 +145,19 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     
     func cardSwipedLeft(_ card: UIView) {
         
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if !launchedBefore && !leftHasHappened{
+            leftHasHappened = true
+            let alert = UIAlertController(title: nil, message: "You disliked your first restaurant. We appreciate your honesty!", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                // perhaps use action.title here
+            })
+            
+            self.present(alert, animated: true)
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+        }
+        
         if self.arrayOfBusinesses.count != 1 || self.arrayOfBusinesses.count != 0
         {
             loadedCards.remove(at: 0)
@@ -161,6 +178,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             backgroundView?.frame.origin.y = 86
             backgroundView?.backgroundColor = UIColor.white
             self.view.addSubview(backgroundView!)
+            
+            let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+            
+            backgroundView?.addGestureRecognizer(gestureRec)
             setConstraintsOfBackgroundView()
         }
         
@@ -176,6 +197,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                backgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
             }
             else
@@ -202,7 +227,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
+                forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -214,7 +241,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         if self.personalBusinessCoreData.checkIfCoreDataIsEmpty()
         {
-            let alert = UIAlertController(title: "First Liked Restaurant", message: "You liked your first restaurant! Go to the favorites view to view your liked restaurants", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: nil, message: "You liked your first restaurant! Go to the favorites view to view your liked restaurants", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
                 // perhaps use action.title here
             })
@@ -226,11 +253,16 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[0]?.getBusiness())!)
             self.arrayOfBusinesses.remove(at: 0)
+            self.outOfTiles.isHidden = false
         }
-        else
+        else if self.arrayOfBusinesses.count != 0
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
             self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
+        }
+        else
+        {
+            backgroundView?.removeFromSuperview()
         }
        
         
@@ -255,6 +287,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                backgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 
             }
@@ -281,6 +317,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
+                
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -367,6 +407,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                
+                forgroundView?.addGestureRecognizer(gestureRec)
+                
+                
                 //auto layout
                 
                 
@@ -378,6 +423,42 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             }
             
         }
+        else
+        {
+            self.outOfTiles.isHidden = false
+        }
+    }
+    
+    public func tapDetailViewForBusinessView(sender: UITapGestureRecognizer)
+    {
+        let businessViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "businessViewController") as! BusinessViewController
+        
+        if loadedCards.count > 0
+        {
+            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+            businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
+            businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
+            businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
+            businessViewController.setWebsiteUrl(url: (loadedCards[1]!.getBusiness().getWebsiteUrl()))
+            businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
+            businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
+            businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+        }
+        else
+        {
+            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+            businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
+            businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
+            businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
+            businessViewController.setWebsiteUrl(url: (loadedCards[1]!.getBusiness().getWebsiteUrl()))
+            businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
+            businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
+            businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+        }
+        
+        self.navigationController?.pushViewController(businessViewController, animated: true)
+        
+        
     }
     
     public func setConstraintsOfBackgroundView()
@@ -396,7 +477,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let imageViewLeading = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
         
-         let height = NSLayoutConstraint(item: forgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.height - 177)
+         let height = NSLayoutConstraint(item: backgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.height - 177)
         
         let imageViewTrailing = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 25)
         
@@ -677,28 +758,58 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     
     @IBAction func swipeLeft(_ sender: Any) {
         // Still needs to be worked out after what i changed for tileView
-        loadedCards.first??.xibSetUp()
-        let dragView: DraggableView? = loadedCards.first as! DraggableView
-        dragView?.overlayView?.mode = .GGOverlayViewModeLeft
+        
+        if loadedCards.count != 1
+        {
+        loadedCards[1]?.xibSetUp()
+        let dragView = loadedCards[1]!
+        dragView.overlayView?.mode = .GGOverlayViewModeLeft
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
-            dragView?.overlayView?.alpha = 1
-            dragView?.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            dragView.overlayView?.alpha = 1
+            dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
         })
-        dragView?.leftClickAction()
+        dragView.leftClickAction()
+        }
+        else
+        {
+            loadedCards[0]?.xibSetUp()
+            let dragView = loadedCards[0]!
+            dragView.overlayView?.mode = .GGOverlayViewModeLeft
+            UIView.animate(withDuration: 0.2, animations: {() -> Void in
+                dragView.overlayView?.alpha = 1
+                dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            })
+            dragView.leftClickAction()
+        }
+        
         
         
     }
     
     @IBAction func swipeRight(_ sender: Any) {
         // still needs to be worked out after what i did for tileview
-        loadedCards.first??.xibSetUp()
-        let dragView: DraggableView? = loadedCards.first as! DraggableView
-        dragView?.overlayView?.mode = .GGOverlayViewModeRight
-        UIView.animate(withDuration: 0.2, animations: {() -> Void in
-            dragView?.overlayView?.alpha = 1
-            
-        })
-        dragView?.rightClickAction()
+        if loadedCards.count != 1
+        {
+            loadedCards[1]?.xibSetUp()
+            let dragView = loadedCards[1]!
+            dragView.overlayView?.mode = .GGOverlayViewModeLeft
+            UIView.animate(withDuration: 0.2, animations: {() -> Void in
+                dragView.overlayView?.alpha = 1
+                dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            })
+            dragView.rightClickAction()
+        }
+        else
+        {
+            loadedCards[0]?.xibSetUp()
+            let dragView = loadedCards[0]!
+            dragView.overlayView?.mode = .GGOverlayViewModeLeft
+            UIView.animate(withDuration: 0.2, animations: {() -> Void in
+                dragView.overlayView?.alpha = 1
+                dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            })
+            dragView.rightClickAction()
+        }
     }
     
     private func checkAndUpdateGlobalIndex()
@@ -721,20 +832,26 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     func yelpAPICallback(_ yelpContainer: YelpContainer, worked: Bool) {
         if worked == true
         {
-            if !loadedCards.isEmpty
+            
+            
+            if loadedCards.count != 1 && loadedCards.count != 0
             {
                 backgroundView?.isHidden = true
                 forgroundView?.isHidden = true
-                anotherView?.isHidden = true
                 loadedCards.remove(at: 0)
                 backgroundView?.removeFromSuperview()
                 backgroundView = nil
                 loadedCards.remove(at: 0)
                 forgroundView?.removeFromSuperview()
                 forgroundView = nil
-                loadedCards.remove(at: 0)
-                anotherView?.removeFromSuperview()
-                anotherView = nil
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+            else if loadedCards.count == 1
+            {
+                backgroundView?.isHidden = true
+                backgroundView?.removeFromSuperview()
+                backgroundView = nil
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
@@ -810,6 +927,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.loadCards()
             }
         }
+        self.outOfTiles.isHidden = true
     }
     
     func placeFound(place: String, radiiDistances: RadiiDistances) {
@@ -846,20 +964,24 @@ extension BusinessTileViewController : AppDelegateDelegate
     func locationServicesUpdated(appDelegate: AppDelegate) {
         
         self.aBusinessTileOperator = nil 
-        if !loadedCards.isEmpty
+        if loadedCards.count != 1 && loadedCards.count != 0
         {
             backgroundView?.isHidden = true
             forgroundView?.isHidden = true
-            anotherView?.isHidden = true
             loadedCards.remove(at: 0)
             backgroundView?.removeFromSuperview()
             backgroundView = nil
             loadedCards.remove(at: 0)
             forgroundView?.removeFromSuperview()
             forgroundView = nil
-            loadedCards.remove(at: 0)
-            anotherView?.removeFromSuperview()
-            anotherView = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+        else if loadedCards.count == 1
+        {
+            backgroundView?.isHidden = true
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
         }
@@ -905,20 +1027,24 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        if !loadedCards.isEmpty
+        if loadedCards.count != 1 && loadedCards.count != 0
         {
             backgroundView?.isHidden = true
             forgroundView?.isHidden = true
-            anotherView?.isHidden = true
             loadedCards.remove(at: 0)
             backgroundView?.removeFromSuperview()
             backgroundView = nil
             loadedCards.remove(at: 0)
             forgroundView?.removeFromSuperview()
             forgroundView = nil
-            loadedCards.remove(at: 0)
-            anotherView?.removeFromSuperview()
-            anotherView = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+        else if loadedCards.count == 1
+        {
+            backgroundView?.isHidden = true
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
         }
