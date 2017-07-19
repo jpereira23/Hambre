@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -101,14 +102,12 @@
                         <constraints>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Nal-M1-5Sy" secondAttribute="bottom" constant="25" id="0gc-CC-V0i"/>
                             <constraint firstItem="cyk-9m-hT7" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="KAw-uM-Wmf"/>
-                            <constraint firstItem="rEe-Xd-WpP" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="RW5-pj-42h"/>
+                            <constraint firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="RW5-pj-42h"/>
                             <constraint firstItem="NXd-SI-ZjL" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="UH3-Ly-SFM"/>
                             <constraint firstItem="7Vz-zb-1Kf" firstAttribute="leading" secondItem="NXd-SI-ZjL" secondAttribute="trailing" constant="22" id="bLi-W2-ceK"/>
                             <constraint firstItem="NXd-SI-ZjL" firstAttribute="leading" secondItem="Nal-M1-5Sy" secondAttribute="trailing" constant="22" id="cU5-CS-uCV"/>
                             <constraint firstItem="Nal-M1-5Sy" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="5" id="e60-4q-5BS"/>
-                            <constraint firstAttribute="trailing" secondItem="rEe-Xd-WpP" secondAttribute="trailing" id="gP2-8U-73T"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="NXd-SI-ZjL" secondAttribute="bottom" constant="43" id="gST-G3-1qi"/>
-                            <constraint firstItem="NXd-SI-ZjL" firstAttribute="top" secondItem="rEe-Xd-WpP" secondAttribute="bottom" constant="23" id="gdl-hA-QaW"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="7Vz-zb-1Kf" secondAttribute="bottom" constant="25" id="hrT-7e-m3R"/>
                             <constraint firstItem="cyk-9m-hT7" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="kcH-TL-ADk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7Vz-zb-1Kf" secondAttribute="trailing" constant="5" id="ulq-pS-HYg"/>
@@ -146,7 +145,6 @@
                     <connections>
                         <outlet property="GMSButton" destination="r8b-kb-gdW" id="QlE-4F-WFG"/>
                         <outlet property="activityIndicator" destination="cyk-9m-hT7" id="JeD-Y8-Kkf"/>
-                        <outlet property="awesomeLine" destination="rEe-Xd-WpP" id="vvI-1i-Lkn"/>
                         <outlet property="infoButton" destination="NXd-SI-ZjL" id="KHT-Xz-Qew"/>
                         <outlet property="leftButton" destination="Nal-M1-5Sy" id="cWu-fM-f2E"/>
                         <outlet property="locationIcon" destination="Iw5-3t-7dt" id="aob-iM-pef"/>
@@ -514,7 +512,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="364" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tCG-QO-8KU" id="EXn-67-Nnw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="364" height="49.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="364" height="49"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <color key="tintColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -833,7 +831,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pcR-KN-czs">
-                                <rect key="frame" x="187.66666666666666" y="664" width="39" height="37"/>
+                                <rect key="frame" x="188" y="664" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="3He-HY-dwI"/>
                                     <constraint firstAttribute="height" constant="37" id="yYs-LM-32r"/>
@@ -926,7 +924,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rDj-We-568" id="Qb4-b3-jcq">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="94.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1234 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMR-j7-Fl2">
@@ -1167,7 +1165,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tkQ-uH-K3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1189,7 +1187,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Setting" id="Aq9-nL-244"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1208,7 +1206,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="TabHeart" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="xxh-aD-K9r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="xxh-aD-K9r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1271,7 +1269,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6SZ-ma-nOt">
-                                <rect key="frame" x="187.66666666666666" y="664" width="39" height="37"/>
+                                <rect key="frame" x="188" y="664" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="6mN-pq-G8e"/>
                                     <constraint firstAttribute="height" constant="37" id="qpd-UT-gL5"/>
@@ -1412,7 +1410,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fcZ-D5-baq">
-                                <rect key="frame" x="187.66666666666666" y="664" width="39" height="37"/>
+                                <rect key="frame" x="188" y="664" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="OEh-BJ-6gH"/>
                                     <constraint firstAttribute="width" constant="39" id="Ztc-ko-s62"/>
@@ -1459,7 +1457,7 @@
                     <tabBarItem key="tabBarItem" title="Discover" image="Cards" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="otW-5u-Ixy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="otW-5u-Ixy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1481,7 +1479,7 @@
                     <tabBarItem key="tabBarItem" title="More" image="MoreIcon" id="sJF-NA-R2e"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="7jO-3w-ijP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7jO-3w-ijP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1525,12 +1523,13 @@
         <image name="Map" width="111" height="133"/>
         <image name="MoreIcon" width="23" height="5"/>
         <image name="Not" width="28" height="28"/>
+        <image name="Setting" width="24" height="24"/>
         <image name="Swiping" width="117" height="121"/>
         <image name="TabHeart" width="24" height="22"/>
         <image name="X" width="13" height="13"/>
         <image name="graystar" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bn3-9e-jQ8"/>
+        <segue reference="Sh3-GC-Plj"/>
     </inferredMetricsTieBreakers>
 </document>
