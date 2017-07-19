@@ -82,6 +82,20 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cyk-9m-hT7">
                                 <rect key="frame" x="177" y="291.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wY0-Aa-kGn">
+                                <rect key="frame" x="67" y="85" width="240" height="322"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You are out of restuarants." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0t-Z6-7Pm">
+                                        <rect key="frame" x="8" y="151" width="232" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -132,6 +146,7 @@
                         <outlet property="infoButton" destination="NXd-SI-ZjL" id="KHT-Xz-Qew"/>
                         <outlet property="leftButton" destination="Nal-M1-5Sy" id="cWu-fM-f2E"/>
                         <outlet property="locationIcon" destination="Iw5-3t-7dt" id="aob-iM-pef"/>
+                        <outlet property="outOfTiles" destination="wY0-Aa-kGn" id="KdU-js-pdA"/>
                         <outlet property="rightButton" destination="7Vz-zb-1Kf" id="ceK-aA-GiI"/>
                     </connections>
                 </viewController>

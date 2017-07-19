@@ -46,13 +46,14 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     public var radiusIndex = 0
     var MAX_BUFFER_SIZE: Int = 2
+    @IBOutlet var outOfTiles: UIView!
     
     let maskView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.outOfTiles.isHidden = true
         
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
@@ -236,11 +237,16 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[0]?.getBusiness())!)
             self.arrayOfBusinesses.remove(at: 0)
+            self.outOfTiles.isHidden = false
         }
-        else
+        else if self.arrayOfBusinesses.count != 0
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[1]?.getBusiness())!)
             self.arrayOfBusinesses.remove(at: self.globalIndexForCurrentCompany)
+        }
+        else
+        {
+            backgroundView?.removeFromSuperview()
         }
        
         
@@ -401,6 +407,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             }
             
         }
+        else
+        {
+            self.outOfTiles.isHidden = false
+        }
     }
     
     public func tapDetailViewForBusinessView(sender: UITapGestureRecognizer)
@@ -451,7 +461,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let imageViewLeading = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
         
-         let height = NSLayoutConstraint(item: forgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.height - 177)
+         let height = NSLayoutConstraint(item: backgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: view.frame.height - 177)
         
         let imageViewTrailing = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 25)
         
@@ -732,28 +742,58 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     
     @IBAction func swipeLeft(_ sender: Any) {
         // Still needs to be worked out after what i changed for tileView
-        loadedCards.first??.xibSetUp()
-        let dragView: DraggableView? = loadedCards.first as! DraggableView
-        dragView?.overlayView?.mode = .GGOverlayViewModeLeft
+        
+        if loadedCards.count != 1
+        {
+        loadedCards[1]?.xibSetUp()
+        let dragView = loadedCards[1]!
+        dragView.overlayView?.mode = .GGOverlayViewModeLeft
         UIView.animate(withDuration: 0.2, animations: {() -> Void in
-            dragView?.overlayView?.alpha = 1
-            dragView?.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            dragView.overlayView?.alpha = 1
+            dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
         })
-        dragView?.leftClickAction()
+        dragView.leftClickAction()
+        }
+        else
+        {
+            loadedCards[0]?.xibSetUp()
+            let dragView = loadedCards[0]!
+            dragView.overlayView?.mode = .GGOverlayViewModeLeft
+            UIView.animate(withDuration: 0.2, animations: {() -> Void in
+                dragView.overlayView?.alpha = 1
+                dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            })
+            dragView.leftClickAction()
+        }
+        
         
         
     }
     
     @IBAction func swipeRight(_ sender: Any) {
         // still needs to be worked out after what i did for tileview
-        loadedCards.first??.xibSetUp()
-        let dragView: DraggableView? = loadedCards.first as! DraggableView
-        dragView?.overlayView?.mode = .GGOverlayViewModeRight
-        UIView.animate(withDuration: 0.2, animations: {() -> Void in
-            dragView?.overlayView?.alpha = 1
-            
-        })
-        dragView?.rightClickAction()
+        if loadedCards.count != 1
+        {
+            loadedCards[1]?.xibSetUp()
+            let dragView = loadedCards[1]!
+            dragView.overlayView?.mode = .GGOverlayViewModeLeft
+            UIView.animate(withDuration: 0.2, animations: {() -> Void in
+                dragView.overlayView?.alpha = 1
+                dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            })
+            dragView.rightClickAction()
+        }
+        else
+        {
+            loadedCards[0]?.xibSetUp()
+            let dragView = loadedCards[0]!
+            dragView.overlayView?.mode = .GGOverlayViewModeLeft
+            UIView.animate(withDuration: 0.2, animations: {() -> Void in
+                dragView.overlayView?.alpha = 1
+                dragView.getView().transform = CGAffineTransform(scaleX: 11, y: 11)
+            })
+            dragView.rightClickAction()
+        }
     }
     
     private func checkAndUpdateGlobalIndex()
@@ -776,20 +816,26 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     func yelpAPICallback(_ yelpContainer: YelpContainer, worked: Bool) {
         if worked == true
         {
-            if !loadedCards.isEmpty
+            
+            
+            if loadedCards.count != 1 && loadedCards.count != 0
             {
                 backgroundView?.isHidden = true
                 forgroundView?.isHidden = true
-                anotherView?.isHidden = true
                 loadedCards.remove(at: 0)
                 backgroundView?.removeFromSuperview()
                 backgroundView = nil
                 loadedCards.remove(at: 0)
                 forgroundView?.removeFromSuperview()
                 forgroundView = nil
-                loadedCards.remove(at: 0)
-                anotherView?.removeFromSuperview()
-                anotherView = nil
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+            else if loadedCards.count == 1
+            {
+                backgroundView?.isHidden = true
+                backgroundView?.removeFromSuperview()
+                backgroundView = nil
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
@@ -865,6 +911,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.loadCards()
             }
         }
+        self.outOfTiles.isHidden = true
     }
     
     func placeFound(place: String, radiiDistances: RadiiDistances) {
@@ -901,20 +948,24 @@ extension BusinessTileViewController : AppDelegateDelegate
     func locationServicesUpdated(appDelegate: AppDelegate) {
         
         self.aBusinessTileOperator = nil 
-        if !loadedCards.isEmpty
+        if loadedCards.count != 1 && loadedCards.count != 0
         {
             backgroundView?.isHidden = true
             forgroundView?.isHidden = true
-            anotherView?.isHidden = true
             loadedCards.remove(at: 0)
             backgroundView?.removeFromSuperview()
             backgroundView = nil
             loadedCards.remove(at: 0)
             forgroundView?.removeFromSuperview()
             forgroundView = nil
-            loadedCards.remove(at: 0)
-            anotherView?.removeFromSuperview()
-            anotherView = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+        else if loadedCards.count == 1
+        {
+            backgroundView?.isHidden = true
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
         }
@@ -960,20 +1011,24 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
-        if !loadedCards.isEmpty
+        if loadedCards.count != 1 && loadedCards.count != 0
         {
             backgroundView?.isHidden = true
             forgroundView?.isHidden = true
-            anotherView?.isHidden = true
             loadedCards.remove(at: 0)
             backgroundView?.removeFromSuperview()
             backgroundView = nil
             loadedCards.remove(at: 0)
             forgroundView?.removeFromSuperview()
             forgroundView = nil
-            loadedCards.remove(at: 0)
-            anotherView?.removeFromSuperview()
-            anotherView = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+        else if loadedCards.count == 1
+        {
+            backgroundView?.isHidden = true
+            backgroundView?.removeFromSuperview()
+            backgroundView = nil
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
         }
