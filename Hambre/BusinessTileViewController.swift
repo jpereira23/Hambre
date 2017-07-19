@@ -20,6 +20,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet var infoButton: UIButton!
     @IBOutlet weak var referenceLabel: UILabel!
+    @IBOutlet weak var awesomeLine: UIImageView!
     
     @IBOutlet var GMSButton: UIButton!
     @IBOutlet var locationImage: UIImageView!
@@ -135,7 +136,16 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.present(controller, animated: true, completion: nil)
         }
         
+        //let navBorder: UIView = UIView(frame: CGRectMake(0, navigationController!.navigationBar.frame.size.height, navigationController!.navigationBar.frame.size.width, 1))
+        
+        //navBorder.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1.0)
+        //self.navigationController?.navigationBar.addSubview(navBorder)
+        
     }
+    
+    //func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+    //        return CGRect(x: x, y: y, width: width, height: height)
+    //    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -473,7 +483,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -25)
         
-        let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: rightButton, attribute: .top, multiplier: 1, constant: -10)
+        let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: awesomeLine, attribute: .top, multiplier: 1, constant: -10)
         
         let imageViewLeading = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
         
@@ -481,7 +491,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let imageViewTrailing = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 25)
         
-        let imageViewBottom = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -18)
+        let imageViewBottom = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -16)
         
         let imageViewTop = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         
@@ -508,7 +518,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let imageViewTrailing = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 50)
         
-        let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -18)
+        let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -16)
         
         let imageViewTop = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         

@@ -37,9 +37,6 @@ class ReviewTableViewCell: UITableViewCell {
         //self.textLabel?.text = name
         // Initialization code
         
-        
-        
-        
     }
     
     public func setStars(averageOfReviews: Float)
@@ -143,7 +140,7 @@ class ReviewTableViewCell: UITableViewCell {
             self.reviewStarFive.image = UIImage(named: "fullstar")
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
