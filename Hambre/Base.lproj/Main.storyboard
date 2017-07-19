@@ -397,7 +397,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-l8-Dzw" customClass="DetailView" customModule="Hambre" customModuleProvider="target">
-                                <rect key="frame" x="25" y="277" width="364" height="395"/>
+                                <rect key="frame" x="25" y="274" width="364" height="395"/>
                                 <subviews>
                                     <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="395"/>
@@ -417,11 +417,11 @@
                         <constraints>
                             <constraint firstItem="hWa-ga-NBy" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leadingMargin" constant="9" id="888-gO-gfu"/>
                             <constraint firstItem="hWa-ga-NBy" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" constant="229" id="Dwv-L7-Zet"/>
-                            <constraint firstAttribute="bottom" secondItem="5mf-l8-Dzw" secondAttribute="bottom" id="Ofd-vX-baq"/>
+                            <constraint firstAttribute="bottom" secondItem="5mf-l8-Dzw" secondAttribute="bottom" constant="3" id="Ofd-vX-baq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hWa-ga-NBy" secondAttribute="trailing" constant="9" id="QG7-wn-yEw"/>
                             <constraint firstItem="5mf-l8-Dzw" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" constant="25" id="ax4-Ht-qcI"/>
                             <constraint firstAttribute="trailing" secondItem="5mf-l8-Dzw" secondAttribute="trailing" constant="25" id="mMC-NL-Ud0"/>
-                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="hWa-ga-NBy" secondAttribute="bottom" constant="20" id="sbE-cl-kVu"/>
+                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="hWa-ga-NBy" secondAttribute="bottom" constant="17" id="sbE-cl-kVu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Sd-Zi-VXx">

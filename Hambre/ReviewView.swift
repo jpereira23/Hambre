@@ -72,7 +72,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func willMove(toWindow newWindow: UIWindow?) {
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -81,10 +81,13 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+    
         self.tableView.reloadData()
     
         let numOfReviews = self.filterArray(anId: self.url)
         self.howManyReviews.text! = String(numOfReviews.count) + " Reviews"
+        
+        
         
         
     }
@@ -234,6 +237,7 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         else
         {
             tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: bundle), forCellReuseIdentifier: "cell")
+            
             
             cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? ReviewTableViewCell
         }

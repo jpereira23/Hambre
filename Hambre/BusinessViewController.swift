@@ -253,7 +253,7 @@ class BusinessViewController: UIViewController {
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.getICloudAccess()
-        let alert = UIAlertController(title: "iCloud Disabled", message: "To Enable iCloud go to Settings > iCloud > Hambre and set the switch to on", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "iCloud Disabled", message: "To Enable iCloud go to Settings > iCloud > Hambre and set the switch to on.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
             // perhaps use action.title here
         })
