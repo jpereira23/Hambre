@@ -21,6 +21,8 @@ class MoreViewController: UIViewController {
         //navBorder.backgroundColor = UIColor(red: 237/255, green: 237/255, blue: 237/255, alpha: 1.0)
         //self.navigationController?.navigationBar.addSubview(navBorder)
         
+        self.title = "More"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
         
     }
     

@@ -224,7 +224,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         if self.personalBusinessCoreData.checkIfCoreDataIsEmpty()
         {
-            let alert = UIAlertController(title: "First Liked Restaurant", message: "You liked your first restaurant! Go to the favorites view to view your liked restaurants", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "First Liked Restaurant", message: "You liked your first restaurant! Now you can go to the favorites to view your liked restaurants", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
                 // perhaps use action.title here
             })
