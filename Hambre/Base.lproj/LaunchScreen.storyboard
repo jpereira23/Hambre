@@ -25,10 +25,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZendishTitle" translatesAutoresizingMaskIntoConstraints="NO" id="608-CC-PJM">
-                                <rect key="frame" x="120" y="317" width="135" height="33"/>
+                                <rect key="frame" x="61" y="290" width="253" height="87"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="135" id="8zt-ah-WTu"/>
-                                    <constraint firstAttribute="height" constant="33" id="akn-6K-TZj"/>
+                                    <constraint firstAttribute="width" constant="253" id="8zt-ah-WTu"/>
+                                    <constraint firstAttribute="height" constant="87" id="akn-6K-TZj"/>
                                 </constraints>
                             </imageView>
                         </subviews>
