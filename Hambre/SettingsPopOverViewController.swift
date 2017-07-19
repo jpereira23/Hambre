@@ -32,7 +32,7 @@ class SettingsPopOverViewController: UIViewController {
         {
             self.sliderValue = radiusCoreData.loadRadius()
         }
-        self.doneButton.isEnabled = false
+        self.doneButton.isHidden = true
        
         self.distanceSlider.maximumValue = 50
         self.distanceSlider.minimumValue = 1
@@ -78,7 +78,7 @@ class SettingsPopOverViewController: UIViewController {
     
     
     @IBAction func sliderChangedValue(_ sender: Any) {
-        self.doneButton.isEnabled = true
+        self.doneButton.isHidden = false
         let roundedValue = round((sender as! UISlider).value / step) * step
         (sender as! UISlider).value = roundedValue
         self.sliderValue = Int(roundedValue)
@@ -114,7 +114,7 @@ extension SettingsPopOverViewController : UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.setSelectedCell(index: indexPath.row)
         self.tableView.reloadData()
-        self.doneButton.isEnabled = true
+        self.doneButton.isHidden = false
         
     }
     
