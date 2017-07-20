@@ -483,7 +483,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let trailing = NSLayoutConstraint(item: backgroundView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -25)
         
-        let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: awesomeLine, attribute: .top, multiplier: 1, constant: -10)
+        let bottom = NSLayoutConstraint(item: backgroundView!, attribute: .bottom, relatedBy: .equal, toItem: awesomeLine, attribute: .top, multiplier: 1, constant: -8)
         
         let imageViewLeading = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0 , constant: 0)
         
