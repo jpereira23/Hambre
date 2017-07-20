@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -85,15 +85,8 @@
                     <color key="textColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="J6h-yn-5No">
-                    <rect key="frame" x="281" y="342" width="12" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="12" id="86Z-8V-KRF"/>
-                        <constraint firstAttribute="height" constant="17" id="JVh-yE-fm0"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPG-a3-7Jd">
-                    <rect key="frame" x="275" y="364" width="25" height="15"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPG-a3-7Jd">
+                    <rect key="frame" x="270" y="364" width="30" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="UCZ-ap-Zhk"/>
                     </constraints>
@@ -101,6 +94,13 @@
                     <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YelpBurst copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="J6h-yn-5No">
+                    <rect key="frame" x="267" y="334" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="86Z-8V-KRF"/>
+                        <constraint firstAttribute="height" constant="35" id="JVh-yE-fm0"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="g70-kY-SbB" firstAttribute="leading" secondItem="o89-lG-SZZ" secondAttribute="trailing" constant="1" id="1jo-jZ-oBf"/>
@@ -110,17 +110,17 @@
                 <constraint firstItem="YB9-VL-5LS" firstAttribute="leading" secondItem="g70-kY-SbB" secondAttribute="trailing" constant="1" id="9Vc-d8-qKU"/>
                 <constraint firstItem="zyq-Ei-MS9" firstAttribute="top" secondItem="Xwq-g2-9YB" secondAttribute="bottom" constant="2" id="CfJ-R5-9h7"/>
                 <constraint firstAttribute="trailing" secondItem="BPG-a3-7Jd" secondAttribute="trailing" constant="25" id="OJm-og-VZi"/>
-                <constraint firstItem="J6h-yn-5No" firstAttribute="leading" secondItem="Xwq-g2-9YB" secondAttribute="trailing" constant="56" id="Otv-yk-ohz"/>
+                <constraint firstItem="J6h-yn-5No" firstAttribute="leading" secondItem="Xwq-g2-9YB" secondAttribute="trailing" constant="42" id="Otv-yk-ohz"/>
                 <constraint firstItem="MG5-QI-XUf" firstAttribute="leading" secondItem="D0p-60-HoS" secondAttribute="trailing" constant="1" id="PJw-5M-qsX"/>
                 <constraint firstItem="D0p-60-HoS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="RkK-oS-xwT"/>
                 <constraint firstItem="D0p-60-HoS" firstAttribute="top" secondItem="Xwq-g2-9YB" secondAttribute="bottom" constant="2" id="SDx-Or-QUD"/>
                 <constraint firstAttribute="bottom" secondItem="D0p-60-HoS" secondAttribute="bottom" constant="16" id="X2E-Tt-hoI"/>
-                <constraint firstItem="BPG-a3-7Jd" firstAttribute="top" secondItem="J6h-yn-5No" secondAttribute="bottom" constant="5" id="aGA-QT-qhJ"/>
+                <constraint firstItem="BPG-a3-7Jd" firstAttribute="top" secondItem="J6h-yn-5No" secondAttribute="bottom" constant="-5" id="aGA-QT-qhJ"/>
                 <constraint firstAttribute="bottom" secondItem="zyq-Ei-MS9" secondAttribute="bottom" constant="16" id="ftF-Ek-02l"/>
                 <constraint firstAttribute="bottom" secondItem="BPG-a3-7Jd" secondAttribute="bottom" constant="16" id="lvb-MR-UoB"/>
                 <constraint firstItem="o89-lG-SZZ" firstAttribute="leading" secondItem="MG5-QI-XUf" secondAttribute="trailing" constant="1" id="mEp-FB-rYj"/>
                 <constraint firstItem="MG5-QI-XUf" firstAttribute="leading" secondItem="D0p-60-HoS" secondAttribute="trailing" constant="1" id="nnl-SR-O0Z"/>
-                <constraint firstAttribute="trailing" secondItem="J6h-yn-5No" secondAttribute="trailing" constant="32" id="rj6-tZ-qFR"/>
+                <constraint firstAttribute="trailing" secondItem="J6h-yn-5No" secondAttribute="trailing" constant="23" id="rj6-tZ-qFR"/>
                 <constraint firstItem="Xwq-g2-9YB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="uGY-n6-k9J"/>
                 <constraint firstAttribute="bottom" secondItem="o89-lG-SZZ" secondAttribute="bottom" constant="16" id="x6u-Fe-QpA"/>
                 <constraint firstItem="zyq-Ei-MS9" firstAttribute="leading" secondItem="YB9-VL-5LS" secondAttribute="trailing" constant="5" id="xPp-Mh-4nt"/>
@@ -142,6 +142,6 @@
         </view>
     </objects>
     <resources>
-        <image name="location" width="12" height="17"/>
+        <image name="YelpBurst copy 2" width="120" height="120"/>
     </resources>
 </document>

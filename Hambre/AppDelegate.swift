@@ -187,8 +187,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let location = CLLocation(latitude: self.theCoordinate.latitude, longitude: self.theCoordinate.longitude)
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-            var placeMark : CLPlacemark!
-            placeMark = placemarks?[0]
+            let placeMark : CLPlacemark! = placemarks![0]
+            
             if placeMark != nil
             {
                 if let state = placeMark.addressDictionary?["State"] as? String {

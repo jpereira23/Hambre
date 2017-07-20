@@ -38,7 +38,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         self.greetingField.text = "By: " + appDelegate.accessICloudName()
         
         
-        self.commentView.tintColor = .darkGray
+        //self.commentView.tintColor = UIColor(red: 0/255, green: 122/255, red: 255/255, alpha: 1)
         // Do any additional setup after loading the view.
         
         self.title = "Review"

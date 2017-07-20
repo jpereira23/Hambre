@@ -58,11 +58,20 @@ class DetailView: UIView {
     
     func xibSetUp()
     {
+        
         self.view = loadViewFromNib()
         view.frame = self.bounds
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.addressField.setTitle(self.address, for: .normal)
         self.phoneFIeld.setTitle(self.phoneNumber, for: .normal)
+        if isClosed == "Open"
+        {
+            self.isClosedField.setImage(UIImage(named: "Open.png"), for: .normal)
+        }
+        else if isClosed == "Closed"
+        {
+            self.isClosedField.setImage(UIImage(named: "Closed.png"), for: .normal)
+        }
         self.isClosedField.setTitle(self.isClosed, for: .normal)
         self.websiteUrlField.setTitle(self.title + " Website", for: .normal)
         addSubview(view)

@@ -127,8 +127,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.infoButton.setImage(UIImage(named: "Info.png"), for: .highlighted)
         
         self.GMSButton.setImage(UIImage(named: "LocationCircle.png"), for: .normal)
-        self.GMSButton.setImage(UIImage(named: "EmptyMap.png"), for: .highlighted)
-        
+        self.GMSButton.setImage(UIImage(named: "CircleLocationPressed.png"), for: .highlighted)
+    
         if !appDelegate.isInternetAvailable()
         {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -649,9 +649,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 loadedCards.remove(at: 0)
                 forgroundView?.removeFromSuperview()
                 forgroundView = nil
-                loadedCards.remove(at: 0)
-                anotherView?.removeFromSuperview()
-                anotherView = nil
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
