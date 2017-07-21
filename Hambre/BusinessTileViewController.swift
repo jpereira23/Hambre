@@ -11,7 +11,7 @@ import CoreLocation
 import GooglePlaces
 
 
-class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpContainerDelegate, RadiiDistancesDelegate{
+class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpContainerDelegate, RadiiDistancesDelegate {
 @IBOutlet weak var locationIcon: UIBarButtonItem!
     @IBOutlet weak var businessNameLabel: UILabel!
     @IBOutlet weak var businessImage1: UIImageView!
@@ -150,6 +150,18 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.rightButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {self.rightButton.transform = CGAffineTransform.identity}, completion: nil)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {self.leftButton.transform = CGAffineTransform.identity}, completion: nil)
+        
+        super.touchesBegan(touches, with: event)
+        
     }
 
     

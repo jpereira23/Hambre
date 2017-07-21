@@ -111,7 +111,6 @@
 		646ED08F1F0D778400E3253B /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		646F529E1F06D70100D977B3 /* RadiiLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadiiLocation.swift; sourceTree = "<group>"; };
 		647164981F17F3B40011A3C7 /* SlideShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideShowViewController.swift; sourceTree = "<group>"; };
-		648736141F100A160070D5F1 /* Tracy.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Tracy.gpx; path = ../Tracy.gpx; sourceTree = "<group>"; };
 		648B74C41EDE25F400B5D2CE /* YelpContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpContainer.swift; sourceTree = "<group>"; };
 		648B74C81EDE4DBC00B5D2CE /* PersonalBusinessCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalBusinessCoreData.swift; sourceTree = "<group>"; };
 		648B74CD1EDE58FF00B5D2CE /* LikedBusinessesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedBusinessesViewController.swift; sourceTree = "<group>"; };
@@ -234,7 +233,6 @@
 		6450958C1EDB842400427A83 /* Hambre */ = {
 			isa = PBXGroup;
 			children = (
-				648736141F100A160070D5F1 /* Tracy.gpx */,
 				64CEE48D1EE0A4F40065082F /* Hambre.entitlements */,
 				6450958D1EDB842400427A83 /* AppDelegate.swift */,
 				64716E851EE884EB00970C07 /* Settings */,
