@@ -997,7 +997,7 @@ extension BusinessTileViewController : AppDelegateDelegate
             self.setCityState(cityState: appDelegate.getCityAndState())
             self.setTheCoordinate(coordinate: appDelegate.getCoordinate())
             self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: self.theCoordinate)
-            self.personalBusinessCoreData.resetCoreData()
+            //self.personalBusinessCoreData.resetCoreData()
             
             let radiusCoreData = RadiusCoreData()
             if !radiusCoreData.checkIfCoreDataIsEmpty()
