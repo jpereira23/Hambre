@@ -22,16 +22,16 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZendishTitle" translatesAutoresizingMaskIntoConstraints="NO" id="608-CC-PJM">
-                                <rect key="frame" x="63" y="300" width="248" height="54"/>
+                                <rect key="frame" x="77" y="309" width="220" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="8zt-ah-WTu"/>
-                                    <constraint firstAttribute="height" constant="54" id="akn-6K-TZj"/>
+                                    <constraint firstAttribute="width" constant="220" id="8zt-ah-WTu"/>
+                                    <constraint firstAttribute="height" constant="48" id="akn-6K-TZj"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="608-CC-PJM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-6.5" id="6VZ-xS-YMU"/>
+                            <constraint firstItem="608-CC-PJM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-0.5" id="6VZ-xS-YMU"/>
                             <constraint firstItem="608-CC-PJM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ihA-oP-Yvv"/>
                         </constraints>
                     </view>
