@@ -103,6 +103,11 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="fB3-OV-szV"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Val-Oy-sQx">
+                    <rect key="frame" x="181" y="1" width="2" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -126,7 +131,7 @@
                 <outlet property="reviewStarTwo" destination="jiG-b5-iTN" id="F6J-Dm-1cM"/>
                 <outlet property="tableView" destination="Ysg-b3-9ih" id="X0h-jI-OdH"/>
             </connections>
-            <point key="canvasLocation" x="277" y="125.5"/>
+            <point key="canvasLocation" x="276" y="126.5"/>
         </view>
     </objects>
     <resources>

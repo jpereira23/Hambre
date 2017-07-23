@@ -146,7 +146,7 @@ class DraggableView: UIView {
             if data != nil
             {
                 
-                self.view.imageView = UIImageView(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height - 69))
+                self.view.imageView = UIImageView(frame: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height - 62))
         
                 self.view.imageView.image = UIImage(data: data!)
                 self.view.imageView.contentMode = UIViewContentMode.scaleToFill
