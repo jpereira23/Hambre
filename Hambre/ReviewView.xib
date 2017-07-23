@@ -19,17 +19,34 @@
             <rect key="frame" x="0.0" y="0.0" width="364" height="395"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-Hh-75c">
-                    <rect key="frame" x="257" y="10" width="80" height="18"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Val-Oy-sQx">
+                    <rect key="frame" x="0.0" y="58" width="364" height="1"/>
+                    <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="18" id="gWp-gA-6oP"/>
+                        <constraint firstAttribute="height" constant="1" id="0TD-j0-G4f"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-Hh-75c">
+                    <rect key="frame" x="228" y="20" width="94" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="94" id="R48-OE-8Zb"/>
                     </constraints>
                     <state key="normal" title="Add Review">
                         <color key="titleColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ysg-b3-9ih">
+                    <rect key="frame" x="0.0" y="59" width="364" height="336"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="jf8-O0-CWW"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="fB3-OV-szV"/>
+                    </connections>
+                </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OQZ-GY-U8c">
-                    <rect key="frame" x="27" y="0.0" width="94" height="36"/>
+                    <rect key="frame" x="41" y="11" width="94" height="36"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktz-2e-Nko">
                             <rect key="frame" x="0.0" y="0.0" width="94" height="18"/>
@@ -93,32 +110,20 @@
                         <constraint firstAttribute="height" constant="36" id="N5R-HG-JG6"/>
                     </constraints>
                 </stackView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ysg-b3-9ih">
-                    <rect key="frame" x="0.0" y="59" width="364" height="336"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="separatorColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
-                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <connections>
-                        <outlet property="dataSource" destination="iN0-l3-epB" id="jf8-O0-CWW"/>
-                        <outlet property="delegate" destination="iN0-l3-epB" id="fB3-OV-szV"/>
-                    </connections>
-                </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Val-Oy-sQx">
-                    <rect key="frame" x="181" y="1" width="2" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="42" id="0eL-lx-XrE"/>
                 <constraint firstAttribute="trailing" secondItem="Ysg-b3-9ih" secondAttribute="trailing" id="1RN-j0-VLH"/>
-                <constraint firstItem="kL3-Hh-75c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="3C7-MJ-Utj"/>
                 <constraint firstAttribute="bottom" secondItem="Ysg-b3-9ih" secondAttribute="bottom" id="5c0-SU-ObR"/>
-                <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="27" id="TuN-p5-aUr"/>
+                <constraint firstItem="Val-Oy-sQx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HfW-ja-IMS"/>
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YRj-F0-57Q"/>
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="59" id="cCI-mz-58g"/>
-                <constraint firstItem="OQZ-GY-U8c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ek5-qx-Sfx"/>
-                <constraint firstItem="OQZ-GY-U8c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="27" id="kN5-wc-4qm"/>
+                <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="Val-Oy-sQx" secondAttribute="bottom" id="jbe-uf-NuQ"/>
+                <constraint firstItem="kL3-Hh-75c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="mzO-dz-rtU"/>
+                <constraint firstItem="OQZ-GY-U8c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="41" id="nYP-4t-ilS"/>
+                <constraint firstItem="OQZ-GY-U8c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="wPj-rq-R58"/>
+                <constraint firstAttribute="trailing" secondItem="Val-Oy-sQx" secondAttribute="trailing" id="zZQ-vx-lA6"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -131,7 +136,7 @@
                 <outlet property="reviewStarTwo" destination="jiG-b5-iTN" id="F6J-Dm-1cM"/>
                 <outlet property="tableView" destination="Ysg-b3-9ih" id="X0h-jI-OdH"/>
             </connections>
-            <point key="canvasLocation" x="276" y="126.5"/>
+            <point key="canvasLocation" x="276" y="129"/>
         </view>
     </objects>
     <resources>
