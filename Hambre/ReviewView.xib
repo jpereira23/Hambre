@@ -20,23 +20,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Val-Oy-sQx">
-                    <rect key="frame" x="0.0" y="58" width="364" height="1"/>
+                    <rect key="frame" x="0.0" y="53" width="364" height="1"/>
                     <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="0TD-j0-G4f"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-Hh-75c">
-                    <rect key="frame" x="228" y="20" width="94" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="94" id="R48-OE-8Zb"/>
-                    </constraints>
-                    <state key="normal" title="Add Review">
-                        <color key="titleColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ysg-b3-9ih">
-                    <rect key="frame" x="0.0" y="59" width="364" height="336"/>
+                    <rect key="frame" x="0.0" y="57" width="364" height="338"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -45,11 +36,25 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="fB3-OV-szV"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL3-Hh-75c">
+                    <rect key="frame" x="228" y="9" width="94" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="Ab8-hp-fLH"/>
+                        <constraint firstAttribute="width" constant="94" id="Si6-D2-NI4"/>
+                    </constraints>
+                    <state key="normal" title="Add Review">
+                        <color key="titleColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OQZ-GY-U8c">
-                    <rect key="frame" x="41" y="11" width="94" height="36"/>
+                    <rect key="frame" x="43" y="0.0" width="94" height="36"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktz-2e-Nko">
                             <rect key="frame" x="0.0" y="0.0" width="94" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="94" id="0nm-hA-lLs"/>
+                                <constraint firstAttribute="height" constant="18" id="1gq-hL-kqD"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                             <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -113,17 +118,17 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="42" id="0eL-lx-XrE"/>
                 <constraint firstAttribute="trailing" secondItem="Ysg-b3-9ih" secondAttribute="trailing" id="1RN-j0-VLH"/>
                 <constraint firstAttribute="bottom" secondItem="Ysg-b3-9ih" secondAttribute="bottom" id="5c0-SU-ObR"/>
+                <constraint firstItem="OQZ-GY-U8c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="43" id="G4t-N1-aKL"/>
                 <constraint firstItem="Val-Oy-sQx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HfW-ja-IMS"/>
+                <constraint firstItem="kL3-Hh-75c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="STB-EA-bxZ"/>
                 <constraint firstItem="Ysg-b3-9ih" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YRj-F0-57Q"/>
-                <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="59" id="cCI-mz-58g"/>
-                <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="Val-Oy-sQx" secondAttribute="bottom" id="jbe-uf-NuQ"/>
-                <constraint firstItem="kL3-Hh-75c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="mzO-dz-rtU"/>
-                <constraint firstItem="OQZ-GY-U8c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="41" id="nYP-4t-ilS"/>
-                <constraint firstItem="OQZ-GY-U8c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="wPj-rq-R58"/>
+                <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="57" id="cCI-mz-58g"/>
+                <constraint firstItem="Ysg-b3-9ih" firstAttribute="top" secondItem="Val-Oy-sQx" secondAttribute="bottom" constant="3" id="jbe-uf-NuQ"/>
+                <constraint firstItem="OQZ-GY-U8c" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lQK-62-FBo"/>
                 <constraint firstAttribute="trailing" secondItem="Val-Oy-sQx" secondAttribute="trailing" id="zZQ-vx-lA6"/>
+                <constraint firstAttribute="trailing" secondItem="kL3-Hh-75c" secondAttribute="trailing" constant="42" id="zit-pl-I83"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -136,7 +141,7 @@
                 <outlet property="reviewStarTwo" destination="jiG-b5-iTN" id="F6J-Dm-1cM"/>
                 <outlet property="tableView" destination="Ysg-b3-9ih" id="X0h-jI-OdH"/>
             </connections>
-            <point key="canvasLocation" x="276" y="129"/>
+            <point key="canvasLocation" x="274" y="127.5"/>
         </view>
     </objects>
     <resources>
