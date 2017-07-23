@@ -152,17 +152,22 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         
         self.rightButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        self.infoButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {self.rightButton.transform = CGAffineTransform.identity}, completion: nil)
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations: {self.leftButton.transform = CGAffineTransform.identity}, completion: nil)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations:
+            {self.rightButton.transform = CGAffineTransform.identity}, completion: nil)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations:
+            {self.leftButton.transform = CGAffineTransform.identity}, completion: nil)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .allowUserInteraction, animations:
+            {self.infoButton.transform = CGAffineTransform.identity}, completion: nil)
         
-        super.touchesBegan(touches, with: event)
-        
-    }
+        //super.touchesBegan(touches, with: event)
+    }*/
 
     
     func cardSwipedLeft(_ card: UIView) {
