@@ -44,6 +44,10 @@ class LikedBusinessesViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "BackChevron")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
+        
+        //helps not display empty cells
+        tableView.tableFooterView = UIView()
+        
     
         }
     

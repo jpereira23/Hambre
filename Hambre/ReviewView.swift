@@ -85,7 +85,8 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         let numOfReviews = self.filterArray(anId: self.url)
         self.howManyReviews.text! = String(numOfReviews.count) + " Reviews"
         
-        
+        //helps not display empty cells
+        tableView.tableFooterView = UIView()
     }
     
     func xibSetUp()
@@ -257,18 +258,6 @@ class ReviewView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         return cell!
     }
-    
-    /*public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        
-        let array = self.filterArray(anId: self.getUrl())
-        let comment = array[indexPath.row].getSummaryReview()
-        let countOfComment = comment.characters.count
-        print("count of this comment \(countOfComment)")
-    
-        
-        return 95
-    }
- */
 
     
 }
