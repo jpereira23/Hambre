@@ -53,6 +53,7 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
             appDelegate.configueCoordinates()
         }
         self.dismiss(animated: true, completion: nil)
+        appDelegate.checkForLocationServices()
     }
     
     func secondNextButton()
@@ -62,6 +63,7 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
             appDelegate.configueCoordinates()
         }
         self.dismiss(animated: true, completion: nil)
+        appDelegate.checkForLocationServices()
     }
     
     func skipWelcome()
@@ -71,6 +73,7 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
             appDelegate.configueCoordinates()
         }
         self.dismiss(animated: true, completion: nil)
+        appDelegate.checkForLocationServices()
     }
     
     func nextWelcome()
