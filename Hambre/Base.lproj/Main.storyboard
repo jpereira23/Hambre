@@ -423,52 +423,43 @@
                                 <rect key="frame" x="176" y="483" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hWa-ga-NBy">
-                                <rect key="frame" x="25" y="229" width="325" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="0Z6-pA-oZP"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Details"/>
-                                    <segment title="Reviews"/>
-                                </segments>
-                                <color key="tintColor" red="0.98039215690000003" green="0.69803921570000005" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="indexChanged:" destination="R2h-Pv-c51" eventType="valueChanged" id="go7-Tl-2q4"/>
-                                </connections>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-l8-Dzw" customClass="DetailView" customModule="Hambre" customModuleProvider="target">
-                                <rect key="frame" x="25" y="274" width="325" height="326"/>
+                                <rect key="frame" x="25" y="253" width="325" height="350"/>
                                 <subviews>
-                                    <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="326"/>
+                                    <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="350"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="uiv-fc-41g" firstAttribute="leading" secondItem="5mf-l8-Dzw" secondAttribute="leading" id="4SY-Gd-5kl"/>
-                                    <constraint firstAttribute="bottom" secondItem="uiv-fc-41g" secondAttribute="bottom" id="a6e-or-TRq"/>
-                                    <constraint firstItem="uiv-fc-41g" firstAttribute="top" secondItem="5mf-l8-Dzw" secondAttribute="top" id="cIY-iR-LE2"/>
-                                    <constraint firstAttribute="trailing" secondItem="uiv-fc-41g" secondAttribute="trailing" id="ccL-6L-olg"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hWa-ga-NBy" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leadingMargin" constant="9" id="888-gO-gfu"/>
-                            <constraint firstItem="hWa-ga-NBy" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" constant="229" id="Dwv-L7-Zet"/>
-                            <constraint firstAttribute="bottom" secondItem="5mf-l8-Dzw" secondAttribute="bottom" constant="3" id="Ofd-vX-baq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hWa-ga-NBy" secondAttribute="trailing" constant="9" id="QG7-wn-yEw"/>
+                            <constraint firstAttribute="bottom" secondItem="5mf-l8-Dzw" secondAttribute="bottom" id="Ofd-vX-baq"/>
                             <constraint firstItem="5mf-l8-Dzw" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" constant="25" id="ax4-Ht-qcI"/>
                             <constraint firstAttribute="trailing" secondItem="5mf-l8-Dzw" secondAttribute="trailing" constant="25" id="mMC-NL-Ud0"/>
-                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="hWa-ga-NBy" secondAttribute="bottom" constant="17" id="sbE-cl-kVu"/>
+                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" constant="253" id="qeB-e6-9Bj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Sd-Zi-VXx">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="back" id="poN-wW-Skr">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="hWa-ga-NBy">
+                            <rect key="frame" x="47" y="7.5" width="281" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Details"/>
+                                <segment title="Reviews"/>
+                            </segments>
+                            <color key="tintColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="indexChanged:" destination="R2h-Pv-c51" eventType="valueChanged" id="go7-Tl-2q4"/>
+                            </connections>
+                        </segmentedControl>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -479,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDK-1I-Vgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1786.9565217391305" y="664.4021739130435"/>
+            <point key="canvasLocation" x="1786.4000000000001" y="664.31784107946032"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="nUa-sE-gdi">
@@ -1566,6 +1557,6 @@
         <image name="graystar" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sh3-GC-Plj"/>
+        <segue reference="bn3-9e-jQ8"/>
     </inferredMetricsTieBreakers>
 </document>
