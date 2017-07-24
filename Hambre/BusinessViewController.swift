@@ -120,10 +120,9 @@ class BusinessViewController: UIViewController {
         //auto layout constraint
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
-        
- 
-        
     }
+    
+    
     
     
     
@@ -254,8 +253,8 @@ class BusinessViewController: UIViewController {
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.getICloudAccess()
-        let alert = UIAlertController(title: "iCloud Disabled", message: "To Enable iCloud go to Settings > iCloud > Hambre and set the switch to on.", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+        let alert = UIAlertController(title: "iCloud Disabled", message: "To Enable iCloud go to Settings > iCloud > Zendish and turn the switch on.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
             // perhaps use action.title here
         })
         CKContainer.default().accountStatus {

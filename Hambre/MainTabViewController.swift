@@ -34,7 +34,6 @@ class MainTabViewController: UITabBarController {
         self.tabBar.clipsToBounds = true
         //self.tabBar.clipsToBounds =  true
         
-        
         for viewController in self.viewControllers!        {
             print(viewController.classForCoder )
         

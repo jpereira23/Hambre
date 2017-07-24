@@ -1200,7 +1200,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2Y-IF-A0X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="tkQ-uH-K3Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tkQ-uH-K3Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1222,7 +1222,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="Setting" id="Aq9-nL-244"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="mgV-Es-P8I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mgV-Es-P8I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1241,7 +1241,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="TabHeart" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="xxh-aD-K9r">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="xxh-aD-K9r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1492,7 +1492,7 @@
                     <tabBarItem key="tabBarItem" title="Discover" image="Cards" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="otW-5u-Ixy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="otW-5u-Ixy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1514,7 +1514,7 @@
                     <tabBarItem key="tabBarItem" title="More" image="MoreIcon" id="sJF-NA-R2e"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="7jO-3w-ijP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7jO-3w-ijP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
