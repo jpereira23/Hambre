@@ -181,6 +181,8 @@ extension LikedBusinessesViewController : UITableViewDelegate
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.personalBusinessCoreData.removeElementFromCoreData(businessName: self.arrayOfLikedBusinesses[indexPath.row].getBusinessName())
+            self.arrayOfAverageReviews.remove(at: indexPath.row)
+            self.arrayOfImages.remove(at: indexPath.row)
             self.arrayOfLikedBusinesses.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
