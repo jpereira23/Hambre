@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             CKContainer.default().fetchUserRecordID { (record, error) in
                                 CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
                                     if error != nil  {
-                                        self.iCloudName = "User not available/Or user was recently added"
+                                        self.iCloudName = "Username not shown, user must have been recently added"
                                         
                                     } else {
                                         self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
