@@ -197,7 +197,9 @@ extension LikedBusinessesViewController : UITableViewDataSource
         cell.accessoryType = .disclosureIndicator
         cell.accessoryView = UIImageView(image: chevron)
         
-        cell.distanceField.text = ((appDelegate.isLocationEnabled()) ? String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mi" : "N/A")
+        //cell.distanceField.text = ((appDelegate.isLocationEnabled()) ? String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mi" : "N/A")
+        
+        cell.distanceField.text = self.arrayOfLikedBusinesses[indexPath.row].getCity() + ", " + self.arrayOfLikedBusinesses[indexPath.row].getState() 
         cell.setAverageReview(averageReview: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage().absoluteString))
         cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
         cell.setImage(image: self.arrayOfImages[indexPath.row])
