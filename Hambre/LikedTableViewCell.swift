@@ -27,17 +27,11 @@ class LikedTableViewCell: UITableViewCell {
     private var averageOfReviews : Float = 0.0
     
     
-    private var theURL : URL!
+    private var theImage : UIImage!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        if self.theURL != nil
-        {
-         
-            self.theImageView.contentMode = UIViewContentMode.scaleToFill
-        }
         
         // Initialization code
     }
@@ -50,11 +44,9 @@ class LikedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setURL(url: URL)
+    public func setImage(image: UIImage)
     {
-        self.theURL = url
-        let data = try? Data(contentsOf: url)
-        self.theImageView.image = UIImage(data: data!)
+        self.theImageView.image = image
         self.theImageView.contentMode = UIViewContentMode.scaleToFill
     }
     

@@ -15,11 +15,25 @@ class PersonalBusinessCoreData: NSObject {
     private var managedContext : NSManagedObjectContext!
     private var entity: NSEntityDescription!
     private var coordinate : CLLocationCoordinate2D!
+    private var arrayOfImages = [UIImage]()
+    
     public init(coordinate: CLLocationCoordinate2D)
     {
         self.managedContext = self.appDelegate.persistentContainer.viewContext
         self.entity = NSEntityDescription.entity(forEntityName: "PersonalBusinessData", in: self.managedContext)
         self.coordinate = coordinate
+    }
+    
+    public func downloadImagesForArrayOfImages(url: URL)
+    {
+        let data = try? Data(contentsOf: url)
+        let anImage = UIImage(data: data!)
+        self.arrayOfImages.append(anImage!)
+    }
+    
+    public func getArrayOfImages() -> [UIImage]
+    {
+        return self.arrayOfImages
     }
     
     public func saveBusiness(personalBusiness: PersonalBusiness)
@@ -87,7 +101,7 @@ class PersonalBusinessCoreData: NSObject {
             let zipcode = businesses.value(forKeyPath: "zipcode") as! String
             let personalBusiness = PersonalBusiness(businessName: businessName, businessImageUrl: aUrl!, city: city, state: state, liked: liked, likes: likes, longitude: Double(longitude), latitude: Double(latitude), phoneNumber: aPhone, theAddress: address, isClosed: isClosed, websiteUrl: websiteUrl, coordinate: self.coordinate, fullAddress: fullAddress, zipcode: zipcode)
             
-            
+            //self.downloadImagesForArrayOfImages(url: aUrl!)
             temporaryBusiness.append(personalBusiness)
         }
         
