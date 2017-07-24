@@ -934,7 +934,15 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.loadCards()
             }
         }
-        self.outOfTiles.isHidden = true
+        
+        if self.arrayOfBusinesses.count != 0
+        {
+            self.outOfTiles.isHidden = true
+        }
+        else
+        {
+            self.outOfTiles.isHidden = false
+        }
     }
     
     func placeFound(place: String, radiiDistances: RadiiDistances) {

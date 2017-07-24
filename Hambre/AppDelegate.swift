@@ -75,7 +75,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                                         self.iCloudName = "Username not shown, user must have been recently added"
                                         
                                     } else {
-                                        self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
+                                        if userID != nil
+                                        {
+                                            self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
+                                        }
+                                        else{
+                                            self.iCloudName = "Username not shown, user must have been recently added"
+                                        }
                                     }
                                     
                                 })
