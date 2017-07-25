@@ -123,7 +123,21 @@ class BusinessViewController: UIViewController {
     }
     
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        let rootViewController = self.navigationController?.viewControllers.first as! BusinessTileViewController
+        
+        var reviews = 0
+        
+        for review in self.cloudKitDatabaseHandler.accessArrayOfReviews()
+        {
+            if review.getId() == imageUrl.absoluteString
+            {
+                reviews += 1
+            }
+        }
+        rootViewController.forgroundView?.reviewsField!.text = String(reviews) + ((reviews > 1 || reviews == 0) ? " reviews" : " review")
+        rootViewController.forgroundView?.setAverageFloat(averageReviews: self.cloudKitDatabaseHandler.getAverageReviews(url: self.imageUrl.absoluteString))
+    }
     
     
     
@@ -251,8 +265,6 @@ class BusinessViewController: UIViewController {
     
     func addReviewButtonTriggered(sender: UIButton)
     {
-        
-        //appDelegate.getICloudAccess()
       
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
                         

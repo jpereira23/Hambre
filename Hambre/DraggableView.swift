@@ -81,38 +81,6 @@ class DraggableView: UIView {
     }
     public func getView() -> UIView
     {
-        
-        
-        //auto layout constraint
-        /*
-        self.view.translatesAutoresizingMaskIntoConstraints =  false
-        
-        let top = NSLayoutConstraint(item: self.view, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
-        
-        let leading = NSLayoutConstraint(item: self.view, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 9)
-        
-        let trailing = NSLayoutConstraint(item: self.view, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 9)
-        
-        self.view.addConstraints([top, leading, trailing])
-        
-        
-         -----------
-         
-         let leftCons = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
-         
-         let rightCons = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
-         
-         let topCons = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0)
-         
-         let mapHeight = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 0, constant: 209)
-         
-         let bottom = NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 394)
-         */
-        
-        
-        //view.addConstraints([])
-        
-        
         return self.view
         
     }
@@ -300,6 +268,12 @@ class DraggableView: UIView {
     public func setImageUrl(url: URL)
     {
         self.imageUrl = url
+    }
+    
+    public func setAverageFloat(averageReviews: Float)
+    {
+        self.floatForStar = averageReviews
+        self.setReviewImages()
     }
     
     public func beingDragged(_ gestureRecognizer: UIPanGestureRecognizer)
