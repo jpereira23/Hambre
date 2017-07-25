@@ -52,11 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         GMSPlacesClient.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         GMSServices.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         
-        self.getICloudAccess()
+        //self.getICloudAccess()
         
         return true
     }
     
+    /*
     public func getICloudAccess()
     {
         CKContainer.default().accountStatus {
@@ -97,6 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             })
         }
     }
+    */
     
     public func checkForLocationServices()
     {

@@ -71,7 +71,7 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
         if appDelegate.isInternetAvailable()
         {
             appDelegate.configueCoordinates()
-            appDelegate.getICloudAccess()
+            //appDelegate.getICloudAccess()
         }
         self.dismiss(animated: true, completion: nil)
         appDelegate.checkForLocationServices()
@@ -80,7 +80,7 @@ class SlideShowViewController: UIPageViewController, FirstPageViewControllerDele
     func nextWelcome()
     {
         let vc = orderedViewControllers[1]
-        appDelegate.getICloudAccess()
+        //appDelegate.getICloudAccess()
         setViewControllers([vc], direction: .forward, animated: true, completion: nil)
     }
     
@@ -126,7 +126,7 @@ extension SlideShowViewController : UIPageViewControllerDataSource
             if appDelegate.isInternetAvailable()
             {
                 appDelegate.configueCoordinates()
-                appDelegate.getICloudAccess()
+                //appDelegate.getICloudAccess()
             }
         }
         return orderedViewControllers[nextIndex]

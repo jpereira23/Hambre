@@ -20,12 +20,11 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var reviewStarThree: UIImageView!
     @IBOutlet var reviewStarFour: UIImageView!
     @IBOutlet var reviewStarFive: UIImageView!
+    
+    @IBOutlet var usernameField: UITextField!
+    
+    
     private var review : Int = 0
-
-    
- 
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -34,8 +33,10 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.getICloudAccess()
-        self.greetingField.text = "By: " + appDelegate.accessICloudName()
+        //appDelegate.getICloudAccess()
+        
+        // Below gets changed how we gather the name of the user:
+        //self.greetingField.text = "By: " + appDelegate.accessICloudName()
         
         
         //self.commentView.tintColor = UIColor(red: 0/255, green: 122/255, red: 255/255, alpha: 1)
@@ -157,9 +158,9 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromAddReview"
         {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            //let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let businessViewController = segue.destination as! BusinessViewController
-            let review = Review(id: businessViewController.getURL(), review: self.review, reviewer: appDelegate.accessICloudName(), summaryReview: self.commentView.text)
+            let review = Review(id: businessViewController.getURL(), review: self.review, reviewer: usernameField.text!, summaryReview: self.commentView.text)
             
             businessViewController.cloudKitDatabaseHandler.appendToArrayOfReviews(review: review)
     

@@ -252,7 +252,7 @@ class BusinessViewController: UIViewController {
     func addReviewButtonTriggered(sender: UIButton)
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.getICloudAccess()
+        //appDelegate.getICloudAccess()
         let alert = UIAlertController(title: "iCloud Disabled", message: "To Enable iCloud go to Settings > iCloud > Zendish and turn the switch on.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
             // perhaps use action.title here
