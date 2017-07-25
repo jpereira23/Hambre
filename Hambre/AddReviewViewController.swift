@@ -32,7 +32,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        commentView.delegate = self
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
@@ -74,18 +74,18 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if self.commentView.textColor == UIColor.lightGray {
+        if self.commentView.text == "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
+        {
             self.commentView.text = ""
             self.commentView.textColor = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 1)
-            
-            //init(red: 63, green: 63, blue: 63, alpha: 1)
         }
+        
     }
     
     //I NEED HEEEEEELP HERE JEFF, THIS "IF" DOESN'T WORK ---------------------------------
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        if self.commentView.text == " "  || self.commentView.text == ""{
+        if self.commentView.text == " "  || self.commentView.text == "" {
             self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
             self.commentView.textColor = UIColor.lightGray
         }
