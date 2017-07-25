@@ -22,7 +22,8 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var reviewStarFive: UIImageView!
     
     @IBOutlet var usernameField: UITextField!
-    
+    @IBOutlet var anonymousSwitch: UISwitch!
+    private var canContinue = true
     
     private var review : Int = 0
     
@@ -32,7 +33,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
         //appDelegate.getICloudAccess()
         
         // Below gets changed how we gather the name of the user:
@@ -41,7 +42,8 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         
         //self.commentView.tintColor = UIColor(red: 0/255, green: 122/255, red: 255/255, alpha: 1)
         // Do any additional setup after loading the view.
-        
+        //anonymousSwitch.tintColor = UIColor(red: 0.0, green: 122.0, red: 255.0, alpha: 1.0)
+        //anonymousSwitch.tintColor = UIColor(red: CGFloat(0/255), green: CGFloat(122/255), blue: CGFloat(255/255), alpha: CGFloat(1))
         self.title = "Review"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
         let firstStarRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstStarTapped(tapGestureRecognizer:)))
@@ -63,8 +65,46 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         
         
         commentView.delegate = self
+        usernameField.delegate = self
         self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
         self.commentView.textColor = UIColor.lightGray
+    }
+    
+    @IBAction func submitAction(_ sender: Any)
+    {
+        if (usernameField.text?.isEmpty)! && review == 0
+        {
+            let alert = UIAlertController(title: "Incomplete Review", message: "You need to enter a username in order to proceed and select at least one star.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                
+            })
+            
+            
+            self.present(alert, animated: true)
+            canContinue =  false
+        }
+        else if (usernameField.text?.isEmpty)!
+        {
+            let alert = UIAlertController(title: "Incomplete username", message: "You need to enter a username in order to proceed.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                
+            })
+            
+            
+            self.present(alert, animated: true)
+            canContinue = false
+        }
+        else if review == 0
+        {
+            let alert = UIAlertController(title: "Incomplete review", message: "You need to select at least one star to proceed.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                
+            })
+            
+            
+            self.present(alert, animated: true)
+            canContinue = false
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -151,16 +191,32 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     }
     
 
+    @IBAction func switchWasTurnedOn(_ sender: Any)
+    {
+        if anonymousSwitch.isOn
+        {
+            usernameField.isEnabled = false
+        }
+        else
+        {
+            usernameField.isEnabled = true
+        }
+    }
     
     // MARK: - Navigation
 
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        return canContinue
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromAddReview"
         {
+            
             //let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let businessViewController = segue.destination as! BusinessViewController
-            let review = Review(id: businessViewController.getURL(), review: self.review, reviewer: usernameField.text!, summaryReview: self.commentView.text)
+            let review = Review(id: businessViewController.getURL(), review: self.review, reviewer: (anonymousSwitch.isOn ? "Anonymous" : usernameField.text!), summaryReview: self.commentView.text)
             
             businessViewController.cloudKitDatabaseHandler.appendToArrayOfReviews(review: review)
     

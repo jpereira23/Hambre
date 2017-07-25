@@ -251,35 +251,13 @@ class BusinessViewController: UIViewController {
     
     func addReviewButtonTriggered(sender: UIButton)
     {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         //appDelegate.getICloudAccess()
-        let alert = UIAlertController(title: "iCloud Disabled", message: "To Enable iCloud go to Settings > iCloud > Zendish and turn the switch on.", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
-            // perhaps use action.title here
-        })
-        CKContainer.default().accountStatus {
-            (status: CKAccountStatus, error: Error?) in
-            DispatchQueue.main.async(execute: {
-                if error != nil{
-                    print(error!)
-                } else {
-                    switch status{
-                    case .available:
-                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
+      
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
                         
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    case .couldNotDetermine:
-                        self.present(alert, animated: true)
-                    case .noAccount:
-                        self.present(alert, animated: true)
-                    case .restricted:
-                        self.present(alert, animated: true)
-                    }
-                }
-            })
-        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    
     
     func phoneButtonHasBeenTriggered(sender: UIButton)
     {
