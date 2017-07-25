@@ -12,6 +12,7 @@ import GoogleMaps
 import YelpAPI
 import CloudKit
 import CoreLocation
+import SafariServices
 
 class BusinessViewController: UIViewController {
 
@@ -292,11 +293,16 @@ class BusinessViewController: UIViewController {
     
     func getWebsiteButtonTriggered(sender: UIButton)
     {
+        
+        let link = SFSafariViewController(url: URL(string: self.websiteUrl)!)
+        self.present(link, animated: true, completion: nil)
+        /*
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addWebsiteViewController") as! WebViewController
         
         vc.setWebUrl(url: self.websiteUrl)
         
         self.navigationController?.pushViewController(vc, animated: true)
+         */
     }
     
     func directionsButtonTriggered(sender: UIButton)
