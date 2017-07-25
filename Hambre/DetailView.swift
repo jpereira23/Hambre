@@ -74,7 +74,7 @@ class DetailView: UIView {
             self.isClosedField.setImage(UIImage(named: "Closed.png"), for: .normal)
         }
         self.isClosedField.setTitle(self.isClosed, for: .normal)
-        self.websiteUrlField.setTitle(self.title + " Website", for: .normal)
+        self.websiteUrlField.setTitle("View Website", for: .normal)
         addSubview(view)
     }
 
