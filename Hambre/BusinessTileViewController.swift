@@ -718,6 +718,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
                 businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
                 businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+                businessViewController.setDistance(distance: loadedCards[1]!.getBusiness().getDistance())
+                
             }
             else
             {
@@ -729,6 +731,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
                 businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
                 businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+                businessViewController.setDistance(distance: loadedCards[1]!.getBusiness().getDistance())
             }
             
         }
