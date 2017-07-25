@@ -638,17 +638,24 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     {
         if sender.identifier == "settingsToTile"
         {
-            if !loadedCards.isEmpty
+            if loadedCards.count != 1 && loadedCards.count != 0
             {
                 backgroundView?.isHidden = true
                 forgroundView?.isHidden = true
-                anotherView?.isHidden = true
                 loadedCards.remove(at: 0)
                 backgroundView?.removeFromSuperview()
                 backgroundView = nil
                 loadedCards.remove(at: 0)
                 forgroundView?.removeFromSuperview()
                 forgroundView = nil
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+            else if loadedCards.count == 1
+            {
+                backgroundView?.isHidden = true
+                backgroundView?.removeFromSuperview()
+                backgroundView = nil
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
