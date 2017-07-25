@@ -450,13 +450,13 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="hWa-ga-NBy">
-                            <rect key="frame" x="73" y="8" width="230" height="29"/>
+                            <rect key="frame" x="72.5" y="7.5" width="230" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Details"/>
                                 <segment title="Reviews"/>
                             </segments>
-                            <color key="tintColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="indexChanged:" destination="R2h-Pv-c51" eventType="valueChanged" id="go7-Tl-2q4"/>
                             </connections>
