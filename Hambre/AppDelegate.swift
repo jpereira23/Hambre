@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
     
     private var locationManager = CLLocationManager()
-    private var iCloudName : String! = "User not available/Or user was recently added"
     private var theCoordinate = CLLocationCoordinate2D(latitude: 37.773972, longitude: -122.431297)
     private var city = "San Francisco"
     private var state = "California"
@@ -52,53 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         GMSPlacesClient.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         GMSServices.provideAPIKey("AIzaSyDk7lsxhuYxuVG0WeYOh0t3Wg7Yu78MM74")
         
-        //self.getICloudAccess()
         
         return true
     }
     
-    /*
-    public func getICloudAccess()
-    {
-        CKContainer.default().accountStatus {
-            (status: CKAccountStatus, error: Error?) in
-            DispatchQueue.main.async(execute: {
-                if error != nil{
-                    print(error!)
-                } else {
-                    
-                    switch status{
-                    case .available:
-                        CKContainer.default().requestApplicationPermission(.userDiscoverability) { (status, error) in
-                            CKContainer.default().fetchUserRecordID { (record, error) in
-                                CKContainer.default().discoverUserIdentity(withUserRecordID: record!, completionHandler: { (userID, error) in
-                                    if error != nil  {
-                                        self.iCloudName = "Username not shown, user must have been recently added"
-                                        
-                                    } else {
-                                        if userID != nil
-                                        {
-                                            self.iCloudName = ((userID?.nameComponents?.givenName)! + " " + (userID?.nameComponents?.familyName)!)
-                                        }
-                                        else{
-                                            self.iCloudName = "Username not shown, user must have been recently added"
-                                        }
-                                    }
-                                    
-                                })
-                                
-                            }
-                            
-                        }
-                    default:
-                        print("iCloud is not available")
-                    }
-                    
-                }
-            })
-        }
-    }
-    */
     
     public func checkForLocationServices()
     {
@@ -263,10 +219,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    public func accessICloudName() -> String
-    {
-        return self.iCloudName
-    }
 
     // ## Functions for CoreData
     lazy var persistentContainer: NSPersistentContainer = {
