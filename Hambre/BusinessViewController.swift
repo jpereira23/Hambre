@@ -251,6 +251,7 @@ class BusinessViewController: UIViewController {
             self.detailView.setPhoneField(phone: self.phoneNumber)
             self.detailView.setIsClosed(isClosed: self.isClosed)
             self.detailView.setWebsiteUrl(url: self.websiteUrl)
+            self.detailView.setTitle(title: self.aTitle)
             self.detailView.xibSetUp()
             self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
             self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
@@ -301,9 +302,22 @@ class BusinessViewController: UIViewController {
     
     func getWebsiteButtonTriggered(sender: UIButton)
     {
-        
-        let link = SFSafariViewController(url: URL(string: self.websiteUrl)!)
-        self.present(link, animated: true, completion: nil)
+        if self.websiteUrl != nil
+        {
+            let link = SFSafariViewController(url: URL(string: self.websiteUrl)!)
+            self.present(link, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert = UIAlertController(title: "Website not available.", message: "Due to the unfortunate circumstances this website is not available.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                
+            })
+            
+            
+            self.present(alert, animated: true)
+            
+        }
         /*
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addWebsiteViewController") as! WebViewController
         
