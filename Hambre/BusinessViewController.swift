@@ -327,6 +327,7 @@ class BusinessViewController: UIViewController {
          */
     }
     
+    
     func directionsButtonTriggered(sender: UIButton)
     {
         let regionDistance: CLLocationDistance = 1000

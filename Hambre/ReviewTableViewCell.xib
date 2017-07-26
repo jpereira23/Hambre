@@ -20,14 +20,15 @@
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-Tb-1VS">
-                        <rect key="frame" x="15" y="39" width="345" height="75"/>
+                        <rect key="frame" x="15" y="40" width="345" height="74"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.24705882352941178" green="0.24705882352941178" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A48-Lv-9be">
-                        <rect key="frame" x="329" y="16" width="31" height="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00/00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A48-Lv-9be">
+                        <rect key="frame" x="306" y="16" width="54" height="13"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="54" id="eye-d2-xQJ"/>
                             <constraint firstAttribute="height" constant="13" id="jHF-RR-YdB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -82,7 +83,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="zAo-Tb-1VS" secondAttribute="trailing" constant="15" id="17v-rx-rbM"/>
                     <constraint firstItem="ryF-dd-Vp3" firstAttribute="top" secondItem="KtO-Xm-woF" secondAttribute="topMargin" constant="8" id="5na-Lf-xWB"/>
-                    <constraint firstItem="zAo-Tb-1VS" firstAttribute="top" secondItem="KtO-Xm-woF" secondAttribute="topMargin" constant="31" id="6V5-JR-vwU"/>
+                    <constraint firstItem="zAo-Tb-1VS" firstAttribute="top" secondItem="n1U-0S-0mx" secondAttribute="bottom" constant="10" id="BVf-dM-iKm"/>
                     <constraint firstItem="egT-eD-Pnh" firstAttribute="leading" secondItem="lZu-MA-W0M" secondAttribute="trailing" constant="1" id="Dsd-9t-xN0"/>
                     <constraint firstItem="lkI-yW-Q5W" firstAttribute="top" secondItem="KtO-Xm-woF" secondAttribute="topMargin" constant="8" id="F78-SM-3n6"/>
                     <constraint firstItem="Jc7-UA-lew" firstAttribute="top" secondItem="KtO-Xm-woF" secondAttribute="topMargin" constant="8" id="Mzu-HW-Jjb"/>

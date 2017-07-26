@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol DraggableViewDelegate: NSObjectProtocol {
     func cardSwipedLeft(_ card: UIView)
@@ -33,6 +34,7 @@ class DraggableView: UIView {
     @IBOutlet var starImageThree: UIImageView!
     @IBOutlet var starImageFour: UIImageView!
     @IBOutlet var starImageFive: UIImageView!
+    
     
     // All personal decelarations and housekeeping definitions
     weak var delegate: DraggableViewDelegate?

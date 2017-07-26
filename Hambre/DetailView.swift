@@ -17,7 +17,7 @@ class DetailView: UIView {
     @IBOutlet var isClosedField: UILabel!
     @IBOutlet var websiteUrlField: UILabel!
     */
-    
+    @IBOutlet weak var yelpLink: UIButton!
     
     @IBOutlet weak var bizName: UIButton!
     
@@ -135,5 +135,6 @@ class DetailView: UIView {
             self.isClosed = "Open"
         }
     }
+    
 
 }

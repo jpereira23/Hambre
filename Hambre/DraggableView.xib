@@ -33,11 +33,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwq-g2-9YB">
-                    <rect key="frame" x="20" y="343" width="211" height="20"/>
+                    <rect key="frame" x="20" y="343" width="230" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="exf-5r-jaj"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -86,7 +86,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 mi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPG-a3-7Jd">
-                    <rect key="frame" x="275" y="365" width="30" height="15"/>
+                    <rect key="frame" x="263" y="365" width="30" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="UCZ-ap-Zhk"/>
                     </constraints>
@@ -94,13 +94,14 @@
                     <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YelpBurst copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="J6h-yn-5No">
-                    <rect key="frame" x="273" y="335" width="35" height="35"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amn-0H-FdW">
+                    <rect key="frame" x="247" y="334" width="60" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="35" id="86Z-8V-KRF"/>
-                        <constraint firstAttribute="height" constant="35" id="JVh-yE-fm0"/>
+                        <constraint firstAttribute="height" constant="38" id="5o5-Vo-Jkj"/>
+                        <constraint firstAttribute="width" constant="60" id="vD8-rx-UZI"/>
                     </constraints>
-                </imageView>
+                    <state key="normal" image="yelp"/>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="g70-kY-SbB" firstAttribute="leading" secondItem="o89-lG-SZZ" secondAttribute="trailing" constant="1" id="1jo-jZ-oBf"/>
@@ -109,18 +110,18 @@
                 <constraint firstAttribute="bottom" secondItem="MG5-QI-XUf" secondAttribute="bottom" constant="15" id="6BK-o6-cAp"/>
                 <constraint firstItem="YB9-VL-5LS" firstAttribute="leading" secondItem="g70-kY-SbB" secondAttribute="trailing" constant="1" id="9Vc-d8-qKU"/>
                 <constraint firstItem="zyq-Ei-MS9" firstAttribute="top" secondItem="Xwq-g2-9YB" secondAttribute="bottom" constant="2" id="CfJ-R5-9h7"/>
-                <constraint firstAttribute="trailing" secondItem="BPG-a3-7Jd" secondAttribute="trailing" constant="20" id="OJm-og-VZi"/>
-                <constraint firstItem="J6h-yn-5No" firstAttribute="leading" secondItem="Xwq-g2-9YB" secondAttribute="trailing" constant="42" id="Otv-yk-ohz"/>
+                <constraint firstAttribute="trailing" secondItem="BPG-a3-7Jd" secondAttribute="trailing" constant="32" id="OJm-og-VZi"/>
                 <constraint firstItem="MG5-QI-XUf" firstAttribute="leading" secondItem="D0p-60-HoS" secondAttribute="trailing" constant="1" id="PJw-5M-qsX"/>
                 <constraint firstItem="D0p-60-HoS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="RkK-oS-xwT"/>
                 <constraint firstItem="D0p-60-HoS" firstAttribute="top" secondItem="Xwq-g2-9YB" secondAttribute="bottom" constant="2" id="SDx-Or-QUD"/>
                 <constraint firstAttribute="bottom" secondItem="D0p-60-HoS" secondAttribute="bottom" constant="15" id="X2E-Tt-hoI"/>
-                <constraint firstItem="BPG-a3-7Jd" firstAttribute="top" secondItem="J6h-yn-5No" secondAttribute="bottom" constant="-5" id="aGA-QT-qhJ"/>
                 <constraint firstAttribute="bottom" secondItem="zyq-Ei-MS9" secondAttribute="bottom" constant="15" id="ftF-Ek-02l"/>
+                <constraint firstAttribute="trailing" secondItem="Xwq-g2-9YB" secondAttribute="trailing" constant="75" id="gWg-FF-qsz"/>
+                <constraint firstAttribute="trailing" secondItem="amn-0H-FdW" secondAttribute="trailing" constant="18" id="kAt-k1-OWa"/>
+                <constraint firstAttribute="bottom" secondItem="amn-0H-FdW" secondAttribute="bottom" constant="23" id="lBy-7d-hbq"/>
                 <constraint firstAttribute="bottom" secondItem="BPG-a3-7Jd" secondAttribute="bottom" constant="15" id="lvb-MR-UoB"/>
                 <constraint firstItem="o89-lG-SZZ" firstAttribute="leading" secondItem="MG5-QI-XUf" secondAttribute="trailing" constant="1" id="mEp-FB-rYj"/>
                 <constraint firstItem="MG5-QI-XUf" firstAttribute="leading" secondItem="D0p-60-HoS" secondAttribute="trailing" constant="1" id="nnl-SR-O0Z"/>
-                <constraint firstAttribute="trailing" secondItem="J6h-yn-5No" secondAttribute="trailing" constant="17" id="rj6-tZ-qFR"/>
                 <constraint firstItem="Xwq-g2-9YB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="uGY-n6-k9J"/>
                 <constraint firstAttribute="bottom" secondItem="o89-lG-SZZ" secondAttribute="bottom" constant="15" id="x6u-Fe-QpA"/>
                 <constraint firstItem="zyq-Ei-MS9" firstAttribute="leading" secondItem="YB9-VL-5LS" secondAttribute="trailing" constant="5" id="xPp-Mh-4nt"/>
@@ -142,6 +143,6 @@
         </view>
     </objects>
     <resources>
-        <image name="YelpBurst copy 2" width="120" height="120"/>
+        <image name="yelp" width="166" height="106"/>
     </resources>
 </document>
