@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import GooglePlaces
+import SafariServices
 
 
 class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpContainerDelegate, RadiiDistancesDelegate{
@@ -57,7 +58,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         super.viewDidLoad()
         
         self.outOfTiles.isHidden = true
-        
+        self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: theCoordinate)
+        self.personalBusinessCoreData.resetCoreData()
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
@@ -235,6 +237,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
+                forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
@@ -325,6 +328,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
+                forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
@@ -346,7 +350,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
         draggableView.setBusiness(business: self.arrayOfBusinesses[index])
         draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mi" : "N/A"))
-    
+        
 
         if self.arrayOfReviews.count > 0
         {
@@ -362,6 +366,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         return draggableView
     }
     
+    func yelpLinkAction(sender: UIButton)
+    {
+        let link = SFSafariViewController(url: URL(string: "https://www.yelp.com")!)
+        self.present(link, animated: true, completion: nil)
+    }
+    
     public func loadCards()
     {
         if self.arrayOfBusinesses.count != 0
@@ -375,6 +385,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
+                backgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
                 self.view.addSubview(backgroundView!)
                 
                 //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
@@ -417,6 +428,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
+                forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
                 
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)

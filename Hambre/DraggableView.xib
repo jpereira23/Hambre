@@ -20,6 +20,7 @@
                 <outlet property="starImageOne" destination="D0p-60-HoS" id="rIj-K1-lVD"/>
                 <outlet property="starImageThree" destination="o89-lG-SZZ" id="8Es-un-XJB"/>
                 <outlet property="starImageTwo" destination="MG5-QI-XUf" id="9Qd-m9-QCw"/>
+                <outlet property="yelpButton" destination="GbF-C4-4zn" id="W4h-ti-2ll"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -94,17 +95,19 @@
                     <color key="textColor" red="0.2470588235" green="0.2470588235" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amn-0H-FdW">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbF-C4-4zn">
                     <rect key="frame" x="247" y="334" width="60" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="38" id="5o5-Vo-Jkj"/>
-                        <constraint firstAttribute="width" constant="60" id="vD8-rx-UZI"/>
+                        <constraint firstAttribute="height" constant="38" id="BjY-Hb-fhu"/>
+                        <constraint firstAttribute="width" constant="60" id="YeF-vi-vbH"/>
                     </constraints>
-                    <state key="normal" image="yelp"/>
-                </button>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="g70-kY-SbB" firstAttribute="leading" secondItem="o89-lG-SZZ" secondAttribute="trailing" constant="1" id="1jo-jZ-oBf"/>
+                <constraint firstAttribute="bottom" secondItem="GbF-C4-4zn" secondAttribute="bottom" constant="23" id="2Ow-o6-yO6"/>
                 <constraint firstAttribute="bottom" secondItem="YB9-VL-5LS" secondAttribute="bottom" constant="15" id="4qB-SF-weX"/>
                 <constraint firstAttribute="bottom" secondItem="g70-kY-SbB" secondAttribute="bottom" constant="15" id="5S3-so-bhA"/>
                 <constraint firstAttribute="bottom" secondItem="MG5-QI-XUf" secondAttribute="bottom" constant="15" id="6BK-o6-cAp"/>
@@ -117,14 +120,13 @@
                 <constraint firstAttribute="bottom" secondItem="D0p-60-HoS" secondAttribute="bottom" constant="15" id="X2E-Tt-hoI"/>
                 <constraint firstAttribute="bottom" secondItem="zyq-Ei-MS9" secondAttribute="bottom" constant="15" id="ftF-Ek-02l"/>
                 <constraint firstAttribute="trailing" secondItem="Xwq-g2-9YB" secondAttribute="trailing" constant="75" id="gWg-FF-qsz"/>
-                <constraint firstAttribute="trailing" secondItem="amn-0H-FdW" secondAttribute="trailing" constant="18" id="kAt-k1-OWa"/>
-                <constraint firstAttribute="bottom" secondItem="amn-0H-FdW" secondAttribute="bottom" constant="23" id="lBy-7d-hbq"/>
                 <constraint firstAttribute="bottom" secondItem="BPG-a3-7Jd" secondAttribute="bottom" constant="15" id="lvb-MR-UoB"/>
                 <constraint firstItem="o89-lG-SZZ" firstAttribute="leading" secondItem="MG5-QI-XUf" secondAttribute="trailing" constant="1" id="mEp-FB-rYj"/>
                 <constraint firstItem="MG5-QI-XUf" firstAttribute="leading" secondItem="D0p-60-HoS" secondAttribute="trailing" constant="1" id="nnl-SR-O0Z"/>
                 <constraint firstItem="Xwq-g2-9YB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="uGY-n6-k9J"/>
                 <constraint firstAttribute="bottom" secondItem="o89-lG-SZZ" secondAttribute="bottom" constant="15" id="x6u-Fe-QpA"/>
                 <constraint firstItem="zyq-Ei-MS9" firstAttribute="leading" secondItem="YB9-VL-5LS" secondAttribute="trailing" constant="5" id="xPp-Mh-4nt"/>
+                <constraint firstAttribute="trailing" secondItem="GbF-C4-4zn" secondAttribute="trailing" constant="18" id="yNd-yK-gxc"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -142,7 +144,4 @@
             <point key="canvasLocation" x="33.5" y="87.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="yelp" width="166" height="106"/>
-    </resources>
 </document>

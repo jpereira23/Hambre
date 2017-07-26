@@ -35,6 +35,7 @@ class DraggableView: UIView {
     @IBOutlet var starImageFour: UIImageView!
     @IBOutlet var starImageFive: UIImageView!
     
+    @IBOutlet weak var yelpButton: UILabel!
     
     // All personal decelarations and housekeeping definitions
     weak var delegate: DraggableViewDelegate?
@@ -107,7 +108,7 @@ class DraggableView: UIView {
         rectShape.path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomRight, .bottomLeft], cornerRadii: CGSize(width: 10, height: 10)).cgPath
         self.view.layer.mask = rectShape
         
-       
+        
         
         self.setReviewImages()
         if self.imageUrl != nil

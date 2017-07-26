@@ -58,6 +58,7 @@ class BusinessViewController: UIViewController {
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
         self.detailView.phoneFIeld.addTarget(self, action: #selector(phoneButtonHasBeenTriggered(sender:)), for: UIControlEvents.touchDown)
         self.detailView.directionsButton.addTarget(self, action: #selector(directionsButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.detailView.yelpLink.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         
@@ -235,6 +236,7 @@ class BusinessViewController: UIViewController {
         self.detailView.setTitle(title: self.aTitle)
         self.detailView.xibSetUp()
         self.detailView.websiteUrlField.addTarget(self, action: #selector(getWebsiteButtonTriggered(sender:)), for: UIControlEvents.touchDown)
+        self.detailView.yelpLink.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
         self.currentView = self.detailView.getView()
         self.segmentView.addSubview(self.currentView)
         self.reviewView.setArrayOfReviews(reviews: self.cloudKitDatabaseHandler.accessArrayOfReviews())
@@ -338,6 +340,13 @@ class BusinessViewController: UIViewController {
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = self.aTitle
         mapItem.openInMaps(launchOptions: options)
+    }
+    
+    func yelpLinkAction(sender: UIButton)
+    {
+        
+        let link = SFSafariViewController(url: URL(string: "https://www.yelp.com")!)
+        self.present(link, animated: true, completion: nil)
     }
     
     
