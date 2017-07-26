@@ -427,21 +427,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mf-l8-Dzw" customClass="DetailView" customModule="Hambre" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="190" width="375" height="413"/>
                                 <subviews>
-                                    <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
+                                    <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiv-fc-41g">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="uiv-fc-41g" secondAttribute="bottom" id="Rsq-9n-NvJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="uiv-fc-41g" secondAttribute="trailing" id="Za9-kW-XNE"/>
+                                    <constraint firstItem="uiv-fc-41g" firstAttribute="leading" secondItem="5mf-l8-Dzw" secondAttribute="leading" id="bnY-aa-6vd"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="5mf-l8-Dzw" secondAttribute="bottom" id="Ofd-vX-baq"/>
-                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" id="ax4-Ht-qcI"/>
-                            <constraint firstAttribute="trailing" secondItem="5mf-l8-Dzw" secondAttribute="trailing" id="mMC-NL-Ud0"/>
-                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" constant="190" id="qeB-e6-9Bj"/>
+                            <constraint firstItem="uiv-fc-41g" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" constant="190" id="75P-np-tJN"/>
+                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="top" secondItem="YPu-K6-vZL" secondAttribute="bottom" constant="190" id="G2v-tk-BNb"/>
+                            <constraint firstItem="5mf-l8-Dzw" firstAttribute="leading" secondItem="xT0-l0-YuL" secondAttribute="leading" id="dUw-Ch-Jc8"/>
+                            <constraint firstAttribute="trailing" secondItem="5mf-l8-Dzw" secondAttribute="trailing" id="dWg-gY-vpQ"/>
+                            <constraint firstItem="spu-YF-ayN" firstAttribute="top" secondItem="5mf-l8-Dzw" secondAttribute="bottom" id="hdo-Jk-k7i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Sd-Zi-VXx">
@@ -471,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDK-1I-Vgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1786.4000000000001" y="664.31784107946032"/>
+            <point key="canvasLocation" x="1785.5072463768117" y="662.77173913043487"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="nUa-sE-gdi">

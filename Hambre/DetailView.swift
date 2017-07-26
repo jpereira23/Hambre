@@ -17,6 +17,10 @@ class DetailView: UIView {
     @IBOutlet var isClosedField: UILabel!
     @IBOutlet var websiteUrlField: UILabel!
     */
+    
+    
+    @IBOutlet weak var bizName: UIButton!
+    
     @IBOutlet var directionsButton: UIButton!
     
     @IBOutlet weak var websiteUrlField: UIButton!
@@ -65,6 +69,7 @@ class DetailView: UIView {
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.addressField.setTitle(self.address, for: .normal)
         self.phoneFIeld.setTitle(self.phoneNumber, for: .normal)
+        self.bizName.setTitle(self.title, for: .normal)
         if isClosed == "Open"
         {
             self.isClosedField.setImage(UIImage(named: "Open.png"), for: .normal)
