@@ -42,7 +42,7 @@ class DetailView: UIView {
     
     private var title : String! = ""
     private var address : String! = "Not an address"
-    private var phoneNumber : String! = "Phone Number: (000) 000-0000"
+    private var phoneNumber : String! = "Not Available"
     private var isClosed : String! = "Closed"
     private var websiteUrl : String! = "http://google.com"
     private let nibName = "View"
@@ -105,18 +105,21 @@ class DetailView: UIView {
     public func setPhoneField(phone: String)
     {
         self.phoneNumber = phone
-        var index = phoneNumber.index(phoneNumber.startIndex, offsetBy:0)
-        self.phoneNumber.remove(at: index)
-        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 1)
-        self.phoneNumber.insert(" ", at: index)
-        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 2)
-        self.phoneNumber.insert("(", at: index)
-        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 6)
-        self.phoneNumber.insert(")", at: index)
-        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 7)
-        self.phoneNumber.insert(" ", at: index)
-        index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 11)
-        self.phoneNumber.insert("-", at: index)
+        if phone != "Not Available"
+        {
+            var index = phoneNumber.index(phoneNumber.startIndex, offsetBy:0)
+            self.phoneNumber.remove(at: index)
+            index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 1)
+            self.phoneNumber.insert(" ", at: index)
+            index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 2)
+            self.phoneNumber.insert("(", at: index)
+            index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 6)
+            self.phoneNumber.insert(")", at: index)
+            index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 7)
+            self.phoneNumber.insert(" ", at: index)
+            index = phoneNumber.index(phoneNumber.startIndex, offsetBy: 11)
+            self.phoneNumber.insert("-", at: index)
+        }
     }
     
     public func setWebsiteUrl(url: String)
