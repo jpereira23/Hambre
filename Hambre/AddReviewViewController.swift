@@ -9,7 +9,7 @@
 
 import UIKit
 
-class AddReviewViewController: UIViewController, UITextViewDelegate {
+class AddReviewViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var reviewSlider: UISlider!
@@ -41,6 +41,8 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         toolbar.setItems([doneButton], animated: true)
         
         commentView.inputAccessoryView = toolbar
+        self.usernameField.borderStyle = .none
+        self.usernameField.backgroundColor = .white 
         
         self.title = "Review"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
@@ -61,7 +63,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         self.reviewStarFive.addGestureRecognizer(fifthStarRecognizer)
         
         
-        usernameField.delegate = self
+        self.usernameField.delegate = self
         self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
         self.commentView.textColor = UIColor.lightGray
     }
@@ -71,6 +73,15 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         view.endEditing(true)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        
+        if self.usernameField.placeholder == "e.i. John Smith"
+        {
+            self.usernameField.placeholder = ""
+            self.usernameField.textColor = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 1)
+        }
+    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
@@ -79,16 +90,26 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
             self.commentView.text = ""
             self.commentView.textColor = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 1)
         }
-        
     }
     
-    //I NEED HEEEEEELP HERE JEFF, THIS "IF" DOESN'T WORK ---------------------------------
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if self.usernameField.text == "" || self.usernameField.text == " "
+        {
+            self.usernameField.placeholder = "e.i. John Smith"
+            self.usernameField.textColor = UIColor.lightGray
+            
+        }
+    }
+
     func textViewDidEndEditing(_ textView: UITextView) {
         
         if self.commentView.text == " "  || self.commentView.text == "" {
             self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
             self.commentView.textColor = UIColor.lightGray
         }
+        
+       
+        
     }
     
     func firstStarTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -227,15 +248,11 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-
-}
-
-extension AddReviewViewController : UITextFieldDelegate
-{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         textField.resignFirstResponder()
         return true
     }
     
+
 }
