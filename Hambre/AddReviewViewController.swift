@@ -70,7 +70,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         let rectShape = CAShapeLayer()
         rectShape.bounds = self.usernameField.frame
         rectShape.position = self.usernameField.center
-        rectShape.path = UIBezierPath(roundedRect: self.usernameField.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 10, height: 10)).cgPath
+        rectShape.path = UIBezierPath(roundedRect: self.usernameField.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         self.usernameField.layer.mask = rectShape
         
     }
