@@ -376,6 +376,10 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
+                
+                //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                //backgroundView?.addGestureRecognizer(gestureRec)
+                
                 setConstraintsOfBackgroundView()
                 
             }
@@ -638,17 +642,24 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     {
         if sender.identifier == "settingsToTile"
         {
-            if !loadedCards.isEmpty
+            if loadedCards.count != 1 && loadedCards.count != 0
             {
                 backgroundView?.isHidden = true
                 forgroundView?.isHidden = true
-                anotherView?.isHidden = true
                 loadedCards.remove(at: 0)
                 backgroundView?.removeFromSuperview()
                 backgroundView = nil
                 loadedCards.remove(at: 0)
                 forgroundView?.removeFromSuperview()
                 forgroundView = nil
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+            else if loadedCards.count == 1
+            {
+                backgroundView?.isHidden = true
+                backgroundView?.removeFromSuperview()
+                backgroundView = nil
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
@@ -701,7 +712,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             let businessViewController = segue.destination as! BusinessViewController
             businessViewController.setIdentifier(id: "fromTileView")
-            if loadedCards.count > 0
+            if loadedCards.count > 1
             {
                 businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
                 businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
@@ -711,17 +722,20 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
                 businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
                 businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+                businessViewController.setDistance(distance: loadedCards[1]!.getBusiness().getDistance())
+                
             }
             else
             {
-                businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
-                businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
-                businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
-                businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
-                businessViewController.setWebsiteUrl(url: (loadedCards[1]!.getBusiness().getWebsiteUrl()))
-                businessViewController.setIsClosed(isClosed: (loadedCards[1]!.getBusiness().getIsClosed()))
-                businessViewController.setAddress(address: (loadedCards[1]!.getBusiness().getFullAddress()))
-                businessViewController.setTitle(title: (loadedCards[1]!.getBusiness().getBusinessName()))
+                businessViewController.setUrl(aUrl: (loadedCards[0]!.getBusiness().getBusinessImage()))
+                businessViewController.setLongitude(longitude: (loadedCards[0]!.getBusiness().getLongitude()))
+                businessViewController.setLatitude(latitude: (loadedCards[0]!.getBusiness().getLatitude()))
+                businessViewController.setPhoneNumber(phone: (loadedCards[0]!.getBusiness().getNumber()))
+                businessViewController.setWebsiteUrl(url: (loadedCards[0]!.getBusiness().getWebsiteUrl()))
+                businessViewController.setIsClosed(isClosed: (loadedCards[0]!.getBusiness().getIsClosed()))
+                businessViewController.setAddress(address: (loadedCards[0]!.getBusiness().getFullAddress()))
+                businessViewController.setTitle(title: (loadedCards[0]!.getBusiness().getBusinessName()))
+                businessViewController.setDistance(distance: loadedCards[0]!.getBusiness().getDistance())
             }
             
         }

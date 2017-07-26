@@ -12,6 +12,7 @@ import GoogleMaps
 import YelpAPI
 import CloudKit
 import CoreLocation
+import SafariServices
 
 class BusinessViewController: UIViewController {
 
@@ -31,6 +32,7 @@ class BusinessViewController: UIViewController {
     private var address : String!
     private var websiteUrl : String!
     private var aTitle : String!
+    private var distance : Int = 0
     private var reviewView : ReviewView!
     private var detailView : DetailView!
     private var mapView : MapView!
@@ -82,7 +84,7 @@ class BusinessViewController: UIViewController {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
             marker.title = self.aTitle
-            marker.snippet = "Selected Restaurant"
+            marker.snippet = String(self.distance) + " mi"
             marker.map = mapView
         }
         else
@@ -111,7 +113,7 @@ class BusinessViewController: UIViewController {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: -76.295604, longitude: 22.319117)
             marker.title = "This restaurants coordinates cannot be found"
-            marker.snippet = "NOT FOUND"
+            marker.snippet = "Miles not available"
             marker.map = mapView
         }
        
@@ -123,7 +125,34 @@ class BusinessViewController: UIViewController {
     }
     
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        let description = String(describing: navigationController!.viewControllers.first!.classForCoder)
+        if description == "BusinessTileViewController"
+        {
+            let rootViewController = self.navigationController?.viewControllers.first as! BusinessTileViewController
+            
+            var reviews = 0
+            
+            for review in self.cloudKitDatabaseHandler.accessArrayOfReviews()
+            {
+                if review.getId() == imageUrl.absoluteString
+                {
+                    reviews += 1
+                }
+            }
+            if rootViewController.loadedCards.count > 1
+            {
+                rootViewController.forgroundView?.reviewsField!.text = String(reviews) + ((reviews > 1 || reviews == 0) ? " reviews" : " review")
+                rootViewController.forgroundView?.setAverageFloat(averageReviews: self.cloudKitDatabaseHandler.getAverageReviews(url: self.imageUrl.absoluteString))
+            }
+            else
+            {
+                rootViewController.backgroundView?.reviewsField!.text = String(reviews) + ((reviews > 1 || reviews == 0) ? " reviews" : " review")
+                rootViewController.backgroundView?.setAverageFloat(averageReviews: self.cloudKitDatabaseHandler.getAverageReviews(url: self.imageUrl.absoluteString))
+            }
+        }
+    }
     
     
     
@@ -173,6 +202,11 @@ class BusinessViewController: UIViewController {
     public func setWebsiteUrl(url: String)
     {
         self.websiteUrl = url
+    }
+    
+    public func setDistance(distance: Int)
+    {
+        self.distance = distance
     }
     
     public func setTitle(title: String)
@@ -251,8 +285,6 @@ class BusinessViewController: UIViewController {
     
     func addReviewButtonTriggered(sender: UIButton)
     {
-        
-        //appDelegate.getICloudAccess()
       
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addReviewViewController")
                         
@@ -269,11 +301,16 @@ class BusinessViewController: UIViewController {
     
     func getWebsiteButtonTriggered(sender: UIButton)
     {
+        
+        let link = SFSafariViewController(url: URL(string: self.websiteUrl)!)
+        self.present(link, animated: true, completion: nil)
+        /*
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addWebsiteViewController") as! WebViewController
         
         vc.setWebUrl(url: self.websiteUrl)
         
         self.navigationController?.pushViewController(vc, animated: true)
+         */
     }
     
     func directionsButtonTriggered(sender: UIButton)

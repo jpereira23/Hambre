@@ -189,6 +189,11 @@ class PersonalBusinessCoreData: NSObject {
             }
         }
     }
+    
+    public func deinitImagesArray()
+    {
+        self.arrayOfImages.removeAll() 
+    }
     // Returns true if it is a duplicate
     public func checkForDuplicates(personalBusiness: PersonalBusiness) -> Bool
     {

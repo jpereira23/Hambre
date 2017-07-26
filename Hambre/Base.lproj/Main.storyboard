@@ -837,7 +837,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="submitAction:" destination="ZU0-DI-gXU" eventType="touchUpInside" id="Q6O-Zn-crF"/>
                                     <segue destination="h9m-QY-cTI" kind="unwind" identifier="fromAddReview" unwindAction="unwindToBusinessView:" id="6rU-5e-i2M"/>
                                 </connections>
                             </button>
