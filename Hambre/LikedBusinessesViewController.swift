@@ -75,6 +75,13 @@ class LikedBusinessesViewController: UIViewController {
         
         //self.tableView.reloadData()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.arrayOfLikedBusinesses.removeAll()
+        self.arrayOfImages.removeAll()
+        self.personalBusinessCoreData.deinitImagesArray()
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

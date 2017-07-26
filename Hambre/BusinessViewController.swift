@@ -141,8 +141,16 @@ class BusinessViewController: UIViewController {
                     reviews += 1
                 }
             }
-            rootViewController.forgroundView?.reviewsField!.text = String(reviews) + ((reviews > 1 || reviews == 0) ? " reviews" : " review")
-            rootViewController.forgroundView?.setAverageFloat(averageReviews: self.cloudKitDatabaseHandler.getAverageReviews(url: self.imageUrl.absoluteString))
+            if rootViewController.loadedCards.count > 1
+            {
+                rootViewController.forgroundView?.reviewsField!.text = String(reviews) + ((reviews > 1 || reviews == 0) ? " reviews" : " review")
+                rootViewController.forgroundView?.setAverageFloat(averageReviews: self.cloudKitDatabaseHandler.getAverageReviews(url: self.imageUrl.absoluteString))
+            }
+            else
+            {
+                rootViewController.backgroundView?.reviewsField!.text = String(reviews) + ((reviews > 1 || reviews == 0) ? " reviews" : " review")
+                rootViewController.backgroundView?.setAverageFloat(averageReviews: self.cloudKitDatabaseHandler.getAverageReviews(url: self.imageUrl.absoluteString))
+            }
         }
     }
     
