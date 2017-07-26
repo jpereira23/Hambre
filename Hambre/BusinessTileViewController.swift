@@ -58,8 +58,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         super.viewDidLoad()
         
         self.outOfTiles.isHidden = true
-        self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: theCoordinate)
-        self.personalBusinessCoreData.resetCoreData()
+        //self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: theCoordinate)
+        //self.personalBusinessCoreData.resetCoreData()
         appDelegate.delegate = self
         appDelegate.checkForLocationServices()
         self.cloudKitDatabaseHandler.delegate = self
@@ -191,9 +191,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             backgroundView?.backgroundColor = UIColor.white
             self.view.addSubview(backgroundView!)
             
-            let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+            //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
             
-            backgroundView?.addGestureRecognizer(gestureRec)
+            //backgroundView?.addGestureRecognizer(gestureRec)
             setConstraintsOfBackgroundView()
         }
         
@@ -210,9 +210,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 
-                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
-                backgroundView?.addGestureRecognizer(gestureRec)
+                //backgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
             }
             else
@@ -237,12 +237,16 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
-                forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
+                //forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
+                
+                //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
+                //forgroundView?.yelpButton.addGestureRecognizer(tapGesture)
+                
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
-                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
-                forgroundView?.addGestureRecognizer(gestureRec)
+                //forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -301,9 +305,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 
-                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
-                backgroundView?.addGestureRecognizer(gestureRec)
+                //backgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 
             }
@@ -328,13 +332,14 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
-                forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
+                //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
+                //forgroundView?.yelpButton.addGestureRecognizer(tapGesture)
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
-                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
-                forgroundView?.addGestureRecognizer(gestureRec)
+                //forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
                 //setConstraintsForAnotherView()
@@ -385,7 +390,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
-                backgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
+                //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
+                //backgroundView?.yelpButton.addGestureRecognizer(tapGesture)
                 self.view.addSubview(backgroundView!)
                 
                 //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
@@ -428,11 +434,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
-                forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
+                
                 
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
+                //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
+                //forgroundView?.yelpButton.addGestureRecognizer(tapGesture)
                 let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
                 forgroundView?.addGestureRecognizer(gestureRec)

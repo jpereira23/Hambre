@@ -35,7 +35,8 @@ class DraggableView: UIView {
     @IBOutlet var starImageFour: UIImageView!
     @IBOutlet var starImageFive: UIImageView!
     
-    @IBOutlet weak var yelpButton: UILabel!
+    @IBOutlet var yelpButton: UIImageView!
+    
     
     // All personal decelarations and housekeeping definitions
     weak var delegate: DraggableViewDelegate?
