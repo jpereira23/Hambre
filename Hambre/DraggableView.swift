@@ -358,24 +358,27 @@ class DraggableView: UIView {
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
             //self.view.isHidden = true
+            self.view.delegate?.cardSwipedRight(self)
             self.view.removeFromSuperview()
         })
-        print(self.floatForStar)
-        delegate?.cardSwipedRight(self)
+        
     }
     
     func leftAction() {
+        
         let finishPoint = CGPoint(x: CGFloat(-400), y: CGFloat(4 * yFromCenter + originalPoint.y))
         UIView.animate(withDuration: 0.1, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
+            self.view.delegate?.cardSwipedLeft(self)
             self.view.removeFromSuperview()
         })
-        delegate?.cardSwipedLeft(self)
+ 
+        
     }
     
     func rightClickAction() {
-        
+        /*
         UIView.animate(withDuration: 1.0, animations: {() -> Void in
             self.view.transform = CGAffineTransform(scaleX: 11, y: 11)
             //self.transform = CGAffineTransform(translationX: CGFloat(600), y: 0)
@@ -383,22 +386,25 @@ class DraggableView: UIView {
             
         }, completion: {(_ complete: Bool) -> Void in
             self.view.removeFromSuperview()
-            self.delegate?.cardSwipedRight(self)
+         
         })
+        */
+        delegate?.cardSwipedRight(self)
         
     }
     
     func leftClickAction() {
         
-        UIView.animate(withDuration: 1.0, animations: {() -> Void in
-            self.view.transform = CGAffineTransform(scaleX: 11, y: 11)
-            //self.transform = CGAffineTransform(translationX: CGFloat(-600), y: 0)
-            //self.transform = CGAffineTransform(rotationAngle: -1)
+        /*
+        let finishPoint = CGPoint(x: CGFloat(-400), y: CGFloat(4 * yFromCenter + originalPoint.y))
+        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+            self.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
-            self.view.removeFromSuperview()
-            self.delegate?.cardSwipedLeft(self)
+            self.removeFromSuperview()
         })
-        
+        usleep(5000)
+    */ 
+        delegate?.cardSwipedLeft(self)
     }
     
     

@@ -156,7 +156,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
 
     
     func cardSwipedLeft(_ card: UIView) {
-        
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if !launchedBefore && !leftHasHappened{
             leftHasHappened = true
@@ -190,7 +189,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             backgroundView?.frame.origin.y = 86
             backgroundView?.backgroundColor = UIColor.white
             self.view.addSubview(backgroundView!)
-            
+            backgroundView!.delegate = self
             //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
             
             //backgroundView?.addGestureRecognizer(gestureRec)
@@ -213,6 +212,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
                 //backgroundView?.addGestureRecognizer(gestureRec)
+                backgroundView!.delegate = self
                 setConstraintsOfBackgroundView()
             }
             else
@@ -245,7 +245,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
-                
+                forgroundView!.delegate = self
                 //forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
@@ -308,6 +308,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
                 backgroundView?.addGestureRecognizer(gestureRec)
+                backgroundView!.delegate = self
                 setConstraintsOfBackgroundView()
                 
             }
@@ -336,7 +337,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.yelpAccess.addGestureRecognizer(tapGesture)
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
-                
+                forgroundView!.delegate = self
                 let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
                 forgroundView?.addGestureRecognizer(gestureRec)
@@ -366,7 +367,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             draggableView.setReviews(reviews: "No reviews")
         }
-        draggableView.delegate = self
+        //draggableView.delegate = self
         
         return draggableView
     }
@@ -444,7 +445,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
                 forgroundView?.addGestureRecognizer(gestureRec)
-                
+                forgroundView?.delegate = self 
                 
                 //auto layout
                 
@@ -812,7 +813,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     
     @IBAction func swipeLeft(_ sender: Any) {
         // Still needs to be worked out after what i changed for tileView
-        
+        /*
         if loadedCards.count != 1
         {
         loadedCards[1]?.xibSetUp()
@@ -835,13 +836,26 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             })
             dragView.leftClickAction()
         }
-        
+ 
+        */
+        self.forgroundView?.delegate = nil 
+        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+            //self.forgroundView!.delegate = self
+            self.forgroundView!.center = CGPoint(x: -400, y: -400)
+            //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
+        }, completion: {(_ complete: Bool) -> Void in
+            self.forgroundView?.delegate = self
+            self.forgroundView?.leftClickAction()
+        })
+ 
         
         
     }
     
     @IBAction func swipeRight(_ sender: Any) {
         // still needs to be worked out after what i did for tileview
+        
+        /*
         if loadedCards.count != 1
         {
             loadedCards[1]?.xibSetUp()
@@ -864,6 +878,18 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             })
             dragView.rightClickAction()
         }
+        */
+        
+        self.forgroundView?.delegate = nil
+        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+            //self.forgroundView!.delegate = self
+            self.forgroundView!.center = CGPoint(x: 400, y: -400)
+            //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
+        }, completion: {(_ complete: Bool) -> Void in
+            self.forgroundView?.delegate = self
+            self.forgroundView?.rightClickAction()
+        })
+        
     }
     
     private func checkAndUpdateGlobalIndex()
