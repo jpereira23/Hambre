@@ -382,6 +382,8 @@ class DraggableView: UIView {
         UIView.animate(withDuration: 1.0, animations: {() -> Void in
             self.view.transform = CGAffineTransform(scaleX: 11, y: 11)
             //self.transform = CGAffineTransform(translationX: CGFloat(600), y: 0)
+         
+            //
             //self.transform = CGAffineTransform(rotationAngle: 1)
             
         }, completion: {(_ complete: Bool) -> Void in

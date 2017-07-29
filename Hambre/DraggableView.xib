@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -33,7 +33,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwq-g2-9YB">
-                    <rect key="frame" x="20" y="343" width="230" height="20"/>
+                    <rect key="frame" x="20" y="343" width="220" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="exf-5r-jaj"/>
                     </constraints>
@@ -108,7 +108,7 @@
                 <constraint firstItem="D0p-60-HoS" firstAttribute="top" secondItem="Xwq-g2-9YB" secondAttribute="bottom" constant="2" id="SDx-Or-QUD"/>
                 <constraint firstAttribute="bottom" secondItem="D0p-60-HoS" secondAttribute="bottom" constant="15" id="X2E-Tt-hoI"/>
                 <constraint firstAttribute="bottom" secondItem="zyq-Ei-MS9" secondAttribute="bottom" constant="15" id="ftF-Ek-02l"/>
-                <constraint firstAttribute="trailing" secondItem="Xwq-g2-9YB" secondAttribute="trailing" constant="75" id="gWg-FF-qsz"/>
+                <constraint firstAttribute="trailing" secondItem="Xwq-g2-9YB" secondAttribute="trailing" constant="85" id="gWg-FF-qsz"/>
                 <constraint firstAttribute="bottom" secondItem="BPG-a3-7Jd" secondAttribute="bottom" constant="15" id="lvb-MR-UoB"/>
                 <constraint firstItem="o89-lG-SZZ" firstAttribute="leading" secondItem="MG5-QI-XUf" secondAttribute="trailing" constant="1" id="mEp-FB-rYj"/>
                 <constraint firstItem="MG5-QI-XUf" firstAttribute="leading" secondItem="D0p-60-HoS" secondAttribute="trailing" constant="1" id="nnl-SR-O0Z"/>
