@@ -844,21 +844,29 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.forgroundView?.delegate = nil
         self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         
+        
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
             //self.forgroundView!.delegate = self
-            self.forgroundView!.center = CGPoint(x: -400, y: -400)
+            //self.forgroundView!.center = CGPoint(x: -400, y: 100)
             //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
             
                 //self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 //self.leftButton.transform = CGAffineTransform.identity
             
             self.leftButton.transform = CGAffineTransform.identity
-            
+           
+        }, completion: nil)
+    
+        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+            self.forgroundView!.center = CGPoint(x: -400, y: 100)
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
+            self.leftButton.isEnabled = true
+            self.rightButton.isEnabled = true
             self.forgroundView?.delegate = self
             self.forgroundView?.leftClickAction()
         })
- 
         
         
     }
@@ -897,9 +905,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.forgroundView?.delegate = nil
         UIView.animate(withDuration: 0.5, animations: {() -> Void in
             //self.forgroundView!.delegate = self
-            self.forgroundView!.center = CGPoint(x: 400, y: -400)
+            self.forgroundView!.center = CGPoint(x: 600, y: 100)
             //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
+            self.leftButton.isEnabled = true
+            self.rightButton.isEnabled = true
             self.forgroundView?.delegate = self
             self.forgroundView?.rightClickAction()
         })
