@@ -353,13 +353,13 @@ class DraggableView: UIView {
     }
     
     func rightAction() {
-        let finishPoint = CGPoint(x: CGFloat(400), y: CGFloat(4 * yFromCenter + originalPoint.y))
+        let finishPoint = CGPoint(x: CGFloat(600), y: CGFloat(4 * yFromCenter + originalPoint.y))
         UIView.animate(withDuration: 0.1, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
             //self.view.isHidden = true
             self.view.delegate?.cardSwipedRight(self)
-            self.view.removeFromSuperview()
+            //self.view.removeFromSuperview()
         })
         
     }
@@ -371,7 +371,7 @@ class DraggableView: UIView {
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
             self.view.delegate?.cardSwipedLeft(self)
-            self.view.removeFromSuperview()
+            //self.view.removeFromSuperview()
         })
  
         
