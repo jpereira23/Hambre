@@ -36,6 +36,7 @@ class DraggableView: UIView {
     @IBOutlet var starImageFive: UIImageView!
     
     @IBOutlet var yelpButton: UIImageView!
+    @IBOutlet var yelpAccess: UIButton!
     
     
     // All personal decelarations and housekeeping definitions
@@ -133,6 +134,17 @@ class DraggableView: UIView {
         // Need else statement for businesses that dont have url
         self.view.panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.view.beingDragged))
         self.view.addGestureRecognizer(self.view.panGestureRecognizer!)
+        
+        self.view.yelpAccess = UIButton(frame: CGRect(x: 248, y: 333, width: 60, height: 40))
+        self.view.yelpAccess.setImage(UIImage(named: "yelp.png"), for: .normal)
+        self.view.addSubview(self.view.yelpAccess)
+        
+        /* Auto layout constraints for yelpAcess button */
+        
+       
+        //let top = NSLayoutConstraint(item: self.view.yelpAccess, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 344)
+        
+        
         
         overlayView = OverlayView(frame: CGRect(x: CGFloat(self.frame.size.width / 2 - 100), y: CGFloat(0), width: CGFloat(100), height: CGFloat(100)))
         overlayView?.alpha = 0

@@ -332,8 +332,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
-                //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
-                //forgroundView?.yelpButton.addGestureRecognizer(tapGesture)
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
+                forgroundView?.yelpAccess.addGestureRecognizer(tapGesture)
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
@@ -439,8 +439,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
                 
-                //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
-                //forgroundView?.yelpButton.addGestureRecognizer(tapGesture)
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
+                forgroundView?.yelpAccess.addGestureRecognizer(tapGesture)
                 let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
                 forgroundView?.addGestureRecognizer(gestureRec)
@@ -530,6 +530,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let top = NSLayoutConstraint(item: forgroundView!, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         
+        //let topYelpAccess = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .top, relatedBy: .equal, toItem: forgroundView!.imageView, attribute: .bottom, multiplier: 1.0, constant: 5.0)
         let leading = NSLayoutConstraint(item: forgroundView!, attribute: .leading, relatedBy: .equal, toItem: backgroundView!, attribute: .leading, multiplier: 1.0, constant: 0)
         
         let trailing = NSLayoutConstraint(item: forgroundView!, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 0)
@@ -542,12 +543,24 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let imageViewTrailing = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 50)
         
-        let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -15)
+        
+        // this originally was toItem: forgroundView!.businessNameField
+        let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.yelpAccess, attribute: .top, multiplier: 1.0, constant: -15)
         
         let imageViewTop = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         
+        // Auto layout for yelpAccess
+        let heightYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 20)
+        let widthYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
         
-        view.addConstraints([top, leading, trailing, height, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
+        let bottomYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.milesField, attribute: .top, multiplier: 1.0, constant: 1)
+        
+        let trailingYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .trailing, relatedBy: .equal, toItem: forgroundView, attribute: .trailing, multiplier: 1, constant: 20)
+        
+        let heightMiles = NSLayoutConstraint(item: forgroundView!.milesField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 15)
+        
+        
+        view.addConstraints([heightYelp, widthYelp, bottomYelp, trailingYelp, top, leading, trailing, height, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop, heightMiles])
     }
  
     /*
