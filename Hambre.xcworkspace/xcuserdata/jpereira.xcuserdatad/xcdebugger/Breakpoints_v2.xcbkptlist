@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/BusinessTileViewController.swift"
-            timestampString = "522993153.485946"
+            timestampString = "523052370.969213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "847"
-            endingLineNumber = "847"
+            startingLineNumber = "851"
+            endingLineNumber = "851"
             landmarkName = "swipeLeft(_:)"
             landmarkType = "7">
          </BreakpointContent>
