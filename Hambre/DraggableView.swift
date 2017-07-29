@@ -353,10 +353,11 @@ class DraggableView: UIView {
     }
     
     func rightAction() {
-        let finishPoint = CGPoint(x: CGFloat(1000), y: CGFloat(4 * yFromCenter + originalPoint.y))
-        UIView.animate(withDuration: 0.3, animations: {() -> Void in
+        let finishPoint = CGPoint(x: CGFloat(400), y: CGFloat(4 * yFromCenter + originalPoint.y))
+        UIView.animate(withDuration: 0.1, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
+            //self.view.isHidden = true
             self.view.removeFromSuperview()
         })
         print(self.floatForStar)
@@ -364,8 +365,8 @@ class DraggableView: UIView {
     }
     
     func leftAction() {
-        let finishPoint = CGPoint(x: CGFloat(-500), y: CGFloat(2 * yFromCenter + originalPoint.y))
-        UIView.animate(withDuration: 0.3, animations: {() -> Void in
+        let finishPoint = CGPoint(x: CGFloat(-400), y: CGFloat(4 * yFromCenter + originalPoint.y))
+        UIView.animate(withDuration: 0.1, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
             self.view.removeFromSuperview()
