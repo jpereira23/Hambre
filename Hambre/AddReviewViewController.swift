@@ -44,7 +44,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         self.usernameField.borderStyle = .none
         self.usernameField.backgroundColor = .white 
         
-        self.title = "Review"
+        self.title = "Add Review"
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
         let firstStarRecognizer = UITapGestureRecognizer(target: self, action: #selector(firstStarTapped(tapGestureRecognizer:)))
         self.reviewStarOne.isUserInteractionEnabled = true
@@ -64,7 +64,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         
         
         self.usernameField.delegate = self
-        self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
+        self.commentView.text = "Write your review here./n/nExample: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
         self.commentView.textColor = UIColor.lightGray
         
         let rectShape = CAShapeLayer()
@@ -189,10 +189,12 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         if anonymousSwitch.isOn
         {
             usernameField.isEnabled = false
+            self.usernameField.placeholder = "Anonymous"
         }
         else
         {
             usernameField.isEnabled = true
+            self.usernameField.placeholder = "e.i. John Smith"
         }
     }
     
