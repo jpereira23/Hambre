@@ -768,7 +768,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qeh-J7-rNM">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qeh-J7-rNM">
                                 <rect key="frame" x="316" y="141" width="51" height="31"/>
                                 <color key="onTintColor" red="0.98039215686274506" green="0.69803921568627447" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -820,6 +820,7 @@
                             <constraint firstItem="DC9-zd-lT3" firstAttribute="top" secondItem="R2p-tQ-qre" secondAttribute="bottom" constant="10" id="kZY-ZR-Mjz"/>
                             <constraint firstItem="WIU-xS-Jn6" firstAttribute="top" secondItem="DC9-zd-lT3" secondAttribute="bottom" constant="20" id="o7P-ix-Kch"/>
                             <constraint firstAttribute="trailing" secondItem="6ho-oN-dxq" secondAttribute="trailing" constant="6" id="r2r-bd-ZQg"/>
+                            <constraint firstItem="Qeh-J7-rNM" firstAttribute="top" secondItem="6ho-oN-dxq" secondAttribute="bottom" constant="10" id="sfp-JF-s64"/>
                             <constraint firstItem="6ho-oN-dxq" firstAttribute="top" secondItem="81I-g4-dKd" secondAttribute="bottom" constant="10" id="ydj-ej-FB5"/>
                         </constraints>
                     </view>
