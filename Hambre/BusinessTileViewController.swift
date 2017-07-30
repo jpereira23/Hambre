@@ -903,7 +903,13 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         */
         
         self.forgroundView?.delegate = nil
-        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+        
+        self.rightButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
+            
+        self.rightButton.transform = CGAffineTransform.identity
+            
             //self.forgroundView!.delegate = self
             self.forgroundView!.center = CGPoint(x: 600, y: 100)
             //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
@@ -917,6 +923,21 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         })
         
     }
+    
+    @IBAction func infoPressed(_ sender: Any) {
+        
+        self.infoButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
+            
+            self.infoButton.transform = CGAffineTransform.identity
+            
+        }, completion: nil)
+            
+            
+    }
+    
+    
     
     private func checkAndUpdateGlobalIndex()
     {
