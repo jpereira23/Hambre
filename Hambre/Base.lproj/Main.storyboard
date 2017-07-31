@@ -613,6 +613,11 @@
                                         <color key="textColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIn-p9-3Fg">
+                                        <rect key="frame" x="75" y="6" width="161" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="current location"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.49019607843137253" green="0.49019607843137253" blue="0.49019607843137253" alpha="0.90180864726027399" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -626,6 +631,7 @@
                     </view>
                     <connections>
                         <outlet property="cityStateLabel" destination="aow-1M-ETf" id="nHq-9f-ixE"/>
+                        <outlet property="currentLocationButton" destination="aIn-p9-3Fg" id="d7J-zC-dH2"/>
                         <outlet property="distanceLabel" destination="dsM-e1-Z7M" id="f7z-q3-EOW"/>
                         <outlet property="distanceSlider" destination="FC4-4m-bzf" id="XPJ-ph-4NL"/>
                         <outlet property="doneButton" destination="xMZ-v9-iHy" id="8jI-Wy-rMH"/>

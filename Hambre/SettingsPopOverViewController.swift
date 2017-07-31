@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsPopOverViewController: UIViewController {
 
+    
+    @IBOutlet var currentLocationButton: UIButton!
     @IBOutlet weak var popView: UIView!
     @IBOutlet var cityStateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
