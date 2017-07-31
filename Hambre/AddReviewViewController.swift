@@ -83,9 +83,9 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         
-        if self.usernameField.placeholder == "e.i. John Smith"
+        if self.usernameField.text == "e.i. John Smith"
         {
-            self.usernameField.placeholder = ""
+            self.usernameField.text = ""
             self.usernameField.textColor = UIColor.lightGray
         }
     }
