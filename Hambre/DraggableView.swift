@@ -97,7 +97,7 @@ class DraggableView: UIView {
         //view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         self.translatesAutoresizingMaskIntoConstraints = false
         self.businessNameField.text = self.businessName
-        if self.miles == "N/A"
+        if self.miles == ""
         {
             self.milesField.font = UIFont(name: self.milesField.font.fontName, size: 8)
         }
@@ -367,7 +367,7 @@ class DraggableView: UIView {
     func leftAction() {
         
         let finishPoint = CGPoint(x: CGFloat(-400), y: CGFloat(4 * yFromCenter + originalPoint.y))
-        UIView.animate(withDuration: 0.1, animations: {() -> Void in
+        UIView.animate(withDuration: 0.3, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
             self.view.delegate?.cardSwipedLeft(self)

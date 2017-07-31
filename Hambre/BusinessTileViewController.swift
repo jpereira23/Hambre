@@ -159,7 +159,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if !launchedBefore && !leftHasHappened{
             leftHasHappened = true
-            let alert = UIAlertController(title: nil, message: "You have disliked your first restaurant. We appreciate your honesty!", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "Swiped Left", message: "Not interested today? No problem. What goes around comes around.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                 // perhaps use action.title here
             })
@@ -258,8 +258,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         if self.personalBusinessCoreData.checkIfCoreDataIsEmpty()
         {
-            let alert = UIAlertController(title: "First Liked Restaurant", message: "You have liked your first restaurant! Now you can go to the Favorites tab to view your liked restaurant.", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            let alert = UIAlertController(title: "Swiped Right", message: "Tasty, right? Now you can go to the Favorites tab to view your liked restaurant.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                 // perhaps use action.title here
             })
             
@@ -355,7 +355,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
         draggableView.setBusiness(business: self.arrayOfBusinesses[index])
-        draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mi" : "N/A"))
+        draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mi" : ""))
         
 
         if self.arrayOfReviews.count > 0

@@ -206,7 +206,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         {
             if (usernameField.text?.isEmpty)! && review == 0 && !anonymousSwitch.isOn
             {
-                let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username and select at least one star in order to submit.", preferredStyle: .actionSheet)
+                let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username and select at least one star in order to submit.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                     
                 })
@@ -217,7 +217,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
             }
             else if (usernameField.text?.isEmpty)! && !anonymousSwitch.isOn
             {
-                let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username or select to review anonomously in order to submit.", preferredStyle: .actionSheet)
+                let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username or select to review anonomously in order to submit.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                     
                 })
@@ -228,8 +228,8 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
             }
             else if review == 0
             {
-                let alert = UIAlertController(title: "Incomplete Review", message: "You must select at least one star to submit.", preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                let alert = UIAlertController(title: "Incomplete Review", message: "You must select at least one star in order to submit.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                     
                 })
                 
