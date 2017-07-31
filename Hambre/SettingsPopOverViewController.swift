@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 
-class SettingsPopOverViewController: UIViewController {
+class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate {
 
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet var currentLocationButton: UIButton!
     @IBOutlet weak var popView: UIView!
@@ -23,6 +25,8 @@ class SettingsPopOverViewController: UIViewController {
     private var radiusCoreData = RadiusCoreData()
     private var indexOfSelectedCell = 0
     private var cityState : String!
+    private var locationManager = CLLocationManager()
+    
     private var sliderValue = 0
     let step: Float = 10
     var arrayOfGenres = ["All Restaurants", "Afghan", "African", "American", "Arabian", "Argentine", "Armenian", "Asian Fusion", "Australian", "Austrian", "Bangladeshi", "Barbeque", "Basque", "Belgian", "Brasseries", "Brazillian", "Breakfast & Brunch", "British", "Buffets", "Burgers", "Burmese", "Cafes", "Cafeteria", "Cajun/Creole", "Cambodian", "Caribbean", "Catalan", "Cheesesteaks", "Chicken Shop", "Chicken Wings", "Chinese", "Comfort Food", "Creperies", "Cuban", "Czech", "Delis", "Diners", "Dinner Theater", "Ethiopian", "Fast Food", "Filipino", "Fish & Chips", "Fondue", "Food Court", "Food Stands", "French", "Game Meat", "Gastropubs", "German", "Gluten-Free", "Greek", "Guamanian", "Halai", "Hawaiian", "Himalayan/Neplaese", "Honduran", "Hong Kong Style Cafe", "Hot Dogs", "Hot Pot", "Hungarian", "Iberian", "Indian", "Indonesian", "Irish", "Italian", "Japanese", "Kebab", "Korean", "Kosher", "Laotian", "Latin American", "Live/Raw Food", "Malaysian", "Mediterranean", "Mexican", "Middle Eastern", "Modern European", "Mongolian", "Moroccan",  "New Mexican Cafe", "Nicaraguan", "Noodles", "Pakistani", "Pan Asian", "Persian/Iranian", "Peruvian", "Pizza", "Polish", "Pop-Up Restaurants", "Portuguese", "Poutineries", "Russian", "Salad", "Sandwiches", "Scandinavian", "Scottish", "Seafood", "Singaporean", "Slovakian", "Soul Food", "Soup", "Southern", "Spanish", "Sri Lankan", "Steakhouses", "Supper Clubs", "Sushi Bars", "Syrian", "Taiwanese", "Tapas Bars", "Tapas/Small Plates", "Tex-Mex", "Thai", "Turkish", "Ukranian", "Uzbek", "Vegan", "Vegetarian", "Vietnamese", "Waffles", "Wraps"]
@@ -46,7 +50,7 @@ class SettingsPopOverViewController: UIViewController {
         super.viewDidLoad()
         self.tableView.reloadData()
         self.cityStateLabel.text = self.cityState
-       
+        activityIndicator.isHidden = true
         
         // Do any additional setup after loading the view.
         
@@ -54,11 +58,24 @@ class SettingsPopOverViewController: UIViewController {
         popView.layer.shadowOffset = CGSize(width: 0, height: 2)
         popView.layer.shadowRadius = 2
         popView.layer.shadowOpacity = 0.75
-        
-        
+        self.locationManager.delegate = self
         
     }
 
+    @IBAction func getCurrentLocation(_ sender: Any)
+    {
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled()
+        {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.startMonitoringSignificantLocationChanges()
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -111,6 +128,47 @@ class SettingsPopOverViewController: UIViewController {
             tileViewController.setDistance(distance:self.sliderValue)
             tileViewController.setIndexOfSelectedGenre(index: self.indexOfSelectedCell)
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        
+        let geoCoder = CLGeocoder()
+        
+        let location = CLLocation(latitude: (manager.location?.coordinate.latitude)!, longitude: (manager.location?.coordinate.longitude)!)
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        currentLocationButton.isHidden = true
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            let placeMark : CLPlacemark! = placemarks![0]
+            var aState : String! = ""
+            var aCity : String! = ""
+            
+            if placeMark != nil
+            {
+                if let city = placeMark.addressDictionary?["City"] as? String {
+                    aCity = city
+                    print("City: \(city)")
+                }
+                
+                if let state = placeMark.addressDictionary?["State"] as? String {
+                    aState = state
+                    print("State: \(state)")
+                    
+                    self.cityState = aCity + ", " + aState
+                    self.cityStateLabel.text = self.cityState
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.currentLocationButton.isHidden = false
+                    self.doneButton.isHidden = false 
+                }
+                
+               
+            }
+            
+            
+            
+        })
     }
 
 }
