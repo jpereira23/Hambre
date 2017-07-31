@@ -64,7 +64,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         
         
         self.usernameField.delegate = self
-        self.commentView.text = "Write your review here./n/nExample: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
+        self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be cooked perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
         self.commentView.textColor = UIColor.lightGray
         
         let rectShape = CAShapeLayer()
@@ -86,16 +86,16 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         if self.usernameField.placeholder == "e.i. John Smith"
         {
             self.usernameField.placeholder = ""
-            self.usernameField.textColor = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 1)
+            self.usernameField.textColor = UIColor.lightGray
         }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if self.commentView.text == "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
+        if self.commentView.text == "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be cooked perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
         {
             self.commentView.text = ""
-            self.commentView.textColor = UIColor(red: 63/255, green: 63/255, blue: 63/255, alpha: 1)
+            self.commentView.textColor = UIColor.lightGray
         }
     }
     
@@ -111,7 +111,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
     func textViewDidEndEditing(_ textView: UITextView) {
         
         if self.commentView.text == " "  || self.commentView.text == "" {
-            self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
+            self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be cooked perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
             self.commentView.textColor = UIColor.lightGray
         }
         
@@ -206,8 +206,8 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         {
             if (usernameField.text?.isEmpty)! && review == 0 && !anonymousSwitch.isOn
             {
-                let alert = UIAlertController(title: "Incomplete Review", message: "You need to enter a username in order to proceed and select at least one star.", preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username and select at least one star in order to submit.", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                     
                 })
                 
@@ -217,8 +217,8 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
             }
             else if (usernameField.text?.isEmpty)! && !anonymousSwitch.isOn
             {
-                let alert = UIAlertController(title: "Incomplete username", message: "You need to enter a username in order to proceed.", preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username or select to review anonomously in order to submit.", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                     
                 })
                 
@@ -228,7 +228,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
             }
             else if review == 0
             {
-                let alert = UIAlertController(title: "Incomplete review", message: "You need to select at least one star to proceed.", preferredStyle: .actionSheet)
+                let alert = UIAlertController(title: "Incomplete Review", message: "You must select at least one star to submit.", preferredStyle: .actionSheet)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
                     
                 })
