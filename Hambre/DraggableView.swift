@@ -99,7 +99,7 @@ class DraggableView: UIView {
         self.businessNameField.text = self.businessName
         if self.miles == "N/A"
         {
-            self.milesField.font = UIFont(name: self.milesField.font.fontName, size: 8)
+            self.milesField.font = UIFont(name: self.milesField.font.fontName, size: 12)
         }
         self.milesField.text = self.miles
         self.reviewsField.text = self.reviews
@@ -367,7 +367,7 @@ class DraggableView: UIView {
     func leftAction() {
         
         let finishPoint = CGPoint(x: CGFloat(-400), y: CGFloat(4 * yFromCenter + originalPoint.y))
-        UIView.animate(withDuration: 0.1, animations: {() -> Void in
+        UIView.animate(withDuration: 0.3, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in
             self.view.delegate?.cardSwipedLeft(self)
@@ -382,6 +382,8 @@ class DraggableView: UIView {
         UIView.animate(withDuration: 1.0, animations: {() -> Void in
             self.view.transform = CGAffineTransform(scaleX: 11, y: 11)
             //self.transform = CGAffineTransform(translationX: CGFloat(600), y: 0)
+         
+            //
             //self.transform = CGAffineTransform(rotationAngle: 1)
             
         }, completion: {(_ complete: Bool) -> Void in

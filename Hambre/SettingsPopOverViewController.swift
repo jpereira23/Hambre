@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsPopOverViewController: UIViewController {
 
+    @IBOutlet weak var popView: UIView!
     @IBOutlet var cityStateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var tableView: UITableView!
@@ -46,6 +47,13 @@ class SettingsPopOverViewController: UIViewController {
        
         
         // Do any additional setup after loading the view.
+        
+        popView.layer.shadowColor = UIColor.lightGray.cgColor
+        popView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        popView.layer.shadowRadius = 2
+        popView.layer.shadowOpacity = 0.75
+        
+        
         
     }
 

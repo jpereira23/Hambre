@@ -159,7 +159,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if !launchedBefore && !leftHasHappened{
             leftHasHappened = true
-            let alert = UIAlertController(title: nil, message: "You have disliked your first restaurant. We appreciate your honesty!", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "Swiped Left", message: "Not interested today? No problem. What goes around comes around.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                 // perhaps use action.title here
             })
@@ -258,8 +258,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         if self.personalBusinessCoreData.checkIfCoreDataIsEmpty()
         {
-            let alert = UIAlertController(title: "First Liked Restaurant", message: "You have liked your first restaurant! Now you can go to the Favorites tab to view your liked restaurant.", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            let alert = UIAlertController(title: "Swiped Right", message: "Tasty, right? Now you can go to the Favorites tab to view your liked restaurant.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                 // perhaps use action.title here
             })
             
@@ -355,7 +355,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
         draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
         draggableView.setBusiness(business: self.arrayOfBusinesses[index])
-        draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mi" : "N/A"))
+        draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mi" : ""))
         
 
         if self.arrayOfReviews.count > 0
@@ -520,8 +520,18 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let imageViewTop = NSLayoutConstraint(item: backgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: backgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         
+        backgroundView?.yelpAccess.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Auto layout for yelpAccess
+        let heightYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+        let widthYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
+        
+        let bottomYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!, attribute: .bottom, multiplier: 1.0, constant: -23)
+        
+        let trailingYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1, constant: -13)
+        
         //backgroundView?.addConstraint(trailing1)
-        view.addConstraints([top, leading, height, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
+        view.addConstraints([top, leading, height, trailing, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop, heightYelp1, widthYelp1, bottomYelp1, trailingYelp1])
     }
     
     public func setConstraintsForForgroundView()
@@ -544,24 +554,25 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         let imageViewTrailing = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1.0, constant: 50)
         
-        
         // this originally was toItem: forgroundView!.businessNameField
-        let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.yelpAccess, attribute: .top, multiplier: 1.0, constant: -15)
+        let imageViewBottom = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.businessNameField, attribute: .top, multiplier: 1.0, constant: -15)
         
         let imageViewTop = NSLayoutConstraint(item: forgroundView!.imageView, attribute: .top, relatedBy: .equal, toItem: forgroundView!, attribute: .top, multiplier: 1.0, constant: 0)
         
+        forgroundView?.yelpAccess.translatesAutoresizingMaskIntoConstraints = false
+        
         // Auto layout for yelpAccess
-        let heightYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 20)
-        let widthYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+        let heightYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+        let widthYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
         
-        let bottomYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!.milesField, attribute: .top, multiplier: 1.0, constant: 1)
+        let bottomYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!, attribute: .bottom, multiplier: 1.0, constant: -23)
         
-        let trailingYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .trailing, relatedBy: .equal, toItem: forgroundView, attribute: .trailing, multiplier: 1, constant: 20)
+        let trailingYelp = NSLayoutConstraint(item: forgroundView!.yelpAccess, attribute: .trailing, relatedBy: .equal, toItem: forgroundView!, attribute: .trailing, multiplier: 1, constant: -13)
         
-        let heightMiles = NSLayoutConstraint(item: forgroundView!.milesField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 15)
+        //let heightMiles = NSLayoutConstraint(item: forgroundView!.milesField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 15)
         
         
-        view.addConstraints([heightYelp, widthYelp, bottomYelp, trailingYelp, top, leading, trailing, height, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop, heightMiles])
+        view.addConstraints([heightYelp, widthYelp, bottomYelp, trailingYelp, top, leading, trailing, height, bottom, imageViewTrailing, imageViewLeading, imageViewBottom, imageViewTop])
     }
  
     /*
@@ -812,6 +823,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     
     
     @IBAction func swipeLeft(_ sender: Any) {
+            
+            
+        
         // Still needs to be worked out after what i changed for tileView
         /*
         if loadedCards.count != 1
@@ -838,25 +852,42 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         }
  
         */
-        self.forgroundView?.delegate = nil 
-        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+        self.forgroundView?.delegate = nil
+        self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
             //self.forgroundView!.delegate = self
             self.forgroundView!.center = CGPoint(x: -400, y: 100)
             self.rightButton.isEnabled = false
             self.leftButton.isEnabled = false
             //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
+            
+                //self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                //self.leftButton.transform = CGAffineTransform.identity
+            
+            self.leftButton.transform = CGAffineTransform.identity
+           
+        }, completion: nil)
+    
+        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+            self.forgroundView!.center = CGPoint(x: -400, y: 100)
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
             self.forgroundView?.delegate = self
             self.forgroundView?.leftClickAction()
         })
- 
         
         
     }
     
     @IBAction func swipeRight(_ sender: Any) {
+        
+        
+        
         // still needs to be worked out after what i did for tileview
         
         /*
@@ -885,12 +916,20 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         */
         
         self.forgroundView?.delegate = nil
-        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+        
+        self.rightButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
+            
+        self.rightButton.transform = CGAffineTransform.identity
+            
             //self.forgroundView!.delegate = self
             self.forgroundView!.center = CGPoint(x: 600, y: 100)
             self.rightButton.isEnabled = false
             self.leftButton.isEnabled = false
             //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
+            self.leftButton.isEnabled = false
+            self.rightButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
@@ -899,6 +938,21 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         })
         
     }
+    
+    @IBAction func infoPressed(_ sender: Any) {
+        
+        self.infoButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
+            
+            self.infoButton.transform = CGAffineTransform.identity
+            
+        }, completion: nil)
+            
+            
+    }
+    
+    
     
     private func checkAndUpdateGlobalIndex()
     {
