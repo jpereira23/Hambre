@@ -190,9 +190,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             backgroundView?.backgroundColor = UIColor.white
             self.view.addSubview(backgroundView!)
             backgroundView!.delegate = self
-            //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+            let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
             
-            //backgroundView?.addGestureRecognizer(gestureRec)
+            backgroundView?.addGestureRecognizer(gestureRec)
             setConstraintsOfBackgroundView()
         }
         
@@ -209,9 +209,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.backgroundColor = UIColor.white
                 self.view.addSubview(backgroundView!)
                 
-                //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 
-                //backgroundView?.addGestureRecognizer(gestureRec)
+                backgroundView?.addGestureRecognizer(gestureRec)
                 backgroundView!.delegate = self
                 setConstraintsOfBackgroundView()
             }
@@ -237,19 +237,17 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 forgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
                 forgroundView?.backgroundColor = UIColor.white
-                //forgroundView?.yelpButton.addTarget(self, action: #selector(yelpLinkAction(sender:)), for: UIControlEvents.touchDown)
                 
                 let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
                 forgroundView?.yelpAccess.addGestureRecognizer(tapGesture)
                 
                 self.view.addSubview(backgroundView!)
                 self.view.insertSubview(forgroundView!, aboveSubview:backgroundView!)
-                //let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
+                let gestureRec = UITapGestureRecognizer(target: self, action: #selector(self.tapDetailViewForBusinessView(sender:)))
                 forgroundView!.delegate = self
-                //forgroundView?.addGestureRecognizer(gestureRec)
+                forgroundView?.addGestureRecognizer(gestureRec)
                 setConstraintsOfBackgroundView()
                 setConstraintsForForgroundView()
-                //setConstraintsForAnotherView()
             }
         }
     }
