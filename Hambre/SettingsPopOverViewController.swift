@@ -78,6 +78,8 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         self.exitButton.setImage(UIImage(named: "Xpressed"), for: .highlighted)
         
         
+        
+        
     }
 
     @IBAction func getCurrentLocation(_ sender: Any)
