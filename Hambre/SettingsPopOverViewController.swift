@@ -17,6 +17,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var popView: UIView!
     @IBOutlet var cityStateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var distanceSlider: UISlider!
@@ -66,6 +67,9 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         popView.layer.shadowOpacity = 0.75
         self.locationManager.delegate = self
         self.currentLocationButton.setImage(locationImage, for: .normal)
+        
+        self.exitButton.setImage(UIImage(named: "Xpressed"), for: .selected)
+        self.exitButton.setImage(UIImage(named: "Xpressed"), for: .highlighted)
         
         
     }
