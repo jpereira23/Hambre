@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import GooglePlaces
 
 class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -81,7 +82,8 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         
         
     }
-
+    
+    
     @IBAction func getCurrentLocation(_ sender: Any)
     {
         self.locationManager.requestAlwaysAuthorization()
@@ -251,3 +253,4 @@ extension SettingsPopOverViewController : UITabBarDelegate
         print("Jeff something was selected from tab bar")
     }
 }
+

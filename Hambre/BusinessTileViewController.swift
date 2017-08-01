@@ -82,8 +82,8 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         if !appDelegate.isLocationEnabled()
         {
-            let alert = UIAlertController(title: "Location Disabled", message: "Your Location is Disabled go to Settings > Zendish and enable them. Features of the app are currently limited.", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            let alert = UIAlertController(title: "Location Disabled", message: "Your Location is Disabled go to Settings > Zendish and enable them. Features of the app are currently limited.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                 
             })
             
@@ -1231,44 +1231,7 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
         self.activityIndicator.startAnimating()
         dismiss(animated: true, completion: nil)
         
-        
-        //UISearchBar.appearance().tintColor = UIColor.white
-        //UISearchBar.appearance().backgroundColor = UIColor.red
-        //UISearchBar.appearance().setSearchImageColor = UIColor.white
-        //UINavigationBar.appearance().barTintColor = UIColor.white
-        //UINavigationBar.appearance().tintColor = UIColor.white
-      
-        
-        
-        /*
-        open var tableCellBackgroundColor: UIColor
-        
-        open var tableCellSeparatorColor: UIColor
-        
-        open var primaryTextColor: UIColor
-        
-        open var primaryTextHighlightColor: UIColor
-        
-        open var secondaryTextColor: UIColor
-        
-        open var tintColor: UIColor?
-         
-         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: (searchController?.searchBar)!)
-         
-         [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
-         setBackgroundImage:myNavBarButtonBackgroundImage forState:state barMetrics:metrics];
-         */
-        
-        
-        
-        //self.title = "Discover"
-        //self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 17.0, weight: UIFontWeightBold), NSForegroundColorAttributeName: UIColor.white]
-        
-        
-        
     }
-    
-    
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error: \(error)")

@@ -67,11 +67,11 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         self.commentView.text = "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be cooked perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality."
         self.commentView.textColor = UIColor.lightGray
         
-        let rectShape = CAShapeLayer()
-        rectShape.bounds = self.usernameField.frame
-        rectShape.position = self.usernameField.center
-        rectShape.path = UIBezierPath(roundedRect: self.usernameField.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        self.usernameField.layer.mask = rectShape
+        //let rectShape = CAShapeLayer()
+        //rectShape.bounds = self.usernameField.frame
+        //rectShape.position = self.usernameField.center
+        //rectShape.path = UIBezierPath(roundedRect: self.usernameField.bounds, byRoundingCorners: [.topRight, .topLeft, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
+        //self.usernameField.layer.mask = rectShape
         
     }
     
