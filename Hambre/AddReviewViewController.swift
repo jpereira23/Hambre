@@ -83,7 +83,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         
-        if self.usernameField.text == "e.i. John Smith"
+        if self.usernameField.text == "Username (e.i. John Smith)"
         {
             self.usernameField.text = ""
             self.usernameField.textColor = UIColor.lightGray
@@ -102,7 +102,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
     func textFieldDidEndEditing(_ textField: UITextField) {
         if self.usernameField.text == "" || self.usernameField.text == " "
         {
-            self.usernameField.placeholder = "e.i. John Smith"
+            self.usernameField.text = "Username (e.i. John Smith)"
             self.usernameField.textColor = UIColor.lightGray
             
         }

@@ -67,10 +67,10 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         
         // Do any additional setup after loading the view.
         
-        popView.layer.shadowColor = UIColor.lightGray.cgColor
-        popView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        popView.layer.shadowRadius = 2
-        popView.layer.shadowOpacity = 0.75
+        //popView.layer.shadowColor = UIColor.lightGray.cgColor
+        //popView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        //popView.layer.shadowRadius = 2
+        //popView.layer.shadowOpacity = 0.75
         self.locationManager.delegate = self
         self.currentLocationButton.setImage(locationImage, for: .normal)
         
