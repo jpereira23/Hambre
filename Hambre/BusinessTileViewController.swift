@@ -789,7 +789,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         else if segue.identifier == "tileToSettings"
         {
             
-            
+            self.arrayOfPlaces.removeAll()
             let settingsViewController = segue.destination as! SettingsPopOverViewController
             let radiusCoreData = RadiusCoreData()
             
@@ -804,6 +804,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             settingsViewController.setSliderValue(value: radiusCoreData.loadRadius())
             settingsViewController.setCityState(cityState: self.cityState)
             settingsViewController.setSelectedCell(index: self.indexOfSelectedGenre)
+            settingsViewController.theCoordinate = self.theCoordinate
         }
     }
     

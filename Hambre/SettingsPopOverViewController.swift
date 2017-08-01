@@ -27,6 +27,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
     private var indexOfSelectedCell = 0
     private var cityState : String!
     private var locationManager = CLLocationManager()
+    public var theCoordinate : CLLocationCoordinate2D? = nil
     
     private var sliderValue = 0
     let step: Float = 10
@@ -132,6 +133,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
             {
                 tileViewController.setCityState(cityState: self.cityState)
                 tileViewController.setGenre(genre: self.arrayOfGenres[self.indexOfSelectedCell])
+                tileViewController.setTheCoordinate(coordinate: self.theCoordinate!)
             }
             self.radiusCoreData.saveRadius(distance: self.sliderValue)
             tileViewController.setDistance(distance:self.sliderValue)
@@ -143,7 +145,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
     {
         
         let geoCoder = CLGeocoder()
-        
+        self.theCoordinate = manager.location?.coordinate
         let location = CLLocation(latitude: (manager.location?.coordinate.latitude)!, longitude: (manager.location?.coordinate.longitude)!)
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
