@@ -17,6 +17,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var popView: UIView!
     @IBOutlet var cityStateLabel: UILabel!
     @IBOutlet var doneButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var distanceSlider: UISlider!
@@ -58,15 +59,25 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         self.tableView.reloadData()
         self.cityStateLabel.text = self.cityState
         activityIndicator.isHidden = true
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .normal)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .highlighted)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .focused)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .application)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .selected)
         
         // Do any additional setup after loading the view.
         
-        popView.layer.shadowColor = UIColor.lightGray.cgColor
-        popView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        popView.layer.shadowRadius = 2
-        popView.layer.shadowOpacity = 0.75
+        //popView.layer.shadowColor = UIColor.lightGray.cgColor
+        //popView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        //popView.layer.shadowRadius = 2
+        //popView.layer.shadowOpacity = 0.75
         self.locationManager.delegate = self
         self.currentLocationButton.setImage(locationImage, for: .normal)
+        
+        self.exitButton.setImage(UIImage(named: "Xpressed"), for: .selected)
+        self.exitButton.setImage(UIImage(named: "Xpressed"), for: .highlighted)
+        
+        
         
         
     }
