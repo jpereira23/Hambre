@@ -37,7 +37,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     public var radiiDistances : RadiiDistances! = nil
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
-    public var leftHasHappened = true
+    public var leftHasHappened = false
     public var launchedBefore : Bool! = true
     private var globalIndexForCurrentCompany = 0
     public var theCoordinate = CLLocationCoordinate2D(latitude: 37.787938, longitude: -122.407506)

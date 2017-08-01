@@ -189,12 +189,12 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         if anonymousSwitch.isOn
         {
             usernameField.isEnabled = false
-            self.usernameField.placeholder = "Anonymous"
+            self.usernameField.text = "Anonymous"
         }
         else
         {
             usernameField.isEnabled = true
-            self.usernameField.placeholder = "e.i. John Smith"
+            self.usernameField.text = "e.i. John Smith"
         }
     }
     
@@ -204,7 +204,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         
         if identifier == "fromAddReview"
         {
-            if (usernameField.text?.isEmpty)! && review == 0 && !anonymousSwitch.isOn
+            if (usernameField.text == "e.i. John Smith") && review == 0 && !anonymousSwitch.isOn
             {
                 let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username and select at least one star in order to submit.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
@@ -215,7 +215,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
                 self.present(alert, animated: true)
                 return  false
             }
-            else if (usernameField.text?.isEmpty)! && !anonymousSwitch.isOn
+            else if (usernameField.text == "e.i. John Smith") && !anonymousSwitch.isOn
             {
                 let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username or select to review anonomously in order to submit.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
@@ -247,7 +247,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
             
             //let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let businessViewController = segue.destination as! BusinessViewController
-            let review = Review(id: businessViewController.getURL(), review: self.review, reviewer: (anonymousSwitch.isOn ? "Anonymous" : usernameField.text!), summaryReview: (self.commentView.text == "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality." ? "" : self.commentView.text))
+            let review = Review(id: businessViewController.getURL(), review: self.review, reviewer: (anonymousSwitch.isOn ? "Anonymous" : usernameField.text!), summaryReview: (self.commentView.text == "Example: This has got to be my favorite burger place! Every time I come here, the customer service and quality of food never disappoint. I'm a huge burger fan, so my patties, fries, and bacon all have to be cooked perfect for me to enjoy a good meal, and truth is, this restaurant makes this all a reality." ? "" : self.commentView.text))
             
             businessViewController.cloudKitDatabaseHandler.appendToArrayOfReviews(review: review)
     

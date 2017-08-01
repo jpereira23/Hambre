@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/AddReviewViewController.swift"
-            timestampString = "523220855.860905"
+            timestampString = "523249932.199253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "textFieldDidBeginEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,23 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/AddReviewViewController.swift"
-            timestampString = "523220915.216385"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "textFieldDidBeginEditing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hambre/AddReviewViewController.swift"
-            timestampString = "523220919.869885"
+            timestampString = "523249932.199253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -57,12 +41,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hambre/SettingsPopOverViewController.swift"
-            timestampString = "523244847.925313"
+            filePath = "Hambre/AddReviewViewController.swift"
+            timestampString = "523249932.199253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323">
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "textFieldDidBeginEditing(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -72,11 +58,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/SettingsPopOverViewController.swift"
-            timestampString = "523244847.925313"
+            timestampString = "523248051.867521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322">
+            startingLineNumber = "330"
+            endingLineNumber = "330">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hambre/SettingsPopOverViewController.swift"
+            timestampString = "523248051.867521"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -230,11 +230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/SettingsPopOverViewController.swift"
-            timestampString = "523244847.925313"
+            timestampString = "523248051.867521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
