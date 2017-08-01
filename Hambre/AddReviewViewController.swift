@@ -191,11 +191,12 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         {
             usernameField.isEnabled = false
             self.usernameField.text = "Anonymous"
+            self.usernameField.textColor = UIColor.lightGray
         }
         else
         {
             usernameField.isEnabled = true
-            self.usernameField.text = "e.i. John Smith"
+            self.usernameField.text = "Username (e.i. John Smith)"
         }
     }
     
@@ -205,7 +206,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
         
         if identifier == "fromAddReview"
         {
-            if (usernameField.text == "e.i. John Smith") && review == 0 && !anonymousSwitch.isOn
+            if (usernameField.text == "Username (e.i. John Smith)") && review == 0 && !anonymousSwitch.isOn
             {
                 let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username and select at least one star in order to submit.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
@@ -216,7 +217,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate, UITextField
                 self.present(alert, animated: true)
                 return  false
             }
-            else if (usernameField.text == "e.i. John Smith") && !anonymousSwitch.isOn
+            else if (usernameField.text == "Username (e.i. John Smith)") && !anonymousSwitch.isOn
             {
                 let alert = UIAlertController(title: "Incomplete Review", message: "You must enter a username or select to review anonomously in order to submit.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { action in

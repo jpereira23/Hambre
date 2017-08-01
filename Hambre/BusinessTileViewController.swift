@@ -891,7 +891,6 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
-            self.rightButton.isEnabled = true
             self.infoButton.isEnabled = true
             self.forgroundView?.delegate = self
             self.backgroundView?.delegate = self
@@ -942,18 +941,33 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         }, completion: nil)
         
         UIView.animate(withDuration: 0.3, animations: {() -> Void in
-            self.forgroundView!.center = CGPoint(x: 600, y: 100)
+            if self.arrayOfBusinesses.count != 1
+            {
+                self.forgroundView!.center = CGPoint(x: 600, y: 100)
+            }
+            else
+            {
+                self.backgroundView!.center = CGPoint(x: 600, y: 100)
+            }
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
             self.infoButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
-            self.rightButton.isEnabled = true
             self.infoButton.isEnabled = true
-            self.backgroundView?.delegate = self
-            self.forgroundView?.delegate = self
-            self.forgroundView?.rightClickAction()
+            if self.arrayOfBusinesses.count != 1
+            {
+                self.backgroundView?.delegate = self
+                self.forgroundView?.delegate = self
+                self.forgroundView?.rightClickAction()
+            }
+            else
+            {
+                self.backgroundView?.delegate = self
+                //self.forgroundView?.delegate = self
+                self.backgroundView?.rightClickAction()
+            }
         })
         
     }
