@@ -37,11 +37,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     public var radiiDistances : RadiiDistances! = nil
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
-    public var leftHasHappened = false
+    public var leftHasHappened = true
     public var launchedBefore : Bool! = true
     private var globalIndexForCurrentCompany = 0
     public var theCoordinate = CLLocationCoordinate2D(latitude: 37.787938, longitude: -122.407506)
     private var initialCall = false
+    public var searchPlaceLook = true
     public var cloudKitDatabaseHandler = CloudKitDatabaseHandler()
     public var arrayOfReviews = [Review]()
     public var backgroundView : DraggableView?
@@ -268,6 +269,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             self.personalBusinessCoreData.saveBusiness(personalBusiness: (loadedCards[0]?.getBusiness())!)
             self.arrayOfBusinesses.remove(at: 0)
+            backgroundView?.removeFromSuperview() 
             self.outOfTiles.isHidden = false
         }
         else if self.arrayOfBusinesses.count != 0
@@ -278,6 +280,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         else
         {
             backgroundView?.removeFromSuperview()
+            self.outOfTiles.isHidden = false
         }
        
         
@@ -389,6 +392,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                 backgroundView?.frame.origin.x = 25
                 backgroundView?.frame.origin.y = 86
                 backgroundView?.backgroundColor = UIColor.white
+                backgroundView?.delegate = self 
                 //let tapGesture = UITapGestureRecognizer(target: self, action: #selector(yelpLinkAction(sender:)))
                 //backgroundView?.yelpButton.addGestureRecognizer(tapGesture)
                 self.view.addSubview(backgroundView!)
@@ -524,7 +528,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         let heightYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
         let widthYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60)
         
-        let bottomYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .bottom, relatedBy: .equal, toItem: forgroundView!, attribute: .bottom, multiplier: 1.0, constant: -23)
+        let bottomYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .bottom, relatedBy: .equal, toItem: backgroundView!, attribute: .bottom, multiplier: 1.0, constant: -23)
         
         let trailingYelp1 = NSLayoutConstraint(item: backgroundView!.yelpAccess, attribute: .trailing, relatedBy: .equal, toItem: backgroundView!, attribute: .trailing, multiplier: 1, constant: -13)
         
@@ -784,9 +788,19 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         }
         else if segue.identifier == "tileToSettings"
         {
+            
+            
             let settingsViewController = segue.destination as! SettingsPopOverViewController
             let radiusCoreData = RadiusCoreData()
             
+            if searchPlaceLook
+            {
+                settingsViewController.locationImage = UIImage(named: "fullglyph.png")
+            }
+            else
+            {
+                settingsViewController.locationImage = UIImage(named: "emptyglyph.png")
+            }
             settingsViewController.setSliderValue(value: radiusCoreData.loadRadius())
             settingsViewController.setCityState(cityState: self.cityState)
             settingsViewController.setSelectedCell(index: self.indexOfSelectedGenre)
@@ -851,10 +865,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
  
         */
         self.forgroundView?.delegate = nil
+        self.backgroundView?.delegate = nil
         self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         
         
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
             //self.forgroundView!.delegate = self
             //self.forgroundView!.center = CGPoint(x: -400, y: 100)
             //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
@@ -866,7 +881,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
            
         }, completion: nil)
     
-        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+        UIView.animate(withDuration: 0.3, animations: {() -> Void in
             self.forgroundView!.center = CGPoint(x: -400, y: 100)
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
@@ -875,6 +890,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
             self.forgroundView?.delegate = self
+            self.backgroundView?.delegate = self
             self.forgroundView?.leftClickAction()
         })
         
@@ -913,6 +929,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         */
         
         self.forgroundView?.delegate = nil
+        self.backgroundView?.delegate = nil 
         
         self.rightButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         
@@ -920,7 +937,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.rightButton.transform = CGAffineTransform.identity
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.5, animations: {() -> Void in
+        UIView.animate(withDuration: 0.1, animations: {() -> Void in
             self.forgroundView!.center = CGPoint(x: 600, y: 100)
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
@@ -928,6 +945,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
+            self.backgroundView?.delegate = self
             self.forgroundView?.delegate = self
             self.forgroundView?.rightClickAction()
         })
@@ -1172,6 +1190,7 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
 {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
+        self.searchPlaceLook = false
         if loadedCards.count != 1 && loadedCards.count != 0
         {
             backgroundView?.isHidden = true

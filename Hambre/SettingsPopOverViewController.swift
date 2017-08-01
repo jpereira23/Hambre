@@ -21,6 +21,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var distanceSlider: UISlider!
     @IBOutlet var averageLabel: UILabel!
+    public var locationImage : UIImage! 
     private var textForAverageLabel = "Distance"
     private var radiusCoreData = RadiusCoreData()
     private var indexOfSelectedCell = 0
@@ -33,13 +34,18 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
     
     
     override func viewWillAppear(_ animated: Bool) {
-       
-        
         if !radiusCoreData.checkIfCoreDataIsEmpty()
         {
             self.sliderValue = radiusCoreData.loadRadius()
         }
-        self.doneButton.isHidden = true
+        let rectShape = CAShapeLayer()
+        rectShape.bounds = self.doneButton.frame
+        rectShape.position = self.doneButton.center
+        rectShape.path = UIBezierPath(roundedRect: self.doneButton.bounds, byRoundingCorners: [ .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
+        self.doneButton.layer.mask = rectShape
+        
+        self.doneButton.isEnabled = false
+        
        
         self.distanceSlider.maximumValue = 50
         self.distanceSlider.minimumValue = 1
@@ -59,6 +65,8 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         popView.layer.shadowRadius = 2
         popView.layer.shadowOpacity = 0.75
         self.locationManager.delegate = self
+        self.currentLocationButton.setImage(locationImage, for: .normal)
+        
         
     }
 
@@ -89,30 +97,31 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
     public func setSelectedCell(index: Int)
     {
         self.indexOfSelectedCell = index
-        
     }
     
     public func setSliderValue(value: Int)
     {
         self.sliderValue = value
-        
     }
     
-    public func getIndexOfSelectedCell() -> Int{
+    public func getIndexOfSelectedCell() -> Int
+    {
         return self.indexOfSelectedCell
     }
     
     
     
-    @IBAction func sliderChangedValue(_ sender: Any) {
-        self.doneButton.isHidden = false
+    @IBAction func sliderChangedValue(_ sender: Any)
+    {
+        self.doneButton.isEnabled = true
         let roundedValue = round((sender as! UISlider).value / step) * step
         (sender as! UISlider).value = roundedValue
         self.sliderValue = Int(roundedValue)
         self.distanceLabel.text = String(Int(roundf(roundedValue))) + ((Int(roundf(roundedValue))) <= 0 ? " mile" : " miles")
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
@@ -159,8 +168,10 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
                     self.cityStateLabel.text = self.cityState
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
+                    self.currentLocationButton.setImage(UIImage(named: "fullglyph.png"), for: .normal)
                     self.currentLocationButton.isHidden = false
-                    self.doneButton.isHidden = false 
+                    self.doneButton.isEnabled = true
+                    self.currentLocationButton.isUserInteractionEnabled = false
                 }
                 
                
@@ -183,7 +194,7 @@ extension SettingsPopOverViewController : UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.setSelectedCell(index: indexPath.row)
         self.tableView.reloadData()
-        self.doneButton.isHidden = false
+        self.doneButton.isEnabled = true
         
     }
     
