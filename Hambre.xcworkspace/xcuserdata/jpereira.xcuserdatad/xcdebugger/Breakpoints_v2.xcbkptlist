@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/SettingsPopOverViewController.swift"
-            timestampString = "523244847.925313"
+            timestampString = "523247101.442987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323">
+            startingLineNumber = "328"
+            endingLineNumber = "328">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/SettingsPopOverViewController.swift"
-            timestampString = "523244847.925313"
+            timestampString = "523247101.442987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322">
+            startingLineNumber = "327"
+            endingLineNumber = "327">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -230,11 +230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hambre/SettingsPopOverViewController.swift"
-            timestampString = "523244847.925313"
+            timestampString = "523247101.442987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>

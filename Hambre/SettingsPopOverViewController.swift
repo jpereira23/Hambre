@@ -59,6 +59,11 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         self.tableView.reloadData()
         self.cityStateLabel.text = self.cityState
         activityIndicator.isHidden = true
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .normal)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .highlighted)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .focused)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .application)
+        distanceSlider.setThumbImage(UIImage(named: "thumb"), for: .selected)
         
         // Do any additional setup after loading the view.
         
