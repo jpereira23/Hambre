@@ -886,10 +886,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.forgroundView!.center = CGPoint(x: -400, y: 100)
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
+            self.infoButton.isEnabled = true
             self.forgroundView?.delegate = self
             self.backgroundView?.delegate = self
             self.forgroundView?.leftClickAction()
@@ -942,10 +944,12 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.forgroundView!.center = CGPoint(x: 600, y: 100)
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
             self.rightButton.isEnabled = true
+            self.infoButton.isEnabled = true 
             self.backgroundView?.delegate = self
             self.forgroundView?.delegate = self
             self.forgroundView?.rightClickAction()
