@@ -36,6 +36,7 @@ class BusinessViewController: UIViewController {
     private var reviewView : ReviewView!
     private var detailView : DetailView!
     private var mapView : MapView!
+    public var reviewMade : Review? = nil
     
     
     private var currentView : UIView!
@@ -348,73 +349,6 @@ class BusinessViewController: UIViewController {
         let link = SFSafariViewController(url: URL(string: "https://www.yelp.com")!)
         self.present(link, animated: true, completion: nil)
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
-    /*
-    extension LikedBusinessesViewController : UITableViewDelegate
-    {
-        public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.arrayOfLikedBusinesses.count
-        }
-        
-        public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-            return 95
-        }
-        
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                self.personalBusinessCoreData.removeElementFromCoreData(businessName: self.arrayOfLikedBusinesses[indexPath.row].getBusinessName())
-                self.arrayOfLikedBusinesses.remove(at: indexPath.row)
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    extension LikedBusinessesViewController : UITableViewDataSource
-    {
-        public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell") as! LikedTableViewCell
-            
-            //custom orange forward chevron for favorites
-            let chevron = UIImage(named: "ForwardChevron")
-            cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = UIImageView(image: chevron)
-            
-            
-            
-            
-            
-            cell.distanceField.text = ((appDelegate.isLocationEnabled()) ? String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mi" : "N/A")
-            cell.setAverageReview(averageReview: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage().absoluteString))
-            cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
-            cell.setURL(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage())
-            let reviewsArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
-            let numOfReviews = self.filterArrayOfReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage(), array: reviewsArray)
-            
-            if numOfReviews == 0
-            {
-                cell.amountOfReviewsField.text = "0 Reviews"
-            }
-            else
-            {
-                cell.amountOfReviewsField.text = ((numOfReviews > 1) ? String(numOfReviews) + " Reviews" : String(numOfReviews) + " Review")
-            }
-            return cell
-        }
-    }
-    */
     
     
     
