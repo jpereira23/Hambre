@@ -59,6 +59,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         super.viewDidLoad()
         
         self.outOfTiles.isHidden = true
+        self.rightButton.isEnabled = true
+        self.leftButton.isEnabled = true
+        self.infoButton.isEnabled = true
         //self.personalBusinessCoreData = PersonalBusinessCoreData(coordinate: theCoordinate)
         //self.personalBusinessCoreData.resetCoreData()
         appDelegate.delegate = self
@@ -271,6 +274,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.arrayOfBusinesses.remove(at: 0)
             backgroundView?.removeFromSuperview() 
             self.outOfTiles.isHidden = false
+            self.rightButton.isEnabled = false
+            self.leftButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }
         else if self.arrayOfBusinesses.count != 0
         {
@@ -281,6 +287,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         {
             backgroundView?.removeFromSuperview()
             self.outOfTiles.isHidden = false
+            self.rightButton.isEnabled = false
+            self.leftButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }
        
         
@@ -463,6 +472,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         else
         {
             self.outOfTiles.isHidden = false
+            self.rightButton.isEnabled = false
+            self.leftButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }
     }
     
@@ -1080,9 +1092,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             {
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
-                self.leftButton.isEnabled = true
-                self.rightButton.isEnabled = true
-                self.infoButton.isEnabled = true
+                self.leftButton.isEnabled = false
+                self.rightButton.isEnabled = false
+                self.infoButton.isEnabled = false
                 self.loadCards()
             }
         }
@@ -1106,10 +1118,16 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         if self.arrayOfBusinesses.count != 0
         {
             self.outOfTiles.isHidden = true
+            self.rightButton.isEnabled = true
+            self.leftButton.isEnabled = true
+            self.infoButton.isEnabled = true
         }
         else
         {
             self.outOfTiles.isHidden = false
+            self.rightButton.isEnabled = false
+            self.leftButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }
     }
     
