@@ -41,6 +41,15 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         {
             self.sliderValue = radiusCoreData.loadRadius()
         }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if !appDelegate.isLocationEnabled()
+        {
+            self.currentLocationButton.isHidden = true
+            self.cityState = "Location Unavailable"
+            self.cityStateLabel.text = "Location Unavailable"
+        }
+        
         let rectShape = CAShapeLayer()
         rectShape.bounds = self.doneButton.frame
         rectShape.position = self.doneButton.center
