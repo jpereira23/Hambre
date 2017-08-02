@@ -50,7 +50,7 @@ class LikedBusinessesViewController: UIViewController {
         
         //helps not display empty cells
         tableView.tableFooterView = UIView()
-        //tableView.reloadData()
+        
     
         }
     
@@ -71,9 +71,7 @@ class LikedBusinessesViewController: UIViewController {
         self.cloudKitDatabaseHandler.loadDataFromCloudKit()
         self.tableView.isHidden = true
         self.activityIndicator.startAnimating()
-        
-        
-        //self.tableView.reloadData()
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {

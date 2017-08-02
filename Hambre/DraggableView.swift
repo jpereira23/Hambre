@@ -353,7 +353,7 @@ class DraggableView: UIView {
     }
     
     func rightAction() {
-        let finishPoint = CGPoint(x: CGFloat(600), y: CGFloat(4 * yFromCenter + originalPoint.y))
+        let finishPoint = CGPoint(x: CGFloat(800), y: CGFloat(4 * yFromCenter + originalPoint.y))
         UIView.animate(withDuration: 0.3, animations: {() -> Void in
             self.view.center = finishPoint
         }, completion: {(_ complete: Bool) -> Void in

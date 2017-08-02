@@ -37,9 +37,9 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     public var radiiDistances : RadiiDistances! = nil
     private var indexOfSelectedGenre = 0
     public var checkIfReady = 0
-    public var leftHasHappened = true
+    public var leftHasHappened = false
     public var launchedBefore : Bool! = true
-    private var globalIndexForCurrentCompany = 0
+    public var globalIndexForCurrentCompany = 0
     public var theCoordinate = CLLocationCoordinate2D(latitude: 37.787938, longitude: -122.407506)
     private var initialCall = false
     public var searchPlaceLook = true
@@ -717,6 +717,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
                     view.isHidden = true
                 }
             }
+            self.globalIndexForCurrentCompany = 0
             self.arrayOfBusinesses.removeAll()
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
@@ -870,7 +871,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         self.leftButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         
         
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {() -> Void in
             //self.forgroundView!.delegate = self
             //self.forgroundView!.center = CGPoint(x: -400, y: 100)
             //self.forgroundView?.transform = CGAffineTransform(scaleX: 11, y:11)
@@ -886,10 +887,11 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.forgroundView!.center = CGPoint(x: -400, y: 100)
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
-            self.rightButton.isEnabled = true
+            self.infoButton.isEnabled = true
             self.forgroundView?.delegate = self
             self.backgroundView?.delegate = self
             self.forgroundView?.leftClickAction()
@@ -938,17 +940,34 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             self.rightButton.transform = CGAffineTransform.identity
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.1, animations: {() -> Void in
-            self.forgroundView!.center = CGPoint(x: 600, y: 100)
+        UIView.animate(withDuration: 0.3, animations: {() -> Void in
+            if self.arrayOfBusinesses.count != 1
+            {
+                self.forgroundView!.center = CGPoint(x: 600, y: 100)
+            }
+            else
+            {
+                self.backgroundView!.center = CGPoint(x: 600, y: 100)
+            }
             self.leftButton.isEnabled = false
             self.rightButton.isEnabled = false
+            self.infoButton.isEnabled = false
         }, completion: {(_ complete: Bool) -> Void in
             self.rightButton.isEnabled = true
             self.leftButton.isEnabled = true
-            self.rightButton.isEnabled = true
-            self.backgroundView?.delegate = self
-            self.forgroundView?.delegate = self
-            self.forgroundView?.rightClickAction()
+            self.infoButton.isEnabled = true
+            if self.arrayOfBusinesses.count != 1
+            {
+                self.backgroundView?.delegate = self
+                self.forgroundView?.delegate = self
+                self.forgroundView?.rightClickAction()
+            }
+            else
+            {
+                self.backgroundView?.delegate = self
+                //self.forgroundView?.delegate = self
+                self.backgroundView?.rightClickAction()
+            }
         })
         
     }
@@ -1214,6 +1233,7 @@ extension BusinessTileViewController : GMSAutocompleteViewControllerDelegate
             self.activityIndicator.startAnimating()
         }
         self.arrayOfBusinesses.removeAll()
+        self.globalIndexForCurrentCompany = 0 
         self.setTheCoordinate(coordinate: place.coordinate)
         self.setCityState(cityState: place.formattedAddress!)
         self.yelpContainer = nil
