@@ -31,13 +31,13 @@ class MoreViewController: UIViewController {
     //    }
     
     @IBAction func rateUsPressed(_ sender: Any) {
-        let link = SFSafariViewController(url: URL(string: "goo.gl/Ws3DSU")!)
+        let link = SFSafariViewController(url: URL(string: "goo.gl/FWHrCz")!)
         self.present(link, animated: true, completion: nil)
     }
     
-    
+    //made up comment.. delete later
     @IBAction func shareUsPressed(_ sender: Any) {
-        let activityVC = UIActivityViewController(activityItems: ["Make your life easier by finding out where to go eat by using the Zendish app today. Available in the app store. goo.gl/Ws3DSU"], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: ["Make your life easier by finding out where to go eat by using the Zendish app today. Available in the app store. goo.gl/FWHrCz"], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         
         self.present(activityVC, animated: true, completion: nil)
