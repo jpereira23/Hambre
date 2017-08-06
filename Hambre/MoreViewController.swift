@@ -30,9 +30,12 @@ class MoreViewController: UIViewController {
     //        return CGRect(x: x, y: y, width: width, height: height)
     //    }
     
-    @IBAction func rateUsPressed(_ sender: Any) {
+    
+    @IBAction func ratePressed(_ sender: Any) {
+        
         let link = SFSafariViewController(url: URL(string: "goo.gl/FWHrCz")!)
         self.present(link, animated: true, completion: nil)
+        link.delegate = self as? SFSafariViewControllerDelegate
     }
     
     //made up comment.. delete later

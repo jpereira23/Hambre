@@ -312,8 +312,8 @@ class BusinessViewController: UIViewController {
         }
         else
         {
-            let alert = UIAlertController(title: "Website not available.", message: "Due to the unfortunate circumstances this website is not available.", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+            let alert = UIAlertController(title: "Website Not Available.", message: "Due to unfortunate circumstances this website is not available.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
                 
             })
             
