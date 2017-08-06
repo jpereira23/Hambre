@@ -17,6 +17,8 @@ class PersonalBusinessCoreData: NSObject {
     private var coordinate : CLLocationCoordinate2D!
     private var arrayOfImages = [UIImage]()
     
+    //bs comment. delete later
+    
     public init(coordinate: CLLocationCoordinate2D)
     {
         self.managedContext = self.appDelegate.persistentContainer.viewContext
