@@ -62,7 +62,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         self.distanceSlider.maximumValue = 50
         self.distanceSlider.minimumValue = 1
         self.distanceSlider.setValue(Float(self.sliderValue), animated: false)
-        self.distanceLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mile" : " miles")
+        self.distanceLabel.text = String(self.sliderValue) + (self.sliderValue <= 1 ? " mi" : " mi")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,7 +140,7 @@ class SettingsPopOverViewController: UIViewController, CLLocationManagerDelegate
         let roundedValue = round((sender as! UISlider).value / step) * step
         (sender as! UISlider).value = roundedValue
         self.sliderValue = Int(roundedValue)
-        self.distanceLabel.text = String(Int(roundf(roundedValue))) + ((Int(roundf(roundedValue))) <= 0 ? " mile" : " miles")
+        self.distanceLabel.text = String(Int(roundf(roundedValue))) + ((Int(roundf(roundedValue))) <= 0 ? " mi" : " mi")
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
