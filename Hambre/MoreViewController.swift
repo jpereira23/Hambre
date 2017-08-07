@@ -40,7 +40,7 @@ class MoreViewController: UIViewController {
     
     //made up comment.. delete later
     @IBAction func shareUsPressed(_ sender: Any) {
-        let activityVC = UIActivityViewController(activityItems: ["Make your life easier by finding out where to go eat by using the Zendish app today. Available in the app store. goo.gl/FWHrCz"], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: ["Make your life easier by finding out where to go eat by using the Zendish app today. Available in the app store. https://www.goo.gl/FWHrCz"], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         
         self.present(activityVC, animated: true, completion: nil)
