@@ -1340,10 +1340,11 @@
                             <constraint firstItem="QII-Bv-sOR" firstAttribute="top" secondItem="ZxR-Yy-n6e" secondAttribute="bottom" id="i7f-Ao-C3u"/>
                             <constraint firstItem="QII-Bv-sOR" firstAttribute="leading" secondItem="cAR-dR-5Gu" secondAttribute="leading" id="oGq-Fr-Ogf"/>
                             <constraint firstItem="xqs-SH-ts0" firstAttribute="leading" secondItem="cAR-dR-5Gu" secondAttribute="leading" id="pxw-wa-VFN"/>
-                            <constraint firstItem="0bN-5X-QcW" firstAttribute="top" secondItem="25G-oP-AeQ" secondAttribute="bottom" constant="94" id="rH6-Jn-Ohj"/>
+                            <constraint firstItem="0bN-5X-QcW" firstAttribute="top" secondItem="25G-oP-AeQ" secondAttribute="bottom" constant="114" id="rH6-Jn-Ohj"/>
                             <constraint firstItem="ZxR-Yy-n6e" firstAttribute="top" secondItem="xqs-SH-ts0" secondAttribute="bottom" constant="10" id="voU-te-WZx"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="retryButton" destination="FEC-aa-e6i" id="rHo-pX-hRL"/>
                     </connections>
