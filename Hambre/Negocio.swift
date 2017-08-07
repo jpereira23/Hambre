@@ -10,7 +10,7 @@ import UIKit
 
 class Negocio: NSObject {
     private let businessName : String!
-    private let businessImageUrl : URL!
+    private let businessImageUrl : URL?
     
     public init(businessName: String, businessImageUrl: URL)
     {
@@ -19,9 +19,9 @@ class Negocio: NSObject {
         
     }
 
-    public func getBusinessImage() -> URL
+    public func getBusinessImage() -> URL?
     {
-        return self.businessImageUrl
+        return self.businessImageUrl!
     }
     
     public func getBusinessName() -> String

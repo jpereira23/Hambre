@@ -116,7 +116,7 @@ class LikedBusinessesViewController: UIViewController {
         // Pass the selected object to the new view controller.
         
         let businessViewController = segue.destination as! BusinessViewController
-        businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage())
+        businessViewController.setUrl(aUrl: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getBusinessImage()!)
         businessViewController.setLongitude(longitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLongitude())
         businessViewController.setLatitude(latitude: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getLatitude())
         businessViewController.setPhoneNumber(phone: self.arrayOfLikedBusinesses[(self.tableView.indexPathForSelectedRow?.row)!].getNumber())
@@ -187,7 +187,7 @@ extension LikedBusinessesViewController : UITableViewDataSource
         //cell.distanceField.text = ((appDelegate.isLocationEnabled()) ? String(self.arrayOfLikedBusinesses[indexPath.row].getDistance()) + " mi" : "N/A")
         
         cell.distanceField.text = self.arrayOfLikedBusinesses[indexPath.row].getCity() + ", " + self.arrayOfLikedBusinesses[indexPath.row].getState() 
-        cell.setAverageReview(averageReview: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage().absoluteString))
+        cell.setAverageReview(averageReview: self.cloudKitDatabaseHandler.getAverageReviews(url: (self.arrayOfLikedBusinesses[indexPath.row].getBusinessImage()?.absoluteString)!))
         cell.titleField.text = self.arrayOfLikedBusinesses[indexPath.row].getBusinessName()
         cell.setImage(image: self.arrayOfImages[indexPath.row])
         
@@ -216,8 +216,11 @@ extension LikedBusinessesViewController : CloudKitDatabaseHandlerDelegate
         let reviewsArray = self.cloudKitDatabaseHandler.accessArrayOfReviews()
         for business in self.arrayOfLikedBusinesses
         {
-            personalBusinessCoreData.downloadImagesForArrayOfImages(url: business.getBusinessImage())
-            self.arrayOfAverageReviews.append(self.filterArrayOfReviews(url: business.getBusinessImage(), array: reviewsArray))
+            if business.getBusinessImage() != nil
+            {
+                personalBusinessCoreData.downloadImagesForArrayOfImages(url: business.getBusinessImage()!)
+                self.arrayOfAverageReviews.append(self.filterArrayOfReviews(url: business.getBusinessImage()!, array: reviewsArray))
+            }
         }
         self.arrayOfImages = personalBusinessCoreData.getArrayOfImages()
        

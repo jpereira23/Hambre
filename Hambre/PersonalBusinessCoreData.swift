@@ -45,7 +45,7 @@ class PersonalBusinessCoreData: NSObject {
         aBusiness.setValue(personalBusiness.getBusinessName(), forKeyPath:"businessName")
         aBusiness.setValue(personalBusiness.getCity(), forKeyPath: "city")
         aBusiness.setValue(personalBusiness.getState(), forKeyPath: "state")
-        let aString = personalBusiness.getBusinessImage().absoluteString
+        let aString = personalBusiness.getBusinessImage()?.absoluteString
         aBusiness.setValue(aString, forKeyPath: "businessUrl")
         aBusiness.setValue(personalBusiness.getLiked(), forKeyPath: "liked")
         aBusiness.setValue(personalBusiness.getLikes(), forKeyPath: "likes")

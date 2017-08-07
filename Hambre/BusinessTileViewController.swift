@@ -360,17 +360,17 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
     }
     
     private func createDraggableViewWithData(at index: Int) -> DraggableView {
-        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: view.frame.width - 50, height: view.frame.height - 177), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: self.arrayOfBusinesses[index].getBusinessImage().absoluteString))
+        let draggableView = DraggableView(frame: CGRect(x: 25, y: 86, width: view.frame.width - 50, height: view.frame.height - 177), floatForStar: self.cloudKitDatabaseHandler.getAverageReviews(url: (self.arrayOfBusinesses[index].getBusinessImage()?.absoluteString)!))
         
         draggableView.setBusinessName(name: self.arrayOfBusinesses[index].getBusinessName())
-        draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage())
+        draggableView.setImageUrl(url: self.arrayOfBusinesses[index].getBusinessImage()!)
         draggableView.setBusiness(business: self.arrayOfBusinesses[index])
         draggableView.setMiles(miles: ((appDelegate.isLocationEnabled()) ? String(self.arrayOfBusinesses[index].getDistance()) + " mi" : ""))
         
 
         if self.arrayOfReviews.count > 0
         {
-            let num = self.filterArrayOfReviews(url: self.arrayOfBusinesses[index].getBusinessImage())
+            let num = self.filterArrayOfReviews(url: self.arrayOfBusinesses[index].getBusinessImage()!)
             draggableView.setReviews(reviews: String(num) + ((num > 1 || num == 0) ? " reviews" : " review"))
         }
         else
@@ -484,7 +484,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         
         if loadedCards.count > 0
         {
-            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage())!)
             businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
             businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
             businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
@@ -495,7 +495,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
         }
         else
         {
-            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+            businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage())!)
             businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
             businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
             businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
@@ -774,7 +774,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             businessViewController.setIdentifier(id: "fromTileView")
             if loadedCards.count > 1
             {
-                businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage()))
+                businessViewController.setUrl(aUrl: (loadedCards[1]!.getBusiness().getBusinessImage())!)
                 businessViewController.setLongitude(longitude: (loadedCards[1]!.getBusiness().getLongitude()))
                 businessViewController.setLatitude(latitude: (loadedCards[1]!.getBusiness().getLatitude()))
                 businessViewController.setPhoneNumber(phone: (loadedCards[1]!.getBusiness().getNumber()))
@@ -787,7 +787,7 @@ class BusinessTileViewController: UIViewController, DraggableViewDelegate, YelpC
             }
             else
             {
-                businessViewController.setUrl(aUrl: (loadedCards[0]!.getBusiness().getBusinessImage()))
+                businessViewController.setUrl(aUrl: (loadedCards[0]!.getBusiness().getBusinessImage())!)
                 businessViewController.setLongitude(longitude: (loadedCards[0]!.getBusiness().getLongitude()))
                 businessViewController.setLatitude(latitude: (loadedCards[0]!.getBusiness().getLatitude()))
                 businessViewController.setPhoneNumber(phone: (loadedCards[0]!.getBusiness().getNumber()))
